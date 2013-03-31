@@ -3203,78 +3203,78 @@
  2092              		.text
  2093              	.Letext0:
  2094              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 2095              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 2096              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_i2c.h"
- 2097              		.file 5 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_rcc.h"
- 2098              		.file 6 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 2095              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 2096              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 2097              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 2098              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_i2c.c
-     /tmp/ccleSHMg.s:19     .text.I2C_DeInit:00000000 $t
-     /tmp/ccleSHMg.s:24     .text.I2C_DeInit:00000000 I2C_DeInit
-     /tmp/ccleSHMg.s:76     .text.I2C_Init:00000000 $t
-     /tmp/ccleSHMg.s:81     .text.I2C_Init:00000000 I2C_Init
-     /tmp/ccleSHMg.s:315    .text.I2C_StructInit:00000000 $t
-     /tmp/ccleSHMg.s:320    .text.I2C_StructInit:00000000 I2C_StructInit
-     /tmp/ccleSHMg.s:371    .text.I2C_Cmd:00000000 $t
-     /tmp/ccleSHMg.s:376    .text.I2C_Cmd:00000000 I2C_Cmd
-     /tmp/ccleSHMg.s:428    .text.I2C_DMACmd:00000000 $t
-     /tmp/ccleSHMg.s:433    .text.I2C_DMACmd:00000000 I2C_DMACmd
-     /tmp/ccleSHMg.s:485    .text.I2C_DMALastTransferCmd:00000000 $t
-     /tmp/ccleSHMg.s:490    .text.I2C_DMALastTransferCmd:00000000 I2C_DMALastTransferCmd
-     /tmp/ccleSHMg.s:542    .text.I2C_GenerateSTART:00000000 $t
-     /tmp/ccleSHMg.s:547    .text.I2C_GenerateSTART:00000000 I2C_GenerateSTART
-     /tmp/ccleSHMg.s:599    .text.I2C_GenerateSTOP:00000000 $t
-     /tmp/ccleSHMg.s:604    .text.I2C_GenerateSTOP:00000000 I2C_GenerateSTOP
-     /tmp/ccleSHMg.s:656    .text.I2C_AcknowledgeConfig:00000000 $t
-     /tmp/ccleSHMg.s:661    .text.I2C_AcknowledgeConfig:00000000 I2C_AcknowledgeConfig
-     /tmp/ccleSHMg.s:713    .text.I2C_OwnAddress2Config:00000000 $t
-     /tmp/ccleSHMg.s:718    .text.I2C_OwnAddress2Config:00000000 I2C_OwnAddress2Config
-     /tmp/ccleSHMg.s:771    .text.I2C_DualAddressCmd:00000000 $t
-     /tmp/ccleSHMg.s:776    .text.I2C_DualAddressCmd:00000000 I2C_DualAddressCmd
-     /tmp/ccleSHMg.s:828    .text.I2C_GeneralCallCmd:00000000 $t
-     /tmp/ccleSHMg.s:833    .text.I2C_GeneralCallCmd:00000000 I2C_GeneralCallCmd
-     /tmp/ccleSHMg.s:885    .text.I2C_ITConfig:00000000 $t
-     /tmp/ccleSHMg.s:890    .text.I2C_ITConfig:00000000 I2C_ITConfig
-     /tmp/ccleSHMg.s:948    .text.I2C_SendData:00000000 $t
-     /tmp/ccleSHMg.s:953    .text.I2C_SendData:00000000 I2C_SendData
-     /tmp/ccleSHMg.s:987    .text.I2C_ReceiveData:00000000 $t
-     /tmp/ccleSHMg.s:992    .text.I2C_ReceiveData:00000000 I2C_ReceiveData
-     /tmp/ccleSHMg.s:1025   .text.I2C_Send7bitAddress:00000000 $t
-     /tmp/ccleSHMg.s:1030   .text.I2C_Send7bitAddress:00000000 I2C_Send7bitAddress
-     /tmp/ccleSHMg.s:1081   .text.I2C_ReadRegister:00000000 $t
-     /tmp/ccleSHMg.s:1086   .text.I2C_ReadRegister:00000000 I2C_ReadRegister
-     /tmp/ccleSHMg.s:1131   .text.I2C_SoftwareResetCmd:00000000 $t
-     /tmp/ccleSHMg.s:1136   .text.I2C_SoftwareResetCmd:00000000 I2C_SoftwareResetCmd
-     /tmp/ccleSHMg.s:1190   .text.I2C_NACKPositionConfig:00000000 $t
-     /tmp/ccleSHMg.s:1195   .text.I2C_NACKPositionConfig:00000000 I2C_NACKPositionConfig
-     /tmp/ccleSHMg.s:1247   .text.I2C_SMBusAlertConfig:00000000 $t
-     /tmp/ccleSHMg.s:1252   .text.I2C_SMBusAlertConfig:00000000 I2C_SMBusAlertConfig
-     /tmp/ccleSHMg.s:1304   .text.I2C_TransmitPEC:00000000 $t
-     /tmp/ccleSHMg.s:1309   .text.I2C_TransmitPEC:00000000 I2C_TransmitPEC
-     /tmp/ccleSHMg.s:1361   .text.I2C_PECPositionConfig:00000000 $t
-     /tmp/ccleSHMg.s:1366   .text.I2C_PECPositionConfig:00000000 I2C_PECPositionConfig
-     /tmp/ccleSHMg.s:1418   .text.I2C_CalculatePEC:00000000 $t
-     /tmp/ccleSHMg.s:1423   .text.I2C_CalculatePEC:00000000 I2C_CalculatePEC
-     /tmp/ccleSHMg.s:1475   .text.I2C_GetPEC:00000000 $t
-     /tmp/ccleSHMg.s:1480   .text.I2C_GetPEC:00000000 I2C_GetPEC
-     /tmp/ccleSHMg.s:1515   .text.I2C_ARPCmd:00000000 $t
-     /tmp/ccleSHMg.s:1520   .text.I2C_ARPCmd:00000000 I2C_ARPCmd
-     /tmp/ccleSHMg.s:1572   .text.I2C_StretchClockCmd:00000000 $t
-     /tmp/ccleSHMg.s:1577   .text.I2C_StretchClockCmd:00000000 I2C_StretchClockCmd
-     /tmp/ccleSHMg.s:1629   .text.I2C_FastModeDutyCycleConfig:00000000 $t
-     /tmp/ccleSHMg.s:1634   .text.I2C_FastModeDutyCycleConfig:00000000 I2C_FastModeDutyCycleConfig
-     /tmp/ccleSHMg.s:1686   .text.I2C_CheckEvent:00000000 $t
-     /tmp/ccleSHMg.s:1691   .text.I2C_CheckEvent:00000000 I2C_CheckEvent
-     /tmp/ccleSHMg.s:1769   .text.I2C_GetLastEvent:00000000 $t
-     /tmp/ccleSHMg.s:1774   .text.I2C_GetLastEvent:00000000 I2C_GetLastEvent
-     /tmp/ccleSHMg.s:1832   .text.I2C_GetFlagStatus:00000000 $t
-     /tmp/ccleSHMg.s:1837   .text.I2C_GetFlagStatus:00000000 I2C_GetFlagStatus
-     /tmp/ccleSHMg.s:1922   .text.I2C_ClearFlag:00000000 $t
-     /tmp/ccleSHMg.s:1927   .text.I2C_ClearFlag:00000000 I2C_ClearFlag
-     /tmp/ccleSHMg.s:1969   .text.I2C_GetITStatus:00000000 $t
-     /tmp/ccleSHMg.s:1974   .text.I2C_GetITStatus:00000000 I2C_GetITStatus
-     /tmp/ccleSHMg.s:2046   .text.I2C_ClearITPendingBit:00000000 $t
-     /tmp/ccleSHMg.s:2051   .text.I2C_ClearITPendingBit:00000000 I2C_ClearITPendingBit
+     /tmp/ccgAaRjH.s:19     .text.I2C_DeInit:00000000 $t
+     /tmp/ccgAaRjH.s:24     .text.I2C_DeInit:00000000 I2C_DeInit
+     /tmp/ccgAaRjH.s:76     .text.I2C_Init:00000000 $t
+     /tmp/ccgAaRjH.s:81     .text.I2C_Init:00000000 I2C_Init
+     /tmp/ccgAaRjH.s:315    .text.I2C_StructInit:00000000 $t
+     /tmp/ccgAaRjH.s:320    .text.I2C_StructInit:00000000 I2C_StructInit
+     /tmp/ccgAaRjH.s:371    .text.I2C_Cmd:00000000 $t
+     /tmp/ccgAaRjH.s:376    .text.I2C_Cmd:00000000 I2C_Cmd
+     /tmp/ccgAaRjH.s:428    .text.I2C_DMACmd:00000000 $t
+     /tmp/ccgAaRjH.s:433    .text.I2C_DMACmd:00000000 I2C_DMACmd
+     /tmp/ccgAaRjH.s:485    .text.I2C_DMALastTransferCmd:00000000 $t
+     /tmp/ccgAaRjH.s:490    .text.I2C_DMALastTransferCmd:00000000 I2C_DMALastTransferCmd
+     /tmp/ccgAaRjH.s:542    .text.I2C_GenerateSTART:00000000 $t
+     /tmp/ccgAaRjH.s:547    .text.I2C_GenerateSTART:00000000 I2C_GenerateSTART
+     /tmp/ccgAaRjH.s:599    .text.I2C_GenerateSTOP:00000000 $t
+     /tmp/ccgAaRjH.s:604    .text.I2C_GenerateSTOP:00000000 I2C_GenerateSTOP
+     /tmp/ccgAaRjH.s:656    .text.I2C_AcknowledgeConfig:00000000 $t
+     /tmp/ccgAaRjH.s:661    .text.I2C_AcknowledgeConfig:00000000 I2C_AcknowledgeConfig
+     /tmp/ccgAaRjH.s:713    .text.I2C_OwnAddress2Config:00000000 $t
+     /tmp/ccgAaRjH.s:718    .text.I2C_OwnAddress2Config:00000000 I2C_OwnAddress2Config
+     /tmp/ccgAaRjH.s:771    .text.I2C_DualAddressCmd:00000000 $t
+     /tmp/ccgAaRjH.s:776    .text.I2C_DualAddressCmd:00000000 I2C_DualAddressCmd
+     /tmp/ccgAaRjH.s:828    .text.I2C_GeneralCallCmd:00000000 $t
+     /tmp/ccgAaRjH.s:833    .text.I2C_GeneralCallCmd:00000000 I2C_GeneralCallCmd
+     /tmp/ccgAaRjH.s:885    .text.I2C_ITConfig:00000000 $t
+     /tmp/ccgAaRjH.s:890    .text.I2C_ITConfig:00000000 I2C_ITConfig
+     /tmp/ccgAaRjH.s:948    .text.I2C_SendData:00000000 $t
+     /tmp/ccgAaRjH.s:953    .text.I2C_SendData:00000000 I2C_SendData
+     /tmp/ccgAaRjH.s:987    .text.I2C_ReceiveData:00000000 $t
+     /tmp/ccgAaRjH.s:992    .text.I2C_ReceiveData:00000000 I2C_ReceiveData
+     /tmp/ccgAaRjH.s:1025   .text.I2C_Send7bitAddress:00000000 $t
+     /tmp/ccgAaRjH.s:1030   .text.I2C_Send7bitAddress:00000000 I2C_Send7bitAddress
+     /tmp/ccgAaRjH.s:1081   .text.I2C_ReadRegister:00000000 $t
+     /tmp/ccgAaRjH.s:1086   .text.I2C_ReadRegister:00000000 I2C_ReadRegister
+     /tmp/ccgAaRjH.s:1131   .text.I2C_SoftwareResetCmd:00000000 $t
+     /tmp/ccgAaRjH.s:1136   .text.I2C_SoftwareResetCmd:00000000 I2C_SoftwareResetCmd
+     /tmp/ccgAaRjH.s:1190   .text.I2C_NACKPositionConfig:00000000 $t
+     /tmp/ccgAaRjH.s:1195   .text.I2C_NACKPositionConfig:00000000 I2C_NACKPositionConfig
+     /tmp/ccgAaRjH.s:1247   .text.I2C_SMBusAlertConfig:00000000 $t
+     /tmp/ccgAaRjH.s:1252   .text.I2C_SMBusAlertConfig:00000000 I2C_SMBusAlertConfig
+     /tmp/ccgAaRjH.s:1304   .text.I2C_TransmitPEC:00000000 $t
+     /tmp/ccgAaRjH.s:1309   .text.I2C_TransmitPEC:00000000 I2C_TransmitPEC
+     /tmp/ccgAaRjH.s:1361   .text.I2C_PECPositionConfig:00000000 $t
+     /tmp/ccgAaRjH.s:1366   .text.I2C_PECPositionConfig:00000000 I2C_PECPositionConfig
+     /tmp/ccgAaRjH.s:1418   .text.I2C_CalculatePEC:00000000 $t
+     /tmp/ccgAaRjH.s:1423   .text.I2C_CalculatePEC:00000000 I2C_CalculatePEC
+     /tmp/ccgAaRjH.s:1475   .text.I2C_GetPEC:00000000 $t
+     /tmp/ccgAaRjH.s:1480   .text.I2C_GetPEC:00000000 I2C_GetPEC
+     /tmp/ccgAaRjH.s:1515   .text.I2C_ARPCmd:00000000 $t
+     /tmp/ccgAaRjH.s:1520   .text.I2C_ARPCmd:00000000 I2C_ARPCmd
+     /tmp/ccgAaRjH.s:1572   .text.I2C_StretchClockCmd:00000000 $t
+     /tmp/ccgAaRjH.s:1577   .text.I2C_StretchClockCmd:00000000 I2C_StretchClockCmd
+     /tmp/ccgAaRjH.s:1629   .text.I2C_FastModeDutyCycleConfig:00000000 $t
+     /tmp/ccgAaRjH.s:1634   .text.I2C_FastModeDutyCycleConfig:00000000 I2C_FastModeDutyCycleConfig
+     /tmp/ccgAaRjH.s:1686   .text.I2C_CheckEvent:00000000 $t
+     /tmp/ccgAaRjH.s:1691   .text.I2C_CheckEvent:00000000 I2C_CheckEvent
+     /tmp/ccgAaRjH.s:1769   .text.I2C_GetLastEvent:00000000 $t
+     /tmp/ccgAaRjH.s:1774   .text.I2C_GetLastEvent:00000000 I2C_GetLastEvent
+     /tmp/ccgAaRjH.s:1832   .text.I2C_GetFlagStatus:00000000 $t
+     /tmp/ccgAaRjH.s:1837   .text.I2C_GetFlagStatus:00000000 I2C_GetFlagStatus
+     /tmp/ccgAaRjH.s:1922   .text.I2C_ClearFlag:00000000 $t
+     /tmp/ccgAaRjH.s:1927   .text.I2C_ClearFlag:00000000 I2C_ClearFlag
+     /tmp/ccgAaRjH.s:1969   .text.I2C_GetITStatus:00000000 $t
+     /tmp/ccgAaRjH.s:1974   .text.I2C_GetITStatus:00000000 I2C_GetITStatus
+     /tmp/ccgAaRjH.s:2046   .text.I2C_ClearITPendingBit:00000000 $t
+     /tmp/ccgAaRjH.s:2051   .text.I2C_ClearITPendingBit:00000000 I2C_ClearITPendingBit
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

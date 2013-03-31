@@ -11,6 +11,11 @@ RM := rm -rf
 -include Work/Sources/subdir.mk
 -include StdPeripheralDriver/src/subdir.mk
 -include FreeRTOS/Sources/subdir.mk
+-include FreeModbus/modbus/rtu/subdir.mk
+-include FreeModbus/modbus/functions/subdir.mk
+-include FreeModbus/modbus/subdir.mk
+-include FreeModbus/STM32/port/subdir.mk
+-include FreeModbus/STM32/subdir.mk
 -include CMSIS/subdir.mk
 -include .metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include subdir.mk

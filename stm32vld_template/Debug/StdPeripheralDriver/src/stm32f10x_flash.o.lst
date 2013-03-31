@@ -3552,67 +3552,67 @@
  2056              		.text
  2057              	.Letext0:
  2058              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 2059              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 2060              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_flash.h"
- 2061              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 2059              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 2060              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 2061              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_flash.c
-     /tmp/ccGdS2qS.s:19     .text.FLASH_SetLatency:00000000 $t
-     /tmp/ccGdS2qS.s:24     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
-     /tmp/ccGdS2qS.s:74     .text.FLASH_HalfCycleAccessCmd:00000000 $t
-     /tmp/ccGdS2qS.s:79     .text.FLASH_HalfCycleAccessCmd:00000000 FLASH_HalfCycleAccessCmd
-     /tmp/ccGdS2qS.s:123    .text.FLASH_PrefetchBufferCmd:00000000 $t
-     /tmp/ccGdS2qS.s:128    .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
-     /tmp/ccGdS2qS.s:172    .text.FLASH_Unlock:00000000 $t
-     /tmp/ccGdS2qS.s:177    .text.FLASH_Unlock:00000000 FLASH_Unlock
-     /tmp/ccGdS2qS.s:211    .text.FLASH_UnlockBank1:00000000 $t
-     /tmp/ccGdS2qS.s:216    .text.FLASH_UnlockBank1:00000000 FLASH_UnlockBank1
-     /tmp/ccGdS2qS.s:250    .text.FLASH_Lock:00000000 $t
-     /tmp/ccGdS2qS.s:255    .text.FLASH_Lock:00000000 FLASH_Lock
-     /tmp/ccGdS2qS.s:285    .text.FLASH_LockBank1:00000000 $t
-     /tmp/ccGdS2qS.s:290    .text.FLASH_LockBank1:00000000 FLASH_LockBank1
-     /tmp/ccGdS2qS.s:320    .text.FLASH_ErasePage:00000000 $t
-     /tmp/ccGdS2qS.s:325    .text.FLASH_ErasePage:00000000 FLASH_ErasePage
-     /tmp/ccGdS2qS.s:1922   .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
-     /tmp/ccGdS2qS.s:402    .text.FLASH_EraseAllPages:00000000 $t
-     /tmp/ccGdS2qS.s:407    .text.FLASH_EraseAllPages:00000000 FLASH_EraseAllPages
-     /tmp/ccGdS2qS.s:478    .text.FLASH_EraseAllBank1Pages:00000000 $t
-     /tmp/ccGdS2qS.s:483    .text.FLASH_EraseAllBank1Pages:00000000 FLASH_EraseAllBank1Pages
-     /tmp/ccGdS2qS.s:1992   .text.FLASH_WaitForLastBank1Operation:00000000 FLASH_WaitForLastBank1Operation
-     /tmp/ccGdS2qS.s:554    .text.FLASH_EraseOptionBytes:00000000 $t
-     /tmp/ccGdS2qS.s:559    .text.FLASH_EraseOptionBytes:00000000 FLASH_EraseOptionBytes
-     /tmp/ccGdS2qS.s:1489   .text.FLASH_GetReadOutProtectionStatus:00000000 FLASH_GetReadOutProtectionStatus
-     /tmp/ccGdS2qS.s:704    .text.FLASH_ProgramWord:00000000 $t
-     /tmp/ccGdS2qS.s:709    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
-     /tmp/ccGdS2qS.s:812    .text.FLASH_ProgramHalfWord:00000000 $t
-     /tmp/ccGdS2qS.s:817    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
-     /tmp/ccGdS2qS.s:887    .text.FLASH_ProgramOptionByteData:00000000 $t
-     /tmp/ccGdS2qS.s:892    .text.FLASH_ProgramOptionByteData:00000000 FLASH_ProgramOptionByteData
-     /tmp/ccGdS2qS.s:979    .text.FLASH_EnableWriteProtection:00000000 $t
-     /tmp/ccGdS2qS.s:984    .text.FLASH_EnableWriteProtection:00000000 FLASH_EnableWriteProtection
-     /tmp/ccGdS2qS.s:1164   .text.FLASH_ReadOutProtection:00000000 $t
-     /tmp/ccGdS2qS.s:1169   .text.FLASH_ReadOutProtection:00000000 FLASH_ReadOutProtection
-     /tmp/ccGdS2qS.s:1316   .text.FLASH_UserOptionByteConfig:00000000 $t
-     /tmp/ccGdS2qS.s:1321   .text.FLASH_UserOptionByteConfig:00000000 FLASH_UserOptionByteConfig
-     /tmp/ccGdS2qS.s:1419   .text.FLASH_GetUserOptionByte:00000000 $t
-     /tmp/ccGdS2qS.s:1424   .text.FLASH_GetUserOptionByte:00000000 FLASH_GetUserOptionByte
-     /tmp/ccGdS2qS.s:1452   .text.FLASH_GetWriteProtectionOptionByte:00000000 $t
-     /tmp/ccGdS2qS.s:1457   .text.FLASH_GetWriteProtectionOptionByte:00000000 FLASH_GetWriteProtectionOptionByte
-     /tmp/ccGdS2qS.s:1484   .text.FLASH_GetReadOutProtectionStatus:00000000 $t
-     /tmp/ccGdS2qS.s:1537   .text.FLASH_GetPrefetchBufferStatus:00000000 $t
-     /tmp/ccGdS2qS.s:1542   .text.FLASH_GetPrefetchBufferStatus:00000000 FLASH_GetPrefetchBufferStatus
-     /tmp/ccGdS2qS.s:1590   .text.FLASH_ITConfig:00000000 $t
-     /tmp/ccGdS2qS.s:1595   .text.FLASH_ITConfig:00000000 FLASH_ITConfig
-     /tmp/ccGdS2qS.s:1650   .text.FLASH_GetFlagStatus:00000000 $t
-     /tmp/ccGdS2qS.s:1655   .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
-     /tmp/ccGdS2qS.s:1726   .text.FLASH_ClearFlag:00000000 $t
-     /tmp/ccGdS2qS.s:1731   .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
-     /tmp/ccGdS2qS.s:1763   .text.FLASH_GetStatus:00000000 $t
-     /tmp/ccGdS2qS.s:1768   .text.FLASH_GetStatus:00000000 FLASH_GetStatus
-     /tmp/ccGdS2qS.s:1840   .text.FLASH_GetBank1Status:00000000 $t
-     /tmp/ccGdS2qS.s:1845   .text.FLASH_GetBank1Status:00000000 FLASH_GetBank1Status
-     /tmp/ccGdS2qS.s:1917   .text.FLASH_WaitForLastOperation:00000000 $t
-     /tmp/ccGdS2qS.s:1987   .text.FLASH_WaitForLastBank1Operation:00000000 $t
+     /tmp/ccyJY8Wj.s:19     .text.FLASH_SetLatency:00000000 $t
+     /tmp/ccyJY8Wj.s:24     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
+     /tmp/ccyJY8Wj.s:74     .text.FLASH_HalfCycleAccessCmd:00000000 $t
+     /tmp/ccyJY8Wj.s:79     .text.FLASH_HalfCycleAccessCmd:00000000 FLASH_HalfCycleAccessCmd
+     /tmp/ccyJY8Wj.s:123    .text.FLASH_PrefetchBufferCmd:00000000 $t
+     /tmp/ccyJY8Wj.s:128    .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
+     /tmp/ccyJY8Wj.s:172    .text.FLASH_Unlock:00000000 $t
+     /tmp/ccyJY8Wj.s:177    .text.FLASH_Unlock:00000000 FLASH_Unlock
+     /tmp/ccyJY8Wj.s:211    .text.FLASH_UnlockBank1:00000000 $t
+     /tmp/ccyJY8Wj.s:216    .text.FLASH_UnlockBank1:00000000 FLASH_UnlockBank1
+     /tmp/ccyJY8Wj.s:250    .text.FLASH_Lock:00000000 $t
+     /tmp/ccyJY8Wj.s:255    .text.FLASH_Lock:00000000 FLASH_Lock
+     /tmp/ccyJY8Wj.s:285    .text.FLASH_LockBank1:00000000 $t
+     /tmp/ccyJY8Wj.s:290    .text.FLASH_LockBank1:00000000 FLASH_LockBank1
+     /tmp/ccyJY8Wj.s:320    .text.FLASH_ErasePage:00000000 $t
+     /tmp/ccyJY8Wj.s:325    .text.FLASH_ErasePage:00000000 FLASH_ErasePage
+     /tmp/ccyJY8Wj.s:1922   .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
+     /tmp/ccyJY8Wj.s:402    .text.FLASH_EraseAllPages:00000000 $t
+     /tmp/ccyJY8Wj.s:407    .text.FLASH_EraseAllPages:00000000 FLASH_EraseAllPages
+     /tmp/ccyJY8Wj.s:478    .text.FLASH_EraseAllBank1Pages:00000000 $t
+     /tmp/ccyJY8Wj.s:483    .text.FLASH_EraseAllBank1Pages:00000000 FLASH_EraseAllBank1Pages
+     /tmp/ccyJY8Wj.s:1992   .text.FLASH_WaitForLastBank1Operation:00000000 FLASH_WaitForLastBank1Operation
+     /tmp/ccyJY8Wj.s:554    .text.FLASH_EraseOptionBytes:00000000 $t
+     /tmp/ccyJY8Wj.s:559    .text.FLASH_EraseOptionBytes:00000000 FLASH_EraseOptionBytes
+     /tmp/ccyJY8Wj.s:1489   .text.FLASH_GetReadOutProtectionStatus:00000000 FLASH_GetReadOutProtectionStatus
+     /tmp/ccyJY8Wj.s:704    .text.FLASH_ProgramWord:00000000 $t
+     /tmp/ccyJY8Wj.s:709    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
+     /tmp/ccyJY8Wj.s:812    .text.FLASH_ProgramHalfWord:00000000 $t
+     /tmp/ccyJY8Wj.s:817    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
+     /tmp/ccyJY8Wj.s:887    .text.FLASH_ProgramOptionByteData:00000000 $t
+     /tmp/ccyJY8Wj.s:892    .text.FLASH_ProgramOptionByteData:00000000 FLASH_ProgramOptionByteData
+     /tmp/ccyJY8Wj.s:979    .text.FLASH_EnableWriteProtection:00000000 $t
+     /tmp/ccyJY8Wj.s:984    .text.FLASH_EnableWriteProtection:00000000 FLASH_EnableWriteProtection
+     /tmp/ccyJY8Wj.s:1164   .text.FLASH_ReadOutProtection:00000000 $t
+     /tmp/ccyJY8Wj.s:1169   .text.FLASH_ReadOutProtection:00000000 FLASH_ReadOutProtection
+     /tmp/ccyJY8Wj.s:1316   .text.FLASH_UserOptionByteConfig:00000000 $t
+     /tmp/ccyJY8Wj.s:1321   .text.FLASH_UserOptionByteConfig:00000000 FLASH_UserOptionByteConfig
+     /tmp/ccyJY8Wj.s:1419   .text.FLASH_GetUserOptionByte:00000000 $t
+     /tmp/ccyJY8Wj.s:1424   .text.FLASH_GetUserOptionByte:00000000 FLASH_GetUserOptionByte
+     /tmp/ccyJY8Wj.s:1452   .text.FLASH_GetWriteProtectionOptionByte:00000000 $t
+     /tmp/ccyJY8Wj.s:1457   .text.FLASH_GetWriteProtectionOptionByte:00000000 FLASH_GetWriteProtectionOptionByte
+     /tmp/ccyJY8Wj.s:1484   .text.FLASH_GetReadOutProtectionStatus:00000000 $t
+     /tmp/ccyJY8Wj.s:1537   .text.FLASH_GetPrefetchBufferStatus:00000000 $t
+     /tmp/ccyJY8Wj.s:1542   .text.FLASH_GetPrefetchBufferStatus:00000000 FLASH_GetPrefetchBufferStatus
+     /tmp/ccyJY8Wj.s:1590   .text.FLASH_ITConfig:00000000 $t
+     /tmp/ccyJY8Wj.s:1595   .text.FLASH_ITConfig:00000000 FLASH_ITConfig
+     /tmp/ccyJY8Wj.s:1650   .text.FLASH_GetFlagStatus:00000000 $t
+     /tmp/ccyJY8Wj.s:1655   .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
+     /tmp/ccyJY8Wj.s:1726   .text.FLASH_ClearFlag:00000000 $t
+     /tmp/ccyJY8Wj.s:1731   .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
+     /tmp/ccyJY8Wj.s:1763   .text.FLASH_GetStatus:00000000 $t
+     /tmp/ccyJY8Wj.s:1768   .text.FLASH_GetStatus:00000000 FLASH_GetStatus
+     /tmp/ccyJY8Wj.s:1840   .text.FLASH_GetBank1Status:00000000 $t
+     /tmp/ccyJY8Wj.s:1845   .text.FLASH_GetBank1Status:00000000 FLASH_GetBank1Status
+     /tmp/ccyJY8Wj.s:1917   .text.FLASH_WaitForLastOperation:00000000 $t
+     /tmp/ccyJY8Wj.s:1987   .text.FLASH_WaitForLastBank1Operation:00000000 $t
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

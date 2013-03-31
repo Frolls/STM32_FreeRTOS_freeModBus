@@ -11,6 +11,10 @@
 //#include "queue.h"
 //#include "timers.h"
 
+// Modbus
+#include "mb.h"
+#include "mbport.h"
+
 /* STM32 Library includes. */
 #include <stm32f10x.h>
 #include <stm32f10x_gpio.h>

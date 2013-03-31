@@ -217,38 +217,38 @@
  169              		.text
  170              	.Letext0:
  171              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 172              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
- 173              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mbport.h"
- 174              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 172              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/STM32/port/port.h
+ 173              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/include/mb
+ 174              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 portevent.c
-     /tmp/ccUrUS8n.s:21     .bss.eQueuedEvent:00000000 eQueuedEvent
-     /tmp/ccUrUS8n.s:22     .bss.eQueuedEvent:00000000 $d
-     /tmp/ccUrUS8n.s:26     .bss.xEventInQueue:00000000 xEventInQueue
-     /tmp/ccUrUS8n.s:27     .bss.xEventInQueue:00000000 $d
-     /tmp/ccUrUS8n.s:29     .text.xMBPortEventInit:00000000 $t
-     /tmp/ccUrUS8n.s:34     .text.xMBPortEventInit:00000000 xMBPortEventInit
-     /tmp/ccUrUS8n.s:65     .text.xMBPortEventPost:00000000 $t
-     /tmp/ccUrUS8n.s:70     .text.xMBPortEventPost:00000000 xMBPortEventPost
-     /tmp/ccUrUS8n.s:111    .text.xMBPortEventGet:00000000 $t
-     /tmp/ccUrUS8n.s:116    .text.xMBPortEventGet:00000000 xMBPortEventGet
+     /tmp/ccY21sy2.s:21     .bss.eQueuedEvent:00000000 eQueuedEvent
+     /tmp/ccY21sy2.s:22     .bss.eQueuedEvent:00000000 $d
+     /tmp/ccY21sy2.s:26     .bss.xEventInQueue:00000000 xEventInQueue
+     /tmp/ccY21sy2.s:27     .bss.xEventInQueue:00000000 $d
+     /tmp/ccY21sy2.s:29     .text.xMBPortEventInit:00000000 $t
+     /tmp/ccY21sy2.s:34     .text.xMBPortEventInit:00000000 xMBPortEventInit
+     /tmp/ccY21sy2.s:65     .text.xMBPortEventPost:00000000 $t
+     /tmp/ccY21sy2.s:70     .text.xMBPortEventPost:00000000 xMBPortEventPost
+     /tmp/ccY21sy2.s:111    .text.xMBPortEventGet:00000000 $t
+     /tmp/ccY21sy2.s:116    .text.xMBPortEventGet:00000000 xMBPortEventGet
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
                            .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
                            .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
                            .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
-                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
                            .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
                            .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
                            .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
-                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
-                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
-                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
+                           .group:00000000 wm4.port.h.32.2852faaa22d6eb1bafbc0c1d982e4177
                            .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
 
 NO UNDEFINED SYMBOLS

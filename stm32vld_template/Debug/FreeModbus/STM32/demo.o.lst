@@ -24,13 +24,13 @@
   28              	usRegInputBuf:
   29 0000 00000000 		.space	8
   29      00000000 
-  30              		.section	.text.main,"ax",%progbits
+  30              		.section	.text.eMBRegInputCB,"ax",%progbits
   31              		.align	2
-  32              		.global	main
+  32              		.global	eMBRegInputCB
   33              		.thumb
   34              		.thumb_func
-  36              	main:
-  37              	.LFB0:
+  36              	eMBRegInputCB:
+  37              	.LFB29:
   38              		.file 1 "../FreeModbus/STM32/demo.c"
    1:../FreeModbus/STM32/demo.c **** /*
    2:../FreeModbus/STM32/demo.c ****  * FreeModbus Libary: BARE Demo Application
@@ -66,373 +66,324 @@
   32:../FreeModbus/STM32/demo.c **** static USHORT   usRegInputBuf[REG_INPUT_NREGS];
   33:../FreeModbus/STM32/demo.c **** 
   34:../FreeModbus/STM32/demo.c **** /* ----------------------- Start implementation -----------------------------*/
-  35:../FreeModbus/STM32/demo.c **** int
-  36:../FreeModbus/STM32/demo.c **** main( void )
-  37:../FreeModbus/STM32/demo.c **** {
-  39              		.loc 1 37 0
+  35:../FreeModbus/STM32/demo.c **** /*
+  36:../FreeModbus/STM32/demo.c **** int
+  37:../FreeModbus/STM32/demo.c **** main( void )
+  38:../FreeModbus/STM32/demo.c **** {
+  39:../FreeModbus/STM32/demo.c ****     eMBErrorCode    eStatus;
+  40:../FreeModbus/STM32/demo.c **** 
+  41:../FreeModbus/STM32/demo.c ****     eStatus = eMBInit( MB_RTU, 0x0A, 0, 38400, MB_PAR_EVEN );
+  42:../FreeModbus/STM32/demo.c **** 
+  43:../FreeModbus/STM32/demo.c ****     // Enable the Modbus Protocol Stack.
+  44:../FreeModbus/STM32/demo.c ****     eStatus = eMBEnable(  );
+  45:../FreeModbus/STM32/demo.c **** 
+  46:../FreeModbus/STM32/demo.c ****     for( ;; )
+  47:../FreeModbus/STM32/demo.c ****     {
+  48:../FreeModbus/STM32/demo.c ****         ( void )eMBPoll(  );
+  49:../FreeModbus/STM32/demo.c **** 
+  50:../FreeModbus/STM32/demo.c ****         // Here we simply count the number of poll cycles.
+  51:../FreeModbus/STM32/demo.c ****         usRegInputBuf[0]++;
+  52:../FreeModbus/STM32/demo.c ****     }
+  53:../FreeModbus/STM32/demo.c **** }
+  54:../FreeModbus/STM32/demo.c **** */
+  55:../FreeModbus/STM32/demo.c **** eMBErrorCode
+  56:../FreeModbus/STM32/demo.c **** eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
+  57:../FreeModbus/STM32/demo.c **** {
+  39              		.loc 1 57 0
   40              		.cfi_startproc
-  41              		@ args = 0, pretend = 0, frame = 8
+  41              		@ args = 0, pretend = 0, frame = 16
   42              		@ frame_needed = 1, uses_anonymous_args = 0
-  43 0000 80B5     		push	{r7, lr}
-  44              	.LCFI0:
-  45              		.cfi_def_cfa_offset 8
-  46              		.cfi_offset 7, -8
-  47              		.cfi_offset 14, -4
-  48 0002 84B0     		sub	sp, sp, #16
+  43              		@ link register save eliminated.
+  44 0000 80B4     		push	{r7}
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 4
+  47              		.cfi_offset 7, -4
+  48 0002 85B0     		sub	sp, sp, #20
   49              	.LCFI1:
   50              		.cfi_def_cfa_offset 24
-  51 0004 02AF     		add	r7, sp, #8
+  51 0004 00AF     		add	r7, sp, #0
   52              	.LCFI2:
-  53              		.cfi_def_cfa 7, 16
-  38:../FreeModbus/STM32/demo.c ****     eMBErrorCode    eStatus;
-  39:../FreeModbus/STM32/demo.c **** 
-  40:../FreeModbus/STM32/demo.c ****     eStatus = eMBInit( MB_RTU, 0x0A, 0, 38400, MB_PAR_EVEN );
-  54              		.loc 1 40 0
-  55 0006 4FF00203 		mov	r3, #2
-  56 000a 0093     		str	r3, [sp, #0]
-  57 000c 4FF00000 		mov	r0, #0
-  58 0010 4FF00A01 		mov	r1, #10
-  59 0014 4FF00002 		mov	r2, #0
-  60 0018 4FF41643 		mov	r3, #38400
-  61 001c FFF7FEFF 		bl	eMBInit
-  62 0020 0346     		mov	r3, r0
-  63 0022 FB71     		strb	r3, [r7, #7]
-  41:../FreeModbus/STM32/demo.c **** 
-  42:../FreeModbus/STM32/demo.c ****     /* Enable the Modbus Protocol Stack. */
-  43:../FreeModbus/STM32/demo.c ****     eStatus = eMBEnable(  );
-  64              		.loc 1 43 0
-  65 0024 FFF7FEFF 		bl	eMBEnable
-  66 0028 0346     		mov	r3, r0
-  67 002a FB71     		strb	r3, [r7, #7]
-  68              	.L2:
-  44:../FreeModbus/STM32/demo.c **** 
-  45:../FreeModbus/STM32/demo.c ****     for( ;; )
-  46:../FreeModbus/STM32/demo.c ****     {
-  47:../FreeModbus/STM32/demo.c ****         ( void )eMBPoll(  );
-  69              		.loc 1 47 0 discriminator 1
-  70 002c FFF7FEFF 		bl	eMBPoll
-  48:../FreeModbus/STM32/demo.c **** 
-  49:../FreeModbus/STM32/demo.c ****         /* Here we simply count the number of poll cycles. */
-  50:../FreeModbus/STM32/demo.c ****         usRegInputBuf[0]++;
-  71              		.loc 1 50 0 discriminator 1
-  72 0030 40F20003 		movw	r3, #:lower16:usRegInputBuf
-  73 0034 C0F20003 		movt	r3, #:upper16:usRegInputBuf
-  74 0038 1B88     		ldrh	r3, [r3, #0]
-  75 003a 03F10103 		add	r3, r3, #1
-  76 003e 9AB2     		uxth	r2, r3
-  77 0040 40F20003 		movw	r3, #:lower16:usRegInputBuf
-  78 0044 C0F20003 		movt	r3, #:upper16:usRegInputBuf
-  79 0048 1A80     		strh	r2, [r3, #0]	@ movhi
-  51:../FreeModbus/STM32/demo.c ****     }
-  80              		.loc 1 51 0 discriminator 1
-  81 004a EFE7     		b	.L2
-  82              		.cfi_endproc
-  83              	.LFE0:
-  85              		.section	.text.eMBRegInputCB,"ax",%progbits
-  86              		.align	2
-  87              		.global	eMBRegInputCB
-  88              		.thumb
-  89              		.thumb_func
-  91              	eMBRegInputCB:
-  92              	.LFB1:
-  52:../FreeModbus/STM32/demo.c **** }
-  53:../FreeModbus/STM32/demo.c **** 
-  54:../FreeModbus/STM32/demo.c **** eMBErrorCode
-  55:../FreeModbus/STM32/demo.c **** eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
-  56:../FreeModbus/STM32/demo.c **** {
-  93              		.loc 1 56 0
-  94              		.cfi_startproc
-  95              		@ args = 0, pretend = 0, frame = 16
-  96              		@ frame_needed = 1, uses_anonymous_args = 0
-  97              		@ link register save eliminated.
-  98 0000 80B4     		push	{r7}
-  99              	.LCFI3:
- 100              		.cfi_def_cfa_offset 4
- 101              		.cfi_offset 7, -4
- 102 0002 85B0     		sub	sp, sp, #20
- 103              	.LCFI4:
- 104              		.cfi_def_cfa_offset 24
- 105 0004 00AF     		add	r7, sp, #0
- 106              	.LCFI5:
- 107              		.cfi_def_cfa_register 7
- 108 0006 7860     		str	r0, [r7, #4]
- 109 0008 1346     		mov	r3, r2
- 110 000a 0A46     		mov	r2, r1	@ movhi
- 111 000c 7A80     		strh	r2, [r7, #2]	@ movhi
- 112 000e 3B80     		strh	r3, [r7, #0]	@ movhi
-  57:../FreeModbus/STM32/demo.c ****     eMBErrorCode    eStatus = MB_ENOERR;
- 113              		.loc 1 57 0
- 114 0010 4FF00003 		mov	r3, #0
- 115 0014 FB73     		strb	r3, [r7, #15]
-  58:../FreeModbus/STM32/demo.c ****     int             iRegIndex;
-  59:../FreeModbus/STM32/demo.c **** 
-  60:../FreeModbus/STM32/demo.c ****     if( ( usAddress >= REG_INPUT_START )
- 116              		.loc 1 60 0
- 117 0016 7A88     		ldrh	r2, [r7, #2]
- 118 0018 40F2E733 		movw	r3, #999
- 119 001c 9A42     		cmp	r2, r3
- 120 001e 39D9     		bls	.L4
-  61:../FreeModbus/STM32/demo.c ****         && ( usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS ) )
- 121              		.loc 1 61 0
- 122 0020 7A88     		ldrh	r2, [r7, #2]
- 123 0022 3B88     		ldrh	r3, [r7, #0]
- 124 0024 D318     		adds	r3, r2, r3
- 125 0026 B3F57B7F 		cmp	r3, #1004
- 126 002a 33DC     		bgt	.L4
-  62:../FreeModbus/STM32/demo.c ****     {
-  63:../FreeModbus/STM32/demo.c ****         iRegIndex = ( int )( usAddress - usRegInputStart );
- 127              		.loc 1 63 0
- 128 002c 7A88     		ldrh	r2, [r7, #2]
- 129 002e 40F20003 		movw	r3, #:lower16:usRegInputStart
- 130 0032 C0F20003 		movt	r3, #:upper16:usRegInputStart
- 131 0036 1B88     		ldrh	r3, [r3, #0]
- 132 0038 D31A     		subs	r3, r2, r3
- 133 003a BB60     		str	r3, [r7, #8]
-  64:../FreeModbus/STM32/demo.c ****         while( usNRegs > 0 )
- 134              		.loc 1 64 0
- 135 003c 26E0     		b	.L5
- 136              	.L6:
-  65:../FreeModbus/STM32/demo.c ****         {
-  66:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
-  67:../FreeModbus/STM32/demo.c ****                 ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
- 137              		.loc 1 67 0
- 138 003e 40F20003 		movw	r3, #:lower16:usRegInputBuf
- 139 0042 C0F20003 		movt	r3, #:upper16:usRegInputBuf
- 140 0046 BA68     		ldr	r2, [r7, #8]
- 141 0048 33F81230 		ldrh	r3, [r3, r2, lsl #1]
- 142 004c 4FEA1323 		lsr	r3, r3, #8
- 143 0050 9BB2     		uxth	r3, r3
- 144 0052 DAB2     		uxtb	r2, r3
-  66:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
- 145              		.loc 1 66 0
- 146 0054 7B68     		ldr	r3, [r7, #4]
- 147 0056 1A70     		strb	r2, [r3, #0]
- 148 0058 7B68     		ldr	r3, [r7, #4]
- 149 005a 03F10103 		add	r3, r3, #1
- 150 005e 7B60     		str	r3, [r7, #4]
-  68:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
-  69:../FreeModbus/STM32/demo.c ****                 ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
- 151              		.loc 1 69 0
- 152 0060 40F20003 		movw	r3, #:lower16:usRegInputBuf
- 153 0064 C0F20003 		movt	r3, #:upper16:usRegInputBuf
- 154 0068 BA68     		ldr	r2, [r7, #8]
- 155 006a 33F81230 		ldrh	r3, [r3, r2, lsl #1]
- 156 006e DAB2     		uxtb	r2, r3
-  68:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
- 157              		.loc 1 68 0
- 158 0070 7B68     		ldr	r3, [r7, #4]
- 159 0072 1A70     		strb	r2, [r3, #0]
- 160 0074 7B68     		ldr	r3, [r7, #4]
- 161 0076 03F10103 		add	r3, r3, #1
- 162 007a 7B60     		str	r3, [r7, #4]
-  70:../FreeModbus/STM32/demo.c ****             iRegIndex++;
- 163              		.loc 1 70 0
- 164 007c BB68     		ldr	r3, [r7, #8]
- 165 007e 03F10103 		add	r3, r3, #1
- 166 0082 BB60     		str	r3, [r7, #8]
-  71:../FreeModbus/STM32/demo.c ****             usNRegs--;
- 167              		.loc 1 71 0
- 168 0084 3B88     		ldrh	r3, [r7, #0]	@ movhi
- 169 0086 03F1FF33 		add	r3, r3, #-1
- 170 008a 3B80     		strh	r3, [r7, #0]	@ movhi
- 171              	.L5:
-  64:../FreeModbus/STM32/demo.c ****         while( usNRegs > 0 )
- 172              		.loc 1 64 0 discriminator 1
- 173 008c 3B88     		ldrh	r3, [r7, #0]
- 174 008e 002B     		cmp	r3, #0
- 175 0090 D5D1     		bne	.L6
-  60:../FreeModbus/STM32/demo.c ****     if( ( usAddress >= REG_INPUT_START )
- 176              		.loc 1 60 0
- 177 0092 02E0     		b	.L7
- 178              	.L4:
-  72:../FreeModbus/STM32/demo.c ****         }
-  73:../FreeModbus/STM32/demo.c ****     }
-  74:../FreeModbus/STM32/demo.c ****     else
-  75:../FreeModbus/STM32/demo.c ****     {
-  76:../FreeModbus/STM32/demo.c ****         eStatus = MB_ENOREG;
- 179              		.loc 1 76 0
- 180 0094 4FF00103 		mov	r3, #1
- 181 0098 FB73     		strb	r3, [r7, #15]
- 182              	.L7:
-  77:../FreeModbus/STM32/demo.c ****     }
-  78:../FreeModbus/STM32/demo.c **** 
-  79:../FreeModbus/STM32/demo.c ****     return eStatus;
- 183              		.loc 1 79 0
- 184 009a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-  80:../FreeModbus/STM32/demo.c **** }
- 185              		.loc 1 80 0
- 186 009c 1846     		mov	r0, r3
- 187 009e 07F11407 		add	r7, r7, #20
- 188 00a2 BD46     		mov	sp, r7
- 189 00a4 80BC     		pop	{r7}
- 190 00a6 7047     		bx	lr
- 191              		.cfi_endproc
- 192              	.LFE1:
- 194              		.section	.text.eMBRegHoldingCB,"ax",%progbits
- 195              		.align	2
- 196              		.global	eMBRegHoldingCB
- 197              		.thumb
- 198              		.thumb_func
- 200              	eMBRegHoldingCB:
- 201              	.LFB2:
-  81:../FreeModbus/STM32/demo.c **** 
-  82:../FreeModbus/STM32/demo.c **** eMBErrorCode
-  83:../FreeModbus/STM32/demo.c **** eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
-  84:../FreeModbus/STM32/demo.c ****                  eMBRegisterMode eMode )
-  85:../FreeModbus/STM32/demo.c **** {
- 202              		.loc 1 85 0
- 203              		.cfi_startproc
- 204              		@ args = 0, pretend = 0, frame = 16
- 205              		@ frame_needed = 1, uses_anonymous_args = 0
- 206              		@ link register save eliminated.
- 207 0000 80B4     		push	{r7}
- 208              	.LCFI6:
- 209              		.cfi_def_cfa_offset 4
- 210              		.cfi_offset 7, -4
- 211 0002 85B0     		sub	sp, sp, #20
- 212              	.LCFI7:
- 213              		.cfi_def_cfa_offset 24
- 214 0004 00AF     		add	r7, sp, #0
- 215              	.LCFI8:
- 216              		.cfi_def_cfa_register 7
- 217 0006 F860     		str	r0, [r7, #12]
- 218 0008 7981     		strh	r1, [r7, #10]	@ movhi
- 219 000a 3A81     		strh	r2, [r7, #8]	@ movhi
- 220 000c FB71     		strb	r3, [r7, #7]
-  86:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
- 221              		.loc 1 86 0
- 222 000e 4FF00103 		mov	r3, #1
-  87:../FreeModbus/STM32/demo.c **** }
- 223              		.loc 1 87 0
- 224 0012 1846     		mov	r0, r3
- 225 0014 07F11407 		add	r7, r7, #20
- 226 0018 BD46     		mov	sp, r7
- 227 001a 80BC     		pop	{r7}
- 228 001c 7047     		bx	lr
- 229              		.cfi_endproc
- 230              	.LFE2:
- 232 001e 00BF     		.section	.text.eMBRegCoilsCB,"ax",%progbits
- 233              		.align	2
- 234              		.global	eMBRegCoilsCB
- 235              		.thumb
- 236              		.thumb_func
- 238              	eMBRegCoilsCB:
- 239              	.LFB3:
-  88:../FreeModbus/STM32/demo.c **** 
+  53              		.cfi_def_cfa_register 7
+  54 0006 7860     		str	r0, [r7, #4]
+  55 0008 1346     		mov	r3, r2
+  56 000a 0A46     		mov	r2, r1	@ movhi
+  57 000c 7A80     		strh	r2, [r7, #2]	@ movhi
+  58 000e 3B80     		strh	r3, [r7, #0]	@ movhi
+  58:../FreeModbus/STM32/demo.c ****     eMBErrorCode    eStatus = MB_ENOERR;
+  59              		.loc 1 58 0
+  60 0010 4FF00003 		mov	r3, #0
+  61 0014 FB73     		strb	r3, [r7, #15]
+  59:../FreeModbus/STM32/demo.c ****     int             iRegIndex;
+  60:../FreeModbus/STM32/demo.c **** 
+  61:../FreeModbus/STM32/demo.c ****     if( ( usAddress >= REG_INPUT_START )
+  62              		.loc 1 61 0
+  63 0016 7A88     		ldrh	r2, [r7, #2]
+  64 0018 40F2E733 		movw	r3, #999
+  65 001c 9A42     		cmp	r2, r3
+  66 001e 39D9     		bls	.L2
+  62:../FreeModbus/STM32/demo.c ****         && ( usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS ) )
+  67              		.loc 1 62 0
+  68 0020 7A88     		ldrh	r2, [r7, #2]
+  69 0022 3B88     		ldrh	r3, [r7, #0]
+  70 0024 D318     		adds	r3, r2, r3
+  71 0026 B3F57B7F 		cmp	r3, #1004
+  72 002a 33DC     		bgt	.L2
+  63:../FreeModbus/STM32/demo.c ****     {
+  64:../FreeModbus/STM32/demo.c ****         iRegIndex = ( int )( usAddress - usRegInputStart );
+  73              		.loc 1 64 0
+  74 002c 7A88     		ldrh	r2, [r7, #2]
+  75 002e 40F20003 		movw	r3, #:lower16:usRegInputStart
+  76 0032 C0F20003 		movt	r3, #:upper16:usRegInputStart
+  77 0036 1B88     		ldrh	r3, [r3, #0]
+  78 0038 D31A     		subs	r3, r2, r3
+  79 003a BB60     		str	r3, [r7, #8]
+  65:../FreeModbus/STM32/demo.c ****         while( usNRegs > 0 )
+  80              		.loc 1 65 0
+  81 003c 26E0     		b	.L3
+  82              	.L4:
+  66:../FreeModbus/STM32/demo.c ****         {
+  67:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
+  68:../FreeModbus/STM32/demo.c ****                 ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
+  83              		.loc 1 68 0
+  84 003e 40F20003 		movw	r3, #:lower16:usRegInputBuf
+  85 0042 C0F20003 		movt	r3, #:upper16:usRegInputBuf
+  86 0046 BA68     		ldr	r2, [r7, #8]
+  87 0048 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+  88 004c 4FEA1323 		lsr	r3, r3, #8
+  89 0050 9BB2     		uxth	r3, r3
+  90 0052 DAB2     		uxtb	r2, r3
+  67:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
+  91              		.loc 1 67 0
+  92 0054 7B68     		ldr	r3, [r7, #4]
+  93 0056 1A70     		strb	r2, [r3, #0]
+  94 0058 7B68     		ldr	r3, [r7, #4]
+  95 005a 03F10103 		add	r3, r3, #1
+  96 005e 7B60     		str	r3, [r7, #4]
+  69:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
+  70:../FreeModbus/STM32/demo.c ****                 ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+  97              		.loc 1 70 0
+  98 0060 40F20003 		movw	r3, #:lower16:usRegInputBuf
+  99 0064 C0F20003 		movt	r3, #:upper16:usRegInputBuf
+ 100 0068 BA68     		ldr	r2, [r7, #8]
+ 101 006a 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 102 006e DAB2     		uxtb	r2, r3
+  69:../FreeModbus/STM32/demo.c ****             *pucRegBuffer++ =
+ 103              		.loc 1 69 0
+ 104 0070 7B68     		ldr	r3, [r7, #4]
+ 105 0072 1A70     		strb	r2, [r3, #0]
+ 106 0074 7B68     		ldr	r3, [r7, #4]
+ 107 0076 03F10103 		add	r3, r3, #1
+ 108 007a 7B60     		str	r3, [r7, #4]
+  71:../FreeModbus/STM32/demo.c ****             iRegIndex++;
+ 109              		.loc 1 71 0
+ 110 007c BB68     		ldr	r3, [r7, #8]
+ 111 007e 03F10103 		add	r3, r3, #1
+ 112 0082 BB60     		str	r3, [r7, #8]
+  72:../FreeModbus/STM32/demo.c ****             usNRegs--;
+ 113              		.loc 1 72 0
+ 114 0084 3B88     		ldrh	r3, [r7, #0]	@ movhi
+ 115 0086 03F1FF33 		add	r3, r3, #-1
+ 116 008a 3B80     		strh	r3, [r7, #0]	@ movhi
+ 117              	.L3:
+  65:../FreeModbus/STM32/demo.c ****         while( usNRegs > 0 )
+ 118              		.loc 1 65 0 discriminator 1
+ 119 008c 3B88     		ldrh	r3, [r7, #0]
+ 120 008e 002B     		cmp	r3, #0
+ 121 0090 D5D1     		bne	.L4
+  61:../FreeModbus/STM32/demo.c ****     if( ( usAddress >= REG_INPUT_START )
+ 122              		.loc 1 61 0
+ 123 0092 02E0     		b	.L5
+ 124              	.L2:
+  73:../FreeModbus/STM32/demo.c ****         }
+  74:../FreeModbus/STM32/demo.c ****     }
+  75:../FreeModbus/STM32/demo.c ****     else
+  76:../FreeModbus/STM32/demo.c ****     {
+  77:../FreeModbus/STM32/demo.c ****         eStatus = MB_ENOREG;
+ 125              		.loc 1 77 0
+ 126 0094 4FF00103 		mov	r3, #1
+ 127 0098 FB73     		strb	r3, [r7, #15]
+ 128              	.L5:
+  78:../FreeModbus/STM32/demo.c ****     }
+  79:../FreeModbus/STM32/demo.c **** 
+  80:../FreeModbus/STM32/demo.c ****     return eStatus;
+ 129              		.loc 1 80 0
+ 130 009a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  81:../FreeModbus/STM32/demo.c **** }
+ 131              		.loc 1 81 0
+ 132 009c 1846     		mov	r0, r3
+ 133 009e 07F11407 		add	r7, r7, #20
+ 134 00a2 BD46     		mov	sp, r7
+ 135 00a4 80BC     		pop	{r7}
+ 136 00a6 7047     		bx	lr
+ 137              		.cfi_endproc
+ 138              	.LFE29:
+ 140              		.section	.text.eMBRegHoldingCB,"ax",%progbits
+ 141              		.align	2
+ 142              		.global	eMBRegHoldingCB
+ 143              		.thumb
+ 144              		.thumb_func
+ 146              	eMBRegHoldingCB:
+ 147              	.LFB30:
+  82:../FreeModbus/STM32/demo.c **** 
+  83:../FreeModbus/STM32/demo.c **** eMBErrorCode
+  84:../FreeModbus/STM32/demo.c **** eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
+  85:../FreeModbus/STM32/demo.c ****                  eMBRegisterMode eMode )
+  86:../FreeModbus/STM32/demo.c **** {
+ 148              		.loc 1 86 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 16
+ 151              		@ frame_needed = 1, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 153 0000 80B4     		push	{r7}
+ 154              	.LCFI3:
+ 155              		.cfi_def_cfa_offset 4
+ 156              		.cfi_offset 7, -4
+ 157 0002 85B0     		sub	sp, sp, #20
+ 158              	.LCFI4:
+ 159              		.cfi_def_cfa_offset 24
+ 160 0004 00AF     		add	r7, sp, #0
+ 161              	.LCFI5:
+ 162              		.cfi_def_cfa_register 7
+ 163 0006 F860     		str	r0, [r7, #12]
+ 164 0008 7981     		strh	r1, [r7, #10]	@ movhi
+ 165 000a 3A81     		strh	r2, [r7, #8]	@ movhi
+ 166 000c FB71     		strb	r3, [r7, #7]
+  87:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
+ 167              		.loc 1 87 0
+ 168 000e 4FF00103 		mov	r3, #1
+  88:../FreeModbus/STM32/demo.c **** }
+ 169              		.loc 1 88 0
+ 170 0012 1846     		mov	r0, r3
+ 171 0014 07F11407 		add	r7, r7, #20
+ 172 0018 BD46     		mov	sp, r7
+ 173 001a 80BC     		pop	{r7}
+ 174 001c 7047     		bx	lr
+ 175              		.cfi_endproc
+ 176              	.LFE30:
+ 178 001e 00BF     		.section	.text.eMBRegCoilsCB,"ax",%progbits
+ 179              		.align	2
+ 180              		.global	eMBRegCoilsCB
+ 181              		.thumb
+ 182              		.thumb_func
+ 184              	eMBRegCoilsCB:
+ 185              	.LFB31:
   89:../FreeModbus/STM32/demo.c **** 
-  90:../FreeModbus/STM32/demo.c **** eMBErrorCode
-  91:../FreeModbus/STM32/demo.c **** eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
-  92:../FreeModbus/STM32/demo.c ****                eMBRegisterMode eMode )
-  93:../FreeModbus/STM32/demo.c **** {
- 240              		.loc 1 93 0
- 241              		.cfi_startproc
- 242              		@ args = 0, pretend = 0, frame = 16
- 243              		@ frame_needed = 1, uses_anonymous_args = 0
- 244              		@ link register save eliminated.
- 245 0000 80B4     		push	{r7}
- 246              	.LCFI9:
- 247              		.cfi_def_cfa_offset 4
- 248              		.cfi_offset 7, -4
- 249 0002 85B0     		sub	sp, sp, #20
- 250              	.LCFI10:
- 251              		.cfi_def_cfa_offset 24
- 252 0004 00AF     		add	r7, sp, #0
- 253              	.LCFI11:
- 254              		.cfi_def_cfa_register 7
- 255 0006 F860     		str	r0, [r7, #12]
- 256 0008 7981     		strh	r1, [r7, #10]	@ movhi
- 257 000a 3A81     		strh	r2, [r7, #8]	@ movhi
- 258 000c FB71     		strb	r3, [r7, #7]
-  94:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
- 259              		.loc 1 94 0
- 260 000e 4FF00103 		mov	r3, #1
-  95:../FreeModbus/STM32/demo.c **** }
- 261              		.loc 1 95 0
- 262 0012 1846     		mov	r0, r3
- 263 0014 07F11407 		add	r7, r7, #20
- 264 0018 BD46     		mov	sp, r7
- 265 001a 80BC     		pop	{r7}
- 266 001c 7047     		bx	lr
- 267              		.cfi_endproc
- 268              	.LFE3:
- 270 001e 00BF     		.section	.text.eMBRegDiscreteCB,"ax",%progbits
- 271              		.align	2
- 272              		.global	eMBRegDiscreteCB
- 273              		.thumb
- 274              		.thumb_func
- 276              	eMBRegDiscreteCB:
- 277              	.LFB4:
-  96:../FreeModbus/STM32/demo.c **** 
-  97:../FreeModbus/STM32/demo.c **** eMBErrorCode
-  98:../FreeModbus/STM32/demo.c **** eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
-  99:../FreeModbus/STM32/demo.c **** {
- 278              		.loc 1 99 0
- 279              		.cfi_startproc
- 280              		@ args = 0, pretend = 0, frame = 8
- 281              		@ frame_needed = 1, uses_anonymous_args = 0
- 282              		@ link register save eliminated.
- 283 0000 80B4     		push	{r7}
- 284              	.LCFI12:
- 285              		.cfi_def_cfa_offset 4
- 286              		.cfi_offset 7, -4
- 287 0002 83B0     		sub	sp, sp, #12
- 288              	.LCFI13:
- 289              		.cfi_def_cfa_offset 16
- 290 0004 00AF     		add	r7, sp, #0
- 291              	.LCFI14:
- 292              		.cfi_def_cfa_register 7
- 293 0006 7860     		str	r0, [r7, #4]
- 294 0008 1346     		mov	r3, r2
- 295 000a 0A46     		mov	r2, r1	@ movhi
- 296 000c 7A80     		strh	r2, [r7, #2]	@ movhi
- 297 000e 3B80     		strh	r3, [r7, #0]	@ movhi
- 100:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
- 298              		.loc 1 100 0
- 299 0010 4FF00103 		mov	r3, #1
- 101:../FreeModbus/STM32/demo.c **** }
- 300              		.loc 1 101 0
- 301 0014 1846     		mov	r0, r3
- 302 0016 07F10C07 		add	r7, r7, #12
- 303 001a BD46     		mov	sp, r7
- 304 001c 80BC     		pop	{r7}
- 305 001e 7047     		bx	lr
- 306              		.cfi_endproc
- 307              	.LFE4:
- 309              		.text
- 310              	.Letext0:
- 311              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 312              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
- 313              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mbport.h"
- 314              		.file 5 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mb.h"
+  90:../FreeModbus/STM32/demo.c **** 
+  91:../FreeModbus/STM32/demo.c **** eMBErrorCode
+  92:../FreeModbus/STM32/demo.c **** eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
+  93:../FreeModbus/STM32/demo.c ****                eMBRegisterMode eMode )
+  94:../FreeModbus/STM32/demo.c **** {
+ 186              		.loc 1 94 0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 16
+ 189              		@ frame_needed = 1, uses_anonymous_args = 0
+ 190              		@ link register save eliminated.
+ 191 0000 80B4     		push	{r7}
+ 192              	.LCFI6:
+ 193              		.cfi_def_cfa_offset 4
+ 194              		.cfi_offset 7, -4
+ 195 0002 85B0     		sub	sp, sp, #20
+ 196              	.LCFI7:
+ 197              		.cfi_def_cfa_offset 24
+ 198 0004 00AF     		add	r7, sp, #0
+ 199              	.LCFI8:
+ 200              		.cfi_def_cfa_register 7
+ 201 0006 F860     		str	r0, [r7, #12]
+ 202 0008 7981     		strh	r1, [r7, #10]	@ movhi
+ 203 000a 3A81     		strh	r2, [r7, #8]	@ movhi
+ 204 000c FB71     		strb	r3, [r7, #7]
+  95:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
+ 205              		.loc 1 95 0
+ 206 000e 4FF00103 		mov	r3, #1
+  96:../FreeModbus/STM32/demo.c **** }
+ 207              		.loc 1 96 0
+ 208 0012 1846     		mov	r0, r3
+ 209 0014 07F11407 		add	r7, r7, #20
+ 210 0018 BD46     		mov	sp, r7
+ 211 001a 80BC     		pop	{r7}
+ 212 001c 7047     		bx	lr
+ 213              		.cfi_endproc
+ 214              	.LFE31:
+ 216 001e 00BF     		.section	.text.eMBRegDiscreteCB,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	eMBRegDiscreteCB
+ 219              		.thumb
+ 220              		.thumb_func
+ 222              	eMBRegDiscreteCB:
+ 223              	.LFB32:
+  97:../FreeModbus/STM32/demo.c **** 
+  98:../FreeModbus/STM32/demo.c **** eMBErrorCode
+  99:../FreeModbus/STM32/demo.c **** eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
+ 100:../FreeModbus/STM32/demo.c **** {
+ 224              		.loc 1 100 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 8
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228              		@ link register save eliminated.
+ 229 0000 80B4     		push	{r7}
+ 230              	.LCFI9:
+ 231              		.cfi_def_cfa_offset 4
+ 232              		.cfi_offset 7, -4
+ 233 0002 83B0     		sub	sp, sp, #12
+ 234              	.LCFI10:
+ 235              		.cfi_def_cfa_offset 16
+ 236 0004 00AF     		add	r7, sp, #0
+ 237              	.LCFI11:
+ 238              		.cfi_def_cfa_register 7
+ 239 0006 7860     		str	r0, [r7, #4]
+ 240 0008 1346     		mov	r3, r2
+ 241 000a 0A46     		mov	r2, r1	@ movhi
+ 242 000c 7A80     		strh	r2, [r7, #2]	@ movhi
+ 243 000e 3B80     		strh	r3, [r7, #0]	@ movhi
+ 101:../FreeModbus/STM32/demo.c ****     return MB_ENOREG;
+ 244              		.loc 1 101 0
+ 245 0010 4FF00103 		mov	r3, #1
+ 102:../FreeModbus/STM32/demo.c **** }
+ 246              		.loc 1 102 0
+ 247 0014 1846     		mov	r0, r3
+ 248 0016 07F10C07 		add	r7, r7, #12
+ 249 001a BD46     		mov	sp, r7
+ 250 001c 80BC     		pop	{r7}
+ 251 001e 7047     		bx	lr
+ 252              		.cfi_endproc
+ 253              	.LFE32:
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 258              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/STM32/port/port.h
+ 259              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/include/mb
+ 260              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 demo.c
-     /tmp/ccHjankf.s:19     .data.usRegInputStart:00000000 $d
-     /tmp/ccHjankf.s:22     .data.usRegInputStart:00000000 usRegInputStart
-     /tmp/ccHjankf.s:25     .bss.usRegInputBuf:00000000 $d
-     /tmp/ccHjankf.s:28     .bss.usRegInputBuf:00000000 usRegInputBuf
-     /tmp/ccHjankf.s:31     .text.main:00000000 $t
-     /tmp/ccHjankf.s:36     .text.main:00000000 main
-     /tmp/ccHjankf.s:86     .text.eMBRegInputCB:00000000 $t
-     /tmp/ccHjankf.s:91     .text.eMBRegInputCB:00000000 eMBRegInputCB
-     /tmp/ccHjankf.s:195    .text.eMBRegHoldingCB:00000000 $t
-     /tmp/ccHjankf.s:200    .text.eMBRegHoldingCB:00000000 eMBRegHoldingCB
-     /tmp/ccHjankf.s:233    .text.eMBRegCoilsCB:00000000 $t
-     /tmp/ccHjankf.s:238    .text.eMBRegCoilsCB:00000000 eMBRegCoilsCB
-     /tmp/ccHjankf.s:271    .text.eMBRegDiscreteCB:00000000 $t
-     /tmp/ccHjankf.s:276    .text.eMBRegDiscreteCB:00000000 eMBRegDiscreteCB
+     /tmp/ccuRdRbn.s:19     .data.usRegInputStart:00000000 $d
+     /tmp/ccuRdRbn.s:22     .data.usRegInputStart:00000000 usRegInputStart
+     /tmp/ccuRdRbn.s:25     .bss.usRegInputBuf:00000000 $d
+     /tmp/ccuRdRbn.s:28     .bss.usRegInputBuf:00000000 usRegInputBuf
+     /tmp/ccuRdRbn.s:31     .text.eMBRegInputCB:00000000 $t
+     /tmp/ccuRdRbn.s:36     .text.eMBRegInputCB:00000000 eMBRegInputCB
+     /tmp/ccuRdRbn.s:141    .text.eMBRegHoldingCB:00000000 $t
+     /tmp/ccuRdRbn.s:146    .text.eMBRegHoldingCB:00000000 eMBRegHoldingCB
+     /tmp/ccuRdRbn.s:179    .text.eMBRegCoilsCB:00000000 $t
+     /tmp/ccuRdRbn.s:184    .text.eMBRegCoilsCB:00000000 eMBRegCoilsCB
+     /tmp/ccuRdRbn.s:217    .text.eMBRegDiscreteCB:00000000 $t
+     /tmp/ccuRdRbn.s:222    .text.eMBRegDiscreteCB:00000000 eMBRegDiscreteCB
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
                            .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
                            .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
                            .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
                            .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.stddef.h.264.b20d47307b7670b028d3d207228417ff
-                           .group:00000000 wm4.inttypes.h.20.54b7c434bb63171d5145327a6d429f51
-                           .group:00000000 wm4.port.h.28.c09cecd64bb859fc71d8891a25016723
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
+                           .group:00000000 wm4.port.h.32.2852faaa22d6eb1bafbc0c1d982e4177
                            .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
 
-UNDEFINED SYMBOLS
-eMBInit
-eMBEnable
-eMBPoll
+NO UNDEFINED SYMBOLS

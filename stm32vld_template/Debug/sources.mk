@@ -23,6 +23,11 @@ SUBDIRS := \
 Work/Sources \
 StdPeripheralDriver/src \
 FreeRTOS/Sources \
+FreeModbus/modbus/rtu \
+FreeModbus/modbus \
+FreeModbus/modbus/functions \
+FreeModbus/STM32/port \
+FreeModbus/STM32 \
 CMSIS \
 .metadata/.plugins/org.eclipse.cdt.make.core \
 

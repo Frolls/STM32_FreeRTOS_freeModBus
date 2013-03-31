@@ -1014,45 +1014,45 @@
  528              	.LFE12:
  530 0026 00BF     		.text
  531              	.Letext0:
- 532              		.file 2 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/projdefs.h"
- 533              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/portmacro.h"
+ 532              		.file 2 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/projdefs.h"
+ 533              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/portmacro.h
 DEFINED SYMBOLS
                             *ABS*:00000000 port.c
-     /tmp/cchrcOwd.s:23     .rodata.ulKernelPriority:00000000 ulKernelPriority
-     /tmp/cchrcOwd.s:20     .rodata.ulKernelPriority:00000000 $d
-     /tmp/cchrcOwd.s:26     .data.uxCriticalNesting:00000000 $d
-     /tmp/cchrcOwd.s:29     .data.uxCriticalNesting:00000000 uxCriticalNesting
-     /tmp/cchrcOwd.s:32     .text.pxPortInitialiseStack:00000000 $t
-     /tmp/cchrcOwd.s:37     .text.pxPortInitialiseStack:00000000 pxPortInitialiseStack
-     /tmp/cchrcOwd.s:106    .text.SVC_Handler:00000000 $t
-     /tmp/cchrcOwd.s:111    .text.SVC_Handler:00000000 SVC_Handler
-     /tmp/cchrcOwd.s:131    .text.SVC_Handler:0000001c pxCurrentTCBConst2
-     /tmp/cchrcOwd.s:131    .text.SVC_Handler:0000001c $d
-     /tmp/cchrcOwd.s:140    .text.prvPortStartFirstTask:00000000 $t
-     /tmp/cchrcOwd.s:144    .text.prvPortStartFirstTask:00000000 prvPortStartFirstTask
-     /tmp/cchrcOwd.s:168    .text.xPortStartScheduler:00000000 $t
-     /tmp/cchrcOwd.s:173    .text.xPortStartScheduler:00000000 xPortStartScheduler
-     /tmp/cchrcOwd.s:499    .text.vPortSetupTimerInterrupt:00000000 vPortSetupTimerInterrupt
-     /tmp/cchrcOwd.s:221    .text.vPortEndScheduler:00000000 $t
-     /tmp/cchrcOwd.s:226    .text.vPortEndScheduler:00000000 vPortEndScheduler
-     /tmp/cchrcOwd.s:248    .text.vPortYieldFromISR:00000000 $t
-     /tmp/cchrcOwd.s:253    .text.vPortYieldFromISR:00000000 vPortYieldFromISR
-     /tmp/cchrcOwd.s:280    .text.vPortEnterCritical:00000000 $t
-     /tmp/cchrcOwd.s:285    .text.vPortEnterCritical:00000000 vPortEnterCritical
-     /tmp/cchrcOwd.s:363    .text.ulPortSetInterruptMask:00000000 ulPortSetInterruptMask
-     /tmp/cchrcOwd.s:315    .text.vPortExitCritical:00000000 $t
-     /tmp/cchrcOwd.s:320    .text.vPortExitCritical:00000000 vPortExitCritical
-     /tmp/cchrcOwd.s:392    .text.vPortClearInterruptMask:00000000 vPortClearInterruptMask
-     /tmp/cchrcOwd.s:358    .text.ulPortSetInterruptMask:00000000 $t
-     /tmp/cchrcOwd.s:387    .text.vPortClearInterruptMask:00000000 $t
-     /tmp/cchrcOwd.s:411    .text.PendSV_Handler:00000000 $t
-     /tmp/cchrcOwd.s:416    .text.PendSV_Handler:00000000 PendSV_Handler
-     /tmp/cchrcOwd.s:448    .text.PendSV_Handler:00000038 pxCurrentTCBConst
-     /tmp/cchrcOwd.s:448    .text.PendSV_Handler:00000038 $d
-     /tmp/cchrcOwd.s:457    .text.SysTick_Handler:00000000 $t
-     /tmp/cchrcOwd.s:462    .text.SysTick_Handler:00000000 SysTick_Handler
-     /tmp/cchrcOwd.s:494    .text.vPortSetupTimerInterrupt:00000000 $t
-     /tmp/cchrcOwd.s:167    .text.prvPortStartFirstTask:00000010 $d
+     /tmp/cc3OUubq.s:23     .rodata.ulKernelPriority:00000000 ulKernelPriority
+     /tmp/cc3OUubq.s:20     .rodata.ulKernelPriority:00000000 $d
+     /tmp/cc3OUubq.s:26     .data.uxCriticalNesting:00000000 $d
+     /tmp/cc3OUubq.s:29     .data.uxCriticalNesting:00000000 uxCriticalNesting
+     /tmp/cc3OUubq.s:32     .text.pxPortInitialiseStack:00000000 $t
+     /tmp/cc3OUubq.s:37     .text.pxPortInitialiseStack:00000000 pxPortInitialiseStack
+     /tmp/cc3OUubq.s:106    .text.SVC_Handler:00000000 $t
+     /tmp/cc3OUubq.s:111    .text.SVC_Handler:00000000 SVC_Handler
+     /tmp/cc3OUubq.s:131    .text.SVC_Handler:0000001c pxCurrentTCBConst2
+     /tmp/cc3OUubq.s:131    .text.SVC_Handler:0000001c $d
+     /tmp/cc3OUubq.s:140    .text.prvPortStartFirstTask:00000000 $t
+     /tmp/cc3OUubq.s:144    .text.prvPortStartFirstTask:00000000 prvPortStartFirstTask
+     /tmp/cc3OUubq.s:168    .text.xPortStartScheduler:00000000 $t
+     /tmp/cc3OUubq.s:173    .text.xPortStartScheduler:00000000 xPortStartScheduler
+     /tmp/cc3OUubq.s:499    .text.vPortSetupTimerInterrupt:00000000 vPortSetupTimerInterrupt
+     /tmp/cc3OUubq.s:221    .text.vPortEndScheduler:00000000 $t
+     /tmp/cc3OUubq.s:226    .text.vPortEndScheduler:00000000 vPortEndScheduler
+     /tmp/cc3OUubq.s:248    .text.vPortYieldFromISR:00000000 $t
+     /tmp/cc3OUubq.s:253    .text.vPortYieldFromISR:00000000 vPortYieldFromISR
+     /tmp/cc3OUubq.s:280    .text.vPortEnterCritical:00000000 $t
+     /tmp/cc3OUubq.s:285    .text.vPortEnterCritical:00000000 vPortEnterCritical
+     /tmp/cc3OUubq.s:363    .text.ulPortSetInterruptMask:00000000 ulPortSetInterruptMask
+     /tmp/cc3OUubq.s:315    .text.vPortExitCritical:00000000 $t
+     /tmp/cc3OUubq.s:320    .text.vPortExitCritical:00000000 vPortExitCritical
+     /tmp/cc3OUubq.s:392    .text.vPortClearInterruptMask:00000000 vPortClearInterruptMask
+     /tmp/cc3OUubq.s:358    .text.ulPortSetInterruptMask:00000000 $t
+     /tmp/cc3OUubq.s:387    .text.vPortClearInterruptMask:00000000 $t
+     /tmp/cc3OUubq.s:411    .text.PendSV_Handler:00000000 $t
+     /tmp/cc3OUubq.s:416    .text.PendSV_Handler:00000000 PendSV_Handler
+     /tmp/cc3OUubq.s:448    .text.PendSV_Handler:00000038 pxCurrentTCBConst
+     /tmp/cc3OUubq.s:448    .text.PendSV_Handler:00000038 $d
+     /tmp/cc3OUubq.s:457    .text.SysTick_Handler:00000000 $t
+     /tmp/cc3OUubq.s:462    .text.SysTick_Handler:00000000 SysTick_Handler
+     /tmp/cc3OUubq.s:494    .text.vPortSetupTimerInterrupt:00000000 $t
+     /tmp/cc3OUubq.s:167    .text.prvPortStartFirstTask:00000010 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4

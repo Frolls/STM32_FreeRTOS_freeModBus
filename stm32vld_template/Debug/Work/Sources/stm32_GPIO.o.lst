@@ -389,25 +389,25 @@
  339 003a 00BF     		.text
  340              	.Letext0:
  341              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 342              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 343              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_gpio.h"
- 344              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 342              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 343              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 344              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32_GPIO.c
-     /tmp/ccQ6NUrg.s:19     .text.PIN_ON:00000000 $t
-     /tmp/ccQ6NUrg.s:24     .text.PIN_ON:00000000 PIN_ON
-     /tmp/ccQ6NUrg.s:58     .text.PIN_OFF:00000000 $t
-     /tmp/ccQ6NUrg.s:63     .text.PIN_OFF:00000000 PIN_OFF
-     /tmp/ccQ6NUrg.s:96     .text.PIN_SYG:00000000 $t
-     /tmp/ccQ6NUrg.s:101    .text.PIN_SYG:00000000 PIN_SYG
-     /tmp/ccQ6NUrg.s:145    .text.PIN_IN:00000000 $t
-     /tmp/ccQ6NUrg.s:150    .text.PIN_IN:00000000 PIN_IN
-     /tmp/ccQ6NUrg.s:192    .text.PIN_OUT_PP:00000000 $t
-     /tmp/ccQ6NUrg.s:197    .text.PIN_OUT_PP:00000000 PIN_OUT_PP
-     /tmp/ccQ6NUrg.s:239    .text.PIN_OUT_OD:00000000 $t
-     /tmp/ccQ6NUrg.s:244    .text.PIN_OUT_OD:00000000 PIN_OUT_OD
-     /tmp/ccQ6NUrg.s:286    .text.PIN_INV:00000000 $t
-     /tmp/ccQ6NUrg.s:291    .text.PIN_INV:00000000 PIN_INV
+     /tmp/cczA0qfu.s:19     .text.PIN_ON:00000000 $t
+     /tmp/cczA0qfu.s:24     .text.PIN_ON:00000000 PIN_ON
+     /tmp/cczA0qfu.s:58     .text.PIN_OFF:00000000 $t
+     /tmp/cczA0qfu.s:63     .text.PIN_OFF:00000000 PIN_OFF
+     /tmp/cczA0qfu.s:96     .text.PIN_SYG:00000000 $t
+     /tmp/cczA0qfu.s:101    .text.PIN_SYG:00000000 PIN_SYG
+     /tmp/cczA0qfu.s:145    .text.PIN_IN:00000000 $t
+     /tmp/cczA0qfu.s:150    .text.PIN_IN:00000000 PIN_IN
+     /tmp/cczA0qfu.s:192    .text.PIN_OUT_PP:00000000 $t
+     /tmp/cczA0qfu.s:197    .text.PIN_OUT_PP:00000000 PIN_OUT_PP
+     /tmp/cczA0qfu.s:239    .text.PIN_OUT_OD:00000000 $t
+     /tmp/cczA0qfu.s:244    .text.PIN_OUT_OD:00000000 PIN_OUT_OD
+     /tmp/cczA0qfu.s:286    .text.PIN_INV:00000000 $t
+     /tmp/cczA0qfu.s:291    .text.PIN_INV:00000000 PIN_INV
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

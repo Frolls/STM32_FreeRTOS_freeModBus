@@ -430,21 +430,21 @@
  265              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
 DEFINED SYMBOLS
                             *ABS*:00000000 heap_1.c
-     /tmp/cci4EtIg.s:19     .bss.ucHeap:00000000 $d
-     /tmp/cci4EtIg.s:22     .bss.ucHeap:00000000 ucHeap
-     /tmp/cci4EtIg.s:25     .bss.xNextFreeByte:00000000 $d
-     /tmp/cci4EtIg.s:28     .bss.xNextFreeByte:00000000 xNextFreeByte
-     /tmp/cci4EtIg.s:31     .text.pvPortMalloc:00000000 $t
-     /tmp/cci4EtIg.s:36     .text.pvPortMalloc:00000000 pvPortMalloc
-     /tmp/cci4EtIg.s:261    .bss.pucAlignedHeap.4824:00000000 pucAlignedHeap.4824
-     /tmp/cci4EtIg.s:146    .text.pvPortMalloc:000000c4 $d
-     /tmp/cci4EtIg.s:151    .text.vPortFree:00000000 $t
-     /tmp/cci4EtIg.s:156    .text.vPortFree:00000000 vPortFree
-     /tmp/cci4EtIg.s:192    .text.vPortInitialiseBlocks:00000000 $t
-     /tmp/cci4EtIg.s:197    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
-     /tmp/cci4EtIg.s:224    .text.xPortGetFreeHeapSize:00000000 $t
-     /tmp/cci4EtIg.s:229    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
-     /tmp/cci4EtIg.s:258    .bss.pucAlignedHeap.4824:00000000 $d
+     /tmp/ccbAMLii.s:19     .bss.ucHeap:00000000 $d
+     /tmp/ccbAMLii.s:22     .bss.ucHeap:00000000 ucHeap
+     /tmp/ccbAMLii.s:25     .bss.xNextFreeByte:00000000 $d
+     /tmp/ccbAMLii.s:28     .bss.xNextFreeByte:00000000 xNextFreeByte
+     /tmp/ccbAMLii.s:31     .text.pvPortMalloc:00000000 $t
+     /tmp/ccbAMLii.s:36     .text.pvPortMalloc:00000000 pvPortMalloc
+     /tmp/ccbAMLii.s:261    .bss.pucAlignedHeap.4824:00000000 pucAlignedHeap.4824
+     /tmp/ccbAMLii.s:146    .text.pvPortMalloc:000000c4 $d
+     /tmp/ccbAMLii.s:151    .text.vPortFree:00000000 $t
+     /tmp/ccbAMLii.s:156    .text.vPortFree:00000000 vPortFree
+     /tmp/ccbAMLii.s:192    .text.vPortInitialiseBlocks:00000000 $t
+     /tmp/ccbAMLii.s:197    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
+     /tmp/ccbAMLii.s:224    .text.xPortGetFreeHeapSize:00000000 $t
+     /tmp/ccbAMLii.s:229    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
+     /tmp/ccbAMLii.s:258    .bss.pucAlignedHeap.4824:00000000 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5

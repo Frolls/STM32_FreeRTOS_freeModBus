@@ -3753,48 +3753,48 @@
  1878 005e 00BF     		.text
  1879              	.Letext0:
  1880              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
- 1881              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/portmacro.h"
- 1882              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/list.h"
- 1883              		.file 5 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/task.h"
- 1884              		.file 6 "/home/frolls/ARM/stm32vld_template/FreeRTOS/Headers/queue.h"
+ 1881              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/portmacro.h
+ 1882              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/list.h"
+ 1883              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/task.h"
+ 1884              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/queue.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 queue.c
-     /tmp/cc8WI4Ef.s:19     .text.xQueueGenericReset:00000000 $t
-     /tmp/cc8WI4Ef.s:24     .text.xQueueGenericReset:00000000 xQueueGenericReset
-     /tmp/cc8WI4Ef.s:144    .text.xQueueGenericCreate:00000000 $t
-     /tmp/cc8WI4Ef.s:149    .text.xQueueGenericCreate:00000000 xQueueGenericCreate
-     /tmp/cc8WI4Ef.s:244    .text.xQueueCreateMutex:00000000 $t
-     /tmp/cc8WI4Ef.s:249    .text.xQueueCreateMutex:00000000 xQueueCreateMutex
-     /tmp/cc8WI4Ef.s:355    .text.xQueueGenericSend:00000000 xQueueGenericSend
-     /tmp/cc8WI4Ef.s:350    .text.xQueueGenericSend:00000000 $t
-     /tmp/cc8WI4Ef.s:1274   .text.prvCopyDataToQueue:00000000 prvCopyDataToQueue
-     /tmp/cc8WI4Ef.s:1697   .text.prvIsQueueFull:00000000 prvIsQueueFull
-     /tmp/cc8WI4Ef.s:1470   .text.prvUnlockQueue:00000000 prvUnlockQueue
-     /tmp/cc8WI4Ef.s:566    .text.xQueueGenericSendFromISR:00000000 $t
-     /tmp/cc8WI4Ef.s:571    .text.xQueueGenericSendFromISR:00000000 xQueueGenericSendFromISR
-     /tmp/cc8WI4Ef.s:704    .text.xQueueGenericReceive:00000000 $t
-     /tmp/cc8WI4Ef.s:709    .text.xQueueGenericReceive:00000000 xQueueGenericReceive
-     /tmp/cc8WI4Ef.s:1403   .text.prvCopyDataFromQueue:00000000 prvCopyDataFromQueue
-     /tmp/cc8WI4Ef.s:1588   .text.prvIsQueueEmpty:00000000 prvIsQueueEmpty
-     /tmp/cc8WI4Ef.s:978    .text.xQueueReceiveFromISR:00000000 $t
-     /tmp/cc8WI4Ef.s:983    .text.xQueueReceiveFromISR:00000000 xQueueReceiveFromISR
-     /tmp/cc8WI4Ef.s:1118   .text.uxQueueMessagesWaiting:00000000 $t
-     /tmp/cc8WI4Ef.s:1123   .text.uxQueueMessagesWaiting:00000000 uxQueueMessagesWaiting
-     /tmp/cc8WI4Ef.s:1170   .text.uxQueueMessagesWaitingFromISR:00000000 $t
-     /tmp/cc8WI4Ef.s:1175   .text.uxQueueMessagesWaitingFromISR:00000000 uxQueueMessagesWaitingFromISR
-     /tmp/cc8WI4Ef.s:1218   .text.vQueueDelete:00000000 $t
-     /tmp/cc8WI4Ef.s:1223   .text.vQueueDelete:00000000 vQueueDelete
-     /tmp/cc8WI4Ef.s:1270   .text.prvCopyDataToQueue:00000000 $t
-     /tmp/cc8WI4Ef.s:1399   .text.prvCopyDataFromQueue:00000000 $t
-     /tmp/cc8WI4Ef.s:1466   .text.prvUnlockQueue:00000000 $t
-     /tmp/cc8WI4Ef.s:1584   .text.prvIsQueueEmpty:00000000 $t
-     /tmp/cc8WI4Ef.s:1635   .text.xQueueIsQueueEmptyFromISR:00000000 $t
-     /tmp/cc8WI4Ef.s:1640   .text.xQueueIsQueueEmptyFromISR:00000000 xQueueIsQueueEmptyFromISR
-     /tmp/cc8WI4Ef.s:1693   .text.prvIsQueueFull:00000000 $t
-     /tmp/cc8WI4Ef.s:1746   .text.xQueueIsQueueFullFromISR:00000000 $t
-     /tmp/cc8WI4Ef.s:1751   .text.xQueueIsQueueFullFromISR:00000000 xQueueIsQueueFullFromISR
-     /tmp/cc8WI4Ef.s:1806   .text.vQueueWaitForMessageRestricted:00000000 $t
-     /tmp/cc8WI4Ef.s:1811   .text.vQueueWaitForMessageRestricted:00000000 vQueueWaitForMessageRestricted
+     /tmp/ccGZZ03q.s:19     .text.xQueueGenericReset:00000000 $t
+     /tmp/ccGZZ03q.s:24     .text.xQueueGenericReset:00000000 xQueueGenericReset
+     /tmp/ccGZZ03q.s:144    .text.xQueueGenericCreate:00000000 $t
+     /tmp/ccGZZ03q.s:149    .text.xQueueGenericCreate:00000000 xQueueGenericCreate
+     /tmp/ccGZZ03q.s:244    .text.xQueueCreateMutex:00000000 $t
+     /tmp/ccGZZ03q.s:249    .text.xQueueCreateMutex:00000000 xQueueCreateMutex
+     /tmp/ccGZZ03q.s:355    .text.xQueueGenericSend:00000000 xQueueGenericSend
+     /tmp/ccGZZ03q.s:350    .text.xQueueGenericSend:00000000 $t
+     /tmp/ccGZZ03q.s:1274   .text.prvCopyDataToQueue:00000000 prvCopyDataToQueue
+     /tmp/ccGZZ03q.s:1697   .text.prvIsQueueFull:00000000 prvIsQueueFull
+     /tmp/ccGZZ03q.s:1470   .text.prvUnlockQueue:00000000 prvUnlockQueue
+     /tmp/ccGZZ03q.s:566    .text.xQueueGenericSendFromISR:00000000 $t
+     /tmp/ccGZZ03q.s:571    .text.xQueueGenericSendFromISR:00000000 xQueueGenericSendFromISR
+     /tmp/ccGZZ03q.s:704    .text.xQueueGenericReceive:00000000 $t
+     /tmp/ccGZZ03q.s:709    .text.xQueueGenericReceive:00000000 xQueueGenericReceive
+     /tmp/ccGZZ03q.s:1403   .text.prvCopyDataFromQueue:00000000 prvCopyDataFromQueue
+     /tmp/ccGZZ03q.s:1588   .text.prvIsQueueEmpty:00000000 prvIsQueueEmpty
+     /tmp/ccGZZ03q.s:978    .text.xQueueReceiveFromISR:00000000 $t
+     /tmp/ccGZZ03q.s:983    .text.xQueueReceiveFromISR:00000000 xQueueReceiveFromISR
+     /tmp/ccGZZ03q.s:1118   .text.uxQueueMessagesWaiting:00000000 $t
+     /tmp/ccGZZ03q.s:1123   .text.uxQueueMessagesWaiting:00000000 uxQueueMessagesWaiting
+     /tmp/ccGZZ03q.s:1170   .text.uxQueueMessagesWaitingFromISR:00000000 $t
+     /tmp/ccGZZ03q.s:1175   .text.uxQueueMessagesWaitingFromISR:00000000 uxQueueMessagesWaitingFromISR
+     /tmp/ccGZZ03q.s:1218   .text.vQueueDelete:00000000 $t
+     /tmp/ccGZZ03q.s:1223   .text.vQueueDelete:00000000 vQueueDelete
+     /tmp/ccGZZ03q.s:1270   .text.prvCopyDataToQueue:00000000 $t
+     /tmp/ccGZZ03q.s:1399   .text.prvCopyDataFromQueue:00000000 $t
+     /tmp/ccGZZ03q.s:1466   .text.prvUnlockQueue:00000000 $t
+     /tmp/ccGZZ03q.s:1584   .text.prvIsQueueEmpty:00000000 $t
+     /tmp/ccGZZ03q.s:1635   .text.xQueueIsQueueEmptyFromISR:00000000 $t
+     /tmp/ccGZZ03q.s:1640   .text.xQueueIsQueueEmptyFromISR:00000000 xQueueIsQueueEmptyFromISR
+     /tmp/ccGZZ03q.s:1693   .text.prvIsQueueFull:00000000 $t
+     /tmp/ccGZZ03q.s:1746   .text.xQueueIsQueueFullFromISR:00000000 $t
+     /tmp/ccGZZ03q.s:1751   .text.xQueueIsQueueFullFromISR:00000000 xQueueIsQueueFullFromISR
+     /tmp/ccGZZ03q.s:1806   .text.vQueueWaitForMessageRestricted:00000000 $t
+     /tmp/ccGZZ03q.s:1811   .text.vQueueWaitForMessageRestricted:00000000 vQueueWaitForMessageRestricted
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5

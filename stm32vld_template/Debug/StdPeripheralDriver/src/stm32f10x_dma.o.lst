@@ -1490,33 +1490,33 @@
  871 0036 00BF     		.text
  872              	.Letext0:
  873              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 874              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 875              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_dma.h"
- 876              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 874              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 875              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 876              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_dma.c
-     /tmp/ccyegw5x.s:19     .text.DMA_DeInit:00000000 $t
-     /tmp/ccyegw5x.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
-     /tmp/ccyegw5x.s:266    .text.DMA_Init:00000000 $t
-     /tmp/ccyegw5x.s:271    .text.DMA_Init:00000000 DMA_Init
-     /tmp/ccyegw5x.s:362    .text.DMA_StructInit:00000000 $t
-     /tmp/ccyegw5x.s:367    .text.DMA_StructInit:00000000 DMA_StructInit
-     /tmp/ccyegw5x.s:438    .text.DMA_Cmd:00000000 $t
-     /tmp/ccyegw5x.s:443    .text.DMA_Cmd:00000000 DMA_Cmd
-     /tmp/ccyegw5x.s:492    .text.DMA_ITConfig:00000000 $t
-     /tmp/ccyegw5x.s:497    .text.DMA_ITConfig:00000000 DMA_ITConfig
-     /tmp/ccyegw5x.s:549    .text.DMA_SetCurrDataCounter:00000000 $t
-     /tmp/ccyegw5x.s:554    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
-     /tmp/ccyegw5x.s:587    .text.DMA_GetCurrDataCounter:00000000 $t
-     /tmp/ccyegw5x.s:592    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
-     /tmp/ccyegw5x.s:624    .text.DMA_GetFlagStatus:00000000 $t
-     /tmp/ccyegw5x.s:629    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
-     /tmp/ccyegw5x.s:698    .text.DMA_ClearFlag:00000000 $t
-     /tmp/ccyegw5x.s:703    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
-     /tmp/ccyegw5x.s:748    .text.DMA_GetITStatus:00000000 $t
-     /tmp/ccyegw5x.s:753    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
-     /tmp/ccyegw5x.s:822    .text.DMA_ClearITPendingBit:00000000 $t
-     /tmp/ccyegw5x.s:827    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
+     /tmp/ccxM0PAX.s:19     .text.DMA_DeInit:00000000 $t
+     /tmp/ccxM0PAX.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
+     /tmp/ccxM0PAX.s:266    .text.DMA_Init:00000000 $t
+     /tmp/ccxM0PAX.s:271    .text.DMA_Init:00000000 DMA_Init
+     /tmp/ccxM0PAX.s:362    .text.DMA_StructInit:00000000 $t
+     /tmp/ccxM0PAX.s:367    .text.DMA_StructInit:00000000 DMA_StructInit
+     /tmp/ccxM0PAX.s:438    .text.DMA_Cmd:00000000 $t
+     /tmp/ccxM0PAX.s:443    .text.DMA_Cmd:00000000 DMA_Cmd
+     /tmp/ccxM0PAX.s:492    .text.DMA_ITConfig:00000000 $t
+     /tmp/ccxM0PAX.s:497    .text.DMA_ITConfig:00000000 DMA_ITConfig
+     /tmp/ccxM0PAX.s:549    .text.DMA_SetCurrDataCounter:00000000 $t
+     /tmp/ccxM0PAX.s:554    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
+     /tmp/ccxM0PAX.s:587    .text.DMA_GetCurrDataCounter:00000000 $t
+     /tmp/ccxM0PAX.s:592    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
+     /tmp/ccxM0PAX.s:624    .text.DMA_GetFlagStatus:00000000 $t
+     /tmp/ccxM0PAX.s:629    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
+     /tmp/ccxM0PAX.s:698    .text.DMA_ClearFlag:00000000 $t
+     /tmp/ccxM0PAX.s:703    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
+     /tmp/ccxM0PAX.s:748    .text.DMA_GetITStatus:00000000 $t
+     /tmp/ccxM0PAX.s:753    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
+     /tmp/ccxM0PAX.s:822    .text.DMA_ClearITPendingBit:00000000 $t
+     /tmp/ccxM0PAX.s:827    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

@@ -2775,49 +2775,49 @@
  1909 0086 00BF     		.text
  1910              	.Letext0:
  1911              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 1912              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 1913              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_fsmc.h"
- 1914              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 1912              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 1913              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1914              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_fsmc.c
-     /tmp/ccT54Xa4.s:19     .text.FSMC_NORSRAMDeInit:00000000 $t
-     /tmp/ccT54Xa4.s:24     .text.FSMC_NORSRAMDeInit:00000000 FSMC_NORSRAMDeInit
-     /tmp/ccT54Xa4.s:81     .text.FSMC_NANDDeInit:00000000 $t
-     /tmp/ccT54Xa4.s:86     .text.FSMC_NANDDeInit:00000000 FSMC_NANDDeInit
-     /tmp/ccT54Xa4.s:160    .text.FSMC_PCCARDDeInit:00000000 $t
-     /tmp/ccT54Xa4.s:165    .text.FSMC_PCCARDDeInit:00000000 FSMC_PCCARDDeInit
-     /tmp/ccT54Xa4.s:212    .text.FSMC_NORSRAMInit:00000000 $t
-     /tmp/ccT54Xa4.s:217    .text.FSMC_NORSRAMInit:00000000 FSMC_NORSRAMInit
-     /tmp/ccT54Xa4.s:436    .text.FSMC_NANDInit:00000000 $t
-     /tmp/ccT54Xa4.s:441    .text.FSMC_NANDInit:00000000 FSMC_NANDInit
-     /tmp/ccT54Xa4.s:598    .text.FSMC_PCCARDInit:00000000 $t
-     /tmp/ccT54Xa4.s:603    .text.FSMC_PCCARDInit:00000000 FSMC_PCCARDInit
-     /tmp/ccT54Xa4.s:737    .text.FSMC_NORSRAMStructInit:00000000 $t
-     /tmp/ccT54Xa4.s:742    .text.FSMC_NORSRAMStructInit:00000000 FSMC_NORSRAMStructInit
-     /tmp/ccT54Xa4.s:891    .text.FSMC_NANDStructInit:00000000 $t
-     /tmp/ccT54Xa4.s:896    .text.FSMC_NANDStructInit:00000000 FSMC_NANDStructInit
-     /tmp/ccT54Xa4.s:991    .text.FSMC_PCCARDStructInit:00000000 $t
-     /tmp/ccT54Xa4.s:996    .text.FSMC_PCCARDStructInit:00000000 FSMC_PCCARDStructInit
-     /tmp/ccT54Xa4.s:1095   .text.FSMC_NORSRAMCmd:00000000 $t
-     /tmp/ccT54Xa4.s:1100   .text.FSMC_NORSRAMCmd:00000000 FSMC_NORSRAMCmd
-     /tmp/ccT54Xa4.s:1154   .text.FSMC_NANDCmd:00000000 $t
-     /tmp/ccT54Xa4.s:1159   .text.FSMC_NANDCmd:00000000 FSMC_NANDCmd
-     /tmp/ccT54Xa4.s:1243   .text.FSMC_PCCARDCmd:00000000 $t
-     /tmp/ccT54Xa4.s:1248   .text.FSMC_PCCARDCmd:00000000 FSMC_PCCARDCmd
-     /tmp/ccT54Xa4.s:1301   .text.FSMC_NANDECCCmd:00000000 $t
-     /tmp/ccT54Xa4.s:1306   .text.FSMC_NANDECCCmd:00000000 FSMC_NANDECCCmd
-     /tmp/ccT54Xa4.s:1390   .text.FSMC_GetECC:00000000 $t
-     /tmp/ccT54Xa4.s:1395   .text.FSMC_GetECC:00000000 FSMC_GetECC
-     /tmp/ccT54Xa4.s:1445   .text.FSMC_ITConfig:00000000 $t
-     /tmp/ccT54Xa4.s:1450   .text.FSMC_ITConfig:00000000 FSMC_ITConfig
-     /tmp/ccT54Xa4.s:1568   .text.FSMC_GetFlagStatus:00000000 $t
-     /tmp/ccT54Xa4.s:1573   .text.FSMC_GetFlagStatus:00000000 FSMC_GetFlagStatus
-     /tmp/ccT54Xa4.s:1653   .text.FSMC_ClearFlag:00000000 $t
-     /tmp/ccT54Xa4.s:1658   .text.FSMC_ClearFlag:00000000 FSMC_ClearFlag
-     /tmp/ccT54Xa4.s:1729   .text.FSMC_GetITStatus:00000000 $t
-     /tmp/ccT54Xa4.s:1734   .text.FSMC_GetITStatus:00000000 FSMC_GetITStatus
-     /tmp/ccT54Xa4.s:1831   .text.FSMC_ClearITPendingBit:00000000 $t
-     /tmp/ccT54Xa4.s:1836   .text.FSMC_ClearITPendingBit:00000000 FSMC_ClearITPendingBit
+     /tmp/cceyyo8j.s:19     .text.FSMC_NORSRAMDeInit:00000000 $t
+     /tmp/cceyyo8j.s:24     .text.FSMC_NORSRAMDeInit:00000000 FSMC_NORSRAMDeInit
+     /tmp/cceyyo8j.s:81     .text.FSMC_NANDDeInit:00000000 $t
+     /tmp/cceyyo8j.s:86     .text.FSMC_NANDDeInit:00000000 FSMC_NANDDeInit
+     /tmp/cceyyo8j.s:160    .text.FSMC_PCCARDDeInit:00000000 $t
+     /tmp/cceyyo8j.s:165    .text.FSMC_PCCARDDeInit:00000000 FSMC_PCCARDDeInit
+     /tmp/cceyyo8j.s:212    .text.FSMC_NORSRAMInit:00000000 $t
+     /tmp/cceyyo8j.s:217    .text.FSMC_NORSRAMInit:00000000 FSMC_NORSRAMInit
+     /tmp/cceyyo8j.s:436    .text.FSMC_NANDInit:00000000 $t
+     /tmp/cceyyo8j.s:441    .text.FSMC_NANDInit:00000000 FSMC_NANDInit
+     /tmp/cceyyo8j.s:598    .text.FSMC_PCCARDInit:00000000 $t
+     /tmp/cceyyo8j.s:603    .text.FSMC_PCCARDInit:00000000 FSMC_PCCARDInit
+     /tmp/cceyyo8j.s:737    .text.FSMC_NORSRAMStructInit:00000000 $t
+     /tmp/cceyyo8j.s:742    .text.FSMC_NORSRAMStructInit:00000000 FSMC_NORSRAMStructInit
+     /tmp/cceyyo8j.s:891    .text.FSMC_NANDStructInit:00000000 $t
+     /tmp/cceyyo8j.s:896    .text.FSMC_NANDStructInit:00000000 FSMC_NANDStructInit
+     /tmp/cceyyo8j.s:991    .text.FSMC_PCCARDStructInit:00000000 $t
+     /tmp/cceyyo8j.s:996    .text.FSMC_PCCARDStructInit:00000000 FSMC_PCCARDStructInit
+     /tmp/cceyyo8j.s:1095   .text.FSMC_NORSRAMCmd:00000000 $t
+     /tmp/cceyyo8j.s:1100   .text.FSMC_NORSRAMCmd:00000000 FSMC_NORSRAMCmd
+     /tmp/cceyyo8j.s:1154   .text.FSMC_NANDCmd:00000000 $t
+     /tmp/cceyyo8j.s:1159   .text.FSMC_NANDCmd:00000000 FSMC_NANDCmd
+     /tmp/cceyyo8j.s:1243   .text.FSMC_PCCARDCmd:00000000 $t
+     /tmp/cceyyo8j.s:1248   .text.FSMC_PCCARDCmd:00000000 FSMC_PCCARDCmd
+     /tmp/cceyyo8j.s:1301   .text.FSMC_NANDECCCmd:00000000 $t
+     /tmp/cceyyo8j.s:1306   .text.FSMC_NANDECCCmd:00000000 FSMC_NANDECCCmd
+     /tmp/cceyyo8j.s:1390   .text.FSMC_GetECC:00000000 $t
+     /tmp/cceyyo8j.s:1395   .text.FSMC_GetECC:00000000 FSMC_GetECC
+     /tmp/cceyyo8j.s:1445   .text.FSMC_ITConfig:00000000 $t
+     /tmp/cceyyo8j.s:1450   .text.FSMC_ITConfig:00000000 FSMC_ITConfig
+     /tmp/cceyyo8j.s:1568   .text.FSMC_GetFlagStatus:00000000 $t
+     /tmp/cceyyo8j.s:1573   .text.FSMC_GetFlagStatus:00000000 FSMC_GetFlagStatus
+     /tmp/cceyyo8j.s:1653   .text.FSMC_ClearFlag:00000000 $t
+     /tmp/cceyyo8j.s:1658   .text.FSMC_ClearFlag:00000000 FSMC_ClearFlag
+     /tmp/cceyyo8j.s:1729   .text.FSMC_GetITStatus:00000000 $t
+     /tmp/cceyyo8j.s:1734   .text.FSMC_GetITStatus:00000000 FSMC_GetITStatus
+     /tmp/cceyyo8j.s:1831   .text.FSMC_ClearITPendingBit:00000000 $t
+     /tmp/cceyyo8j.s:1836   .text.FSMC_ClearITPendingBit:00000000 FSMC_ClearITPendingBit
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

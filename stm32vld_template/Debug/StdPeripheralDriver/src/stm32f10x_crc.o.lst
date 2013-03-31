@@ -397,22 +397,22 @@
  261              		.text
  262              	.Letext0:
  263              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 264              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 265              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 264              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 265              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_crc.c
-     /tmp/cc6ntllk.s:19     .text.CRC_ResetDR:00000000 $t
-     /tmp/cc6ntllk.s:24     .text.CRC_ResetDR:00000000 CRC_ResetDR
-     /tmp/cc6ntllk.s:52     .text.CRC_CalcCRC:00000000 $t
-     /tmp/cc6ntllk.s:57     .text.CRC_CalcCRC:00000000 CRC_CalcCRC
-     /tmp/cc6ntllk.s:94     .text.CRC_CalcBlockCRC:00000000 $t
-     /tmp/cc6ntllk.s:99     .text.CRC_CalcBlockCRC:00000000 CRC_CalcBlockCRC
-     /tmp/cc6ntllk.s:159    .text.CRC_GetCRC:00000000 $t
-     /tmp/cc6ntllk.s:164    .text.CRC_GetCRC:00000000 CRC_GetCRC
-     /tmp/cc6ntllk.s:191    .text.CRC_SetIDRegister:00000000 $t
-     /tmp/cc6ntllk.s:196    .text.CRC_SetIDRegister:00000000 CRC_SetIDRegister
-     /tmp/cc6ntllk.s:229    .text.CRC_GetIDRegister:00000000 $t
-     /tmp/cc6ntllk.s:234    .text.CRC_GetIDRegister:00000000 CRC_GetIDRegister
+     /tmp/ccsh1A5x.s:19     .text.CRC_ResetDR:00000000 $t
+     /tmp/ccsh1A5x.s:24     .text.CRC_ResetDR:00000000 CRC_ResetDR
+     /tmp/ccsh1A5x.s:52     .text.CRC_CalcCRC:00000000 $t
+     /tmp/ccsh1A5x.s:57     .text.CRC_CalcCRC:00000000 CRC_CalcCRC
+     /tmp/ccsh1A5x.s:94     .text.CRC_CalcBlockCRC:00000000 $t
+     /tmp/ccsh1A5x.s:99     .text.CRC_CalcBlockCRC:00000000 CRC_CalcBlockCRC
+     /tmp/ccsh1A5x.s:159    .text.CRC_GetCRC:00000000 $t
+     /tmp/ccsh1A5x.s:164    .text.CRC_GetCRC:00000000 CRC_GetCRC
+     /tmp/ccsh1A5x.s:191    .text.CRC_SetIDRegister:00000000 $t
+     /tmp/ccsh1A5x.s:196    .text.CRC_SetIDRegister:00000000 CRC_SetIDRegister
+     /tmp/ccsh1A5x.s:229    .text.CRC_GetIDRegister:00000000 $t
+     /tmp/ccsh1A5x.s:234    .text.CRC_GetIDRegister:00000000 CRC_GetIDRegister
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

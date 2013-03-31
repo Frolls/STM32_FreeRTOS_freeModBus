@@ -2317,58 +2317,58 @@
  1550              		.text
  1551              	.Letext0:
  1552              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 1553              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 1554              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_spi.h"
- 1555              		.file 5 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_rcc.h"
- 1556              		.file 6 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 1553              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 1554              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1555              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1556              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_spi.c
-     /tmp/cc3ZV8tc.s:19     .text.SPI_I2S_DeInit:00000000 $t
-     /tmp/cc3ZV8tc.s:24     .text.SPI_I2S_DeInit:00000000 SPI_I2S_DeInit
-     /tmp/cc3ZV8tc.s:98     .text.SPI_Init:00000000 $t
-     /tmp/cc3ZV8tc.s:103    .text.SPI_Init:00000000 SPI_Init
-     /tmp/cc3ZV8tc.s:207    .text.I2S_Init:00000000 $t
-     /tmp/cc3ZV8tc.s:212    .text.I2S_Init:00000000 I2S_Init
-     /tmp/cc3ZV8tc.s:446    .text.SPI_StructInit:00000000 $t
-     /tmp/cc3ZV8tc.s:451    .text.SPI_StructInit:00000000 SPI_StructInit
-     /tmp/cc3ZV8tc.s:514    .text.I2S_StructInit:00000000 $t
-     /tmp/cc3ZV8tc.s:519    .text.I2S_StructInit:00000000 I2S_StructInit
-     /tmp/cc3ZV8tc.s:570    .text.SPI_Cmd:00000000 $t
-     /tmp/cc3ZV8tc.s:575    .text.SPI_Cmd:00000000 SPI_Cmd
-     /tmp/cc3ZV8tc.s:627    .text.I2S_Cmd:00000000 $t
-     /tmp/cc3ZV8tc.s:632    .text.I2S_Cmd:00000000 I2S_Cmd
-     /tmp/cc3ZV8tc.s:684    .text.SPI_I2S_ITConfig:00000000 $t
-     /tmp/cc3ZV8tc.s:689    .text.SPI_I2S_ITConfig:00000000 SPI_I2S_ITConfig
-     /tmp/cc3ZV8tc.s:762    .text.SPI_I2S_DMACmd:00000000 $t
-     /tmp/cc3ZV8tc.s:767    .text.SPI_I2S_DMACmd:00000000 SPI_I2S_DMACmd
-     /tmp/cc3ZV8tc.s:825    .text.SPI_I2S_SendData:00000000 $t
-     /tmp/cc3ZV8tc.s:830    .text.SPI_I2S_SendData:00000000 SPI_I2S_SendData
-     /tmp/cc3ZV8tc.s:863    .text.SPI_I2S_ReceiveData:00000000 $t
-     /tmp/cc3ZV8tc.s:868    .text.SPI_I2S_ReceiveData:00000000 SPI_I2S_ReceiveData
-     /tmp/cc3ZV8tc.s:900    .text.SPI_NSSInternalSoftwareConfig:00000000 $t
-     /tmp/cc3ZV8tc.s:905    .text.SPI_NSSInternalSoftwareConfig:00000000 SPI_NSSInternalSoftwareConfig
-     /tmp/cc3ZV8tc.s:958    .text.SPI_SSOutputCmd:00000000 $t
-     /tmp/cc3ZV8tc.s:963    .text.SPI_SSOutputCmd:00000000 SPI_SSOutputCmd
-     /tmp/cc3ZV8tc.s:1015   .text.SPI_DataSizeConfig:00000000 $t
-     /tmp/cc3ZV8tc.s:1020   .text.SPI_DataSizeConfig:00000000 SPI_DataSizeConfig
-     /tmp/cc3ZV8tc.s:1066   .text.SPI_TransmitCRC:00000000 $t
-     /tmp/cc3ZV8tc.s:1071   .text.SPI_TransmitCRC:00000000 SPI_TransmitCRC
-     /tmp/cc3ZV8tc.s:1106   .text.SPI_CalculateCRC:00000000 $t
-     /tmp/cc3ZV8tc.s:1111   .text.SPI_CalculateCRC:00000000 SPI_CalculateCRC
-     /tmp/cc3ZV8tc.s:1163   .text.SPI_GetCRC:00000000 $t
-     /tmp/cc3ZV8tc.s:1168   .text.SPI_GetCRC:00000000 SPI_GetCRC
-     /tmp/cc3ZV8tc.s:1218   .text.SPI_GetCRCPolynomial:00000000 $t
-     /tmp/cc3ZV8tc.s:1223   .text.SPI_GetCRCPolynomial:00000000 SPI_GetCRCPolynomial
-     /tmp/cc3ZV8tc.s:1255   .text.SPI_BiDirectionalLineConfig:00000000 $t
-     /tmp/cc3ZV8tc.s:1260   .text.SPI_BiDirectionalLineConfig:00000000 SPI_BiDirectionalLineConfig
-     /tmp/cc3ZV8tc.s:1312   .text.SPI_I2S_GetFlagStatus:00000000 $t
-     /tmp/cc3ZV8tc.s:1317   .text.SPI_I2S_GetFlagStatus:00000000 SPI_I2S_GetFlagStatus
-     /tmp/cc3ZV8tc.s:1370   .text.SPI_I2S_ClearFlag:00000000 $t
-     /tmp/cc3ZV8tc.s:1375   .text.SPI_I2S_ClearFlag:00000000 SPI_I2S_ClearFlag
-     /tmp/cc3ZV8tc.s:1410   .text.SPI_I2S_GetITStatus:00000000 $t
-     /tmp/cc3ZV8tc.s:1415   .text.SPI_I2S_GetITStatus:00000000 SPI_I2S_GetITStatus
-     /tmp/cc3ZV8tc.s:1502   .text.SPI_I2S_ClearITPendingBit:00000000 $t
-     /tmp/cc3ZV8tc.s:1507   .text.SPI_I2S_ClearITPendingBit:00000000 SPI_I2S_ClearITPendingBit
+     /tmp/ccDc3rfx.s:19     .text.SPI_I2S_DeInit:00000000 $t
+     /tmp/ccDc3rfx.s:24     .text.SPI_I2S_DeInit:00000000 SPI_I2S_DeInit
+     /tmp/ccDc3rfx.s:98     .text.SPI_Init:00000000 $t
+     /tmp/ccDc3rfx.s:103    .text.SPI_Init:00000000 SPI_Init
+     /tmp/ccDc3rfx.s:207    .text.I2S_Init:00000000 $t
+     /tmp/ccDc3rfx.s:212    .text.I2S_Init:00000000 I2S_Init
+     /tmp/ccDc3rfx.s:446    .text.SPI_StructInit:00000000 $t
+     /tmp/ccDc3rfx.s:451    .text.SPI_StructInit:00000000 SPI_StructInit
+     /tmp/ccDc3rfx.s:514    .text.I2S_StructInit:00000000 $t
+     /tmp/ccDc3rfx.s:519    .text.I2S_StructInit:00000000 I2S_StructInit
+     /tmp/ccDc3rfx.s:570    .text.SPI_Cmd:00000000 $t
+     /tmp/ccDc3rfx.s:575    .text.SPI_Cmd:00000000 SPI_Cmd
+     /tmp/ccDc3rfx.s:627    .text.I2S_Cmd:00000000 $t
+     /tmp/ccDc3rfx.s:632    .text.I2S_Cmd:00000000 I2S_Cmd
+     /tmp/ccDc3rfx.s:684    .text.SPI_I2S_ITConfig:00000000 $t
+     /tmp/ccDc3rfx.s:689    .text.SPI_I2S_ITConfig:00000000 SPI_I2S_ITConfig
+     /tmp/ccDc3rfx.s:762    .text.SPI_I2S_DMACmd:00000000 $t
+     /tmp/ccDc3rfx.s:767    .text.SPI_I2S_DMACmd:00000000 SPI_I2S_DMACmd
+     /tmp/ccDc3rfx.s:825    .text.SPI_I2S_SendData:00000000 $t
+     /tmp/ccDc3rfx.s:830    .text.SPI_I2S_SendData:00000000 SPI_I2S_SendData
+     /tmp/ccDc3rfx.s:863    .text.SPI_I2S_ReceiveData:00000000 $t
+     /tmp/ccDc3rfx.s:868    .text.SPI_I2S_ReceiveData:00000000 SPI_I2S_ReceiveData
+     /tmp/ccDc3rfx.s:900    .text.SPI_NSSInternalSoftwareConfig:00000000 $t
+     /tmp/ccDc3rfx.s:905    .text.SPI_NSSInternalSoftwareConfig:00000000 SPI_NSSInternalSoftwareConfig
+     /tmp/ccDc3rfx.s:958    .text.SPI_SSOutputCmd:00000000 $t
+     /tmp/ccDc3rfx.s:963    .text.SPI_SSOutputCmd:00000000 SPI_SSOutputCmd
+     /tmp/ccDc3rfx.s:1015   .text.SPI_DataSizeConfig:00000000 $t
+     /tmp/ccDc3rfx.s:1020   .text.SPI_DataSizeConfig:00000000 SPI_DataSizeConfig
+     /tmp/ccDc3rfx.s:1066   .text.SPI_TransmitCRC:00000000 $t
+     /tmp/ccDc3rfx.s:1071   .text.SPI_TransmitCRC:00000000 SPI_TransmitCRC
+     /tmp/ccDc3rfx.s:1106   .text.SPI_CalculateCRC:00000000 $t
+     /tmp/ccDc3rfx.s:1111   .text.SPI_CalculateCRC:00000000 SPI_CalculateCRC
+     /tmp/ccDc3rfx.s:1163   .text.SPI_GetCRC:00000000 $t
+     /tmp/ccDc3rfx.s:1168   .text.SPI_GetCRC:00000000 SPI_GetCRC
+     /tmp/ccDc3rfx.s:1218   .text.SPI_GetCRCPolynomial:00000000 $t
+     /tmp/ccDc3rfx.s:1223   .text.SPI_GetCRCPolynomial:00000000 SPI_GetCRCPolynomial
+     /tmp/ccDc3rfx.s:1255   .text.SPI_BiDirectionalLineConfig:00000000 $t
+     /tmp/ccDc3rfx.s:1260   .text.SPI_BiDirectionalLineConfig:00000000 SPI_BiDirectionalLineConfig
+     /tmp/ccDc3rfx.s:1312   .text.SPI_I2S_GetFlagStatus:00000000 $t
+     /tmp/ccDc3rfx.s:1317   .text.SPI_I2S_GetFlagStatus:00000000 SPI_I2S_GetFlagStatus
+     /tmp/ccDc3rfx.s:1370   .text.SPI_I2S_ClearFlag:00000000 $t
+     /tmp/ccDc3rfx.s:1375   .text.SPI_I2S_ClearFlag:00000000 SPI_I2S_ClearFlag
+     /tmp/ccDc3rfx.s:1410   .text.SPI_I2S_GetITStatus:00000000 $t
+     /tmp/ccDc3rfx.s:1415   .text.SPI_I2S_GetITStatus:00000000 SPI_I2S_GetITStatus
+     /tmp/ccDc3rfx.s:1502   .text.SPI_I2S_ClearITPendingBit:00000000 $t
+     /tmp/ccDc3rfx.s:1507   .text.SPI_I2S_ClearITPendingBit:00000000 SPI_I2S_ClearITPendingBit
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

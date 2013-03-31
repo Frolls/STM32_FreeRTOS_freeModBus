@@ -281,16 +281,16 @@
  146 0052 00BF     		.text
  147              	.Letext0:
  148              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 149              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 150              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 149              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 150              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_dbgmcu.c
-     /tmp/ccx6d5Vr.s:19     .text.DBGMCU_GetREVID:00000000 $t
-     /tmp/ccx6d5Vr.s:24     .text.DBGMCU_GetREVID:00000000 DBGMCU_GetREVID
-     /tmp/ccx6d5Vr.s:53     .text.DBGMCU_GetDEVID:00000000 $t
-     /tmp/ccx6d5Vr.s:58     .text.DBGMCU_GetDEVID:00000000 DBGMCU_GetDEVID
-     /tmp/ccx6d5Vr.s:87     .text.DBGMCU_Config:00000000 $t
-     /tmp/ccx6d5Vr.s:92     .text.DBGMCU_Config:00000000 DBGMCU_Config
+     /tmp/ccUW93CS.s:19     .text.DBGMCU_GetREVID:00000000 $t
+     /tmp/ccUW93CS.s:24     .text.DBGMCU_GetREVID:00000000 DBGMCU_GetREVID
+     /tmp/ccUW93CS.s:53     .text.DBGMCU_GetDEVID:00000000 $t
+     /tmp/ccUW93CS.s:58     .text.DBGMCU_GetDEVID:00000000 DBGMCU_GetDEVID
+     /tmp/ccUW93CS.s:87     .text.DBGMCU_Config:00000000 $t
+     /tmp/ccUW93CS.s:92     .text.DBGMCU_Config:00000000 DBGMCU_Config
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44

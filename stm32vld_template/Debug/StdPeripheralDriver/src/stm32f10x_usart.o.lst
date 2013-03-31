@@ -2820,70 +2820,70 @@
  1946 0042 00BF     		.text
  1947              	.Letext0:
  1948              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 1949              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
- 1950              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_usart.h"
- 1951              		.file 5 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_rcc.h"
- 1952              		.file 6 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+ 1949              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 1950              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1951              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1952              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_usart.c
-     /tmp/ccYC2glw.s:19     .text.USART_DeInit:00000000 $t
-     /tmp/ccYC2glw.s:24     .text.USART_DeInit:00000000 USART_DeInit
-     /tmp/ccYC2glw.s:130    .text.USART_Init:00000000 $t
-     /tmp/ccYC2glw.s:135    .text.USART_Init:00000000 USART_Init
-     /tmp/ccYC2glw.s:366    .text.USART_StructInit:00000000 $t
-     /tmp/ccYC2glw.s:371    .text.USART_StructInit:00000000 USART_StructInit
-     /tmp/ccYC2glw.s:422    .text.USART_ClockInit:00000000 $t
-     /tmp/ccYC2glw.s:427    .text.USART_ClockInit:00000000 USART_ClockInit
-     /tmp/ccYC2glw.s:496    .text.USART_ClockStructInit:00000000 $t
-     /tmp/ccYC2glw.s:501    .text.USART_ClockStructInit:00000000 USART_ClockStructInit
-     /tmp/ccYC2glw.s:544    .text.USART_Cmd:00000000 $t
-     /tmp/ccYC2glw.s:549    .text.USART_Cmd:00000000 USART_Cmd
-     /tmp/ccYC2glw.s:601    .text.USART_ITConfig:00000000 $t
-     /tmp/ccYC2glw.s:606    .text.USART_ITConfig:00000000 USART_ITConfig
-     /tmp/ccYC2glw.s:712    .text.USART_DMACmd:00000000 $t
-     /tmp/ccYC2glw.s:717    .text.USART_DMACmd:00000000 USART_DMACmd
-     /tmp/ccYC2glw.s:775    .text.USART_SetAddress:00000000 $t
-     /tmp/ccYC2glw.s:780    .text.USART_SetAddress:00000000 USART_SetAddress
-     /tmp/ccYC2glw.s:827    .text.USART_WakeUpConfig:00000000 $t
-     /tmp/ccYC2glw.s:832    .text.USART_WakeUpConfig:00000000 USART_WakeUpConfig
-     /tmp/ccYC2glw.s:878    .text.USART_ReceiverWakeUpCmd:00000000 $t
-     /tmp/ccYC2glw.s:883    .text.USART_ReceiverWakeUpCmd:00000000 USART_ReceiverWakeUpCmd
-     /tmp/ccYC2glw.s:935    .text.USART_LINBreakDetectLengthConfig:00000000 $t
-     /tmp/ccYC2glw.s:940    .text.USART_LINBreakDetectLengthConfig:00000000 USART_LINBreakDetectLengthConfig
-     /tmp/ccYC2glw.s:986    .text.USART_LINCmd:00000000 $t
-     /tmp/ccYC2glw.s:991    .text.USART_LINCmd:00000000 USART_LINCmd
-     /tmp/ccYC2glw.s:1043   .text.USART_SendData:00000000 $t
-     /tmp/ccYC2glw.s:1048   .text.USART_SendData:00000000 USART_SendData
-     /tmp/ccYC2glw.s:1084   .text.USART_ReceiveData:00000000 $t
-     /tmp/ccYC2glw.s:1089   .text.USART_ReceiveData:00000000 USART_ReceiveData
-     /tmp/ccYC2glw.s:1124   .text.USART_SendBreak:00000000 $t
-     /tmp/ccYC2glw.s:1129   .text.USART_SendBreak:00000000 USART_SendBreak
-     /tmp/ccYC2glw.s:1164   .text.USART_SetGuardTime:00000000 $t
-     /tmp/ccYC2glw.s:1169   .text.USART_SetGuardTime:00000000 USART_SetGuardTime
-     /tmp/ccYC2glw.s:1218   .text.USART_SetPrescaler:00000000 $t
-     /tmp/ccYC2glw.s:1223   .text.USART_SetPrescaler:00000000 USART_SetPrescaler
-     /tmp/ccYC2glw.s:1270   .text.USART_SmartCardCmd:00000000 $t
-     /tmp/ccYC2glw.s:1275   .text.USART_SmartCardCmd:00000000 USART_SmartCardCmd
-     /tmp/ccYC2glw.s:1327   .text.USART_SmartCardNACKCmd:00000000 $t
-     /tmp/ccYC2glw.s:1332   .text.USART_SmartCardNACKCmd:00000000 USART_SmartCardNACKCmd
-     /tmp/ccYC2glw.s:1384   .text.USART_HalfDuplexCmd:00000000 $t
-     /tmp/ccYC2glw.s:1389   .text.USART_HalfDuplexCmd:00000000 USART_HalfDuplexCmd
-     /tmp/ccYC2glw.s:1441   .text.USART_OverSampling8Cmd:00000000 $t
-     /tmp/ccYC2glw.s:1446   .text.USART_OverSampling8Cmd:00000000 USART_OverSampling8Cmd
-     /tmp/ccYC2glw.s:1500   .text.USART_OneBitMethodCmd:00000000 $t
-     /tmp/ccYC2glw.s:1505   .text.USART_OneBitMethodCmd:00000000 USART_OneBitMethodCmd
-     /tmp/ccYC2glw.s:1557   .text.USART_IrDAConfig:00000000 $t
-     /tmp/ccYC2glw.s:1562   .text.USART_IrDAConfig:00000000 USART_IrDAConfig
-     /tmp/ccYC2glw.s:1608   .text.USART_IrDACmd:00000000 $t
-     /tmp/ccYC2glw.s:1613   .text.USART_IrDACmd:00000000 USART_IrDACmd
-     /tmp/ccYC2glw.s:1665   .text.USART_GetFlagStatus:00000000 $t
-     /tmp/ccYC2glw.s:1670   .text.USART_GetFlagStatus:00000000 USART_GetFlagStatus
-     /tmp/ccYC2glw.s:1723   .text.USART_ClearFlag:00000000 $t
-     /tmp/ccYC2glw.s:1728   .text.USART_ClearFlag:00000000 USART_ClearFlag
-     /tmp/ccYC2glw.s:1763   .text.USART_GetITStatus:00000000 $t
-     /tmp/ccYC2glw.s:1768   .text.USART_GetITStatus:00000000 USART_GetITStatus
-     /tmp/ccYC2glw.s:1893   .text.USART_ClearITPendingBit:00000000 $t
-     /tmp/ccYC2glw.s:1898   .text.USART_ClearITPendingBit:00000000 USART_ClearITPendingBit
+     /tmp/ccvDWVu0.s:19     .text.USART_DeInit:00000000 $t
+     /tmp/ccvDWVu0.s:24     .text.USART_DeInit:00000000 USART_DeInit
+     /tmp/ccvDWVu0.s:130    .text.USART_Init:00000000 $t
+     /tmp/ccvDWVu0.s:135    .text.USART_Init:00000000 USART_Init
+     /tmp/ccvDWVu0.s:366    .text.USART_StructInit:00000000 $t
+     /tmp/ccvDWVu0.s:371    .text.USART_StructInit:00000000 USART_StructInit
+     /tmp/ccvDWVu0.s:422    .text.USART_ClockInit:00000000 $t
+     /tmp/ccvDWVu0.s:427    .text.USART_ClockInit:00000000 USART_ClockInit
+     /tmp/ccvDWVu0.s:496    .text.USART_ClockStructInit:00000000 $t
+     /tmp/ccvDWVu0.s:501    .text.USART_ClockStructInit:00000000 USART_ClockStructInit
+     /tmp/ccvDWVu0.s:544    .text.USART_Cmd:00000000 $t
+     /tmp/ccvDWVu0.s:549    .text.USART_Cmd:00000000 USART_Cmd
+     /tmp/ccvDWVu0.s:601    .text.USART_ITConfig:00000000 $t
+     /tmp/ccvDWVu0.s:606    .text.USART_ITConfig:00000000 USART_ITConfig
+     /tmp/ccvDWVu0.s:712    .text.USART_DMACmd:00000000 $t
+     /tmp/ccvDWVu0.s:717    .text.USART_DMACmd:00000000 USART_DMACmd
+     /tmp/ccvDWVu0.s:775    .text.USART_SetAddress:00000000 $t
+     /tmp/ccvDWVu0.s:780    .text.USART_SetAddress:00000000 USART_SetAddress
+     /tmp/ccvDWVu0.s:827    .text.USART_WakeUpConfig:00000000 $t
+     /tmp/ccvDWVu0.s:832    .text.USART_WakeUpConfig:00000000 USART_WakeUpConfig
+     /tmp/ccvDWVu0.s:878    .text.USART_ReceiverWakeUpCmd:00000000 $t
+     /tmp/ccvDWVu0.s:883    .text.USART_ReceiverWakeUpCmd:00000000 USART_ReceiverWakeUpCmd
+     /tmp/ccvDWVu0.s:935    .text.USART_LINBreakDetectLengthConfig:00000000 $t
+     /tmp/ccvDWVu0.s:940    .text.USART_LINBreakDetectLengthConfig:00000000 USART_LINBreakDetectLengthConfig
+     /tmp/ccvDWVu0.s:986    .text.USART_LINCmd:00000000 $t
+     /tmp/ccvDWVu0.s:991    .text.USART_LINCmd:00000000 USART_LINCmd
+     /tmp/ccvDWVu0.s:1043   .text.USART_SendData:00000000 $t
+     /tmp/ccvDWVu0.s:1048   .text.USART_SendData:00000000 USART_SendData
+     /tmp/ccvDWVu0.s:1084   .text.USART_ReceiveData:00000000 $t
+     /tmp/ccvDWVu0.s:1089   .text.USART_ReceiveData:00000000 USART_ReceiveData
+     /tmp/ccvDWVu0.s:1124   .text.USART_SendBreak:00000000 $t
+     /tmp/ccvDWVu0.s:1129   .text.USART_SendBreak:00000000 USART_SendBreak
+     /tmp/ccvDWVu0.s:1164   .text.USART_SetGuardTime:00000000 $t
+     /tmp/ccvDWVu0.s:1169   .text.USART_SetGuardTime:00000000 USART_SetGuardTime
+     /tmp/ccvDWVu0.s:1218   .text.USART_SetPrescaler:00000000 $t
+     /tmp/ccvDWVu0.s:1223   .text.USART_SetPrescaler:00000000 USART_SetPrescaler
+     /tmp/ccvDWVu0.s:1270   .text.USART_SmartCardCmd:00000000 $t
+     /tmp/ccvDWVu0.s:1275   .text.USART_SmartCardCmd:00000000 USART_SmartCardCmd
+     /tmp/ccvDWVu0.s:1327   .text.USART_SmartCardNACKCmd:00000000 $t
+     /tmp/ccvDWVu0.s:1332   .text.USART_SmartCardNACKCmd:00000000 USART_SmartCardNACKCmd
+     /tmp/ccvDWVu0.s:1384   .text.USART_HalfDuplexCmd:00000000 $t
+     /tmp/ccvDWVu0.s:1389   .text.USART_HalfDuplexCmd:00000000 USART_HalfDuplexCmd
+     /tmp/ccvDWVu0.s:1441   .text.USART_OverSampling8Cmd:00000000 $t
+     /tmp/ccvDWVu0.s:1446   .text.USART_OverSampling8Cmd:00000000 USART_OverSampling8Cmd
+     /tmp/ccvDWVu0.s:1500   .text.USART_OneBitMethodCmd:00000000 $t
+     /tmp/ccvDWVu0.s:1505   .text.USART_OneBitMethodCmd:00000000 USART_OneBitMethodCmd
+     /tmp/ccvDWVu0.s:1557   .text.USART_IrDAConfig:00000000 $t
+     /tmp/ccvDWVu0.s:1562   .text.USART_IrDAConfig:00000000 USART_IrDAConfig
+     /tmp/ccvDWVu0.s:1608   .text.USART_IrDACmd:00000000 $t
+     /tmp/ccvDWVu0.s:1613   .text.USART_IrDACmd:00000000 USART_IrDACmd
+     /tmp/ccvDWVu0.s:1665   .text.USART_GetFlagStatus:00000000 $t
+     /tmp/ccvDWVu0.s:1670   .text.USART_GetFlagStatus:00000000 USART_GetFlagStatus
+     /tmp/ccvDWVu0.s:1723   .text.USART_ClearFlag:00000000 $t
+     /tmp/ccvDWVu0.s:1728   .text.USART_ClearFlag:00000000 USART_ClearFlag
+     /tmp/ccvDWVu0.s:1763   .text.USART_GetITStatus:00000000 $t
+     /tmp/ccvDWVu0.s:1768   .text.USART_GetITStatus:00000000 USART_GetITStatus
+     /tmp/ccvDWVu0.s:1893   .text.USART_ClearITPendingBit:00000000 $t
+     /tmp/ccvDWVu0.s:1898   .text.USART_ClearITPendingBit:00000000 USART_ClearITPendingBit
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
