@@ -1,0 +1,254 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"portevent.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.bss.eQueuedEvent,"aw",%nobits
+  21              	eQueuedEvent:
+  22 0000 00       		.space	1
+  23              		.section	.bss.xEventInQueue,"aw",%nobits
+  26              	xEventInQueue:
+  27 0000 00       		.space	1
+  28              		.section	.text.xMBPortEventInit,"ax",%progbits
+  29              		.align	2
+  30              		.global	xMBPortEventInit
+  31              		.thumb
+  32              		.thumb_func
+  34              	xMBPortEventInit:
+  35              	.LFB29:
+  36              		.file 1 "../FreeModbus/STM32/port/portevent.c"
+   1:../FreeModbus/STM32/port/portevent.c **** /*
+   2:../FreeModbus/STM32/port/portevent.c ****  * FreeModbus Libary: BARE Port
+   3:../FreeModbus/STM32/port/portevent.c ****  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
+   4:../FreeModbus/STM32/port/portevent.c ****  *
+   5:../FreeModbus/STM32/port/portevent.c ****  * This library is free software; you can redistribute it and/or
+   6:../FreeModbus/STM32/port/portevent.c ****  * modify it under the terms of the GNU Lesser General Public
+   7:../FreeModbus/STM32/port/portevent.c ****  * License as published by the Free Software Foundation; either
+   8:../FreeModbus/STM32/port/portevent.c ****  * version 2.1 of the License, or (at your option) any later version.
+   9:../FreeModbus/STM32/port/portevent.c ****  *
+  10:../FreeModbus/STM32/port/portevent.c ****  * This library is distributed in the hope that it will be useful,
+  11:../FreeModbus/STM32/port/portevent.c ****  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  12:../FreeModbus/STM32/port/portevent.c ****  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  13:../FreeModbus/STM32/port/portevent.c ****  * Lesser General Public License for more details.
+  14:../FreeModbus/STM32/port/portevent.c ****  *
+  15:../FreeModbus/STM32/port/portevent.c ****  * You should have received a copy of the GNU Lesser General Public
+  16:../FreeModbus/STM32/port/portevent.c ****  * License along with this library; if not, write to the Free Software
+  17:../FreeModbus/STM32/port/portevent.c ****  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  18:../FreeModbus/STM32/port/portevent.c ****  *
+  19:../FreeModbus/STM32/port/portevent.c ****  * File: $Id: portevent.c,v 1.1 2006/08/22 21:35:13 wolti Exp $
+  20:../FreeModbus/STM32/port/portevent.c ****  */
+  21:../FreeModbus/STM32/port/portevent.c **** 
+  22:../FreeModbus/STM32/port/portevent.c **** /* ----------------------- Modbus includes ----------------------------------*/
+  23:../FreeModbus/STM32/port/portevent.c **** #include "mb.h"
+  24:../FreeModbus/STM32/port/portevent.c **** #include "mbport.h"
+  25:../FreeModbus/STM32/port/portevent.c **** 
+  26:../FreeModbus/STM32/port/portevent.c **** /* ----------------------- Variables ----------------------------------------*/
+  27:../FreeModbus/STM32/port/portevent.c **** static eMBEventType eQueuedEvent;
+  28:../FreeModbus/STM32/port/portevent.c **** static BOOL     xEventInQueue;
+  29:../FreeModbus/STM32/port/portevent.c **** 
+  30:../FreeModbus/STM32/port/portevent.c **** /* ----------------------- Start implementation -----------------------------*/
+  31:../FreeModbus/STM32/port/portevent.c **** BOOL
+  32:../FreeModbus/STM32/port/portevent.c **** xMBPortEventInit( void )
+  33:../FreeModbus/STM32/port/portevent.c **** {
+  37              		.loc 1 33 0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 1, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 80B4     		push	{r7}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 4
+  45              		.cfi_offset 7, -4
+  46 0002 00AF     		add	r7, sp, #0
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_register 7
+  34:../FreeModbus/STM32/port/portevent.c ****     xEventInQueue = FALSE;
+  49              		.loc 1 34 0
+  50 0004 40F20003 		movw	r3, #:lower16:xEventInQueue
+  51 0008 C0F20003 		movt	r3, #:upper16:xEventInQueue
+  52 000c 4FF00002 		mov	r2, #0
+  53 0010 1A70     		strb	r2, [r3, #0]
+  35:../FreeModbus/STM32/port/portevent.c ****     return TRUE;
+  54              		.loc 1 35 0
+  55 0012 4FF00103 		mov	r3, #1
+  36:../FreeModbus/STM32/port/portevent.c **** }
+  56              		.loc 1 36 0
+  57 0016 1846     		mov	r0, r3
+  58 0018 BD46     		mov	sp, r7
+  59 001a 80BC     		pop	{r7}
+  60 001c 7047     		bx	lr
+  61              		.cfi_endproc
+  62              	.LFE29:
+  64 001e 00BF     		.section	.text.xMBPortEventPost,"ax",%progbits
+  65              		.align	2
+  66              		.global	xMBPortEventPost
+  67              		.thumb
+  68              		.thumb_func
+  70              	xMBPortEventPost:
+  71              	.LFB30:
+  37:../FreeModbus/STM32/port/portevent.c **** 
+  38:../FreeModbus/STM32/port/portevent.c **** BOOL
+  39:../FreeModbus/STM32/port/portevent.c **** xMBPortEventPost( eMBEventType eEvent )
+  40:../FreeModbus/STM32/port/portevent.c **** {
+  72              		.loc 1 40 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 8
+  75              		@ frame_needed = 1, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 80B4     		push	{r7}
+  78              	.LCFI2:
+  79              		.cfi_def_cfa_offset 4
+  80              		.cfi_offset 7, -4
+  81 0002 83B0     		sub	sp, sp, #12
+  82              	.LCFI3:
+  83              		.cfi_def_cfa_offset 16
+  84 0004 00AF     		add	r7, sp, #0
+  85              	.LCFI4:
+  86              		.cfi_def_cfa_register 7
+  87 0006 0346     		mov	r3, r0
+  88 0008 FB71     		strb	r3, [r7, #7]
+  41:../FreeModbus/STM32/port/portevent.c ****     xEventInQueue = TRUE;
+  89              		.loc 1 41 0
+  90 000a 40F20003 		movw	r3, #:lower16:xEventInQueue
+  91 000e C0F20003 		movt	r3, #:upper16:xEventInQueue
+  92 0012 4FF00102 		mov	r2, #1
+  93 0016 1A70     		strb	r2, [r3, #0]
+  42:../FreeModbus/STM32/port/portevent.c ****     eQueuedEvent = eEvent;
+  94              		.loc 1 42 0
+  95 0018 40F20003 		movw	r3, #:lower16:eQueuedEvent
+  96 001c C0F20003 		movt	r3, #:upper16:eQueuedEvent
+  97 0020 FA79     		ldrb	r2, [r7, #7]
+  98 0022 1A70     		strb	r2, [r3, #0]
+  43:../FreeModbus/STM32/port/portevent.c ****     return TRUE;
+  99              		.loc 1 43 0
+ 100 0024 4FF00103 		mov	r3, #1
+  44:../FreeModbus/STM32/port/portevent.c **** }
+ 101              		.loc 1 44 0
+ 102 0028 1846     		mov	r0, r3
+ 103 002a 07F10C07 		add	r7, r7, #12
+ 104 002e BD46     		mov	sp, r7
+ 105 0030 80BC     		pop	{r7}
+ 106 0032 7047     		bx	lr
+ 107              		.cfi_endproc
+ 108              	.LFE30:
+ 110              		.section	.text.xMBPortEventGet,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	xMBPortEventGet
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	xMBPortEventGet:
+ 117              	.LFB31:
+  45:../FreeModbus/STM32/port/portevent.c **** 
+  46:../FreeModbus/STM32/port/portevent.c **** BOOL
+  47:../FreeModbus/STM32/port/portevent.c **** xMBPortEventGet( eMBEventType * eEvent )
+  48:../FreeModbus/STM32/port/portevent.c **** {
+ 118              		.loc 1 48 0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 16
+ 121              		@ frame_needed = 1, uses_anonymous_args = 0
+ 122              		@ link register save eliminated.
+ 123 0000 80B4     		push	{r7}
+ 124              	.LCFI5:
+ 125              		.cfi_def_cfa_offset 4
+ 126              		.cfi_offset 7, -4
+ 127 0002 85B0     		sub	sp, sp, #20
+ 128              	.LCFI6:
+ 129              		.cfi_def_cfa_offset 24
+ 130 0004 00AF     		add	r7, sp, #0
+ 131              	.LCFI7:
+ 132              		.cfi_def_cfa_register 7
+ 133 0006 7860     		str	r0, [r7, #4]
+  49:../FreeModbus/STM32/port/portevent.c ****     BOOL            xEventHappened = FALSE;
+ 134              		.loc 1 49 0
+ 135 0008 4FF00003 		mov	r3, #0
+ 136 000c FB73     		strb	r3, [r7, #15]
+  50:../FreeModbus/STM32/port/portevent.c **** 
+  51:../FreeModbus/STM32/port/portevent.c ****     if( xEventInQueue )
+ 137              		.loc 1 51 0
+ 138 000e 40F20003 		movw	r3, #:lower16:xEventInQueue
+ 139 0012 C0F20003 		movt	r3, #:upper16:xEventInQueue
+ 140 0016 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 141 0018 002B     		cmp	r3, #0
+ 142 001a 10D0     		beq	.L6
+  52:../FreeModbus/STM32/port/portevent.c ****     {
+  53:../FreeModbus/STM32/port/portevent.c ****         *eEvent = eQueuedEvent;
+ 143              		.loc 1 53 0
+ 144 001c 40F20003 		movw	r3, #:lower16:eQueuedEvent
+ 145 0020 C0F20003 		movt	r3, #:upper16:eQueuedEvent
+ 146 0024 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 147 0026 7B68     		ldr	r3, [r7, #4]
+ 148 0028 1A70     		strb	r2, [r3, #0]
+  54:../FreeModbus/STM32/port/portevent.c ****         xEventInQueue = FALSE;
+ 149              		.loc 1 54 0
+ 150 002a 40F20003 		movw	r3, #:lower16:xEventInQueue
+ 151 002e C0F20003 		movt	r3, #:upper16:xEventInQueue
+ 152 0032 4FF00002 		mov	r2, #0
+ 153 0036 1A70     		strb	r2, [r3, #0]
+  55:../FreeModbus/STM32/port/portevent.c ****         xEventHappened = TRUE;
+ 154              		.loc 1 55 0
+ 155 0038 4FF00103 		mov	r3, #1
+ 156 003c FB73     		strb	r3, [r7, #15]
+ 157              	.L6:
+  56:../FreeModbus/STM32/port/portevent.c ****     }
+  57:../FreeModbus/STM32/port/portevent.c ****     return xEventHappened;
+ 158              		.loc 1 57 0
+ 159 003e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  58:../FreeModbus/STM32/port/portevent.c **** }
+ 160              		.loc 1 58 0
+ 161 0040 1846     		mov	r0, r3
+ 162 0042 07F11407 		add	r7, r7, #20
+ 163 0046 BD46     		mov	sp, r7
+ 164 0048 80BC     		pop	{r7}
+ 165 004a 7047     		bx	lr
+ 166              		.cfi_endproc
+ 167              	.LFE31:
+ 169              		.text
+ 170              	.Letext0:
+ 171              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 172              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
+ 173              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mbport.h"
+ 174              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 portevent.c
+     /tmp/ccUrUS8n.s:21     .bss.eQueuedEvent:00000000 eQueuedEvent
+     /tmp/ccUrUS8n.s:22     .bss.eQueuedEvent:00000000 $d
+     /tmp/ccUrUS8n.s:26     .bss.xEventInQueue:00000000 xEventInQueue
+     /tmp/ccUrUS8n.s:27     .bss.xEventInQueue:00000000 $d
+     /tmp/ccUrUS8n.s:29     .text.xMBPortEventInit:00000000 $t
+     /tmp/ccUrUS8n.s:34     .text.xMBPortEventInit:00000000 xMBPortEventInit
+     /tmp/ccUrUS8n.s:65     .text.xMBPortEventPost:00000000 $t
+     /tmp/ccUrUS8n.s:70     .text.xMBPortEventPost:00000000 xMBPortEventPost
+     /tmp/ccUrUS8n.s:111    .text.xMBPortEventGet:00000000 $t
+     /tmp/ccUrUS8n.s:116    .text.xMBPortEventGet:00000000 xMBPortEventGet
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
+                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+                           .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
+
+NO UNDEFINED SYMBOLS

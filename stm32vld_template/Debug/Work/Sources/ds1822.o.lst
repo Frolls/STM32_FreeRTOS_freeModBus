@@ -1,0 +1,1218 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ds1822.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	Search_Rom_SN,80,4
+  19              		.section	.text.DS1822_Search_Rom_One_Device,"ax",%progbits
+  20              		.align	2
+  21              		.global	DS1822_Search_Rom_One_Device
+  22              		.thumb
+  23              		.thumb_func
+  25              	DS1822_Search_Rom_One_Device:
+  26              	.LFB29:
+  27              		.file 1 "../Work/Sources/ds1822.c"
+   1:../Work/Sources/ds1822.c **** /*
+   2:../Work/Sources/ds1822.c ****  * ds1822.c
+   3:../Work/Sources/ds1822.c ****  *
+   4:../Work/Sources/ds1822.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/ds1822.c ****  *      Author: frolls
+   6:../Work/Sources/ds1822.c ****  */
+   7:../Work/Sources/ds1822.c **** #include "ds1822.h"
+   8:../Work/Sources/ds1822.c **** 
+   9:../Work/Sources/ds1822.c **** unsigned char Search_Rom_SN[One_Wire_Device_Number_MAX][DS1822_SERIAL_NUM_SIZE];
+  10:../Work/Sources/ds1822.c **** 
+  11:../Work/Sources/ds1822.c **** unsigned char DS1822_Search_Rom_One_Device (GPIO_TypeDef * GPIOx, unsigned long PINx, unsigned char
+  12:../Work/Sources/ds1822.c **** {
+  28              		.loc 1 12 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 24
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 86B0     		sub	sp, sp, #24
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 32
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 F860     		str	r0, [r7, #12]
+  44 0008 B960     		str	r1, [r7, #8]
+  45 000a 7A60     		str	r2, [r7, #4]
+  13:../Work/Sources/ds1822.c **** 	unsigned char cnt_bits;
+  14:../Work/Sources/ds1822.c **** 	unsigned char cnt_bytes;
+  15:../Work/Sources/ds1822.c **** 	unsigned char tmp;
+  16:../Work/Sources/ds1822.c **** 	unsigned char tmp2=0;
+  46              		.loc 1 16 0
+  47 000c 4FF00003 		mov	r3, #0
+  48 0010 7B75     		strb	r3, [r7, #21]
+  17:../Work/Sources/ds1822.c **** 	unsigned char dev_cnt=0;
+  49              		.loc 1 17 0
+  50 0012 4FF00003 		mov	r3, #0
+  51 0016 3B75     		strb	r3, [r7, #20]
+  18:../Work/Sources/ds1822.c **** 
+  19:../Work/Sources/ds1822.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+  52              		.loc 1 19 0
+  53 0018 BB68     		ldr	r3, [r7, #8]
+  54 001a 9BB2     		uxth	r3, r3
+  55 001c F868     		ldr	r0, [r7, #12]
+  56 001e 1946     		mov	r1, r3
+  57 0020 FFF7FEFF 		bl	One_Wire_Reset
+  58 0024 0346     		mov	r3, r0
+  59 0026 FB74     		strb	r3, [r7, #19]
+  20:../Work/Sources/ds1822.c **** 	if (tmp!=One_Wire_Success) return tmp;
+  60              		.loc 1 20 0
+  61 0028 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+  62 002a 002B     		cmp	r3, #0
+  63 002c 01D0     		beq	.L2
+  64              		.loc 1 20 0 is_stmt 0 discriminator 1
+  65 002e FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+  66 0030 5CE0     		b	.L3
+  67              	.L2:
+  21:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(One_Wire_Search_ROM, GPIOx, PINx);
+  68              		.loc 1 21 0 is_stmt 1
+  69 0032 BB68     		ldr	r3, [r7, #8]
+  70 0034 9BB2     		uxth	r3, r3
+  71 0036 4FF0F000 		mov	r0, #240
+  72 003a F968     		ldr	r1, [r7, #12]
+  73 003c 1A46     		mov	r2, r3
+  74 003e FFF7FEFF 		bl	One_Wire_Write_Byte
+  22:../Work/Sources/ds1822.c **** 
+  23:../Work/Sources/ds1822.c **** 	for (cnt_bytes=0;cnt_bytes!=8;cnt_bytes++)
+  75              		.loc 1 23 0
+  76 0042 4FF00003 		mov	r3, #0
+  77 0046 BB75     		strb	r3, [r7, #22]
+  78 0048 40E0     		b	.L4
+  79              	.L9:
+  24:../Work/Sources/ds1822.c **** 	{
+  25:../Work/Sources/ds1822.c **** 		for (cnt_bits=0;cnt_bits!=8;cnt_bits++)
+  80              		.loc 1 25 0
+  81 004a 4FF00003 		mov	r3, #0
+  82 004e FB75     		strb	r3, [r7, #23]
+  83 0050 2EE0     		b	.L5
+  84              	.L8:
+  26:../Work/Sources/ds1822.c **** 		{
+  27:../Work/Sources/ds1822.c **** 			tmp=One_Wire_Read_Bit(GPIOx, PINx);
+  85              		.loc 1 27 0
+  86 0052 BB68     		ldr	r3, [r7, #8]
+  87 0054 9BB2     		uxth	r3, r3
+  88 0056 F868     		ldr	r0, [r7, #12]
+  89 0058 1946     		mov	r1, r3
+  90 005a FFF7FEFF 		bl	One_Wire_Read_Bit
+  91 005e 0346     		mov	r3, r0
+  92 0060 FB74     		strb	r3, [r7, #19]
+  28:../Work/Sources/ds1822.c **** 	 		if (One_Wire_Read_Bit(GPIOx, PINx)==tmp) dev_cnt++;
+  93              		.loc 1 28 0
+  94 0062 BB68     		ldr	r3, [r7, #8]
+  95 0064 9BB2     		uxth	r3, r3
+  96 0066 F868     		ldr	r0, [r7, #12]
+  97 0068 1946     		mov	r1, r3
+  98 006a FFF7FEFF 		bl	One_Wire_Read_Bit
+  99 006e 0346     		mov	r3, r0
+ 100 0070 FA7C     		ldrb	r2, [r7, #19]	@ zero_extendqisi2
+ 101 0072 9A42     		cmp	r2, r3
+ 102 0074 03D1     		bne	.L6
+ 103              		.loc 1 28 0 is_stmt 0 discriminator 1
+ 104 0076 3B7D     		ldrb	r3, [r7, #20]
+ 105 0078 03F10103 		add	r3, r3, #1
+ 106 007c 3B75     		strb	r3, [r7, #20]
+ 107              	.L6:
+  29:../Work/Sources/ds1822.c **** 			One_Wire_Write_Bit(tmp, GPIOx, PINx);
+ 108              		.loc 1 29 0 is_stmt 1
+ 109 007e BB68     		ldr	r3, [r7, #8]
+ 110 0080 9BB2     		uxth	r3, r3
+ 111 0082 FA7C     		ldrb	r2, [r7, #19]	@ zero_extendqisi2
+ 112 0084 1046     		mov	r0, r2
+ 113 0086 F968     		ldr	r1, [r7, #12]
+ 114 0088 1A46     		mov	r2, r3
+ 115 008a FFF7FEFF 		bl	One_Wire_Write_Bit
+  30:../Work/Sources/ds1822.c **** 			if (tmp!=0) tmp2|=(1<<cnt_bits);
+ 116              		.loc 1 30 0
+ 117 008e FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 118 0090 002B     		cmp	r3, #0
+ 119 0092 09D0     		beq	.L7
+ 120              		.loc 1 30 0 is_stmt 0 discriminator 1
+ 121 0094 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 122 0096 4FF00102 		mov	r2, #1
+ 123 009a 02FA03F3 		lsl	r3, r2, r3
+ 124 009e DAB2     		uxtb	r2, r3
+ 125 00a0 7B7D     		ldrb	r3, [r7, #21]	@ zero_extendqisi2
+ 126 00a2 1343     		orrs	r3, r3, r2
+ 127 00a4 DBB2     		uxtb	r3, r3
+ 128 00a6 7B75     		strb	r3, [r7, #21]
+ 129              	.L7:
+  25:../Work/Sources/ds1822.c **** 		for (cnt_bits=0;cnt_bits!=8;cnt_bits++)
+ 130              		.loc 1 25 0 is_stmt 1
+ 131 00a8 FB7D     		ldrb	r3, [r7, #23]
+ 132 00aa 03F10103 		add	r3, r3, #1
+ 133 00ae FB75     		strb	r3, [r7, #23]
+ 134              	.L5:
+  25:../Work/Sources/ds1822.c **** 		for (cnt_bits=0;cnt_bits!=8;cnt_bits++)
+ 135              		.loc 1 25 0 is_stmt 0 discriminator 1
+ 136 00b0 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 137 00b2 082B     		cmp	r3, #8
+ 138 00b4 CDD1     		bne	.L8
+  31:../Work/Sources/ds1822.c **** 		}
+  32:../Work/Sources/ds1822.c **** 	( *Serial_Num)[cnt_bytes]=tmp2;
+ 139              		.loc 1 32 0 is_stmt 1
+ 140 00b6 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 141 00b8 7A68     		ldr	r2, [r7, #4]
+ 142 00ba 797D     		ldrb	r1, [r7, #21]
+ 143 00bc D154     		strb	r1, [r2, r3]
+  33:../Work/Sources/ds1822.c **** 	tmp2=0;
+ 144              		.loc 1 33 0
+ 145 00be 4FF00003 		mov	r3, #0
+ 146 00c2 7B75     		strb	r3, [r7, #21]
+  23:../Work/Sources/ds1822.c **** 	for (cnt_bytes=0;cnt_bytes!=8;cnt_bytes++)
+ 147              		.loc 1 23 0
+ 148 00c4 BB7D     		ldrb	r3, [r7, #22]
+ 149 00c6 03F10103 		add	r3, r3, #1
+ 150 00ca BB75     		strb	r3, [r7, #22]
+ 151              	.L4:
+  23:../Work/Sources/ds1822.c **** 	for (cnt_bytes=0;cnt_bytes!=8;cnt_bytes++)
+ 152              		.loc 1 23 0 is_stmt 0 discriminator 1
+ 153 00cc BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 154 00ce 082B     		cmp	r3, #8
+ 155 00d0 BBD1     		bne	.L9
+  34:../Work/Sources/ds1822.c **** 	}
+  35:../Work/Sources/ds1822.c **** 	if (Crc8Dallas(DS1822_SERIAL_NUM_SIZE,(*Serial_Num))==0) return One_Wire_Success;
+ 156              		.loc 1 35 0 is_stmt 1
+ 157 00d2 4FF00800 		mov	r0, #8
+ 158 00d6 7968     		ldr	r1, [r7, #4]
+ 159 00d8 FFF7FEFF 		bl	Crc8Dallas
+ 160 00dc 0346     		mov	r3, r0
+ 161 00de 002B     		cmp	r3, #0
+ 162 00e0 02D1     		bne	.L10
+ 163              		.loc 1 35 0 is_stmt 0 discriminator 1
+ 164 00e2 4FF00003 		mov	r3, #0
+ 165 00e6 01E0     		b	.L3
+ 166              	.L10:
+  36:../Work/Sources/ds1822.c **** 	else return One_Wire_CRC_Error;
+ 167              		.loc 1 36 0 is_stmt 1
+ 168 00e8 4FF00403 		mov	r3, #4
+ 169              	.L3:
+  37:../Work/Sources/ds1822.c **** }
+ 170              		.loc 1 37 0
+ 171 00ec 1846     		mov	r0, r3
+ 172 00ee 07F11807 		add	r7, r7, #24
+ 173 00f2 BD46     		mov	sp, r7
+ 174 00f4 80BD     		pop	{r7, pc}
+ 175              		.cfi_endproc
+ 176              	.LFE29:
+ 178 00f6 00BF     		.section	.text.DS1822_Start_Conversion_by_ROM,"ax",%progbits
+ 179              		.align	2
+ 180              		.global	DS1822_Start_Conversion_by_ROM
+ 181              		.thumb
+ 182              		.thumb_func
+ 184              	DS1822_Start_Conversion_by_ROM:
+ 185              	.LFB30:
+  38:../Work/Sources/ds1822.c **** 
+  39:../Work/Sources/ds1822.c **** unsigned char DS1822_Start_Conversion_by_ROM (GPIO_TypeDef * GPIOx, unsigned long PINx, unsigned ch
+  40:../Work/Sources/ds1822.c **** {
+ 186              		.loc 1 40 0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 24
+ 189              		@ frame_needed = 1, uses_anonymous_args = 0
+ 190 0000 80B5     		push	{r7, lr}
+ 191              	.LCFI3:
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 7, -8
+ 194              		.cfi_offset 14, -4
+ 195 0002 86B0     		sub	sp, sp, #24
+ 196              	.LCFI4:
+ 197              		.cfi_def_cfa_offset 32
+ 198 0004 00AF     		add	r7, sp, #0
+ 199              	.LCFI5:
+ 200              		.cfi_def_cfa_register 7
+ 201 0006 F860     		str	r0, [r7, #12]
+ 202 0008 B960     		str	r1, [r7, #8]
+ 203 000a 7A60     		str	r2, [r7, #4]
+  41:../Work/Sources/ds1822.c **** 	unsigned char cnt;
+  42:../Work/Sources/ds1822.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+ 204              		.loc 1 42 0
+ 205 000c BB68     		ldr	r3, [r7, #8]
+ 206 000e 9BB2     		uxth	r3, r3
+ 207 0010 F868     		ldr	r0, [r7, #12]
+ 208 0012 1946     		mov	r1, r3
+ 209 0014 FFF7FEFF 		bl	One_Wire_Reset
+ 210 0018 0346     		mov	r3, r0
+ 211 001a FB75     		strb	r3, [r7, #23]
+  43:../Work/Sources/ds1822.c **** 	if (cnt!=One_Wire_Success) return cnt;
+ 212              		.loc 1 43 0
+ 213 001c FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 214 001e 002B     		cmp	r3, #0
+ 215 0020 01D0     		beq	.L12
+ 216              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 217 0022 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 218 0024 26E0     		b	.L13
+ 219              	.L12:
+  44:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(One_Wire_Match_ROM,GPIOx, PINx);
+ 220              		.loc 1 44 0 is_stmt 1
+ 221 0026 BB68     		ldr	r3, [r7, #8]
+ 222 0028 9BB2     		uxth	r3, r3
+ 223 002a 4FF05500 		mov	r0, #85
+ 224 002e F968     		ldr	r1, [r7, #12]
+ 225 0030 1A46     		mov	r2, r3
+ 226 0032 FFF7FEFF 		bl	One_Wire_Write_Byte
+  45:../Work/Sources/ds1822.c **** 	for (cnt=0;cnt!=8;cnt++) One_Wire_Write_Byte((*Serial_Num)[cnt],GPIOx, PINx);
+ 227              		.loc 1 45 0
+ 228 0036 4FF00003 		mov	r3, #0
+ 229 003a FB75     		strb	r3, [r7, #23]
+ 230 003c 0DE0     		b	.L14
+ 231              	.L15:
+ 232              		.loc 1 45 0 is_stmt 0 discriminator 2
+ 233 003e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 234 0040 7A68     		ldr	r2, [r7, #4]
+ 235 0042 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 236 0044 BB68     		ldr	r3, [r7, #8]
+ 237 0046 9BB2     		uxth	r3, r3
+ 238 0048 1046     		mov	r0, r2
+ 239 004a F968     		ldr	r1, [r7, #12]
+ 240 004c 1A46     		mov	r2, r3
+ 241 004e FFF7FEFF 		bl	One_Wire_Write_Byte
+ 242 0052 FB7D     		ldrb	r3, [r7, #23]
+ 243 0054 03F10103 		add	r3, r3, #1
+ 244 0058 FB75     		strb	r3, [r7, #23]
+ 245              	.L14:
+ 246              		.loc 1 45 0 discriminator 1
+ 247 005a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 248 005c 082B     		cmp	r3, #8
+ 249 005e EED1     		bne	.L15
+  46:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(DS1822_CONVERT_T_CMD,GPIOx, PINx);
+ 250              		.loc 1 46 0 is_stmt 1
+ 251 0060 BB68     		ldr	r3, [r7, #8]
+ 252 0062 9BB2     		uxth	r3, r3
+ 253 0064 4FF04400 		mov	r0, #68
+ 254 0068 F968     		ldr	r1, [r7, #12]
+ 255 006a 1A46     		mov	r2, r3
+ 256 006c FFF7FEFF 		bl	One_Wire_Write_Byte
+  47:../Work/Sources/ds1822.c **** 	return One_Wire_Success;
+ 257              		.loc 1 47 0
+ 258 0070 4FF00003 		mov	r3, #0
+ 259              	.L13:
+  48:../Work/Sources/ds1822.c **** }
+ 260              		.loc 1 48 0
+ 261 0074 1846     		mov	r0, r3
+ 262 0076 07F11807 		add	r7, r7, #24
+ 263 007a BD46     		mov	sp, r7
+ 264 007c 80BD     		pop	{r7, pc}
+ 265              		.cfi_endproc
+ 266              	.LFE30:
+ 268              		.section	.text.DS1822_Get_Conversion_Result_by_ROM_CRC,"ax",%progbits
+ 269              		.align	2
+ 270              		.global	DS1822_Get_Conversion_Result_by_ROM_CRC
+ 271              		.thumb
+ 272              		.thumb_func
+ 274              	DS1822_Get_Conversion_Result_by_ROM_CRC:
+ 275              	.LFB31:
+  49:../Work/Sources/ds1822.c **** 
+  50:../Work/Sources/ds1822.c **** unsigned char DS1822_Get_Conversion_Result_by_ROM_CRC (GPIO_TypeDef * GPIOx, unsigned long PINx,
+  51:../Work/Sources/ds1822.c **** 	unsigned char (*Serial_Num)[DS1822_SERIAL_NUM_SIZE], unsigned int * temp_code)
+  52:../Work/Sources/ds1822.c **** {
+ 276              		.loc 1 52 0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 32
+ 279              		@ frame_needed = 1, uses_anonymous_args = 0
+ 280 0000 90B5     		push	{r4, r7, lr}
+ 281              	.LCFI6:
+ 282              		.cfi_def_cfa_offset 12
+ 283              		.cfi_offset 4, -12
+ 284              		.cfi_offset 7, -8
+ 285              		.cfi_offset 14, -4
+ 286 0002 89B0     		sub	sp, sp, #36
+ 287              	.LCFI7:
+ 288              		.cfi_def_cfa_offset 48
+ 289 0004 00AF     		add	r7, sp, #0
+ 290              	.LCFI8:
+ 291              		.cfi_def_cfa_register 7
+ 292 0006 F860     		str	r0, [r7, #12]
+ 293 0008 B960     		str	r1, [r7, #8]
+ 294 000a 7A60     		str	r2, [r7, #4]
+ 295 000c 3B60     		str	r3, [r7, #0]
+  53:../Work/Sources/ds1822.c **** 	unsigned char cnt;
+  54:../Work/Sources/ds1822.c **** 	unsigned char inbuff[DS1822_STRATCHPAD_SIZE];
+  55:../Work/Sources/ds1822.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+ 296              		.loc 1 55 0
+ 297 000e BB68     		ldr	r3, [r7, #8]
+ 298 0010 9BB2     		uxth	r3, r3
+ 299 0012 F868     		ldr	r0, [r7, #12]
+ 300 0014 1946     		mov	r1, r3
+ 301 0016 FFF7FEFF 		bl	One_Wire_Reset
+ 302 001a 0346     		mov	r3, r0
+ 303 001c FB77     		strb	r3, [r7, #31]
+  56:../Work/Sources/ds1822.c **** 	if (cnt!=One_Wire_Success) return cnt;
+ 304              		.loc 1 56 0
+ 305 001e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 306 0020 002B     		cmp	r3, #0
+ 307 0022 01D0     		beq	.L17
+ 308              		.loc 1 56 0 is_stmt 0 discriminator 1
+ 309 0024 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 310 0026 55E0     		b	.L24
+ 311              	.L17:
+  57:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(One_Wire_Match_ROM,GPIOx, PINx);
+ 312              		.loc 1 57 0 is_stmt 1
+ 313 0028 BB68     		ldr	r3, [r7, #8]
+ 314 002a 9BB2     		uxth	r3, r3
+ 315 002c 4FF05500 		mov	r0, #85
+ 316 0030 F968     		ldr	r1, [r7, #12]
+ 317 0032 1A46     		mov	r2, r3
+ 318 0034 FFF7FEFF 		bl	One_Wire_Write_Byte
+  58:../Work/Sources/ds1822.c **** 	for (cnt=0;cnt!=8;cnt++) One_Wire_Write_Byte((*Serial_Num)[cnt],GPIOx, PINx);
+ 319              		.loc 1 58 0
+ 320 0038 4FF00003 		mov	r3, #0
+ 321 003c FB77     		strb	r3, [r7, #31]
+ 322 003e 0DE0     		b	.L19
+ 323              	.L20:
+ 324              		.loc 1 58 0 is_stmt 0 discriminator 2
+ 325 0040 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 326 0042 7A68     		ldr	r2, [r7, #4]
+ 327 0044 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 328 0046 BB68     		ldr	r3, [r7, #8]
+ 329 0048 9BB2     		uxth	r3, r3
+ 330 004a 1046     		mov	r0, r2
+ 331 004c F968     		ldr	r1, [r7, #12]
+ 332 004e 1A46     		mov	r2, r3
+ 333 0050 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 334 0054 FB7F     		ldrb	r3, [r7, #31]
+ 335 0056 03F10103 		add	r3, r3, #1
+ 336 005a FB77     		strb	r3, [r7, #31]
+ 337              	.L19:
+ 338              		.loc 1 58 0 discriminator 1
+ 339 005c FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 340 005e 082B     		cmp	r3, #8
+ 341 0060 EED1     		bne	.L20
+  59:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(DS1822_READ_STRATCHPAD_CMD,GPIOx, PINx);
+ 342              		.loc 1 59 0 is_stmt 1
+ 343 0062 BB68     		ldr	r3, [r7, #8]
+ 344 0064 9BB2     		uxth	r3, r3
+ 345 0066 4FF0BE00 		mov	r0, #190
+ 346 006a F968     		ldr	r1, [r7, #12]
+ 347 006c 1A46     		mov	r2, r3
+ 348 006e FFF7FEFF 		bl	One_Wire_Write_Byte
+  60:../Work/Sources/ds1822.c **** 	for (cnt=0;cnt!=DS1822_STRATCHPAD_SIZE;cnt++) inbuff[cnt]=One_Wire_Read_Byte(GPIOx, PINx);
+ 349              		.loc 1 60 0
+ 350 0072 4FF00003 		mov	r3, #0
+ 351 0076 FB77     		strb	r3, [r7, #31]
+ 352 0078 11E0     		b	.L21
+ 353              	.L22:
+ 354              		.loc 1 60 0 is_stmt 0 discriminator 2
+ 355 007a FC7F     		ldrb	r4, [r7, #31]	@ zero_extendqisi2
+ 356 007c BB68     		ldr	r3, [r7, #8]
+ 357 007e 9BB2     		uxth	r3, r3
+ 358 0080 F868     		ldr	r0, [r7, #12]
+ 359 0082 1946     		mov	r1, r3
+ 360 0084 FFF7FEFF 		bl	One_Wire_Read_Byte
+ 361 0088 0346     		mov	r3, r0
+ 362 008a 1A46     		mov	r2, r3
+ 363 008c 07F12001 		add	r1, r7, #32
+ 364 0090 0B19     		adds	r3, r1, r4
+ 365 0092 03F80C2C 		strb	r2, [r3, #-12]
+ 366 0096 FB7F     		ldrb	r3, [r7, #31]
+ 367 0098 03F10103 		add	r3, r3, #1
+ 368 009c FB77     		strb	r3, [r7, #31]
+ 369              	.L21:
+ 370              		.loc 1 60 0 discriminator 1
+ 371 009e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 372 00a0 092B     		cmp	r3, #9
+ 373 00a2 EAD1     		bne	.L22
+  61:../Work/Sources/ds1822.c **** 	if (Crc8Dallas(DS1822_STRATCHPAD_SIZE,inbuff)==0) *temp_code = inbuff[0]|(inbuff[1]<<8);
+ 374              		.loc 1 61 0 is_stmt 1
+ 375 00a4 07F11403 		add	r3, r7, #20
+ 376 00a8 4FF00900 		mov	r0, #9
+ 377 00ac 1946     		mov	r1, r3
+ 378 00ae FFF7FEFF 		bl	Crc8Dallas
+ 379 00b2 0346     		mov	r3, r0
+ 380 00b4 002B     		cmp	r3, #0
+ 381 00b6 0BD1     		bne	.L23
+ 382              		.loc 1 61 0 is_stmt 0 discriminator 1
+ 383 00b8 3B7D     		ldrb	r3, [r7, #20]	@ zero_extendqisi2
+ 384 00ba 1A46     		mov	r2, r3
+ 385 00bc 7B7D     		ldrb	r3, [r7, #21]	@ zero_extendqisi2
+ 386 00be 4FEA0323 		lsl	r3, r3, #8
+ 387 00c2 1343     		orrs	r3, r3, r2
+ 388 00c4 1A46     		mov	r2, r3
+ 389 00c6 3B68     		ldr	r3, [r7, #0]
+ 390 00c8 1A60     		str	r2, [r3, #0]
+  62:../Work/Sources/ds1822.c **** 	else	return One_Wire_CRC_Error;
+  63:../Work/Sources/ds1822.c **** 	return One_Wire_Success;
+ 391              		.loc 1 63 0 is_stmt 1 discriminator 1
+ 392 00ca 4FF00003 		mov	r3, #0
+ 393 00ce 01E0     		b	.L24
+ 394              	.L23:
+  62:../Work/Sources/ds1822.c **** 	else	return One_Wire_CRC_Error;
+ 395              		.loc 1 62 0
+ 396 00d0 4FF00403 		mov	r3, #4
+ 397              	.L24:
+  64:../Work/Sources/ds1822.c **** }
+ 398              		.loc 1 64 0
+ 399 00d4 1846     		mov	r0, r3
+ 400 00d6 07F12407 		add	r7, r7, #36
+ 401 00da BD46     		mov	sp, r7
+ 402 00dc 90BD     		pop	{r4, r7, pc}
+ 403              		.cfi_endproc
+ 404              	.LFE31:
+ 406 00de 00BF     		.section	.text.DS1822_Search_Rom,"ax",%progbits
+ 407              		.align	2
+ 408              		.global	DS1822_Search_Rom
+ 409              		.thumb
+ 410              		.thumb_func
+ 412              	DS1822_Search_Rom:
+ 413              	.LFB32:
+  65:../Work/Sources/ds1822.c **** 
+  66:../Work/Sources/ds1822.c **** unsigned char DS1822_Search_Rom (unsigned char * devices_found, GPIO_TypeDef * GPIOx, unsigned long
+  67:../Work/Sources/ds1822.c **** {
+ 414              		.loc 1 67 0
+ 415              		.cfi_startproc
+ 416              		@ args = 0, pretend = 0, frame = 40
+ 417              		@ frame_needed = 1, uses_anonymous_args = 0
+ 418 0000 90B5     		push	{r4, r7, lr}
+ 419              	.LCFI9:
+ 420              		.cfi_def_cfa_offset 12
+ 421              		.cfi_offset 4, -12
+ 422              		.cfi_offset 7, -8
+ 423              		.cfi_offset 14, -4
+ 424 0002 8BB0     		sub	sp, sp, #44
+ 425              	.LCFI10:
+ 426              		.cfi_def_cfa_offset 56
+ 427 0004 00AF     		add	r7, sp, #0
+ 428              	.LCFI11:
+ 429              		.cfi_def_cfa_register 7
+ 430 0006 F860     		str	r0, [r7, #12]
+ 431 0008 B960     		str	r1, [r7, #8]
+ 432 000a 7A60     		str	r2, [r7, #4]
+  68:../Work/Sources/ds1822.c **** 	unsigned long path,next,pos;                          /* decision markers */
+  69:../Work/Sources/ds1822.c ****  	unsigned char bit,chk;                                /* bit values */
+  70:../Work/Sources/ds1822.c **** 	unsigned char cnt_bit, cnt_byte, cnt_num,tmp;
+  71:../Work/Sources/ds1822.c ****  	path=0;                                     /* initial path to follow */
+ 433              		.loc 1 71 0
+ 434 000c 4FF00003 		mov	r3, #0
+ 435 0010 7B62     		str	r3, [r7, #36]
+  72:../Work/Sources/ds1822.c ****  	cnt_num=0;
+ 436              		.loc 1 72 0
+ 437 0012 4FF00003 		mov	r3, #0
+ 438 0016 3B76     		strb	r3, [r7, #24]
+ 439              	.L36:
+  73:../Work/Sources/ds1822.c **** 	do
+  74:../Work/Sources/ds1822.c **** 	{                                         /* each ROM search pass */
+  75:../Work/Sources/ds1822.c **** 		//(initialize the bus with a reset pulse)
+  76:../Work/Sources/ds1822.c ****  		tmp=One_Wire_Reset(GPIOx, PINx);
+ 440              		.loc 1 76 0
+ 441 0018 7B68     		ldr	r3, [r7, #4]
+ 442 001a 9BB2     		uxth	r3, r3
+ 443 001c B868     		ldr	r0, [r7, #8]
+ 444 001e 1946     		mov	r1, r3
+ 445 0020 FFF7FEFF 		bl	One_Wire_Reset
+ 446 0024 0346     		mov	r3, r0
+ 447 0026 FB75     		strb	r3, [r7, #23]
+  77:../Work/Sources/ds1822.c ****  			if (tmp!=One_Wire_Success) return tmp;
+ 448              		.loc 1 77 0
+ 449 0028 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 450 002a 002B     		cmp	r3, #0
+ 451 002c 01D0     		beq	.L26
+ 452              		.loc 1 77 0 is_stmt 0 discriminator 1
+ 453 002e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 454 0030 95E0     		b	.L27
+ 455              	.L26:
+  78:../Work/Sources/ds1822.c **** 		//(issue the 'ROM search' command)
+  79:../Work/Sources/ds1822.c **** 		One_Wire_Write_Byte(One_Wire_Search_ROM,GPIOx, PINx);
+ 456              		.loc 1 79 0 is_stmt 1
+ 457 0032 7B68     		ldr	r3, [r7, #4]
+ 458 0034 9BB2     		uxth	r3, r3
+ 459 0036 4FF0F000 		mov	r0, #240
+ 460 003a B968     		ldr	r1, [r7, #8]
+ 461 003c 1A46     		mov	r2, r3
+ 462 003e FFF7FEFF 		bl	One_Wire_Write_Byte
+  80:../Work/Sources/ds1822.c ****      	next=0;                                 /* next path to follow */
+ 463              		.loc 1 80 0
+ 464 0042 4FF00003 		mov	r3, #0
+ 465 0046 3B62     		str	r3, [r7, #32]
+  81:../Work/Sources/ds1822.c ****      	pos=1;                                  /* path bit pointer */
+ 466              		.loc 1 81 0
+ 467 0048 4FF00103 		mov	r3, #1
+ 468 004c FB61     		str	r3, [r7, #28]
+  82:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 469              		.loc 1 82 0
+ 470 004e 4FF00003 		mov	r3, #0
+ 471 0052 7B76     		strb	r3, [r7, #25]
+ 472 0054 71E0     		b	.L28
+ 473              	.L35:
+  83:../Work/Sources/ds1822.c **** 		{
+  84:../Work/Sources/ds1822.c **** 			Search_Rom_SN[cnt_num][cnt_byte]=0;
+ 474              		.loc 1 84 0
+ 475 0056 397E     		ldrb	r1, [r7, #24]	@ zero_extendqisi2
+ 476 0058 7A7E     		ldrb	r2, [r7, #25]	@ zero_extendqisi2
+ 477 005a 40F20003 		movw	r3, #:lower16:Search_Rom_SN
+ 478 005e C0F20003 		movt	r3, #:upper16:Search_Rom_SN
+ 479 0062 4FEAC101 		lsl	r1, r1, #3
+ 480 0066 8A18     		adds	r2, r1, r2
+ 481 0068 9B18     		adds	r3, r3, r2
+ 482 006a 4FF00002 		mov	r2, #0
+ 483 006e 1A70     		strb	r2, [r3, #0]
+  85:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 484              		.loc 1 85 0
+ 485 0070 4FF00003 		mov	r3, #0
+ 486 0074 BB76     		strb	r3, [r7, #26]
+ 487 0076 59E0     		b	.L29
+ 488              	.L34:
+  86:../Work/Sources/ds1822.c ****   			{                                     /* each bit of the ROM value */
+  87:../Work/Sources/ds1822.c ****  				//(read two bits, 'bit' and 'chk', from the 1-wire bus)
+  88:../Work/Sources/ds1822.c **** 				bit=One_Wire_Read_Bit(GPIOx, PINx);
+ 489              		.loc 1 88 0
+ 490 0078 7B68     		ldr	r3, [r7, #4]
+ 491 007a 9BB2     		uxth	r3, r3
+ 492 007c B868     		ldr	r0, [r7, #8]
+ 493 007e 1946     		mov	r1, r3
+ 494 0080 FFF7FEFF 		bl	One_Wire_Read_Bit
+ 495 0084 0346     		mov	r3, r0
+ 496 0086 FB76     		strb	r3, [r7, #27]
+  89:../Work/Sources/ds1822.c **** 				chk=One_Wire_Read_Bit(GPIOx, PINx);
+ 497              		.loc 1 89 0
+ 498 0088 7B68     		ldr	r3, [r7, #4]
+ 499 008a 9BB2     		uxth	r3, r3
+ 500 008c B868     		ldr	r0, [r7, #8]
+ 501 008e 1946     		mov	r1, r3
+ 502 0090 FFF7FEFF 		bl	One_Wire_Read_Bit
+ 503 0094 0346     		mov	r3, r0
+ 504 0096 BB75     		strb	r3, [r7, #22]
+  90:../Work/Sources/ds1822.c ****         		if(!bit && !chk)
+ 505              		.loc 1 90 0
+ 506 0098 FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
+ 507 009a 002B     		cmp	r3, #0
+ 508 009c 17D1     		bne	.L30
+ 509              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 510 009e BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 511 00a0 002B     		cmp	r3, #0
+ 512 00a2 14D1     		bne	.L30
+  91:../Work/Sources/ds1822.c **** 					{                   /* collision, both are zero */
+  92:../Work/Sources/ds1822.c ****              			if(pos&path) bit=1;             /* if we've been here before */
+ 513              		.loc 1 92 0 is_stmt 1
+ 514 00a4 FA69     		ldr	r2, [r7, #28]
+ 515 00a6 7B6A     		ldr	r3, [r7, #36]
+ 516 00a8 1340     		ands	r3, r3, r2
+ 517 00aa 002B     		cmp	r3, #0
+ 518 00ac 03D0     		beq	.L31
+ 519              		.loc 1 92 0 is_stmt 0 discriminator 1
+ 520 00ae 4FF00103 		mov	r3, #1
+ 521 00b2 FB76     		strb	r3, [r7, #27]
+ 522 00b4 07E0     		b	.L32
+ 523              	.L31:
+  93:../Work/Sources/ds1822.c ****              			else next=(path&(pos-1))|pos;   /* else, new branch for next */
+ 524              		.loc 1 93 0 is_stmt 1
+ 525 00b6 FB69     		ldr	r3, [r7, #28]
+ 526 00b8 03F1FF32 		add	r2, r3, #-1
+ 527 00bc 7B6A     		ldr	r3, [r7, #36]
+ 528 00be 1A40     		ands	r2, r2, r3
+ 529 00c0 FB69     		ldr	r3, [r7, #28]
+ 530 00c2 1343     		orrs	r3, r3, r2
+ 531 00c4 3B62     		str	r3, [r7, #32]
+ 532              	.L32:
+  94:../Work/Sources/ds1822.c ****              			pos<<=1;
+ 533              		.loc 1 94 0
+ 534 00c6 FB69     		ldr	r3, [r7, #28]
+ 535 00c8 4FEA4303 		lsl	r3, r3, #1
+ 536 00cc FB61     		str	r3, [r7, #28]
+ 537              	.L30:
+  95:../Work/Sources/ds1822.c ****           			}
+  96:../Work/Sources/ds1822.c ****  				//(write 'bit' to the 1-wire bus)
+  97:../Work/Sources/ds1822.c ****  				One_Wire_Write_Bit(bit, GPIOx, PINx);
+ 538              		.loc 1 97 0
+ 539 00ce 7B68     		ldr	r3, [r7, #4]
+ 540 00d0 9BB2     		uxth	r3, r3
+ 541 00d2 FA7E     		ldrb	r2, [r7, #27]	@ zero_extendqisi2
+ 542 00d4 1046     		mov	r0, r2
+ 543 00d6 B968     		ldr	r1, [r7, #8]
+ 544 00d8 1A46     		mov	r2, r3
+ 545 00da FFF7FEFF 		bl	One_Wire_Write_Bit
+  98:../Work/Sources/ds1822.c **** 
+  99:../Work/Sources/ds1822.c ****  				//(save this bit as part of the current ROM value)
+ 100:../Work/Sources/ds1822.c **** 				if (bit!=0) Search_Rom_SN[cnt_num][cnt_byte]|=(1<<cnt_bit);
+ 546              		.loc 1 100 0
+ 547 00de FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
+ 548 00e0 002B     		cmp	r3, #0
+ 549 00e2 1FD0     		beq	.L33
+ 550              		.loc 1 100 0 is_stmt 0 discriminator 1
+ 551 00e4 387E     		ldrb	r0, [r7, #24]	@ zero_extendqisi2
+ 552 00e6 797E     		ldrb	r1, [r7, #25]	@ zero_extendqisi2
+ 553 00e8 3C7E     		ldrb	r4, [r7, #24]	@ zero_extendqisi2
+ 554 00ea 7A7E     		ldrb	r2, [r7, #25]	@ zero_extendqisi2
+ 555 00ec 40F20003 		movw	r3, #:lower16:Search_Rom_SN
+ 556 00f0 C0F20003 		movt	r3, #:upper16:Search_Rom_SN
+ 557 00f4 4FEAC404 		lsl	r4, r4, #3
+ 558 00f8 A218     		adds	r2, r4, r2
+ 559 00fa 9B18     		adds	r3, r3, r2
+ 560 00fc 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 561 00fe DAB2     		uxtb	r2, r3
+ 562 0100 BB7E     		ldrb	r3, [r7, #26]	@ zero_extendqisi2
+ 563 0102 4FF00104 		mov	r4, #1
+ 564 0106 04FA03F3 		lsl	r3, r4, r3
+ 565 010a DBB2     		uxtb	r3, r3
+ 566 010c 1343     		orrs	r3, r3, r2
+ 567 010e DBB2     		uxtb	r3, r3
+ 568 0110 DAB2     		uxtb	r2, r3
+ 569 0112 40F20003 		movw	r3, #:lower16:Search_Rom_SN
+ 570 0116 C0F20003 		movt	r3, #:upper16:Search_Rom_SN
+ 571 011a 4FEAC000 		lsl	r0, r0, #3
+ 572 011e 4118     		adds	r1, r0, r1
+ 573 0120 5B18     		adds	r3, r3, r1
+ 574 0122 1A70     		strb	r2, [r3, #0]
+ 575              	.L33:
+  85:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 576              		.loc 1 85 0 is_stmt 1
+ 577 0124 BB7E     		ldrb	r3, [r7, #26]
+ 578 0126 03F10103 		add	r3, r3, #1
+ 579 012a BB76     		strb	r3, [r7, #26]
+ 580              	.L29:
+  85:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 581              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 582 012c BB7E     		ldrb	r3, [r7, #26]	@ zero_extendqisi2
+ 583 012e 082B     		cmp	r3, #8
+ 584 0130 A2D1     		bne	.L34
+  82:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 585              		.loc 1 82 0 is_stmt 1
+ 586 0132 7B7E     		ldrb	r3, [r7, #25]
+ 587 0134 03F10103 		add	r3, r3, #1
+ 588 0138 7B76     		strb	r3, [r7, #25]
+ 589              	.L28:
+  82:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 590              		.loc 1 82 0 is_stmt 0 discriminator 1
+ 591 013a 7B7E     		ldrb	r3, [r7, #25]	@ zero_extendqisi2
+ 592 013c 082B     		cmp	r3, #8
+ 593 013e 8AD1     		bne	.L35
+ 101:../Work/Sources/ds1822.c ****      		}
+ 102:../Work/Sources/ds1822.c **** 		}
+ 103:../Work/Sources/ds1822.c ****  		//(output the just-completed ROM value)
+ 104:../Work/Sources/ds1822.c ****      	path=next;
+ 594              		.loc 1 104 0 is_stmt 1
+ 595 0140 3B6A     		ldr	r3, [r7, #32]
+ 596 0142 7B62     		str	r3, [r7, #36]
+ 105:../Work/Sources/ds1822.c **** 		cnt_num++;
+ 597              		.loc 1 105 0
+ 598 0144 3B7E     		ldrb	r3, [r7, #24]
+ 599 0146 03F10103 		add	r3, r3, #1
+ 600 014a 3B76     		strb	r3, [r7, #24]
+ 106:../Work/Sources/ds1822.c ****  	}while(path);
+ 601              		.loc 1 106 0
+ 602 014c 7B6A     		ldr	r3, [r7, #36]
+ 603 014e 002B     		cmp	r3, #0
+ 604 0150 7FF462AF 		bne	.L36
+ 107:../Work/Sources/ds1822.c **** 	* devices_found = cnt_num;
+ 605              		.loc 1 107 0
+ 606 0154 FB68     		ldr	r3, [r7, #12]
+ 607 0156 3A7E     		ldrb	r2, [r7, #24]
+ 608 0158 1A70     		strb	r2, [r3, #0]
+ 108:../Work/Sources/ds1822.c **** 	return One_Wire_Success;
+ 609              		.loc 1 108 0
+ 610 015a 4FF00003 		mov	r3, #0
+ 611              	.L27:
+ 109:../Work/Sources/ds1822.c **** }
+ 612              		.loc 1 109 0
+ 613 015e 1846     		mov	r0, r3
+ 614 0160 07F12C07 		add	r7, r7, #44
+ 615 0164 BD46     		mov	sp, r7
+ 616 0166 90BD     		pop	{r4, r7, pc}
+ 617              		.cfi_endproc
+ 618              	.LFE32:
+ 620              		.section	.text.DS1822_Search_Rom2,"ax",%progbits
+ 621              		.align	2
+ 622              		.global	DS1822_Search_Rom2
+ 623              		.thumb
+ 624              		.thumb_func
+ 626              	DS1822_Search_Rom2:
+ 627              	.LFB33:
+ 110:../Work/Sources/ds1822.c **** 
+ 111:../Work/Sources/ds1822.c **** unsigned char DS1822_Search_Rom2 (GPIO_TypeDef * GPIOx, unsigned long PINx, unsigned char * devices
+ 112:../Work/Sources/ds1822.c **** {
+ 628              		.loc 1 112 0
+ 629              		.cfi_startproc
+ 630              		@ args = 0, pretend = 0, frame = 40
+ 631              		@ frame_needed = 1, uses_anonymous_args = 0
+ 632 0000 90B5     		push	{r4, r7, lr}
+ 633              	.LCFI12:
+ 634              		.cfi_def_cfa_offset 12
+ 635              		.cfi_offset 4, -12
+ 636              		.cfi_offset 7, -8
+ 637              		.cfi_offset 14, -4
+ 638 0002 8BB0     		sub	sp, sp, #44
+ 639              	.LCFI13:
+ 640              		.cfi_def_cfa_offset 56
+ 641 0004 00AF     		add	r7, sp, #0
+ 642              	.LCFI14:
+ 643              		.cfi_def_cfa_register 7
+ 644 0006 F860     		str	r0, [r7, #12]
+ 645 0008 B960     		str	r1, [r7, #8]
+ 646 000a 7A60     		str	r2, [r7, #4]
+ 647 000c 3B60     		str	r3, [r7, #0]
+ 113:../Work/Sources/ds1822.c **** 	unsigned long path,next,pos;
+ 114:../Work/Sources/ds1822.c ****  	unsigned char bit,chk;
+ 115:../Work/Sources/ds1822.c **** 	unsigned char cnt_bit, cnt_byte, cnt_num,tmp;
+ 116:../Work/Sources/ds1822.c ****  	path=0;
+ 648              		.loc 1 116 0
+ 649 000e 4FF00003 		mov	r3, #0
+ 650 0012 7B62     		str	r3, [r7, #36]
+ 117:../Work/Sources/ds1822.c ****  	cnt_num=0;
+ 651              		.loc 1 117 0
+ 652 0014 4FF00003 		mov	r3, #0
+ 653 0018 3B76     		strb	r3, [r7, #24]
+ 654              	.L48:
+ 118:../Work/Sources/ds1822.c **** 	do
+ 119:../Work/Sources/ds1822.c **** 	{
+ 120:../Work/Sources/ds1822.c ****  		tmp=One_Wire_Reset(GPIOx, PINx);
+ 655              		.loc 1 120 0
+ 656 001a BB68     		ldr	r3, [r7, #8]
+ 657 001c 9BB2     		uxth	r3, r3
+ 658 001e F868     		ldr	r0, [r7, #12]
+ 659 0020 1946     		mov	r1, r3
+ 660 0022 FFF7FEFF 		bl	One_Wire_Reset
+ 661 0026 0346     		mov	r3, r0
+ 662 0028 FB75     		strb	r3, [r7, #23]
+ 121:../Work/Sources/ds1822.c ****  			if (tmp!=One_Wire_Success) return tmp;
+ 663              		.loc 1 121 0
+ 664 002a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 665 002c 002B     		cmp	r3, #0
+ 666 002e 01D0     		beq	.L38
+ 667              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 668 0030 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 669 0032 8CE0     		b	.L39
+ 670              	.L38:
+ 122:../Work/Sources/ds1822.c **** 			One_Wire_Write_Byte(One_Wire_Search_ROM,GPIOx, PINx);
+ 671              		.loc 1 122 0 is_stmt 1
+ 672 0034 BB68     		ldr	r3, [r7, #8]
+ 673 0036 9BB2     		uxth	r3, r3
+ 674 0038 4FF0F000 		mov	r0, #240
+ 675 003c F968     		ldr	r1, [r7, #12]
+ 676 003e 1A46     		mov	r2, r3
+ 677 0040 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 123:../Work/Sources/ds1822.c ****      	next=0;
+ 678              		.loc 1 123 0
+ 679 0044 4FF00003 		mov	r3, #0
+ 680 0048 3B62     		str	r3, [r7, #32]
+ 124:../Work/Sources/ds1822.c ****      	pos=1;
+ 681              		.loc 1 124 0
+ 682 004a 4FF00103 		mov	r3, #1
+ 683 004e FB61     		str	r3, [r7, #28]
+ 125:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 684              		.loc 1 125 0
+ 685 0050 4FF00003 		mov	r3, #0
+ 686 0054 7B76     		strb	r3, [r7, #25]
+ 687 0056 68E0     		b	.L40
+ 688              	.L47:
+ 126:../Work/Sources/ds1822.c **** 		{
+ 127:../Work/Sources/ds1822.c **** 			(*SN_ROM)[cnt_num][cnt_byte]=0;
+ 689              		.loc 1 127 0
+ 690 0058 397E     		ldrb	r1, [r7, #24]	@ zero_extendqisi2
+ 691 005a 7B7E     		ldrb	r3, [r7, #25]	@ zero_extendqisi2
+ 692 005c 3A68     		ldr	r2, [r7, #0]
+ 693 005e 4FEAC101 		lsl	r1, r1, #3
+ 694 0062 CB18     		adds	r3, r1, r3
+ 695 0064 D318     		adds	r3, r2, r3
+ 696 0066 4FF00002 		mov	r2, #0
+ 697 006a 1A70     		strb	r2, [r3, #0]
+ 128:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 698              		.loc 1 128 0
+ 699 006c 4FF00003 		mov	r3, #0
+ 700 0070 BB76     		strb	r3, [r7, #26]
+ 701 0072 53E0     		b	.L41
+ 702              	.L46:
+ 129:../Work/Sources/ds1822.c ****   		{
+ 130:../Work/Sources/ds1822.c **** 				bit=One_Wire_Read_Bit(GPIOx, PINx);
+ 703              		.loc 1 130 0
+ 704 0074 BB68     		ldr	r3, [r7, #8]
+ 705 0076 9BB2     		uxth	r3, r3
+ 706 0078 F868     		ldr	r0, [r7, #12]
+ 707 007a 1946     		mov	r1, r3
+ 708 007c FFF7FEFF 		bl	One_Wire_Read_Bit
+ 709 0080 0346     		mov	r3, r0
+ 710 0082 FB76     		strb	r3, [r7, #27]
+ 131:../Work/Sources/ds1822.c **** 				chk=One_Wire_Read_Bit(GPIOx, PINx);
+ 711              		.loc 1 131 0
+ 712 0084 BB68     		ldr	r3, [r7, #8]
+ 713 0086 9BB2     		uxth	r3, r3
+ 714 0088 F868     		ldr	r0, [r7, #12]
+ 715 008a 1946     		mov	r1, r3
+ 716 008c FFF7FEFF 		bl	One_Wire_Read_Bit
+ 717 0090 0346     		mov	r3, r0
+ 718 0092 BB75     		strb	r3, [r7, #22]
+ 132:../Work/Sources/ds1822.c ****         if(!bit && !chk)
+ 719              		.loc 1 132 0
+ 720 0094 FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
+ 721 0096 002B     		cmp	r3, #0
+ 722 0098 17D1     		bne	.L42
+ 723              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 724 009a BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 725 009c 002B     		cmp	r3, #0
+ 726 009e 14D1     		bne	.L42
+ 133:../Work/Sources/ds1822.c **** 				{
+ 134:../Work/Sources/ds1822.c ****           if(pos&path) bit=1;
+ 727              		.loc 1 134 0 is_stmt 1
+ 728 00a0 FA69     		ldr	r2, [r7, #28]
+ 729 00a2 7B6A     		ldr	r3, [r7, #36]
+ 730 00a4 1340     		ands	r3, r3, r2
+ 731 00a6 002B     		cmp	r3, #0
+ 732 00a8 03D0     		beq	.L43
+ 733              		.loc 1 134 0 is_stmt 0 discriminator 1
+ 734 00aa 4FF00103 		mov	r3, #1
+ 735 00ae FB76     		strb	r3, [r7, #27]
+ 736 00b0 07E0     		b	.L44
+ 737              	.L43:
+ 135:../Work/Sources/ds1822.c ****             else next=(path&(pos-1))|pos;
+ 738              		.loc 1 135 0 is_stmt 1
+ 739 00b2 FB69     		ldr	r3, [r7, #28]
+ 740 00b4 03F1FF32 		add	r2, r3, #-1
+ 741 00b8 7B6A     		ldr	r3, [r7, #36]
+ 742 00ba 1A40     		ands	r2, r2, r3
+ 743 00bc FB69     		ldr	r3, [r7, #28]
+ 744 00be 1343     		orrs	r3, r3, r2
+ 745 00c0 3B62     		str	r3, [r7, #32]
+ 746              	.L44:
+ 136:../Work/Sources/ds1822.c ****           pos<<=1;
+ 747              		.loc 1 136 0
+ 748 00c2 FB69     		ldr	r3, [r7, #28]
+ 749 00c4 4FEA4303 		lsl	r3, r3, #1
+ 750 00c8 FB61     		str	r3, [r7, #28]
+ 751              	.L42:
+ 137:../Work/Sources/ds1822.c ****         }
+ 138:../Work/Sources/ds1822.c ****  			One_Wire_Write_Bit(bit, GPIOx, PINx);
+ 752              		.loc 1 138 0
+ 753 00ca BB68     		ldr	r3, [r7, #8]
+ 754 00cc 9BB2     		uxth	r3, r3
+ 755 00ce FA7E     		ldrb	r2, [r7, #27]	@ zero_extendqisi2
+ 756 00d0 1046     		mov	r0, r2
+ 757 00d2 F968     		ldr	r1, [r7, #12]
+ 758 00d4 1A46     		mov	r2, r3
+ 759 00d6 FFF7FEFF 		bl	One_Wire_Write_Bit
+ 139:../Work/Sources/ds1822.c **** 			if (bit!=0) (*SN_ROM)[cnt_num][cnt_byte]|=(1<<cnt_bit);
+ 760              		.loc 1 139 0
+ 761 00da FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
+ 762 00dc 002B     		cmp	r3, #0
+ 763 00de 19D0     		beq	.L45
+ 764              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 765 00e0 387E     		ldrb	r0, [r7, #24]	@ zero_extendqisi2
+ 766 00e2 7B7E     		ldrb	r3, [r7, #25]	@ zero_extendqisi2
+ 767 00e4 3C7E     		ldrb	r4, [r7, #24]	@ zero_extendqisi2
+ 768 00e6 7A7E     		ldrb	r2, [r7, #25]	@ zero_extendqisi2
+ 769 00e8 3968     		ldr	r1, [r7, #0]
+ 770 00ea 4FEAC404 		lsl	r4, r4, #3
+ 771 00ee A218     		adds	r2, r4, r2
+ 772 00f0 8A18     		adds	r2, r1, r2
+ 773 00f2 1278     		ldrb	r2, [r2, #0]	@ zero_extendqisi2
+ 774 00f4 D1B2     		uxtb	r1, r2
+ 775 00f6 BA7E     		ldrb	r2, [r7, #26]	@ zero_extendqisi2
+ 776 00f8 4FF00104 		mov	r4, #1
+ 777 00fc 04FA02F2 		lsl	r2, r4, r2
+ 778 0100 D2B2     		uxtb	r2, r2
+ 779 0102 0A43     		orrs	r2, r2, r1
+ 780 0104 D2B2     		uxtb	r2, r2
+ 781 0106 D2B2     		uxtb	r2, r2
+ 782 0108 3968     		ldr	r1, [r7, #0]
+ 783 010a 4FEAC000 		lsl	r0, r0, #3
+ 784 010e C318     		adds	r3, r0, r3
+ 785 0110 CB18     		adds	r3, r1, r3
+ 786 0112 1A70     		strb	r2, [r3, #0]
+ 787              	.L45:
+ 128:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 788              		.loc 1 128 0 is_stmt 1
+ 789 0114 BB7E     		ldrb	r3, [r7, #26]
+ 790 0116 03F10103 		add	r3, r3, #1
+ 791 011a BB76     		strb	r3, [r7, #26]
+ 792              	.L41:
+ 128:../Work/Sources/ds1822.c **** 			for (cnt_bit=0;cnt_bit!=8;cnt_bit++)
+ 793              		.loc 1 128 0 is_stmt 0 discriminator 1
+ 794 011c BB7E     		ldrb	r3, [r7, #26]	@ zero_extendqisi2
+ 795 011e 082B     		cmp	r3, #8
+ 796 0120 A8D1     		bne	.L46
+ 125:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 797              		.loc 1 125 0 is_stmt 1
+ 798 0122 7B7E     		ldrb	r3, [r7, #25]
+ 799 0124 03F10103 		add	r3, r3, #1
+ 800 0128 7B76     		strb	r3, [r7, #25]
+ 801              	.L40:
+ 125:../Work/Sources/ds1822.c ****   		for (cnt_byte=0;cnt_byte!=8;cnt_byte++)
+ 802              		.loc 1 125 0 is_stmt 0 discriminator 1
+ 803 012a 7B7E     		ldrb	r3, [r7, #25]	@ zero_extendqisi2
+ 804 012c 082B     		cmp	r3, #8
+ 805 012e 93D1     		bne	.L47
+ 140:../Work/Sources/ds1822.c ****      	}
+ 141:../Work/Sources/ds1822.c **** 		}
+ 142:../Work/Sources/ds1822.c ****     path=next;
+ 806              		.loc 1 142 0 is_stmt 1
+ 807 0130 3B6A     		ldr	r3, [r7, #32]
+ 808 0132 7B62     		str	r3, [r7, #36]
+ 143:../Work/Sources/ds1822.c **** 		cnt_num++;
+ 809              		.loc 1 143 0
+ 810 0134 3B7E     		ldrb	r3, [r7, #24]
+ 811 0136 03F10103 		add	r3, r3, #1
+ 812 013a 3B76     		strb	r3, [r7, #24]
+ 144:../Work/Sources/ds1822.c ****  	}while(path);
+ 813              		.loc 1 144 0
+ 814 013c 7B6A     		ldr	r3, [r7, #36]
+ 815 013e 002B     		cmp	r3, #0
+ 816 0140 7FF46BAF 		bne	.L48
+ 145:../Work/Sources/ds1822.c **** 	* devices_found = cnt_num;
+ 817              		.loc 1 145 0
+ 818 0144 7B68     		ldr	r3, [r7, #4]
+ 819 0146 3A7E     		ldrb	r2, [r7, #24]
+ 820 0148 1A70     		strb	r2, [r3, #0]
+ 146:../Work/Sources/ds1822.c **** 	return One_Wire_Success;
+ 821              		.loc 1 146 0
+ 822 014a 4FF00003 		mov	r3, #0
+ 823              	.L39:
+ 147:../Work/Sources/ds1822.c **** }
+ 824              		.loc 1 147 0
+ 825 014e 1846     		mov	r0, r3
+ 826 0150 07F12C07 		add	r7, r7, #44
+ 827 0154 BD46     		mov	sp, r7
+ 828 0156 90BD     		pop	{r4, r7, pc}
+ 829              		.cfi_endproc
+ 830              	.LFE33:
+ 832              		.section	.text.DS1822_Start_Conversion_Skip_Rom,"ax",%progbits
+ 833              		.align	2
+ 834              		.global	DS1822_Start_Conversion_Skip_Rom
+ 835              		.thumb
+ 836              		.thumb_func
+ 838              	DS1822_Start_Conversion_Skip_Rom:
+ 839              	.LFB34:
+ 148:../Work/Sources/ds1822.c **** 
+ 149:../Work/Sources/ds1822.c **** unsigned char DS1822_Start_Conversion_Skip_Rom (GPIO_TypeDef * GPIOx, unsigned long PINx)
+ 150:../Work/Sources/ds1822.c **** {
+ 840              		.loc 1 150 0
+ 841              		.cfi_startproc
+ 842              		@ args = 0, pretend = 0, frame = 16
+ 843              		@ frame_needed = 1, uses_anonymous_args = 0
+ 844 0000 80B5     		push	{r7, lr}
+ 845              	.LCFI15:
+ 846              		.cfi_def_cfa_offset 8
+ 847              		.cfi_offset 7, -8
+ 848              		.cfi_offset 14, -4
+ 849 0002 84B0     		sub	sp, sp, #16
+ 850              	.LCFI16:
+ 851              		.cfi_def_cfa_offset 24
+ 852 0004 00AF     		add	r7, sp, #0
+ 853              	.LCFI17:
+ 854              		.cfi_def_cfa_register 7
+ 855 0006 7860     		str	r0, [r7, #4]
+ 856 0008 3960     		str	r1, [r7, #0]
+ 151:../Work/Sources/ds1822.c **** 	unsigned char tmp;
+ 152:../Work/Sources/ds1822.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+ 857              		.loc 1 152 0
+ 858 000a 3B68     		ldr	r3, [r7, #0]
+ 859 000c 9BB2     		uxth	r3, r3
+ 860 000e 7868     		ldr	r0, [r7, #4]
+ 861 0010 1946     		mov	r1, r3
+ 862 0012 FFF7FEFF 		bl	One_Wire_Reset
+ 863 0016 0346     		mov	r3, r0
+ 864 0018 FB73     		strb	r3, [r7, #15]
+ 153:../Work/Sources/ds1822.c **** 	if (tmp!=One_Wire_Success) return tmp;
+ 865              		.loc 1 153 0
+ 866 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 867 001c 002B     		cmp	r3, #0
+ 868 001e 01D0     		beq	.L50
+ 869              		.loc 1 153 0 is_stmt 0 discriminator 1
+ 870 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 871 0022 1DE0     		b	.L51
+ 872              	.L50:
+ 154:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(One_Wire_Skip_ROM,GPIOx, PINx);
+ 873              		.loc 1 154 0 is_stmt 1
+ 874 0024 3B68     		ldr	r3, [r7, #0]
+ 875 0026 9BB2     		uxth	r3, r3
+ 876 0028 4FF0CC00 		mov	r0, #204
+ 877 002c 7968     		ldr	r1, [r7, #4]
+ 878 002e 1A46     		mov	r2, r3
+ 879 0030 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 155:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(DS1822_CONVERT_T_CMD,GPIOx, PINx);
+ 880              		.loc 1 155 0
+ 881 0034 3B68     		ldr	r3, [r7, #0]
+ 882 0036 9BB2     		uxth	r3, r3
+ 883 0038 4FF04400 		mov	r0, #68
+ 884 003c 7968     		ldr	r1, [r7, #4]
+ 885 003e 1A46     		mov	r2, r3
+ 886 0040 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 156:../Work/Sources/ds1822.c **** 	if (One_Wire_Read_Byte(GPIOx, PINx)==0)	return One_Wire_Success;
+ 887              		.loc 1 156 0
+ 888 0044 3B68     		ldr	r3, [r7, #0]
+ 889 0046 9BB2     		uxth	r3, r3
+ 890 0048 7868     		ldr	r0, [r7, #4]
+ 891 004a 1946     		mov	r1, r3
+ 892 004c FFF7FEFF 		bl	One_Wire_Read_Byte
+ 893 0050 0346     		mov	r3, r0
+ 894 0052 002B     		cmp	r3, #0
+ 895 0054 02D1     		bne	.L52
+ 896              		.loc 1 156 0 is_stmt 0 discriminator 1
+ 897 0056 4FF00003 		mov	r3, #0
+ 898 005a 01E0     		b	.L51
+ 899              	.L52:
+ 157:../Work/Sources/ds1822.c **** 		else	return One_Wire_Device_Busy;
+ 900              		.loc 1 157 0 is_stmt 1
+ 901 005c 4FF00303 		mov	r3, #3
+ 902              	.L51:
+ 158:../Work/Sources/ds1822.c **** }
+ 903              		.loc 1 158 0
+ 904 0060 1846     		mov	r0, r3
+ 905 0062 07F11007 		add	r7, r7, #16
+ 906 0066 BD46     		mov	sp, r7
+ 907 0068 80BD     		pop	{r7, pc}
+ 908              		.cfi_endproc
+ 909              	.LFE34:
+ 911 006a 00BF     		.section	.text.DS1822_Read_Temp_NoCRC_Skip_Rom,"ax",%progbits
+ 912              		.align	2
+ 913              		.global	DS1822_Read_Temp_NoCRC_Skip_Rom
+ 914              		.thumb
+ 915              		.thumb_func
+ 917              	DS1822_Read_Temp_NoCRC_Skip_Rom:
+ 918              	.LFB35:
+ 159:../Work/Sources/ds1822.c **** 
+ 160:../Work/Sources/ds1822.c **** unsigned char DS1822_Read_Temp_NoCRC_Skip_Rom (unsigned int * temperatura, GPIO_TypeDef * GPIOx, un
+ 161:../Work/Sources/ds1822.c **** {
+ 919              		.loc 1 161 0
+ 920              		.cfi_startproc
+ 921              		@ args = 0, pretend = 0, frame = 24
+ 922              		@ frame_needed = 1, uses_anonymous_args = 0
+ 923 0000 90B5     		push	{r4, r7, lr}
+ 924              	.LCFI18:
+ 925              		.cfi_def_cfa_offset 12
+ 926              		.cfi_offset 4, -12
+ 927              		.cfi_offset 7, -8
+ 928              		.cfi_offset 14, -4
+ 929 0002 87B0     		sub	sp, sp, #28
+ 930              	.LCFI19:
+ 931              		.cfi_def_cfa_offset 40
+ 932 0004 00AF     		add	r7, sp, #0
+ 933              	.LCFI20:
+ 934              		.cfi_def_cfa_register 7
+ 935 0006 F860     		str	r0, [r7, #12]
+ 936 0008 B960     		str	r1, [r7, #8]
+ 937 000a 7A60     		str	r2, [r7, #4]
+ 162:../Work/Sources/ds1822.c **** 	unsigned char tmp;
+ 163:../Work/Sources/ds1822.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+ 938              		.loc 1 163 0
+ 939 000c 7B68     		ldr	r3, [r7, #4]
+ 940 000e 9BB2     		uxth	r3, r3
+ 941 0010 B868     		ldr	r0, [r7, #8]
+ 942 0012 1946     		mov	r1, r3
+ 943 0014 FFF7FEFF 		bl	One_Wire_Reset
+ 944 0018 0346     		mov	r3, r0
+ 945 001a FB75     		strb	r3, [r7, #23]
+ 164:../Work/Sources/ds1822.c **** 	if (tmp!=One_Wire_Success) return tmp;
+ 946              		.loc 1 164 0
+ 947 001c FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 948 001e 002B     		cmp	r3, #0
+ 949 0020 01D0     		beq	.L54
+ 950              		.loc 1 164 0 is_stmt 0 discriminator 1
+ 951 0022 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 952 0024 26E0     		b	.L55
+ 953              	.L54:
+ 165:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(One_Wire_Skip_ROM,GPIOx, PINx);
+ 954              		.loc 1 165 0 is_stmt 1
+ 955 0026 7B68     		ldr	r3, [r7, #4]
+ 956 0028 9BB2     		uxth	r3, r3
+ 957 002a 4FF0CC00 		mov	r0, #204
+ 958 002e B968     		ldr	r1, [r7, #8]
+ 959 0030 1A46     		mov	r2, r3
+ 960 0032 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 166:../Work/Sources/ds1822.c **** 	One_Wire_Write_Byte(DS1822_READ_STRATCHPAD_CMD,GPIOx, PINx);
+ 961              		.loc 1 166 0
+ 962 0036 7B68     		ldr	r3, [r7, #4]
+ 963 0038 9BB2     		uxth	r3, r3
+ 964 003a 4FF0BE00 		mov	r0, #190
+ 965 003e B968     		ldr	r1, [r7, #8]
+ 966 0040 1A46     		mov	r2, r3
+ 967 0042 FFF7FEFF 		bl	One_Wire_Write_Byte
+ 167:../Work/Sources/ds1822.c **** 	* temperatura = One_Wire_Read_Byte(GPIOx, PINx)|(One_Wire_Read_Byte(GPIOx, PINx)<<8);
+ 968              		.loc 1 167 0
+ 969 0046 7B68     		ldr	r3, [r7, #4]
+ 970 0048 9BB2     		uxth	r3, r3
+ 971 004a B868     		ldr	r0, [r7, #8]
+ 972 004c 1946     		mov	r1, r3
+ 973 004e FFF7FEFF 		bl	One_Wire_Read_Byte
+ 974 0052 0346     		mov	r3, r0
+ 975 0054 1C46     		mov	r4, r3
+ 976 0056 7B68     		ldr	r3, [r7, #4]
+ 977 0058 9BB2     		uxth	r3, r3
+ 978 005a B868     		ldr	r0, [r7, #8]
+ 979 005c 1946     		mov	r1, r3
+ 980 005e FFF7FEFF 		bl	One_Wire_Read_Byte
+ 981 0062 0346     		mov	r3, r0
+ 982 0064 4FEA0323 		lsl	r3, r3, #8
+ 983 0068 2343     		orrs	r3, r3, r4
+ 984 006a 1A46     		mov	r2, r3
+ 985 006c FB68     		ldr	r3, [r7, #12]
+ 986 006e 1A60     		str	r2, [r3, #0]
+ 168:../Work/Sources/ds1822.c **** 	return One_Wire_Success;
+ 987              		.loc 1 168 0
+ 988 0070 4FF00003 		mov	r3, #0
+ 989              	.L55:
+ 169:../Work/Sources/ds1822.c **** }
+ 990              		.loc 1 169 0
+ 991 0074 1846     		mov	r0, r3
+ 992 0076 07F11C07 		add	r7, r7, #28
+ 993 007a BD46     		mov	sp, r7
+ 994 007c 90BD     		pop	{r4, r7, pc}
+ 995              		.cfi_endproc
+ 996              	.LFE35:
+ 998 007e 00BF     		.text
+ 999              	.Letext0:
+ 1000              		.file 2 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 1001              		.file 3 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 1002              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ds1822.c
+                            *COM*:00000050 Search_Rom_SN
+     /tmp/ccfInJUG.s:20     .text.DS1822_Search_Rom_One_Device:00000000 $t
+     /tmp/ccfInJUG.s:25     .text.DS1822_Search_Rom_One_Device:00000000 DS1822_Search_Rom_One_Device
+     /tmp/ccfInJUG.s:179    .text.DS1822_Start_Conversion_by_ROM:00000000 $t
+     /tmp/ccfInJUG.s:184    .text.DS1822_Start_Conversion_by_ROM:00000000 DS1822_Start_Conversion_by_ROM
+     /tmp/ccfInJUG.s:269    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 $t
+     /tmp/ccfInJUG.s:274    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 DS1822_Get_Conversion_Result_by_ROM_CRC
+     /tmp/ccfInJUG.s:407    .text.DS1822_Search_Rom:00000000 $t
+     /tmp/ccfInJUG.s:412    .text.DS1822_Search_Rom:00000000 DS1822_Search_Rom
+     /tmp/ccfInJUG.s:621    .text.DS1822_Search_Rom2:00000000 $t
+     /tmp/ccfInJUG.s:626    .text.DS1822_Search_Rom2:00000000 DS1822_Search_Rom2
+     /tmp/ccfInJUG.s:833    .text.DS1822_Start_Conversion_Skip_Rom:00000000 $t
+     /tmp/ccfInJUG.s:838    .text.DS1822_Start_Conversion_Skip_Rom:00000000 DS1822_Start_Conversion_Skip_Rom
+     /tmp/ccfInJUG.s:912    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 $t
+     /tmp/ccfInJUG.s:917    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 DS1822_Read_Temp_NoCRC_Skip_Rom
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
+                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
+                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
+                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
+                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
+                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
+                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
+                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
+                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
+                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
+                           .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
+                           .group:00000000 wm4.ds1822.h.15.f0be87f195f963c7c1adc215a64c682a
+
+UNDEFINED SYMBOLS
+One_Wire_Reset
+One_Wire_Write_Byte
+One_Wire_Read_Bit
+One_Wire_Write_Bit
+Crc8Dallas
+One_Wire_Read_Byte

@@ -1,0 +1,423 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32_GPIO.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.PIN_ON,"ax",%progbits
+  19              		.align	2
+  20              		.global	PIN_ON
+  21              		.thumb
+  22              		.thumb_func
+  24              	PIN_ON:
+  25              	.LFB29:
+  26              		.file 1 "../Work/Sources/stm32_GPIO.c"
+   1:../Work/Sources/stm32_GPIO.c **** /*
+   2:../Work/Sources/stm32_GPIO.c ****  * stm32_GPIO.c
+   3:../Work/Sources/stm32_GPIO.c ****  *
+   4:../Work/Sources/stm32_GPIO.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/stm32_GPIO.c ****  *      Author: frolls
+   6:../Work/Sources/stm32_GPIO.c ****  */
+   7:../Work/Sources/stm32_GPIO.c **** 
+   8:../Work/Sources/stm32_GPIO.c **** #include "stm32_GPIO.h"
+   9:../Work/Sources/stm32_GPIO.c **** #include "stm32f10x_gpio.h"
+  10:../Work/Sources/stm32_GPIO.c **** 
+  11:../Work/Sources/stm32_GPIO.c **** void PIN_ON(GPIO_TypeDef * GPIOx,u16 PINx)
+  12:../Work/Sources/stm32_GPIO.c **** {
+  27              		.loc 1 12 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 0B46     		mov	r3, r1
+  44 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  13:../Work/Sources/stm32_GPIO.c **** 	GPIOx->BSRR=PINx;
+  45              		.loc 1 13 0
+  46 000c 7A88     		ldrh	r2, [r7, #2]
+  47 000e 7B68     		ldr	r3, [r7, #4]
+  48 0010 1A61     		str	r2, [r3, #16]
+  14:../Work/Sources/stm32_GPIO.c **** 	//GPIOx->ODR=GPIOx->IDR|(PINx);
+  15:../Work/Sources/stm32_GPIO.c **** }
+  49              		.loc 1 15 0
+  50 0012 07F10C07 		add	r7, r7, #12
+  51 0016 BD46     		mov	sp, r7
+  52 0018 80BC     		pop	{r7}
+  53 001a 7047     		bx	lr
+  54              		.cfi_endproc
+  55              	.LFE29:
+  57              		.section	.text.PIN_OFF,"ax",%progbits
+  58              		.align	2
+  59              		.global	PIN_OFF
+  60              		.thumb
+  61              		.thumb_func
+  63              	PIN_OFF:
+  64              	.LFB30:
+  16:../Work/Sources/stm32_GPIO.c **** 
+  17:../Work/Sources/stm32_GPIO.c **** void PIN_OFF(GPIO_TypeDef * GPIOx,u16 PINx)
+  18:../Work/Sources/stm32_GPIO.c **** {
+  65              		.loc 1 18 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 8
+  68              		@ frame_needed = 1, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 80B4     		push	{r7}
+  71              	.LCFI3:
+  72              		.cfi_def_cfa_offset 4
+  73              		.cfi_offset 7, -4
+  74 0002 83B0     		sub	sp, sp, #12
+  75              	.LCFI4:
+  76              		.cfi_def_cfa_offset 16
+  77 0004 00AF     		add	r7, sp, #0
+  78              	.LCFI5:
+  79              		.cfi_def_cfa_register 7
+  80 0006 7860     		str	r0, [r7, #4]
+  81 0008 0B46     		mov	r3, r1
+  82 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  19:../Work/Sources/stm32_GPIO.c **** 	GPIOx->BRR=PINx;
+  83              		.loc 1 19 0
+  84 000c 7A88     		ldrh	r2, [r7, #2]
+  85 000e 7B68     		ldr	r3, [r7, #4]
+  86 0010 5A61     		str	r2, [r3, #20]
+  20:../Work/Sources/stm32_GPIO.c **** 	//GPIOx->ODR=GPIOx->IDR&(~(PINx));
+  21:../Work/Sources/stm32_GPIO.c **** }
+  87              		.loc 1 21 0
+  88 0012 07F10C07 		add	r7, r7, #12
+  89 0016 BD46     		mov	sp, r7
+  90 0018 80BC     		pop	{r7}
+  91 001a 7047     		bx	lr
+  92              		.cfi_endproc
+  93              	.LFE30:
+  95              		.section	.text.PIN_SYG,"ax",%progbits
+  96              		.align	2
+  97              		.global	PIN_SYG
+  98              		.thumb
+  99              		.thumb_func
+ 101              	PIN_SYG:
+ 102              	.LFB31:
+  22:../Work/Sources/stm32_GPIO.c **** 
+  23:../Work/Sources/stm32_GPIO.c **** u8 PIN_SYG(GPIO_TypeDef * GPIOx, u16 PINx)
+  24:../Work/Sources/stm32_GPIO.c **** {
+ 103              		.loc 1 24 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 8
+ 106              		@ frame_needed = 1, uses_anonymous_args = 0
+ 107              		@ link register save eliminated.
+ 108 0000 80B4     		push	{r7}
+ 109              	.LCFI6:
+ 110              		.cfi_def_cfa_offset 4
+ 111              		.cfi_offset 7, -4
+ 112 0002 83B0     		sub	sp, sp, #12
+ 113              	.LCFI7:
+ 114              		.cfi_def_cfa_offset 16
+ 115 0004 00AF     		add	r7, sp, #0
+ 116              	.LCFI8:
+ 117              		.cfi_def_cfa_register 7
+ 118 0006 7860     		str	r0, [r7, #4]
+ 119 0008 0B46     		mov	r3, r1
+ 120 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  25:../Work/Sources/stm32_GPIO.c **** 	if((GPIOx->IDR&PINx)!=0)
+ 121              		.loc 1 25 0
+ 122 000c 7B68     		ldr	r3, [r7, #4]
+ 123 000e 9A68     		ldr	r2, [r3, #8]
+ 124 0010 7B88     		ldrh	r3, [r7, #2]
+ 125 0012 1340     		ands	r3, r3, r2
+ 126 0014 002B     		cmp	r3, #0
+ 127 0016 02D0     		beq	.L4
+  26:../Work/Sources/stm32_GPIO.c **** 	{return 1;}
+ 128              		.loc 1 26 0
+ 129 0018 4FF00103 		mov	r3, #1
+ 130 001c 01E0     		b	.L5
+ 131              	.L4:
+  27:../Work/Sources/stm32_GPIO.c **** 	else
+  28:../Work/Sources/stm32_GPIO.c **** 	{return 0;}
+ 132              		.loc 1 28 0
+ 133 001e 4FF00003 		mov	r3, #0
+ 134              	.L5:
+  29:../Work/Sources/stm32_GPIO.c **** }
+ 135              		.loc 1 29 0
+ 136 0022 1846     		mov	r0, r3
+ 137 0024 07F10C07 		add	r7, r7, #12
+ 138 0028 BD46     		mov	sp, r7
+ 139 002a 80BC     		pop	{r7}
+ 140 002c 7047     		bx	lr
+ 141              		.cfi_endproc
+ 142              	.LFE31:
+ 144 002e 00BF     		.section	.text.PIN_IN,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	PIN_IN
+ 147              		.thumb
+ 148              		.thumb_func
+ 150              	PIN_IN:
+ 151              	.LFB32:
+  30:../Work/Sources/stm32_GPIO.c **** 
+  31:../Work/Sources/stm32_GPIO.c **** void PIN_IN (GPIO_TypeDef * GPIOx,u16 PINx)
+  32:../Work/Sources/stm32_GPIO.c **** {
+ 152              		.loc 1 32 0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 16
+ 155              		@ frame_needed = 1, uses_anonymous_args = 0
+ 156 0000 80B5     		push	{r7, lr}
+ 157              	.LCFI9:
+ 158              		.cfi_def_cfa_offset 8
+ 159              		.cfi_offset 7, -8
+ 160              		.cfi_offset 14, -4
+ 161 0002 84B0     		sub	sp, sp, #16
+ 162              	.LCFI10:
+ 163              		.cfi_def_cfa_offset 24
+ 164 0004 00AF     		add	r7, sp, #0
+ 165              	.LCFI11:
+ 166              		.cfi_def_cfa_register 7
+ 167 0006 7860     		str	r0, [r7, #4]
+ 168 0008 0B46     		mov	r3, r1
+ 169 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  33:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitTypeDef GPIO_InitStruct;
+  34:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Pin=PINx;
+ 170              		.loc 1 34 0
+ 171 000c 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 172 000e BB81     		strh	r3, [r7, #12]	@ movhi
+  35:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;
+ 173              		.loc 1 35 0
+ 174 0010 4FF00303 		mov	r3, #3
+ 175 0014 BB73     		strb	r3, [r7, #14]
+  36:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+ 176              		.loc 1 36 0
+ 177 0016 4FF00403 		mov	r3, #4
+ 178 001a FB73     		strb	r3, [r7, #15]
+  37:../Work/Sources/stm32_GPIO.c **** 	GPIO_Init(GPIOx, &GPIO_InitStruct);
+ 179              		.loc 1 37 0
+ 180 001c 07F10C03 		add	r3, r7, #12
+ 181 0020 7868     		ldr	r0, [r7, #4]
+ 182 0022 1946     		mov	r1, r3
+ 183 0024 FFF7FEFF 		bl	GPIO_Init
+  38:../Work/Sources/stm32_GPIO.c **** }
+ 184              		.loc 1 38 0
+ 185 0028 07F11007 		add	r7, r7, #16
+ 186 002c BD46     		mov	sp, r7
+ 187 002e 80BD     		pop	{r7, pc}
+ 188              		.cfi_endproc
+ 189              	.LFE32:
+ 191              		.section	.text.PIN_OUT_PP,"ax",%progbits
+ 192              		.align	2
+ 193              		.global	PIN_OUT_PP
+ 194              		.thumb
+ 195              		.thumb_func
+ 197              	PIN_OUT_PP:
+ 198              	.LFB33:
+  39:../Work/Sources/stm32_GPIO.c **** 
+  40:../Work/Sources/stm32_GPIO.c **** void PIN_OUT_PP (GPIO_TypeDef * GPIOx,u16 PINx)
+  41:../Work/Sources/stm32_GPIO.c **** {
+ 199              		.loc 1 41 0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 16
+ 202              		@ frame_needed = 1, uses_anonymous_args = 0
+ 203 0000 80B5     		push	{r7, lr}
+ 204              	.LCFI12:
+ 205              		.cfi_def_cfa_offset 8
+ 206              		.cfi_offset 7, -8
+ 207              		.cfi_offset 14, -4
+ 208 0002 84B0     		sub	sp, sp, #16
+ 209              	.LCFI13:
+ 210              		.cfi_def_cfa_offset 24
+ 211 0004 00AF     		add	r7, sp, #0
+ 212              	.LCFI14:
+ 213              		.cfi_def_cfa_register 7
+ 214 0006 7860     		str	r0, [r7, #4]
+ 215 0008 0B46     		mov	r3, r1
+ 216 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  42:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitTypeDef GPIO_InitStruct;
+  43:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Pin=PINx;
+ 217              		.loc 1 43 0
+ 218 000c 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 219 000e BB81     		strh	r3, [r7, #12]	@ movhi
+  44:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;
+ 220              		.loc 1 44 0
+ 221 0010 4FF00303 		mov	r3, #3
+ 222 0014 BB73     		strb	r3, [r7, #14]
+  45:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_Out_PP;
+ 223              		.loc 1 45 0
+ 224 0016 4FF01003 		mov	r3, #16
+ 225 001a FB73     		strb	r3, [r7, #15]
+  46:../Work/Sources/stm32_GPIO.c **** 	GPIO_Init(GPIOx, &GPIO_InitStruct);
+ 226              		.loc 1 46 0
+ 227 001c 07F10C03 		add	r3, r7, #12
+ 228 0020 7868     		ldr	r0, [r7, #4]
+ 229 0022 1946     		mov	r1, r3
+ 230 0024 FFF7FEFF 		bl	GPIO_Init
+  47:../Work/Sources/stm32_GPIO.c **** }
+ 231              		.loc 1 47 0
+ 232 0028 07F11007 		add	r7, r7, #16
+ 233 002c BD46     		mov	sp, r7
+ 234 002e 80BD     		pop	{r7, pc}
+ 235              		.cfi_endproc
+ 236              	.LFE33:
+ 238              		.section	.text.PIN_OUT_OD,"ax",%progbits
+ 239              		.align	2
+ 240              		.global	PIN_OUT_OD
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	PIN_OUT_OD:
+ 245              	.LFB34:
+  48:../Work/Sources/stm32_GPIO.c **** 
+  49:../Work/Sources/stm32_GPIO.c **** void PIN_OUT_OD (GPIO_TypeDef * GPIOx,u16 PINx)
+  50:../Work/Sources/stm32_GPIO.c **** {
+ 246              		.loc 1 50 0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 16
+ 249              		@ frame_needed = 1, uses_anonymous_args = 0
+ 250 0000 80B5     		push	{r7, lr}
+ 251              	.LCFI15:
+ 252              		.cfi_def_cfa_offset 8
+ 253              		.cfi_offset 7, -8
+ 254              		.cfi_offset 14, -4
+ 255 0002 84B0     		sub	sp, sp, #16
+ 256              	.LCFI16:
+ 257              		.cfi_def_cfa_offset 24
+ 258 0004 00AF     		add	r7, sp, #0
+ 259              	.LCFI17:
+ 260              		.cfi_def_cfa_register 7
+ 261 0006 7860     		str	r0, [r7, #4]
+ 262 0008 0B46     		mov	r3, r1
+ 263 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  51:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitTypeDef GPIO_InitStruct;
+  52:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Pin=PINx;
+ 264              		.loc 1 52 0
+ 265 000c 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 266 000e BB81     		strh	r3, [r7, #12]	@ movhi
+  53:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;
+ 267              		.loc 1 53 0
+ 268 0010 4FF00303 		mov	r3, #3
+ 269 0014 BB73     		strb	r3, [r7, #14]
+  54:../Work/Sources/stm32_GPIO.c **** 	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_Out_OD;
+ 270              		.loc 1 54 0
+ 271 0016 4FF01403 		mov	r3, #20
+ 272 001a FB73     		strb	r3, [r7, #15]
+  55:../Work/Sources/stm32_GPIO.c **** 	GPIO_Init(GPIOx, &GPIO_InitStruct);
+ 273              		.loc 1 55 0
+ 274 001c 07F10C03 		add	r3, r7, #12
+ 275 0020 7868     		ldr	r0, [r7, #4]
+ 276 0022 1946     		mov	r1, r3
+ 277 0024 FFF7FEFF 		bl	GPIO_Init
+  56:../Work/Sources/stm32_GPIO.c **** }
+ 278              		.loc 1 56 0
+ 279 0028 07F11007 		add	r7, r7, #16
+ 280 002c BD46     		mov	sp, r7
+ 281 002e 80BD     		pop	{r7, pc}
+ 282              		.cfi_endproc
+ 283              	.LFE34:
+ 285              		.section	.text.PIN_INV,"ax",%progbits
+ 286              		.align	2
+ 287              		.global	PIN_INV
+ 288              		.thumb
+ 289              		.thumb_func
+ 291              	PIN_INV:
+ 292              	.LFB35:
+  57:../Work/Sources/stm32_GPIO.c **** 
+  58:../Work/Sources/stm32_GPIO.c **** void PIN_INV(GPIO_TypeDef * GPIOx, u16 PINx)
+  59:../Work/Sources/stm32_GPIO.c **** {
+ 293              		.loc 1 59 0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 8
+ 296              		@ frame_needed = 1, uses_anonymous_args = 0
+ 297 0000 80B5     		push	{r7, lr}
+ 298              	.LCFI18:
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 7, -8
+ 301              		.cfi_offset 14, -4
+ 302 0002 82B0     		sub	sp, sp, #8
+ 303              	.LCFI19:
+ 304              		.cfi_def_cfa_offset 16
+ 305 0004 00AF     		add	r7, sp, #0
+ 306              	.LCFI20:
+ 307              		.cfi_def_cfa_register 7
+ 308 0006 7860     		str	r0, [r7, #4]
+ 309 0008 0B46     		mov	r3, r1
+ 310 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  60:../Work/Sources/stm32_GPIO.c **** 	if(PIN_SYG(GPIOx, PINx)!=0)
+ 311              		.loc 1 60 0
+ 312 000c 7B88     		ldrh	r3, [r7, #2]
+ 313 000e 7868     		ldr	r0, [r7, #4]
+ 314 0010 1946     		mov	r1, r3
+ 315 0012 FFF7FEFF 		bl	PIN_SYG
+ 316 0016 0346     		mov	r3, r0
+ 317 0018 002B     		cmp	r3, #0
+ 318 001a 05D0     		beq	.L10
+  61:../Work/Sources/stm32_GPIO.c **** 	{PIN_OFF(GPIOx, PINx);}
+ 319              		.loc 1 61 0
+ 320 001c 7B88     		ldrh	r3, [r7, #2]
+ 321 001e 7868     		ldr	r0, [r7, #4]
+ 322 0020 1946     		mov	r1, r3
+ 323 0022 FFF7FEFF 		bl	PIN_OFF
+ 324 0026 04E0     		b	.L9
+ 325              	.L10:
+  62:../Work/Sources/stm32_GPIO.c **** 	else
+  63:../Work/Sources/stm32_GPIO.c **** 	{PIN_ON(GPIOx, PINx);}
+ 326              		.loc 1 63 0
+ 327 0028 7B88     		ldrh	r3, [r7, #2]
+ 328 002a 7868     		ldr	r0, [r7, #4]
+ 329 002c 1946     		mov	r1, r3
+ 330 002e FFF7FEFF 		bl	PIN_ON
+ 331              	.L9:
+  64:../Work/Sources/stm32_GPIO.c **** }
+ 332              		.loc 1 64 0
+ 333 0032 07F10807 		add	r7, r7, #8
+ 334 0036 BD46     		mov	sp, r7
+ 335 0038 80BD     		pop	{r7, pc}
+ 336              		.cfi_endproc
+ 337              	.LFE35:
+ 339 003a 00BF     		.text
+ 340              	.Letext0:
+ 341              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 342              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 343              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_gpio.h"
+ 344              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32_GPIO.c
+     /tmp/ccQ6NUrg.s:19     .text.PIN_ON:00000000 $t
+     /tmp/ccQ6NUrg.s:24     .text.PIN_ON:00000000 PIN_ON
+     /tmp/ccQ6NUrg.s:58     .text.PIN_OFF:00000000 $t
+     /tmp/ccQ6NUrg.s:63     .text.PIN_OFF:00000000 PIN_OFF
+     /tmp/ccQ6NUrg.s:96     .text.PIN_SYG:00000000 $t
+     /tmp/ccQ6NUrg.s:101    .text.PIN_SYG:00000000 PIN_SYG
+     /tmp/ccQ6NUrg.s:145    .text.PIN_IN:00000000 $t
+     /tmp/ccQ6NUrg.s:150    .text.PIN_IN:00000000 PIN_IN
+     /tmp/ccQ6NUrg.s:192    .text.PIN_OUT_PP:00000000 $t
+     /tmp/ccQ6NUrg.s:197    .text.PIN_OUT_PP:00000000 PIN_OUT_PP
+     /tmp/ccQ6NUrg.s:239    .text.PIN_OUT_OD:00000000 $t
+     /tmp/ccQ6NUrg.s:244    .text.PIN_OUT_OD:00000000 PIN_OUT_OD
+     /tmp/ccQ6NUrg.s:286    .text.PIN_INV:00000000 $t
+     /tmp/ccQ6NUrg.s:291    .text.PIN_INV:00000000 PIN_INV
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
+
+UNDEFINED SYMBOLS
+GPIO_Init

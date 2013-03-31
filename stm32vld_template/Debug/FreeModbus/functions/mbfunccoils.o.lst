@@ -1,0 +1,810 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"mbfunccoils.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.eMBFuncReadCoils,"ax",%progbits
+  19              		.align	2
+  20              		.global	eMBFuncReadCoils
+  21              		.thumb
+  22              		.thumb_func
+  24              	eMBFuncReadCoils:
+  25              	.LFB29:
+  26              		.file 1 "../FreeModbus/functions/mbfunccoils.c"
+   1:../FreeModbus/functions/mbfunccoils.c **** /* 
+   2:../FreeModbus/functions/mbfunccoils.c ****  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
+   3:../FreeModbus/functions/mbfunccoils.c ****  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
+   4:../FreeModbus/functions/mbfunccoils.c ****  * All rights reserved.
+   5:../FreeModbus/functions/mbfunccoils.c ****  *
+   6:../FreeModbus/functions/mbfunccoils.c ****  * Redistribution and use in source and binary forms, with or without
+   7:../FreeModbus/functions/mbfunccoils.c ****  * modification, are permitted provided that the following conditions
+   8:../FreeModbus/functions/mbfunccoils.c ****  * are met:
+   9:../FreeModbus/functions/mbfunccoils.c ****  * 1. Redistributions of source code must retain the above copyright
+  10:../FreeModbus/functions/mbfunccoils.c ****  *    notice, this list of conditions and the following disclaimer.
+  11:../FreeModbus/functions/mbfunccoils.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  12:../FreeModbus/functions/mbfunccoils.c ****  *    notice, this list of conditions and the following disclaimer in the
+  13:../FreeModbus/functions/mbfunccoils.c ****  *    documentation and/or other materials provided with the distribution.
+  14:../FreeModbus/functions/mbfunccoils.c ****  * 3. The name of the author may not be used to endorse or promote products
+  15:../FreeModbus/functions/mbfunccoils.c ****  *    derived from this software without specific prior written permission.
+  16:../FreeModbus/functions/mbfunccoils.c ****  *
+  17:../FreeModbus/functions/mbfunccoils.c ****  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+  18:../FreeModbus/functions/mbfunccoils.c ****  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+  19:../FreeModbus/functions/mbfunccoils.c ****  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  20:../FreeModbus/functions/mbfunccoils.c ****  * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+  21:../FreeModbus/functions/mbfunccoils.c ****  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  22:../FreeModbus/functions/mbfunccoils.c ****  * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  23:../FreeModbus/functions/mbfunccoils.c ****  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  24:../FreeModbus/functions/mbfunccoils.c ****  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  25:../FreeModbus/functions/mbfunccoils.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  26:../FreeModbus/functions/mbfunccoils.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  27:../FreeModbus/functions/mbfunccoils.c ****  *
+  28:../FreeModbus/functions/mbfunccoils.c ****  * File: $Id: mbfunccoils.c,v 1.8 2007/02/18 23:47:16 wolti Exp $
+  29:../FreeModbus/functions/mbfunccoils.c ****  */
+  30:../FreeModbus/functions/mbfunccoils.c **** 
+  31:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- System includes ----------------------------------*/
+  32:../FreeModbus/functions/mbfunccoils.c **** #include "stdlib.h"
+  33:../FreeModbus/functions/mbfunccoils.c **** #include "string.h"
+  34:../FreeModbus/functions/mbfunccoils.c **** 
+  35:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- Platform includes --------------------------------*/
+  36:../FreeModbus/functions/mbfunccoils.c **** #include "port.h"
+  37:../FreeModbus/functions/mbfunccoils.c **** 
+  38:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- Modbus includes ----------------------------------*/
+  39:../FreeModbus/functions/mbfunccoils.c **** #include "mb.h"
+  40:../FreeModbus/functions/mbfunccoils.c **** #include "mbframe.h"
+  41:../FreeModbus/functions/mbfunccoils.c **** #include "mbproto.h"
+  42:../FreeModbus/functions/mbfunccoils.c **** #include "mbconfig.h"
+  43:../FreeModbus/functions/mbfunccoils.c **** 
+  44:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- Defines ------------------------------------------*/
+  45:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_READ_ADDR_OFF           ( MB_PDU_DATA_OFF )
+  46:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_READ_COILCNT_OFF        ( MB_PDU_DATA_OFF + 2 )
+  47:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_READ_SIZE               ( 4 )
+  48:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_READ_COILCNT_MAX        ( 0x07D0 )
+  49:../FreeModbus/functions/mbfunccoils.c **** 
+  50:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_ADDR_OFF          ( MB_PDU_DATA_OFF )
+  51:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_VALUE_OFF         ( MB_PDU_DATA_OFF + 2 )
+  52:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_SIZE              ( 4 )
+  53:../FreeModbus/functions/mbfunccoils.c **** 
+  54:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_ADDR_OFF      ( MB_PDU_DATA_OFF )
+  55:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_COILCNT_OFF   ( MB_PDU_DATA_OFF + 2 )
+  56:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_BYTECNT_OFF   ( MB_PDU_DATA_OFF + 4 )
+  57:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_VALUES_OFF    ( MB_PDU_DATA_OFF + 5 )
+  58:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_SIZE_MIN      ( 5 )
+  59:../FreeModbus/functions/mbfunccoils.c **** #define MB_PDU_FUNC_WRITE_MUL_COILCNT_MAX   ( 0x07B0 )
+  60:../FreeModbus/functions/mbfunccoils.c **** 
+  61:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- Static functions ---------------------------------*/
+  62:../FreeModbus/functions/mbfunccoils.c **** eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
+  63:../FreeModbus/functions/mbfunccoils.c **** 
+  64:../FreeModbus/functions/mbfunccoils.c **** /* ----------------------- Start implementation -----------------------------*/
+  65:../FreeModbus/functions/mbfunccoils.c **** 
+  66:../FreeModbus/functions/mbfunccoils.c **** #if MB_FUNC_READ_COILS_ENABLED > 0
+  67:../FreeModbus/functions/mbfunccoils.c **** 
+  68:../FreeModbus/functions/mbfunccoils.c **** eMBException
+  69:../FreeModbus/functions/mbfunccoils.c **** eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
+  70:../FreeModbus/functions/mbfunccoils.c **** {
+  27              		.loc 1 70 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 24
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 86B0     		sub	sp, sp, #24
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 32
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 3960     		str	r1, [r7, #0]
+  71:../FreeModbus/functions/mbfunccoils.c ****     USHORT          usRegAddress;
+  72:../FreeModbus/functions/mbfunccoils.c ****     USHORT          usCoilCount;
+  73:../FreeModbus/functions/mbfunccoils.c ****     UCHAR           ucNBytes;
+  74:../FreeModbus/functions/mbfunccoils.c ****     UCHAR          *pucFrameCur;
+  75:../FreeModbus/functions/mbfunccoils.c **** 
+  76:../FreeModbus/functions/mbfunccoils.c ****     eMBException    eStatus = MB_EX_NONE;
+  44              		.loc 1 76 0
+  45 000a 4FF00003 		mov	r3, #0
+  46 000e BB75     		strb	r3, [r7, #22]
+  77:../FreeModbus/functions/mbfunccoils.c ****     eMBErrorCode    eRegStatus;
+  78:../FreeModbus/functions/mbfunccoils.c **** 
+  79:../FreeModbus/functions/mbfunccoils.c ****     if( *usLen == ( MB_PDU_FUNC_READ_SIZE + MB_PDU_SIZE_MIN ) )
+  47              		.loc 1 79 0
+  48 0010 3B68     		ldr	r3, [r7, #0]
+  49 0012 1B88     		ldrh	r3, [r3, #0]
+  50 0014 052B     		cmp	r3, #5
+  51 0016 40F08380 		bne	.L2
+  80:../FreeModbus/functions/mbfunccoils.c ****     {
+  81:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress = ( USHORT )( pucFrame[MB_PDU_FUNC_READ_ADDR_OFF] << 8 );
+  52              		.loc 1 81 0
+  53 001a 7B68     		ldr	r3, [r7, #4]
+  54 001c 03F10103 		add	r3, r3, #1
+  55 0020 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  56 0022 4FEA0323 		lsl	r3, r3, #8
+  57 0026 BB82     		strh	r3, [r7, #20]	@ movhi
+  82:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress |= ( USHORT )( pucFrame[MB_PDU_FUNC_READ_ADDR_OFF + 1] );
+  58              		.loc 1 82 0
+  59 0028 7B68     		ldr	r3, [r7, #4]
+  60 002a 03F10203 		add	r3, r3, #2
+  61 002e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  62 0030 1A46     		mov	r2, r3
+  63 0032 BB8A     		ldrh	r3, [r7, #20]	@ movhi
+  64 0034 1343     		orrs	r3, r3, r2
+  65 0036 BB82     		strh	r3, [r7, #20]	@ movhi
+  83:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress++;
+  66              		.loc 1 83 0
+  67 0038 BB8A     		ldrh	r3, [r7, #20]	@ movhi
+  68 003a 03F10103 		add	r3, r3, #1
+  69 003e BB82     		strh	r3, [r7, #20]	@ movhi
+  84:../FreeModbus/functions/mbfunccoils.c **** 
+  85:../FreeModbus/functions/mbfunccoils.c ****         usCoilCount = ( USHORT )( pucFrame[MB_PDU_FUNC_READ_COILCNT_OFF] << 8 );
+  70              		.loc 1 85 0
+  71 0040 7B68     		ldr	r3, [r7, #4]
+  72 0042 03F10303 		add	r3, r3, #3
+  73 0046 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  74 0048 4FEA0323 		lsl	r3, r3, #8
+  75 004c 7B82     		strh	r3, [r7, #18]	@ movhi
+  86:../FreeModbus/functions/mbfunccoils.c ****         usCoilCount |= ( USHORT )( pucFrame[MB_PDU_FUNC_READ_COILCNT_OFF + 1] );
+  76              		.loc 1 86 0
+  77 004e 7B68     		ldr	r3, [r7, #4]
+  78 0050 03F10403 		add	r3, r3, #4
+  79 0054 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  80 0056 1A46     		mov	r2, r3
+  81 0058 7B8A     		ldrh	r3, [r7, #18]	@ movhi
+  82 005a 1343     		orrs	r3, r3, r2
+  83 005c 7B82     		strh	r3, [r7, #18]	@ movhi
+  87:../FreeModbus/functions/mbfunccoils.c **** 
+  88:../FreeModbus/functions/mbfunccoils.c ****         /* Check if the number of registers to read is valid. If not
+  89:../FreeModbus/functions/mbfunccoils.c ****          * return Modbus illegal data value exception. 
+  90:../FreeModbus/functions/mbfunccoils.c ****          */
+  91:../FreeModbus/functions/mbfunccoils.c ****         if( ( usCoilCount >= 1 ) &&
+  84              		.loc 1 91 0
+  85 005e 7B8A     		ldrh	r3, [r7, #18]
+  86 0060 002B     		cmp	r3, #0
+  87 0062 59D0     		beq	.L3
+  88              		.loc 1 91 0 is_stmt 0 discriminator 1
+  89 0064 7A8A     		ldrh	r2, [r7, #18]
+  90 0066 40F2CF73 		movw	r3, #1999
+  91 006a 9A42     		cmp	r2, r3
+  92 006c 54D8     		bhi	.L3
+  92:../FreeModbus/functions/mbfunccoils.c ****             ( usCoilCount < MB_PDU_FUNC_READ_COILCNT_MAX ) )
+  93:../FreeModbus/functions/mbfunccoils.c ****         {
+  94:../FreeModbus/functions/mbfunccoils.c ****             /* Set the current PDU data pointer to the beginning. */
+  95:../FreeModbus/functions/mbfunccoils.c ****             pucFrameCur = &pucFrame[MB_PDU_FUNC_OFF];
+  93              		.loc 1 95 0 is_stmt 1
+  94 006e 7B68     		ldr	r3, [r7, #4]
+  95 0070 FB60     		str	r3, [r7, #12]
+  96:../FreeModbus/functions/mbfunccoils.c ****             *usLen = MB_PDU_FUNC_OFF;
+  96              		.loc 1 96 0
+  97 0072 3B68     		ldr	r3, [r7, #0]
+  98 0074 4FF00002 		mov	r2, #0
+  99 0078 1A80     		strh	r2, [r3, #0]	@ movhi
+  97:../FreeModbus/functions/mbfunccoils.c **** 
+  98:../FreeModbus/functions/mbfunccoils.c ****             /* First byte contains the function code. */
+  99:../FreeModbus/functions/mbfunccoils.c ****             *pucFrameCur++ = MB_FUNC_READ_COILS;
+ 100              		.loc 1 99 0
+ 101 007a FB68     		ldr	r3, [r7, #12]
+ 102 007c 4FF00102 		mov	r2, #1
+ 103 0080 1A70     		strb	r2, [r3, #0]
+ 104 0082 FB68     		ldr	r3, [r7, #12]
+ 105 0084 03F10103 		add	r3, r3, #1
+ 106 0088 FB60     		str	r3, [r7, #12]
+ 100:../FreeModbus/functions/mbfunccoils.c ****             *usLen += 1;
+ 107              		.loc 1 100 0
+ 108 008a 3B68     		ldr	r3, [r7, #0]
+ 109 008c 1B88     		ldrh	r3, [r3, #0]
+ 110 008e 03F10103 		add	r3, r3, #1
+ 111 0092 9AB2     		uxth	r2, r3
+ 112 0094 3B68     		ldr	r3, [r7, #0]
+ 113 0096 1A80     		strh	r2, [r3, #0]	@ movhi
+ 101:../FreeModbus/functions/mbfunccoils.c **** 
+ 102:../FreeModbus/functions/mbfunccoils.c ****             /* Test if the quantity of coils is a multiple of 8. If not last
+ 103:../FreeModbus/functions/mbfunccoils.c ****              * byte is only partially field with unused coils set to zero. */
+ 104:../FreeModbus/functions/mbfunccoils.c ****             if( ( usCoilCount & 0x0007 ) != 0 )
+ 114              		.loc 1 104 0
+ 115 0098 7B8A     		ldrh	r3, [r7, #18]
+ 116 009a 03F00703 		and	r3, r3, #7
+ 117 009e 002B     		cmp	r3, #0
+ 118 00a0 08D0     		beq	.L4
+ 105:../FreeModbus/functions/mbfunccoils.c ****             {
+ 106:../FreeModbus/functions/mbfunccoils.c ****                 ucNBytes = ( UCHAR )( usCoilCount / 8 + 1 );
+ 119              		.loc 1 106 0
+ 120 00a2 7B8A     		ldrh	r3, [r7, #18]
+ 121 00a4 4FEAD303 		lsr	r3, r3, #3
+ 122 00a8 9BB2     		uxth	r3, r3
+ 123 00aa DBB2     		uxtb	r3, r3
+ 124 00ac 03F10103 		add	r3, r3, #1
+ 125 00b0 FB75     		strb	r3, [r7, #23]
+ 126 00b2 04E0     		b	.L5
+ 127              	.L4:
+ 107:../FreeModbus/functions/mbfunccoils.c ****             }
+ 108:../FreeModbus/functions/mbfunccoils.c ****             else
+ 109:../FreeModbus/functions/mbfunccoils.c ****             {
+ 110:../FreeModbus/functions/mbfunccoils.c ****                 ucNBytes = ( UCHAR )( usCoilCount / 8 );
+ 128              		.loc 1 110 0
+ 129 00b4 7B8A     		ldrh	r3, [r7, #18]
+ 130 00b6 4FEAD303 		lsr	r3, r3, #3
+ 131 00ba 9BB2     		uxth	r3, r3
+ 132 00bc FB75     		strb	r3, [r7, #23]
+ 133              	.L5:
+ 111:../FreeModbus/functions/mbfunccoils.c ****             }
+ 112:../FreeModbus/functions/mbfunccoils.c ****             *pucFrameCur++ = ucNBytes;
+ 134              		.loc 1 112 0
+ 135 00be FB68     		ldr	r3, [r7, #12]
+ 136 00c0 FA7D     		ldrb	r2, [r7, #23]
+ 137 00c2 1A70     		strb	r2, [r3, #0]
+ 138 00c4 FB68     		ldr	r3, [r7, #12]
+ 139 00c6 03F10103 		add	r3, r3, #1
+ 140 00ca FB60     		str	r3, [r7, #12]
+ 113:../FreeModbus/functions/mbfunccoils.c ****             *usLen += 1;
+ 141              		.loc 1 113 0
+ 142 00cc 3B68     		ldr	r3, [r7, #0]
+ 143 00ce 1B88     		ldrh	r3, [r3, #0]
+ 144 00d0 03F10103 		add	r3, r3, #1
+ 145 00d4 9AB2     		uxth	r2, r3
+ 146 00d6 3B68     		ldr	r3, [r7, #0]
+ 147 00d8 1A80     		strh	r2, [r3, #0]	@ movhi
+ 114:../FreeModbus/functions/mbfunccoils.c **** 
+ 115:../FreeModbus/functions/mbfunccoils.c ****             eRegStatus =
+ 148              		.loc 1 115 0
+ 149 00da BA8A     		ldrh	r2, [r7, #20]
+ 150 00dc 7B8A     		ldrh	r3, [r7, #18]
+ 151 00de F868     		ldr	r0, [r7, #12]
+ 152 00e0 1146     		mov	r1, r2
+ 153 00e2 1A46     		mov	r2, r3
+ 154 00e4 4FF00003 		mov	r3, #0
+ 155 00e8 FFF7FEFF 		bl	eMBRegCoilsCB
+ 156 00ec 0346     		mov	r3, r0
+ 157 00ee FB72     		strb	r3, [r7, #11]
+ 116:../FreeModbus/functions/mbfunccoils.c ****                 eMBRegCoilsCB( pucFrameCur, usRegAddress, usCoilCount,
+ 117:../FreeModbus/functions/mbfunccoils.c ****                                MB_REG_READ );
+ 118:../FreeModbus/functions/mbfunccoils.c **** 
+ 119:../FreeModbus/functions/mbfunccoils.c ****             /* If an error occured convert it into a Modbus exception. */
+ 120:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 158              		.loc 1 120 0
+ 159 00f0 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 160 00f2 002B     		cmp	r3, #0
+ 161 00f4 06D0     		beq	.L6
+ 121:../FreeModbus/functions/mbfunccoils.c ****             {
+ 122:../FreeModbus/functions/mbfunccoils.c ****                 eStatus = prveMBError2Exception( eRegStatus );
+ 162              		.loc 1 122 0
+ 163 00f6 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 164 00f8 1846     		mov	r0, r3
+ 165 00fa FFF7FEFF 		bl	prveMBError2Exception
+ 166 00fe 0346     		mov	r3, r0
+ 167 0100 BB75     		strb	r3, [r7, #22]
+ 120:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 168              		.loc 1 120 0
+ 169 0102 10E0     		b	.L9
+ 170              	.L6:
+ 123:../FreeModbus/functions/mbfunccoils.c ****             }
+ 124:../FreeModbus/functions/mbfunccoils.c ****             else
+ 125:../FreeModbus/functions/mbfunccoils.c ****             {
+ 126:../FreeModbus/functions/mbfunccoils.c ****                 /* The response contains the function code, the starting address
+ 127:../FreeModbus/functions/mbfunccoils.c ****                  * and the quantity of registers. We reuse the old values in the 
+ 128:../FreeModbus/functions/mbfunccoils.c ****                  * buffer because they are still valid. */
+ 129:../FreeModbus/functions/mbfunccoils.c ****                 *usLen += ucNBytes;;
+ 171              		.loc 1 129 0
+ 172 0104 3B68     		ldr	r3, [r7, #0]
+ 173 0106 1A88     		ldrh	r2, [r3, #0]
+ 174 0108 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 175 010a 9BB2     		uxth	r3, r3
+ 176 010c D318     		adds	r3, r2, r3
+ 177 010e 9AB2     		uxth	r2, r3
+ 178 0110 3B68     		ldr	r3, [r7, #0]
+ 179 0112 1A80     		strh	r2, [r3, #0]	@ movhi
+ 120:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 180              		.loc 1 120 0
+ 181 0114 00BF     		nop
+ 182 0116 06E0     		b	.L9
+ 183              	.L3:
+ 130:../FreeModbus/functions/mbfunccoils.c ****             }
+ 131:../FreeModbus/functions/mbfunccoils.c ****         }
+ 132:../FreeModbus/functions/mbfunccoils.c ****         else
+ 133:../FreeModbus/functions/mbfunccoils.c ****         {
+ 134:../FreeModbus/functions/mbfunccoils.c ****             eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 184              		.loc 1 134 0
+ 185 0118 4FF00303 		mov	r3, #3
+ 186 011c BB75     		strb	r3, [r7, #22]
+ 187 011e 02E0     		b	.L9
+ 188              	.L2:
+ 135:../FreeModbus/functions/mbfunccoils.c ****         }
+ 136:../FreeModbus/functions/mbfunccoils.c ****     }
+ 137:../FreeModbus/functions/mbfunccoils.c ****     else
+ 138:../FreeModbus/functions/mbfunccoils.c ****     {
+ 139:../FreeModbus/functions/mbfunccoils.c ****         /* Can't be a valid read coil register request because the length
+ 140:../FreeModbus/functions/mbfunccoils.c ****          * is incorrect. */
+ 141:../FreeModbus/functions/mbfunccoils.c ****         eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 189              		.loc 1 141 0
+ 190 0120 4FF00303 		mov	r3, #3
+ 191 0124 BB75     		strb	r3, [r7, #22]
+ 192              	.L9:
+ 142:../FreeModbus/functions/mbfunccoils.c ****     }
+ 143:../FreeModbus/functions/mbfunccoils.c ****     return eStatus;
+ 193              		.loc 1 143 0
+ 194 0126 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 144:../FreeModbus/functions/mbfunccoils.c **** }
+ 195              		.loc 1 144 0
+ 196 0128 1846     		mov	r0, r3
+ 197 012a 07F11807 		add	r7, r7, #24
+ 198 012e BD46     		mov	sp, r7
+ 199 0130 80BD     		pop	{r7, pc}
+ 200              		.cfi_endproc
+ 201              	.LFE29:
+ 203 0132 00BF     		.section	.text.eMBFuncWriteCoil,"ax",%progbits
+ 204              		.align	2
+ 205              		.global	eMBFuncWriteCoil
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	eMBFuncWriteCoil:
+ 210              	.LFB30:
+ 145:../FreeModbus/functions/mbfunccoils.c **** 
+ 146:../FreeModbus/functions/mbfunccoils.c **** #if MB_FUNC_WRITE_COIL_ENABLED > 0
+ 147:../FreeModbus/functions/mbfunccoils.c **** eMBException
+ 148:../FreeModbus/functions/mbfunccoils.c **** eMBFuncWriteCoil( UCHAR * pucFrame, USHORT * usLen )
+ 149:../FreeModbus/functions/mbfunccoils.c **** {
+ 211              		.loc 1 149 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 16
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215 0000 80B5     		push	{r7, lr}
+ 216              	.LCFI3:
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 7, -8
+ 219              		.cfi_offset 14, -4
+ 220 0002 84B0     		sub	sp, sp, #16
+ 221              	.LCFI4:
+ 222              		.cfi_def_cfa_offset 24
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              	.LCFI5:
+ 225              		.cfi_def_cfa_register 7
+ 226 0006 7860     		str	r0, [r7, #4]
+ 227 0008 3960     		str	r1, [r7, #0]
+ 150:../FreeModbus/functions/mbfunccoils.c ****     USHORT          usRegAddress;
+ 151:../FreeModbus/functions/mbfunccoils.c ****     UCHAR           ucBuf[2];
+ 152:../FreeModbus/functions/mbfunccoils.c **** 
+ 153:../FreeModbus/functions/mbfunccoils.c ****     eMBException    eStatus = MB_EX_NONE;
+ 228              		.loc 1 153 0
+ 229 000a 4FF00003 		mov	r3, #0
+ 230 000e FB73     		strb	r3, [r7, #15]
+ 154:../FreeModbus/functions/mbfunccoils.c ****     eMBErrorCode    eRegStatus;
+ 155:../FreeModbus/functions/mbfunccoils.c **** 
+ 156:../FreeModbus/functions/mbfunccoils.c ****     if( *usLen == ( MB_PDU_FUNC_WRITE_SIZE + MB_PDU_SIZE_MIN ) )
+ 231              		.loc 1 156 0
+ 232 0010 3B68     		ldr	r3, [r7, #0]
+ 233 0012 1B88     		ldrh	r3, [r3, #0]
+ 234 0014 052B     		cmp	r3, #5
+ 235 0016 50D1     		bne	.L12
+ 157:../FreeModbus/functions/mbfunccoils.c ****     {
+ 158:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress = ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_ADDR_OFF] << 8 );
+ 236              		.loc 1 158 0
+ 237 0018 7B68     		ldr	r3, [r7, #4]
+ 238 001a 03F10103 		add	r3, r3, #1
+ 239 001e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 240 0020 4FEA0323 		lsl	r3, r3, #8
+ 241 0024 BB81     		strh	r3, [r7, #12]	@ movhi
+ 159:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress |= ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_ADDR_OFF + 1] );
+ 242              		.loc 1 159 0
+ 243 0026 7B68     		ldr	r3, [r7, #4]
+ 244 0028 03F10203 		add	r3, r3, #2
+ 245 002c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 246 002e 1A46     		mov	r2, r3
+ 247 0030 BB89     		ldrh	r3, [r7, #12]	@ movhi
+ 248 0032 1343     		orrs	r3, r3, r2
+ 249 0034 BB81     		strh	r3, [r7, #12]	@ movhi
+ 160:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress++;
+ 250              		.loc 1 160 0
+ 251 0036 BB89     		ldrh	r3, [r7, #12]	@ movhi
+ 252 0038 03F10103 		add	r3, r3, #1
+ 253 003c BB81     		strh	r3, [r7, #12]	@ movhi
+ 161:../FreeModbus/functions/mbfunccoils.c **** 
+ 162:../FreeModbus/functions/mbfunccoils.c ****         if( ( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF + 1] == 0x00 ) &&
+ 254              		.loc 1 162 0
+ 255 003e 7B68     		ldr	r3, [r7, #4]
+ 256 0040 03F10403 		add	r3, r3, #4
+ 257 0044 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 258 0046 002B     		cmp	r3, #0
+ 259 0048 33D1     		bne	.L13
+ 163:../FreeModbus/functions/mbfunccoils.c ****             ( ( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF] == 0xFF ) ||
+ 260              		.loc 1 163 0 discriminator 1
+ 261 004a 7B68     		ldr	r3, [r7, #4]
+ 262 004c 03F10303 		add	r3, r3, #3
+ 263 0050 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 162:../FreeModbus/functions/mbfunccoils.c ****         if( ( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF + 1] == 0x00 ) &&
+ 264              		.loc 1 162 0 discriminator 1
+ 265 0052 FF2B     		cmp	r3, #255
+ 266 0054 05D0     		beq	.L14
+ 164:../FreeModbus/functions/mbfunccoils.c ****               ( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF] == 0x00 ) ) )
+ 267              		.loc 1 164 0
+ 268 0056 7B68     		ldr	r3, [r7, #4]
+ 269 0058 03F10303 		add	r3, r3, #3
+ 270 005c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 163:../FreeModbus/functions/mbfunccoils.c ****             ( ( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF] == 0xFF ) ||
+ 271              		.loc 1 163 0
+ 272 005e 002B     		cmp	r3, #0
+ 273 0060 27D1     		bne	.L13
+ 274              	.L14:
+ 165:../FreeModbus/functions/mbfunccoils.c ****         {
+ 166:../FreeModbus/functions/mbfunccoils.c ****             ucBuf[1] = 0;
+ 275              		.loc 1 166 0
+ 276 0062 4FF00003 		mov	r3, #0
+ 277 0066 7B72     		strb	r3, [r7, #9]
+ 167:../FreeModbus/functions/mbfunccoils.c ****             if( pucFrame[MB_PDU_FUNC_WRITE_VALUE_OFF] == 0xFF )
+ 278              		.loc 1 167 0
+ 279 0068 7B68     		ldr	r3, [r7, #4]
+ 280 006a 03F10303 		add	r3, r3, #3
+ 281 006e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 282 0070 FF2B     		cmp	r3, #255
+ 283 0072 03D1     		bne	.L15
+ 168:../FreeModbus/functions/mbfunccoils.c ****             {
+ 169:../FreeModbus/functions/mbfunccoils.c ****                 ucBuf[0] = 1;
+ 284              		.loc 1 169 0
+ 285 0074 4FF00103 		mov	r3, #1
+ 286 0078 3B72     		strb	r3, [r7, #8]
+ 287 007a 02E0     		b	.L16
+ 288              	.L15:
+ 170:../FreeModbus/functions/mbfunccoils.c ****             }
+ 171:../FreeModbus/functions/mbfunccoils.c ****             else
+ 172:../FreeModbus/functions/mbfunccoils.c ****             {
+ 173:../FreeModbus/functions/mbfunccoils.c ****                 ucBuf[0] = 0;
+ 289              		.loc 1 173 0
+ 290 007c 4FF00003 		mov	r3, #0
+ 291 0080 3B72     		strb	r3, [r7, #8]
+ 292              	.L16:
+ 174:../FreeModbus/functions/mbfunccoils.c ****             }
+ 175:../FreeModbus/functions/mbfunccoils.c ****             eRegStatus =
+ 176:../FreeModbus/functions/mbfunccoils.c ****                 eMBRegCoilsCB( &ucBuf[0], usRegAddress, 1, MB_REG_WRITE );
+ 293              		.loc 1 176 0
+ 294 0082 07F10802 		add	r2, r7, #8
+ 175:../FreeModbus/functions/mbfunccoils.c ****             eRegStatus =
+ 295              		.loc 1 175 0
+ 296 0086 BB89     		ldrh	r3, [r7, #12]
+ 297 0088 1046     		mov	r0, r2
+ 298 008a 1946     		mov	r1, r3
+ 299 008c 4FF00102 		mov	r2, #1
+ 300 0090 4FF00103 		mov	r3, #1
+ 301 0094 FFF7FEFF 		bl	eMBRegCoilsCB
+ 302 0098 0346     		mov	r3, r0
+ 303 009a FB72     		strb	r3, [r7, #11]
+ 177:../FreeModbus/functions/mbfunccoils.c **** 
+ 178:../FreeModbus/functions/mbfunccoils.c ****             /* If an error occured convert it into a Modbus exception. */
+ 179:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 304              		.loc 1 179 0
+ 305 009c FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 306 009e 002B     		cmp	r3, #0
+ 307 00a0 0ED0     		beq	.L19
+ 180:../FreeModbus/functions/mbfunccoils.c ****             {
+ 181:../FreeModbus/functions/mbfunccoils.c ****                 eStatus = prveMBError2Exception( eRegStatus );
+ 308              		.loc 1 181 0
+ 309 00a2 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 310 00a4 1846     		mov	r0, r3
+ 311 00a6 FFF7FEFF 		bl	prveMBError2Exception
+ 312 00aa 0346     		mov	r3, r0
+ 313 00ac FB73     		strb	r3, [r7, #15]
+ 179:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 314              		.loc 1 179 0
+ 315 00ae 00BF     		nop
+ 316 00b0 06E0     		b	.L19
+ 317              	.L13:
+ 182:../FreeModbus/functions/mbfunccoils.c ****             }
+ 183:../FreeModbus/functions/mbfunccoils.c ****         }
+ 184:../FreeModbus/functions/mbfunccoils.c ****         else
+ 185:../FreeModbus/functions/mbfunccoils.c ****         {
+ 186:../FreeModbus/functions/mbfunccoils.c ****             eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 318              		.loc 1 186 0
+ 319 00b2 4FF00303 		mov	r3, #3
+ 320 00b6 FB73     		strb	r3, [r7, #15]
+ 321 00b8 02E0     		b	.L19
+ 322              	.L12:
+ 187:../FreeModbus/functions/mbfunccoils.c ****         }
+ 188:../FreeModbus/functions/mbfunccoils.c ****     }
+ 189:../FreeModbus/functions/mbfunccoils.c ****     else
+ 190:../FreeModbus/functions/mbfunccoils.c ****     {
+ 191:../FreeModbus/functions/mbfunccoils.c ****         /* Can't be a valid write coil register request because the length
+ 192:../FreeModbus/functions/mbfunccoils.c ****          * is incorrect. */
+ 193:../FreeModbus/functions/mbfunccoils.c ****         eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 323              		.loc 1 193 0
+ 324 00ba 4FF00303 		mov	r3, #3
+ 325 00be FB73     		strb	r3, [r7, #15]
+ 326              	.L19:
+ 194:../FreeModbus/functions/mbfunccoils.c ****     }
+ 195:../FreeModbus/functions/mbfunccoils.c ****     return eStatus;
+ 327              		.loc 1 195 0
+ 328 00c0 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 196:../FreeModbus/functions/mbfunccoils.c **** }
+ 329              		.loc 1 196 0
+ 330 00c2 1846     		mov	r0, r3
+ 331 00c4 07F11007 		add	r7, r7, #16
+ 332 00c8 BD46     		mov	sp, r7
+ 333 00ca 80BD     		pop	{r7, pc}
+ 334              		.cfi_endproc
+ 335              	.LFE30:
+ 337              		.section	.text.eMBFuncWriteMultipleCoils,"ax",%progbits
+ 338              		.align	2
+ 339              		.global	eMBFuncWriteMultipleCoils
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	eMBFuncWriteMultipleCoils:
+ 344              	.LFB31:
+ 197:../FreeModbus/functions/mbfunccoils.c **** 
+ 198:../FreeModbus/functions/mbfunccoils.c **** #endif
+ 199:../FreeModbus/functions/mbfunccoils.c **** 
+ 200:../FreeModbus/functions/mbfunccoils.c **** #if MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED > 0
+ 201:../FreeModbus/functions/mbfunccoils.c **** eMBException
+ 202:../FreeModbus/functions/mbfunccoils.c **** eMBFuncWriteMultipleCoils( UCHAR * pucFrame, USHORT * usLen )
+ 203:../FreeModbus/functions/mbfunccoils.c **** {
+ 345              		.loc 1 203 0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 16
+ 348              		@ frame_needed = 1, uses_anonymous_args = 0
+ 349 0000 80B5     		push	{r7, lr}
+ 350              	.LCFI6:
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 7, -8
+ 353              		.cfi_offset 14, -4
+ 354 0002 84B0     		sub	sp, sp, #16
+ 355              	.LCFI7:
+ 356              		.cfi_def_cfa_offset 24
+ 357 0004 00AF     		add	r7, sp, #0
+ 358              	.LCFI8:
+ 359              		.cfi_def_cfa_register 7
+ 360 0006 7860     		str	r0, [r7, #4]
+ 361 0008 3960     		str	r1, [r7, #0]
+ 204:../FreeModbus/functions/mbfunccoils.c ****     USHORT          usRegAddress;
+ 205:../FreeModbus/functions/mbfunccoils.c ****     USHORT          usCoilCnt;
+ 206:../FreeModbus/functions/mbfunccoils.c ****     UCHAR           ucByteCount;
+ 207:../FreeModbus/functions/mbfunccoils.c ****     UCHAR           ucByteCountVerify;
+ 208:../FreeModbus/functions/mbfunccoils.c **** 
+ 209:../FreeModbus/functions/mbfunccoils.c ****     eMBException    eStatus = MB_EX_NONE;
+ 362              		.loc 1 209 0
+ 363 000a 4FF00003 		mov	r3, #0
+ 364 000e BB73     		strb	r3, [r7, #14]
+ 210:../FreeModbus/functions/mbfunccoils.c ****     eMBErrorCode    eRegStatus;
+ 211:../FreeModbus/functions/mbfunccoils.c **** 
+ 212:../FreeModbus/functions/mbfunccoils.c ****     if( *usLen > ( MB_PDU_FUNC_WRITE_SIZE + MB_PDU_SIZE_MIN ) )
+ 365              		.loc 1 212 0
+ 366 0010 3B68     		ldr	r3, [r7, #0]
+ 367 0012 1B88     		ldrh	r3, [r3, #0]
+ 368 0014 052B     		cmp	r3, #5
+ 369 0016 64D9     		bls	.L22
+ 213:../FreeModbus/functions/mbfunccoils.c ****     {
+ 214:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress = ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_MUL_ADDR_OFF] << 8 );
+ 370              		.loc 1 214 0
+ 371 0018 7B68     		ldr	r3, [r7, #4]
+ 372 001a 03F10103 		add	r3, r3, #1
+ 373 001e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 374 0020 4FEA0323 		lsl	r3, r3, #8
+ 375 0024 BB81     		strh	r3, [r7, #12]	@ movhi
+ 215:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress |= ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_MUL_ADDR_OFF + 1] );
+ 376              		.loc 1 215 0
+ 377 0026 7B68     		ldr	r3, [r7, #4]
+ 378 0028 03F10203 		add	r3, r3, #2
+ 379 002c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 380 002e 1A46     		mov	r2, r3
+ 381 0030 BB89     		ldrh	r3, [r7, #12]	@ movhi
+ 382 0032 1343     		orrs	r3, r3, r2
+ 383 0034 BB81     		strh	r3, [r7, #12]	@ movhi
+ 216:../FreeModbus/functions/mbfunccoils.c ****         usRegAddress++;
+ 384              		.loc 1 216 0
+ 385 0036 BB89     		ldrh	r3, [r7, #12]	@ movhi
+ 386 0038 03F10103 		add	r3, r3, #1
+ 387 003c BB81     		strh	r3, [r7, #12]	@ movhi
+ 217:../FreeModbus/functions/mbfunccoils.c **** 
+ 218:../FreeModbus/functions/mbfunccoils.c ****         usCoilCnt = ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_MUL_COILCNT_OFF] << 8 );
+ 388              		.loc 1 218 0
+ 389 003e 7B68     		ldr	r3, [r7, #4]
+ 390 0040 03F10303 		add	r3, r3, #3
+ 391 0044 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 392 0046 4FEA0323 		lsl	r3, r3, #8
+ 393 004a 7B81     		strh	r3, [r7, #10]	@ movhi
+ 219:../FreeModbus/functions/mbfunccoils.c ****         usCoilCnt |= ( USHORT )( pucFrame[MB_PDU_FUNC_WRITE_MUL_COILCNT_OFF + 1] );
+ 394              		.loc 1 219 0
+ 395 004c 7B68     		ldr	r3, [r7, #4]
+ 396 004e 03F10403 		add	r3, r3, #4
+ 397 0052 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 398 0054 1A46     		mov	r2, r3
+ 399 0056 7B89     		ldrh	r3, [r7, #10]	@ movhi
+ 400 0058 1343     		orrs	r3, r3, r2
+ 401 005a 7B81     		strh	r3, [r7, #10]	@ movhi
+ 220:../FreeModbus/functions/mbfunccoils.c **** 
+ 221:../FreeModbus/functions/mbfunccoils.c ****         ucByteCount = pucFrame[MB_PDU_FUNC_WRITE_MUL_BYTECNT_OFF];
+ 402              		.loc 1 221 0
+ 403 005c 7B68     		ldr	r3, [r7, #4]
+ 404 005e 5B79     		ldrb	r3, [r3, #5]
+ 405 0060 7B72     		strb	r3, [r7, #9]
+ 222:../FreeModbus/functions/mbfunccoils.c **** 
+ 223:../FreeModbus/functions/mbfunccoils.c ****         /* Compute the number of expected bytes in the request. */
+ 224:../FreeModbus/functions/mbfunccoils.c ****         if( ( usCoilCnt & 0x0007 ) != 0 )
+ 406              		.loc 1 224 0
+ 407 0062 7B89     		ldrh	r3, [r7, #10]
+ 408 0064 03F00703 		and	r3, r3, #7
+ 409 0068 002B     		cmp	r3, #0
+ 410 006a 08D0     		beq	.L23
+ 225:../FreeModbus/functions/mbfunccoils.c ****         {
+ 226:../FreeModbus/functions/mbfunccoils.c ****             ucByteCountVerify = ( UCHAR )( usCoilCnt / 8 + 1 );
+ 411              		.loc 1 226 0
+ 412 006c 7B89     		ldrh	r3, [r7, #10]
+ 413 006e 4FEAD303 		lsr	r3, r3, #3
+ 414 0072 9BB2     		uxth	r3, r3
+ 415 0074 DBB2     		uxtb	r3, r3
+ 416 0076 03F10103 		add	r3, r3, #1
+ 417 007a FB73     		strb	r3, [r7, #15]
+ 418 007c 04E0     		b	.L24
+ 419              	.L23:
+ 227:../FreeModbus/functions/mbfunccoils.c ****         }
+ 228:../FreeModbus/functions/mbfunccoils.c ****         else
+ 229:../FreeModbus/functions/mbfunccoils.c ****         {
+ 230:../FreeModbus/functions/mbfunccoils.c ****             ucByteCountVerify = ( UCHAR )( usCoilCnt / 8 );
+ 420              		.loc 1 230 0
+ 421 007e 7B89     		ldrh	r3, [r7, #10]
+ 422 0080 4FEAD303 		lsr	r3, r3, #3
+ 423 0084 9BB2     		uxth	r3, r3
+ 424 0086 FB73     		strb	r3, [r7, #15]
+ 425              	.L24:
+ 231:../FreeModbus/functions/mbfunccoils.c ****         }
+ 232:../FreeModbus/functions/mbfunccoils.c **** 
+ 233:../FreeModbus/functions/mbfunccoils.c ****         if( ( usCoilCnt >= 1 ) &&
+ 426              		.loc 1 233 0
+ 427 0088 7B89     		ldrh	r3, [r7, #10]
+ 428 008a 002B     		cmp	r3, #0
+ 429 008c 25D0     		beq	.L25
+ 430              		.loc 1 233 0 is_stmt 0 discriminator 1
+ 431 008e 7B89     		ldrh	r3, [r7, #10]
+ 432 0090 B3F5F66F 		cmp	r3, #1968
+ 433 0094 21D8     		bhi	.L25
+ 234:../FreeModbus/functions/mbfunccoils.c ****             ( usCoilCnt <= MB_PDU_FUNC_WRITE_MUL_COILCNT_MAX ) &&
+ 434              		.loc 1 234 0 is_stmt 1
+ 435 0096 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 436 0098 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 437 009a 9A42     		cmp	r2, r3
+ 438 009c 1DD1     		bne	.L25
+ 235:../FreeModbus/functions/mbfunccoils.c ****             ( ucByteCountVerify == ucByteCount ) )
+ 236:../FreeModbus/functions/mbfunccoils.c ****         {
+ 237:../FreeModbus/functions/mbfunccoils.c ****             eRegStatus =
+ 238:../FreeModbus/functions/mbfunccoils.c ****                 eMBRegCoilsCB( &pucFrame[MB_PDU_FUNC_WRITE_MUL_VALUES_OFF],
+ 439              		.loc 1 238 0
+ 440 009e 7B68     		ldr	r3, [r7, #4]
+ 441 00a0 03F10601 		add	r1, r3, #6
+ 237:../FreeModbus/functions/mbfunccoils.c ****             eRegStatus =
+ 442              		.loc 1 237 0
+ 443 00a4 BA89     		ldrh	r2, [r7, #12]
+ 444 00a6 7B89     		ldrh	r3, [r7, #10]
+ 445 00a8 0846     		mov	r0, r1
+ 446 00aa 1146     		mov	r1, r2
+ 447 00ac 1A46     		mov	r2, r3
+ 448 00ae 4FF00103 		mov	r3, #1
+ 449 00b2 FFF7FEFF 		bl	eMBRegCoilsCB
+ 450 00b6 0346     		mov	r3, r0
+ 451 00b8 3B72     		strb	r3, [r7, #8]
+ 239:../FreeModbus/functions/mbfunccoils.c ****                                usRegAddress, usCoilCnt, MB_REG_WRITE );
+ 240:../FreeModbus/functions/mbfunccoils.c **** 
+ 241:../FreeModbus/functions/mbfunccoils.c ****             /* If an error occured convert it into a Modbus exception. */
+ 242:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 452              		.loc 1 242 0
+ 453 00ba 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 454 00bc 002B     		cmp	r3, #0
+ 455 00be 06D0     		beq	.L26
+ 243:../FreeModbus/functions/mbfunccoils.c ****             {
+ 244:../FreeModbus/functions/mbfunccoils.c ****                 eStatus = prveMBError2Exception( eRegStatus );
+ 456              		.loc 1 244 0
+ 457 00c0 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 458 00c2 1846     		mov	r0, r3
+ 459 00c4 FFF7FEFF 		bl	prveMBError2Exception
+ 460 00c8 0346     		mov	r3, r0
+ 461 00ca BB73     		strb	r3, [r7, #14]
+ 242:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 462              		.loc 1 242 0
+ 463 00cc 0CE0     		b	.L29
+ 464              	.L26:
+ 245:../FreeModbus/functions/mbfunccoils.c ****             }
+ 246:../FreeModbus/functions/mbfunccoils.c ****             else
+ 247:../FreeModbus/functions/mbfunccoils.c ****             {
+ 248:../FreeModbus/functions/mbfunccoils.c ****                 /* The response contains the function code, the starting address
+ 249:../FreeModbus/functions/mbfunccoils.c ****                  * and the quantity of registers. We reuse the old values in the 
+ 250:../FreeModbus/functions/mbfunccoils.c ****                  * buffer because they are still valid. */
+ 251:../FreeModbus/functions/mbfunccoils.c ****                 *usLen = MB_PDU_FUNC_WRITE_MUL_BYTECNT_OFF;
+ 465              		.loc 1 251 0
+ 466 00ce 3B68     		ldr	r3, [r7, #0]
+ 467 00d0 4FF00502 		mov	r2, #5
+ 468 00d4 1A80     		strh	r2, [r3, #0]	@ movhi
+ 242:../FreeModbus/functions/mbfunccoils.c ****             if( eRegStatus != MB_ENOERR )
+ 469              		.loc 1 242 0
+ 470 00d6 00BF     		nop
+ 471 00d8 06E0     		b	.L29
+ 472              	.L25:
+ 252:../FreeModbus/functions/mbfunccoils.c ****             }
+ 253:../FreeModbus/functions/mbfunccoils.c ****         }
+ 254:../FreeModbus/functions/mbfunccoils.c ****         else
+ 255:../FreeModbus/functions/mbfunccoils.c ****         {
+ 256:../FreeModbus/functions/mbfunccoils.c ****             eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 473              		.loc 1 256 0
+ 474 00da 4FF00303 		mov	r3, #3
+ 475 00de BB73     		strb	r3, [r7, #14]
+ 476 00e0 02E0     		b	.L29
+ 477              	.L22:
+ 257:../FreeModbus/functions/mbfunccoils.c ****         }
+ 258:../FreeModbus/functions/mbfunccoils.c ****     }
+ 259:../FreeModbus/functions/mbfunccoils.c ****     else
+ 260:../FreeModbus/functions/mbfunccoils.c ****     {
+ 261:../FreeModbus/functions/mbfunccoils.c ****         /* Can't be a valid write coil register request because the length
+ 262:../FreeModbus/functions/mbfunccoils.c ****          * is incorrect. */
+ 263:../FreeModbus/functions/mbfunccoils.c ****         eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+ 478              		.loc 1 263 0
+ 479 00e2 4FF00303 		mov	r3, #3
+ 480 00e6 BB73     		strb	r3, [r7, #14]
+ 481              	.L29:
+ 264:../FreeModbus/functions/mbfunccoils.c ****     }
+ 265:../FreeModbus/functions/mbfunccoils.c ****     return eStatus;
+ 482              		.loc 1 265 0
+ 483 00e8 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 266:../FreeModbus/functions/mbfunccoils.c **** }
+ 484              		.loc 1 266 0
+ 485 00ea 1846     		mov	r0, r3
+ 486 00ec 07F11007 		add	r7, r7, #16
+ 487 00f0 BD46     		mov	sp, r7
+ 488 00f2 80BD     		pop	{r7, pc}
+ 489              		.cfi_endproc
+ 490              	.LFE31:
+ 492              		.text
+ 493              	.Letext0:
+ 494              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 495              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
+ 496              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mbproto.h"
+ 497              		.file 5 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mb.h"
+ 498              		.file 6 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mbfunccoils.c
+     /tmp/ccm4SwOt.s:19     .text.eMBFuncReadCoils:00000000 $t
+     /tmp/ccm4SwOt.s:24     .text.eMBFuncReadCoils:00000000 eMBFuncReadCoils
+     /tmp/ccm4SwOt.s:204    .text.eMBFuncWriteCoil:00000000 $t
+     /tmp/ccm4SwOt.s:209    .text.eMBFuncWriteCoil:00000000 eMBFuncWriteCoil
+     /tmp/ccm4SwOt.s:338    .text.eMBFuncWriteMultipleCoils:00000000 $t
+     /tmp/ccm4SwOt.s:343    .text.eMBFuncWriteMultipleCoils:00000000 eMBFuncWriteMultipleCoils
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
+                           .group:00000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
+                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
+                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
+                           .group:00000000 wm4.string.h.8.ef946ad0bc9ad5c970c365dcd1fc4b0a
+                           .group:00000000 wm4.stddef.h.235.d9f4f80b8c4429535175712282cda6a6
+                           .group:00000000 wm4.string.h.86.d5c872ff52e2712c985b588a0ef39f3c
+                           .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
+                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+                           .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
+                           .group:00000000 wm4.mbframe.h.32.cb3fc2a5a44fcaf8fe721dce49a4ba3c
+                           .group:00000000 wm4.mbconfig.h.32.83c2cfaf5d833886f6b04c01d1c2a24c
+
+UNDEFINED SYMBOLS
+eMBRegCoilsCB
+prveMBError2Exception

@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" description="" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GmakeErrorParser" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080" name="Debug" parent="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080." name="/" resourcePath="">
+						<toolChain errorParsers="" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.toolchain.debug.1647706680" name="ARM Linux GCC (GNUARM)" resourceTypeBasedDiscovery="true" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.toolchain.debug">
+							<option id="org.eclipse.cdt.cross.arm.gnu.linux.option.debugging.level.1769415910" name="Debug level" superClass="org.eclipse.cdt.cross.arm.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.max" valueType="enumerated"/>
+							<option id="org.eclipse.cdt.cross.arm.gnu.linux.option.target.processor.1581765101" name="Processor" superClass="org.eclipse.cdt.cross.arm.gnu.linux.option.target.processor" value="org.eclipse.cdt.cross.arm.gnu.base.option.mcpu.cortex-m3" valueType="enumerated"/>
+							<targetPlatform binaryParser="org.eclipse.cdt.core.GNU_ELF" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.platform.debug.1610404617" isAbstract="false" name="Linux Platform" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.platform.debug"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/stm32vld_template/Debug}" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.builder.debug.25551846" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="ARM Linux GNU Make builder" parallelBuildOn="false" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.builder.debug"/>
+							<tool command="arm-none-eabi-gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.debug.1293822858" name="ARM Linux GCC Assembler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.debug">
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input.1167306597" superClass="org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input"/>
+							</tool>
+							<tool command="arm-none-eabi-gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.debug.743813536" name="ARM Linux GCC C Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.debug">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.2055240533" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1469963495" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_STDPERIPH_DRIVER"/>
+									<listOptionValue builtIn="false" value="STM32F10X_MD_VL"/>
+								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths.523295063" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Work/Headers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/StdPeripheralDriver/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Headers}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections.1755835305" name="Function sections (-ffunction-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections.985498903" name="Data sections (-fdata-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.2091697025" name="Language Standard" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std" value="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.default" valueType="enumerated"/>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input.1934849894" superClass="org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.compiler.debug.757410592" name="ARM Linux GCC C++ Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.compiler.debug">
+								<option id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.584649761" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+							</tool>
+							<tool command="arm-none-eabi-gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.linker.debug.676719227" name="ARM Linux GCC C Linker" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.linker.debug">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile.422456448" name="Script file (-T)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile" value="${workspace_loc:/${ProjName}/stm32f100rb.ld}" valueType="string"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections.2025657515" name="Remove unused sections (-Xlinker --gc-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections" value="true" valueType="boolean"/>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.c.linker.input.41855445" superClass="org.eclipse.cdt.cross.arm.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.linker.debug.204788770" name="ARM Linux GCC C++ Linker" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.linker.debug"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.archiver.base.993961708" name="ARM Linux GCC Archiver" superClass="org.eclipse.cdt.cross.arm.gnu.linux.archiver.base"/>
+							<tool command="arm-none-eabi-objcopy" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.createflash.debug.1664531734" name="ARM Linux GNU Create Flash Image" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.createflash.debug">
+								<option id="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice.1192326907" name="Output file format (-O)" superClass="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice" value="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice.ihex" valueType="enumerated"/>
+							</tool>
+							<tool command="arm-none-eabi-objdump" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.createlisting.debug.188289904" name="ARM Linux GNU Create Listing" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.createlisting.debug"/>
+							<tool command="arm-none-eabi-size" commandLinePattern="${COMMAND} ${INPUTS} ${FLAGS}" errorParsers="" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.printsize.debug.1553103931" name="ARM Linux GNU Print Size" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.printsize.debug"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" description="" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437" name="Release" parent="org.eclipse.cdt.cross.arm.gnu.linux.elf.release">
+					<folderInfo id="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.cross.arm.gnu.linux.elf.toolchain.release.1895187404" name="ARM Linux GCC (GNUARM)" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.toolchain.release">
+							<option id="org.eclipse.cdt.cross.arm.gnu.linux.option.debugging.level.1869567325" name="Debug level" superClass="org.eclipse.cdt.cross.arm.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.none" valueType="enumerated"/>
+							<targetPlatform id="org.eclipse.cdt.cross.arm.gnu.linux.elf.platform.release.420442830" isAbstract="false" name="Linux Platform" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.platform.release"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/stm32vld_template/Release}" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.builder.release.1433261362" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="ARM Linux GNU Make builder" parallelBuildOn="false" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.builder.release"/>
+							<tool command="arm-none-eabi-gcc" id="org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.release.1251133818" name="ARM Linux GCC Assembler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.assembler.option.include.paths.171348866" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.assembler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/lib/gcc/arm-none-eabi/4.7.3/include"/>
+									<listOptionValue builtIn="false" value="/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/lib/gcc/arm-none-eabi/4.7.3/include-fixed"/>
+									<listOptionValue builtIn="false" value="/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/arm-none-eabi/include"/>
+								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.assembler.option.preprocessor.def.419578550" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.assembler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__ULACCUM_MAX__=0XFFFFFFFFFFFFFFFFP-32ULK"/>
+									<listOptionValue builtIn="false" value="__SIG_ATOMIC_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__INT_FAST32_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK__=1"/>
+									<listOptionValue builtIn="false" value="__SQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__USACCUM_MAX__=0XFFFFP-8UHK"/>
+									<listOptionValue builtIn="false" value="__FLT_EPSILON__=1.1920928955078125e-7F"/>
+									<listOptionValue builtIn="false" value="__DEC64_MANT_DIG__=16"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN__=((double)2.2250738585072014e-308L)"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="__SCHAR_MAX__=127"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__LFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DEC128_MANT_DIG__=34"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_INT_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTPTR_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__HA_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__ACCUM_MAX__=0X7FFFFFFFP-15K"/>
+									<listOptionValue builtIn="false" value="__LACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN_10_EXP__=(-307)"/>
+									<listOptionValue builtIn="false" value="__FRACT_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__SFRACT_EPSILON__=0x1P-7HR"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_MIN__=0.0ULR"/>
+									<listOptionValue builtIn="false" value="__DBL_DENORM_MIN__=((double)4.9406564584124654e-324L)"/>
+									<listOptionValue builtIn="false" value="__USFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__LACCUM_MAX__=0X7FFFFFFFFFFFFFFFP-31LK"/>
+									<listOptionValue builtIn="false" value="__SHRT_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__UTQ_FBIT__=128"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_WCHAR_T__=4"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_PTRDIFF_T__=4"/>
+									<listOptionValue builtIn="false" value="__SA_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__GXX_TYPEINFO_EQUALITY_INLINE=0"/>
+									<listOptionValue builtIn="false" value="__DEC32_MAX__=9.999999E96DF"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_DOUBLE__=8"/>
+									<listOptionValue builtIn="false" value="__SACCUM_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN_EXP__=(-125)"/>
+									<listOptionValue builtIn="false" value="__LDBL_MANT_DIG__=53"/>
+									<listOptionValue builtIn="false" value="__DEC32_EPSILON__=1E-6DF"/>
+									<listOptionValue builtIn="false" value="__INTPTR_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__LFRACT_MIN__=(-0.5LR-0.5LR)"/>
+									<listOptionValue builtIn="false" value="__LDBL_DIG__=15"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST8_MAX__=127"/>
+									<listOptionValue builtIn="false" value="__USQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__LDBL_DENORM_MIN__=4.9406564584124654e-324L"/>
+									<listOptionValue builtIn="false" value="__DEC32_MIN_EXP__=(-94)"/>
+									<listOptionValue builtIn="false" value="__DEC128_MAX__=9.999999999999999999999999999999999E6144DL"/>
+									<listOptionValue builtIn="false" value="__LACCUM_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__DA_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__INT_FAST8_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST8_MAX__=255"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_EPSILON__=0x1P-32ULR"/>
+									<listOptionValue builtIn="false" value="__UACCUM_EPSILON__=0x1P-16UK"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__FRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__GNUC_PATCHLEVEL__=3"/>
+									<listOptionValue builtIn="false" value="__ACCUM_EPSILON__=0x1P-15K"/>
+									<listOptionValue builtIn="false" value="__DEC32_SUBNORMAL_MIN__=0.000001E-95DF"/>
+									<listOptionValue builtIn="false" value="__SFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_POINTER__=4"/>
+									<listOptionValue builtIn="false" value="__WINT_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX_10_EXP__=38"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="__SFRACT_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="__DEC64_MIN_EXP__=(-382)"/>
+									<listOptionValue builtIn="false" value="__ARM_ARCH_4T__=1"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_ACQ_REL=4"/>
+									<listOptionValue builtIn="false" value="__APCS_32__=1"/>
+									<listOptionValue builtIn="false" value="__DEC32_MIN__=1E-95DF"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_MIN__=0.0ULK"/>
+									<listOptionValue builtIn="false" value="__USACCUM_EPSILON__=0x1P-8UHK"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN_10_EXP__=(-307)"/>
+									<listOptionValue builtIn="false" value="__UTA_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG_LONG__=8"/>
+									<listOptionValue builtIn="false" value="__UDQ_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST8_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__USFRACT_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__ARM_EABI__=1"/>
+									<listOptionValue builtIn="false" value="__DEC64_MAX_EXP__=385"/>
+									<listOptionValue builtIn="false" value="__USACCUM_MIN__=0.0UHK"/>
+									<listOptionValue builtIn="false" value="__LFRACT_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__UACCUM_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__INT16_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__UINT16_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX_EXP__=1024"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__FLT_MANT_DIG__=24"/>
+									<listOptionValue builtIn="false" value="__FLT_RADIX__=2"/>
+									<listOptionValue builtIn="false" value="&quot;__INTMAX_C(c)=c ## LL&quot;"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_MAX__=0XFFFFFFFFFFFFFFFFP-64ULLR"/>
+									<listOptionValue builtIn="false" value="__CHAR_UNSIGNED__=1"/>
+									<listOptionValue builtIn="false" value="__UINT8_MAX__=255"/>
+									<listOptionValue builtIn="false" value="&quot;__INTMAX_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_DIG__=6"/>
+									<listOptionValue builtIn="false" value="__LACCUM_EPSILON__=0x1P-31LK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST32_TYPE__=long int&quot;"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN_EXP__=(-1021)"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__UINT32_MAX__=4294967295UL"/>
+									<listOptionValue builtIn="false" value="__LONG_LONG_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT32_C(c)=c ## UL&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX_10_EXP__=308"/>
+									<listOptionValue builtIn="false" value="__SIG_ATOMIC_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__NO_INLINE__=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST16_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__DEC128_EPSILON__=1E-33DL"/>
+									<listOptionValue builtIn="false" value="__FLT_DECIMAL_DIG__=9"/>
+									<listOptionValue builtIn="false" value="__GNUC__=4"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST8_TYPE__=signed char&quot;"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_WCHAR_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_MAX__=0X7FFFFFFFFFFFFFFFP-63LLR"/>
+									<listOptionValue builtIn="false" value="__arm__=1"/>
+									<listOptionValue builtIn="false" value="__TQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__USFRACT_EPSILON__=0x1P-8UHR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_LONG_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__ACCUM_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__TA_IBIT__=64"/>
+									<listOptionValue builtIn="false" value="__DEC128_MIN_EXP__=(-6142)"/>
+									<listOptionValue builtIn="false" value="__UDA_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__SACCUM_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__UTQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__INTPTR_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__DQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_ACQUIRE=2"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX_EXP__=1024"/>
+									<listOptionValue builtIn="false" value="&quot;__WINT_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__FLOAT_WORD_ORDER__=__ORDER_LITTLE_ENDIAN__"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_CONSUME=1"/>
+									<listOptionValue builtIn="false" value="__DEC64_SUBNORMAL_MIN__=0.000000000000001E-383DD"/>
+									<listOptionValue builtIn="false" value="__INT_FAST32_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST8_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__PTRDIFF_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_BOOL_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST16_TYPE__=short int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__SIZE_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__UACCUM_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__DEC32_MANT_DIG__=7"/>
+									<listOptionValue builtIn="false" value="__LACCUM_MIN__=(-0X1P31LK-0X1P31LK)"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_RELAXED=0"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_TEST_AND_SET_TRUEVAL=1"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX__=((double)1.7976931348623157e+308L)"/>
+									<listOptionValue builtIn="false" value="__ACCUM_MIN__=(-0X1P15K-0X1P15K)"/>
+									<listOptionValue builtIn="false" value="__SACCUM_MIN__=(-0X1P7HK-0X1P7HK)"/>
+									<listOptionValue builtIn="false" value="__INT_FAST16_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__SFRACT_MAX__=0X7FP-7HR"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_EPSILON__=0x1P-31LLK"/>
+									<listOptionValue builtIn="false" value="__SACCUM_EPSILON__=0x1P-7HK"/>
+									<listOptionValue builtIn="false" value="__UINT16_MAX__=65535"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST8_TYPE__=unsigned char&quot;"/>
+									<listOptionValue builtIn="false" value="__UTA_IBIT__=64"/>
+									<listOptionValue builtIn="false" value="__SQ_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST32_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__SFRACT_MIN__=(-0.5HR-0.5HR)"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_EPSILON__=0x1P-63LLR"/>
+									<listOptionValue builtIn="false" value="__USA_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__FLT_EVAL_METHOD__=0"/>
+									<listOptionValue builtIn="false" value="__UHQ_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__DQ_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT16_TYPE__=short unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__PRAGMA_REDEFINE_EXTNAME=1"/>
+									<listOptionValue builtIn="false" value="__ARMEL__=1"/>
+									<listOptionValue builtIn="false" value="__UFRACT_MIN__=0.0UR"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST16_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX_EXP__=128"/>
+									<listOptionValue builtIn="false" value="__SOFTFP__=1"/>
+									<listOptionValue builtIn="false" value="__LDBL_EPSILON__=2.2204460492503131e-16L"/>
+									<listOptionValue builtIn="false" value="__DEC64_MIN__=1E-383DD"/>
+									<listOptionValue builtIn="false" value="__VFP_FP__=1"/>
+									<listOptionValue builtIn="false" value="__QQ_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT64_C(c)=c ## ULL&quot;"/>
+									<listOptionValue builtIn="false" value="__LFRACT_EPSILON__=0x1P-31LR"/>
+									<listOptionValue builtIn="false" value="__REGISTER_PREFIX__"/>
+									<listOptionValue builtIn="false" value="__INT_FAST8_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__SA_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__UQQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__ORDER_LITTLE_ENDIAN__=1234"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__INT8_MAX__=127"/>
+									<listOptionValue builtIn="false" value="__FLT_DENORM_MIN__=1.4012984643248171e-45F"/>
+									<listOptionValue builtIn="false" value="__WCHAR_MIN__=0U"/>
+									<listOptionValue builtIn="false" value="&quot;__CHAR32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ELF__=1"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_EPSILON__=0x1P-64ULLR"/>
+									<listOptionValue builtIn="false" value="__UINTMAX_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__HQ_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN_10_EXP__=(-37)"/>
+									<listOptionValue builtIn="false" value="__UHA_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__UINTPTR_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__UINT64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_MIN__=(-0.5LLR-0.5LLR)"/>
+									<listOptionValue builtIn="false" value="__USACCUM_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__WCHAR_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__HA_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="__INT_FAST16_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__GXX_ABI_VERSION=1002"/>
+									<listOptionValue builtIn="false" value="__TQ_FBIT__=127"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_RELEASE=3"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_MIN__=0.0ULLK"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTMAX_C(c)=c ## ULL&quot;"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_POINTER_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_EPSILON__=0x1P-32ULLK"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN_EXP__=(-1021)"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG_DOUBLE__=8"/>
+									<listOptionValue builtIn="false" value="__ACCUM_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__SIZE_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST32_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__DA_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__INT_FAST64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__DBL_DECIMAL_DIG__=17"/>
+									<listOptionValue builtIn="false" value="&quot;__SIG_ATOMIC_MIN__=(-__SIG_ATOMIC_MAX__ - 1)&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN__=1.1754943508222875e-38F"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR32_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__DBL_EPSILON__=((double)2.2204460492503131e-16L)"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__UHA_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_SIZE_T__=4"/>
+									<listOptionValue builtIn="false" value="__DEC128_MAX_EXP__=6145"/>
+									<listOptionValue builtIn="false" value="__DBL_DIG__=15"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST16_MAX__=65535"/>
+									<listOptionValue builtIn="false" value="__GNUC_MINOR__=7"/>
+									<listOptionValue builtIn="false" value="__ORDER_PDP_ENDIAN__=3412"/>
+									<listOptionValue builtIn="false" value="__BIGGEST_ALIGNMENT__=8"/>
+									<listOptionValue builtIn="false" value="__DEC64_MAX__=9.999999999999999E384DD"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST16_TYPE__=short unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USACCUM_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_MAX__=0X7FFFFFFFFFFFFFFFP-31LLK"/>
+									<listOptionValue builtIn="false" value="__UDA_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_SHORT_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__WINT_MIN__=0U"/>
+									<listOptionValue builtIn="false" value="__INT16_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__INT64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__INT_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="&quot;__INT32_C(c)=c ## L&quot;"/>
+									<listOptionValue builtIn="false" value="__DEC64_EPSILON__=1E-15DD"/>
+									<listOptionValue builtIn="false" value="__FRACT_MAX__=0X7FFFP-15R"/>
+									<listOptionValue builtIn="false" value="__UACCUM_MAX__=0XFFFFFFFFP-16UK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT32_TYPE__=long int&quot;"/>
+									<listOptionValue builtIn="false" value="__USES_INITFINI__=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST32_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="__STDC__=1"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN__=2.2250738585072014e-308L"/>
+									<listOptionValue builtIn="false" value="__HQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__SACCUM_MAX__=0X7FFFP-7HK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT8_TYPE__=signed char&quot;"/>
+									<listOptionValue builtIn="false" value="__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_FLOAT__=4"/>
+									<listOptionValue builtIn="false" value="__INTMAX_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_MIN__=(-0X1P31LLK-0X1P31LLK)"/>
+									<listOptionValue builtIn="false" value="__USFRACT_MIN__=0.0UHR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_LLONG_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__UFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_FAST64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__LFRACT_MAX__=0X7FFFFFFFP-31LR"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_SEQ_CST=5"/>
+									<listOptionValue builtIn="false" value="__DEC32_MAX_EXP__=97"/>
+									<listOptionValue builtIn="false" value="__ARM_PCS=1"/>
+									<listOptionValue builtIn="false" value="__TA_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="__INT32_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="&quot;__VERSION__=&quot;4.7.3 20121207 (release) [ARM/embedded-4_7-branch revision 194305]&quot;"/>
+									<listOptionValue builtIn="false" value="__UFRACT_EPSILON__=0x1P-16UR"/>
+									<listOptionValue builtIn="false" value="__UFRACT_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT64_C(c)=c ## LL&quot;"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_WINT_T__=4"/>
+									<listOptionValue builtIn="false" value="__USER_LABEL_PREFIX__"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_INT__=4"/>
+									<listOptionValue builtIn="false" value="__LONG_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="__UHQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__INT8_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__ORDER_BIG_ENDIAN__=4321"/>
+									<listOptionValue builtIn="false" value="&quot;__INT16_TYPE__=short int&quot;"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST32_MAX__=4294967295UL"/>
+									<listOptionValue builtIn="false" value="__PTRDIFF_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__CHAR_BIT__=8"/>
+									<listOptionValue builtIn="false" value="__UINT8_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__DEC128_SUBNORMAL_MIN__=0.000000000000000000000000000000001E-6143DL"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_SHORT__=2"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_MAX__=0XFFFFFFFFP-32ULR"/>
+									<listOptionValue builtIn="false" value="__FRACT_MIN__=(-0.5R-0.5R)"/>
+									<listOptionValue builtIn="false" value="__UDQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DEC_EVAL_METHOD__=2"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX__=3.4028234663852886e+38F"/>
+									<listOptionValue builtIn="false" value="__DBL_MANT_DIG__=53"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST16_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USA_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__GNUC_GNU_INLINE__=1"/>
+									<listOptionValue builtIn="false" value="__DEC128_MIN__=1E-6143DL"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_MAX__=0XFFFFFFFFFFFFFFFFP-32ULLK"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT8_TYPE__=unsigned char&quot;"/>
+									<listOptionValue builtIn="false" value="__USFRACT_MAX__=0XFFP-8UHR"/>
+									<listOptionValue builtIn="false" value="__UQQ_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__UFRACT_MAX__=0XFFFFP-16UR"/>
+									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
+									<listOptionValue builtIn="false" value="__QQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DECIMAL_DIG__=17"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX_10_EXP__=308"/>
+									<listOptionValue builtIn="false" value="__UACCUM_MIN__=0.0UK"/>
+									<listOptionValue builtIn="false" value="__FRACT_EPSILON__=0x1P-15R"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG__=4"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_EPSILON__=0x1P-32ULK"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTMAX_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USQ_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX__=1.7976931348623157e+308L"/>
+									<listOptionValue builtIn="false" value="__FINITE_MATH_ONLY__=0"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="&quot;__WCHAR_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_MIN__=0.0ULLR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR16_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__CHAR16_TYPE__=short unsigned int&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input.2076210498" superClass="org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.release.1682656267" name="ARM Linux GCC C Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.517409162" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1960758755" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_STDPERIPH_DRIVER"/>
+									<listOptionValue builtIn="false" value="STM32F10X_MD_VL"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_MAX__=0XFFFFFFFFFFFFFFFFP-32ULK"/>
+									<listOptionValue builtIn="false" value="__SIG_ATOMIC_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__INT_FAST32_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK__=1"/>
+									<listOptionValue builtIn="false" value="__SQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__USACCUM_MAX__=0XFFFFP-8UHK"/>
+									<listOptionValue builtIn="false" value="__FLT_EPSILON__=1.1920928955078125e-7F"/>
+									<listOptionValue builtIn="false" value="__DEC64_MANT_DIG__=16"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN__=((double)2.2250738585072014e-308L)"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="__SCHAR_MAX__=127"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__LFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DEC128_MANT_DIG__=34"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_INT_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTPTR_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__HA_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__ACCUM_MAX__=0X7FFFFFFFP-15K"/>
+									<listOptionValue builtIn="false" value="__LACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN_10_EXP__=(-307)"/>
+									<listOptionValue builtIn="false" value="__FRACT_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__SFRACT_EPSILON__=0x1P-7HR"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_MIN__=0.0ULR"/>
+									<listOptionValue builtIn="false" value="__DBL_DENORM_MIN__=((double)4.9406564584124654e-324L)"/>
+									<listOptionValue builtIn="false" value="__USFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__LACCUM_MAX__=0X7FFFFFFFFFFFFFFFP-31LK"/>
+									<listOptionValue builtIn="false" value="__SHRT_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__UTQ_FBIT__=128"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_WCHAR_T__=4"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_PTRDIFF_T__=4"/>
+									<listOptionValue builtIn="false" value="__SA_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__GXX_TYPEINFO_EQUALITY_INLINE=0"/>
+									<listOptionValue builtIn="false" value="__DEC32_MAX__=9.999999E96DF"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_DOUBLE__=8"/>
+									<listOptionValue builtIn="false" value="__SACCUM_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN_EXP__=(-125)"/>
+									<listOptionValue builtIn="false" value="__LDBL_MANT_DIG__=53"/>
+									<listOptionValue builtIn="false" value="__DEC32_EPSILON__=1E-6DF"/>
+									<listOptionValue builtIn="false" value="__INTPTR_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__LFRACT_MIN__=(-0.5LR-0.5LR)"/>
+									<listOptionValue builtIn="false" value="__LDBL_DIG__=15"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST8_MAX__=127"/>
+									<listOptionValue builtIn="false" value="__USQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__LDBL_DENORM_MIN__=4.9406564584124654e-324L"/>
+									<listOptionValue builtIn="false" value="__DEC32_MIN_EXP__=(-94)"/>
+									<listOptionValue builtIn="false" value="__DEC128_MAX__=9.999999999999999999999999999999999E6144DL"/>
+									<listOptionValue builtIn="false" value="__LACCUM_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__DA_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__INT_FAST8_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST8_MAX__=255"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_EPSILON__=0x1P-32ULR"/>
+									<listOptionValue builtIn="false" value="__UACCUM_EPSILON__=0x1P-16UK"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__FRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__GNUC_PATCHLEVEL__=3"/>
+									<listOptionValue builtIn="false" value="__ACCUM_EPSILON__=0x1P-15K"/>
+									<listOptionValue builtIn="false" value="__DEC32_SUBNORMAL_MIN__=0.000001E-95DF"/>
+									<listOptionValue builtIn="false" value="__SFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_POINTER__=4"/>
+									<listOptionValue builtIn="false" value="__WINT_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX_10_EXP__=38"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="__SFRACT_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="__DEC64_MIN_EXP__=(-382)"/>
+									<listOptionValue builtIn="false" value="__ARM_ARCH_4T__=1"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_ACQ_REL=4"/>
+									<listOptionValue builtIn="false" value="__APCS_32__=1"/>
+									<listOptionValue builtIn="false" value="__DEC32_MIN__=1E-95DF"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_MIN__=0.0ULK"/>
+									<listOptionValue builtIn="false" value="__USACCUM_EPSILON__=0x1P-8UHK"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN_10_EXP__=(-307)"/>
+									<listOptionValue builtIn="false" value="__UTA_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG_LONG__=8"/>
+									<listOptionValue builtIn="false" value="__UDQ_FBIT__=64"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST8_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__USFRACT_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__ARM_EABI__=1"/>
+									<listOptionValue builtIn="false" value="__DEC64_MAX_EXP__=385"/>
+									<listOptionValue builtIn="false" value="__USACCUM_MIN__=0.0UHK"/>
+									<listOptionValue builtIn="false" value="__LFRACT_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__UACCUM_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__INT16_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__UINT16_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX_EXP__=1024"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__FLT_MANT_DIG__=24"/>
+									<listOptionValue builtIn="false" value="__FLT_RADIX__=2"/>
+									<listOptionValue builtIn="false" value="&quot;__INTMAX_C(c)=c ## LL&quot;"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_MAX__=0XFFFFFFFFFFFFFFFFP-64ULLR"/>
+									<listOptionValue builtIn="false" value="__CHAR_UNSIGNED__=1"/>
+									<listOptionValue builtIn="false" value="__UINT8_MAX__=255"/>
+									<listOptionValue builtIn="false" value="&quot;__INTMAX_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_DIG__=6"/>
+									<listOptionValue builtIn="false" value="__LACCUM_EPSILON__=0x1P-31LK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST32_TYPE__=long int&quot;"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN_EXP__=(-1021)"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__UINT32_MAX__=4294967295UL"/>
+									<listOptionValue builtIn="false" value="__LONG_LONG_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT32_C(c)=c ## UL&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX_10_EXP__=308"/>
+									<listOptionValue builtIn="false" value="__SIG_ATOMIC_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__NO_INLINE__=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST16_MAX__=32767"/>
+									<listOptionValue builtIn="false" value="__DEC128_EPSILON__=1E-33DL"/>
+									<listOptionValue builtIn="false" value="__FLT_DECIMAL_DIG__=9"/>
+									<listOptionValue builtIn="false" value="__GNUC__=4"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST8_TYPE__=signed char&quot;"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_WCHAR_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_MAX__=0X7FFFFFFFFFFFFFFFP-63LLR"/>
+									<listOptionValue builtIn="false" value="__arm__=1"/>
+									<listOptionValue builtIn="false" value="__TQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__USFRACT_EPSILON__=0x1P-8UHR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_LONG_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__ACCUM_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__TA_IBIT__=64"/>
+									<listOptionValue builtIn="false" value="__DEC128_MIN_EXP__=(-6142)"/>
+									<listOptionValue builtIn="false" value="__UDA_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__SACCUM_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__UTQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__INTPTR_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__DQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_ACQUIRE=2"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX_EXP__=1024"/>
+									<listOptionValue builtIn="false" value="&quot;__WINT_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__FLOAT_WORD_ORDER__=__ORDER_LITTLE_ENDIAN__"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_CONSUME=1"/>
+									<listOptionValue builtIn="false" value="__DEC64_SUBNORMAL_MIN__=0.000000000000001E-383DD"/>
+									<listOptionValue builtIn="false" value="__INT_FAST32_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST8_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__PTRDIFF_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_BOOL_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_LEAST16_TYPE__=short int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__SIZE_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__UACCUM_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__DEC32_MANT_DIG__=7"/>
+									<listOptionValue builtIn="false" value="__LACCUM_MIN__=(-0X1P31LK-0X1P31LK)"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_RELAXED=0"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_TEST_AND_SET_TRUEVAL=1"/>
+									<listOptionValue builtIn="false" value="__DBL_MAX__=((double)1.7976931348623157e+308L)"/>
+									<listOptionValue builtIn="false" value="__ACCUM_MIN__=(-0X1P15K-0X1P15K)"/>
+									<listOptionValue builtIn="false" value="__SACCUM_MIN__=(-0X1P7HK-0X1P7HK)"/>
+									<listOptionValue builtIn="false" value="__INT_FAST16_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="__SFRACT_MAX__=0X7FP-7HR"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_EPSILON__=0x1P-31LLK"/>
+									<listOptionValue builtIn="false" value="__SACCUM_EPSILON__=0x1P-7HK"/>
+									<listOptionValue builtIn="false" value="__UINT16_MAX__=65535"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST8_TYPE__=unsigned char&quot;"/>
+									<listOptionValue builtIn="false" value="__UTA_IBIT__=64"/>
+									<listOptionValue builtIn="false" value="__SQ_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST32_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__SFRACT_MIN__=(-0.5HR-0.5HR)"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_EPSILON__=0x1P-63LLR"/>
+									<listOptionValue builtIn="false" value="__USA_IBIT__=16"/>
+									<listOptionValue builtIn="false" value="__FLT_EVAL_METHOD__=0"/>
+									<listOptionValue builtIn="false" value="__UHQ_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__DQ_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT16_TYPE__=short unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__PRAGMA_REDEFINE_EXTNAME=1"/>
+									<listOptionValue builtIn="false" value="__ARMEL__=1"/>
+									<listOptionValue builtIn="false" value="__UFRACT_MIN__=0.0UR"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST16_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX_EXP__=128"/>
+									<listOptionValue builtIn="false" value="__SOFTFP__=1"/>
+									<listOptionValue builtIn="false" value="__LDBL_EPSILON__=2.2204460492503131e-16L"/>
+									<listOptionValue builtIn="false" value="__DEC64_MIN__=1E-383DD"/>
+									<listOptionValue builtIn="false" value="__VFP_FP__=1"/>
+									<listOptionValue builtIn="false" value="__QQ_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT64_C(c)=c ## ULL&quot;"/>
+									<listOptionValue builtIn="false" value="__LFRACT_EPSILON__=0x1P-31LR"/>
+									<listOptionValue builtIn="false" value="__REGISTER_PREFIX__"/>
+									<listOptionValue builtIn="false" value="__INT_FAST8_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__SA_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__UQQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__ORDER_LITTLE_ENDIAN__=1234"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__INT8_MAX__=127"/>
+									<listOptionValue builtIn="false" value="__FLT_DENORM_MIN__=1.4012984643248171e-45F"/>
+									<listOptionValue builtIn="false" value="__WCHAR_MIN__=0U"/>
+									<listOptionValue builtIn="false" value="&quot;__CHAR32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ELF__=1"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_EPSILON__=0x1P-64ULLR"/>
+									<listOptionValue builtIn="false" value="__UINTMAX_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__HQ_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN_10_EXP__=(-37)"/>
+									<listOptionValue builtIn="false" value="__UHA_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__UINTPTR_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__UINT64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__LLFRACT_MIN__=(-0.5LLR-0.5LLR)"/>
+									<listOptionValue builtIn="false" value="__USACCUM_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__WCHAR_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__HA_FBIT__=7"/>
+									<listOptionValue builtIn="false" value="__INT_FAST16_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__LDBL_HAS_DENORM__=1"/>
+									<listOptionValue builtIn="false" value="__GXX_ABI_VERSION=1002"/>
+									<listOptionValue builtIn="false" value="__TQ_FBIT__=127"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_RELEASE=3"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_MIN__=0.0ULLK"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTMAX_C(c)=c ## ULL&quot;"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_POINTER_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_EPSILON__=0x1P-32ULLK"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DBL_MIN_EXP__=(-1021)"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST32_TYPE__=long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG_DOUBLE__=8"/>
+									<listOptionValue builtIn="false" value="__ACCUM_FBIT__=15"/>
+									<listOptionValue builtIn="false" value="__SIZE_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST32_MAX__=4294967295U"/>
+									<listOptionValue builtIn="false" value="__DA_FBIT__=31"/>
+									<listOptionValue builtIn="false" value="__INT_FAST64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__DBL_DECIMAL_DIG__=17"/>
+									<listOptionValue builtIn="false" value="&quot;__SIG_ATOMIC_MIN__=(-__SIG_ATOMIC_MAX__ - 1)&quot;"/>
+									<listOptionValue builtIn="false" value="__FLT_MIN__=1.1754943508222875e-38F"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR32_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__DBL_EPSILON__=((double)2.2204460492503131e-16L)"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST64_MAX__=18446744073709551615ULL"/>
+									<listOptionValue builtIn="false" value="__UHA_IBIT__=8"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_SIZE_T__=4"/>
+									<listOptionValue builtIn="false" value="__DEC128_MAX_EXP__=6145"/>
+									<listOptionValue builtIn="false" value="__DBL_DIG__=15"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST16_MAX__=65535"/>
+									<listOptionValue builtIn="false" value="__GNUC_MINOR__=7"/>
+									<listOptionValue builtIn="false" value="__ORDER_PDP_ENDIAN__=3412"/>
+									<listOptionValue builtIn="false" value="__BIGGEST_ALIGNMENT__=8"/>
+									<listOptionValue builtIn="false" value="__DEC64_MAX__=9.999999999999999E384DD"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST16_TYPE__=short unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USACCUM_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_MAX__=0X7FFFFFFFFFFFFFFFP-31LLK"/>
+									<listOptionValue builtIn="false" value="__UDA_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_SHORT_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__WINT_MIN__=0U"/>
+									<listOptionValue builtIn="false" value="__INT16_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__INT64_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__INT_MAX__=2147483647"/>
+									<listOptionValue builtIn="false" value="&quot;__INT32_C(c)=c ## L&quot;"/>
+									<listOptionValue builtIn="false" value="__DEC64_EPSILON__=1E-15DD"/>
+									<listOptionValue builtIn="false" value="__FRACT_MAX__=0X7FFFP-15R"/>
+									<listOptionValue builtIn="false" value="__UACCUM_MAX__=0XFFFFFFFFP-16UK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT32_TYPE__=long int&quot;"/>
+									<listOptionValue builtIn="false" value="__USES_INITFINI__=1"/>
+									<listOptionValue builtIn="false" value="__INT_LEAST32_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="__STDC__=1"/>
+									<listOptionValue builtIn="false" value="__LDBL_MIN__=2.2250738585072014e-308L"/>
+									<listOptionValue builtIn="false" value="__HQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__SACCUM_MAX__=0X7FFFP-7HK"/>
+									<listOptionValue builtIn="false" value="&quot;__INT8_TYPE__=signed char&quot;"/>
+									<listOptionValue builtIn="false" value="__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_FLOAT__=4"/>
+									<listOptionValue builtIn="false" value="__INTMAX_MAX__=9223372036854775807LL"/>
+									<listOptionValue builtIn="false" value="__LLACCUM_MIN__=(-0X1P31LLK-0X1P31LLK)"/>
+									<listOptionValue builtIn="false" value="__USFRACT_MIN__=0.0UHR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_LLONG_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__UFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT_FAST64_TYPE__=long long int&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__LFRACT_MAX__=0X7FFFFFFFP-31LR"/>
+									<listOptionValue builtIn="false" value="__ATOMIC_SEQ_CST=5"/>
+									<listOptionValue builtIn="false" value="__DEC32_MAX_EXP__=97"/>
+									<listOptionValue builtIn="false" value="__ARM_PCS=1"/>
+									<listOptionValue builtIn="false" value="__TA_FBIT__=63"/>
+									<listOptionValue builtIn="false" value="__INT32_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="&quot;__VERSION__=&quot;4.7.3 20121207 (release) [ARM/embedded-4_7-branch revision 194305]&quot;"/>
+									<listOptionValue builtIn="false" value="__UFRACT_EPSILON__=0x1P-16UR"/>
+									<listOptionValue builtIn="false" value="__UFRACT_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="&quot;__INT64_C(c)=c ## LL&quot;"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_WINT_T__=4"/>
+									<listOptionValue builtIn="false" value="__USER_LABEL_PREFIX__"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_INT__=4"/>
+									<listOptionValue builtIn="false" value="__LONG_MAX__=2147483647L"/>
+									<listOptionValue builtIn="false" value="__UHQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__INT8_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__ORDER_BIG_ENDIAN__=4321"/>
+									<listOptionValue builtIn="false" value="&quot;__INT16_TYPE__=short int&quot;"/>
+									<listOptionValue builtIn="false" value="__UINT_LEAST32_MAX__=4294967295UL"/>
+									<listOptionValue builtIn="false" value="__PTRDIFF_TYPE__=int"/>
+									<listOptionValue builtIn="false" value="__CHAR_BIT__=8"/>
+									<listOptionValue builtIn="false" value="__UINT8_C(c)=c"/>
+									<listOptionValue builtIn="false" value="__DEC128_SUBNORMAL_MIN__=0.000000000000000000000000000000001E-6143DL"/>
+									<listOptionValue builtIn="false" value="__DBL_HAS_QUIET_NAN__=1"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_SHORT__=2"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_MAX__=0XFFFFFFFFP-32ULR"/>
+									<listOptionValue builtIn="false" value="__FRACT_MIN__=(-0.5R-0.5R)"/>
+									<listOptionValue builtIn="false" value="__UDQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__DEC_EVAL_METHOD__=2"/>
+									<listOptionValue builtIn="false" value="__FLT_MAX__=3.4028234663852886e+38F"/>
+									<listOptionValue builtIn="false" value="__DBL_MANT_DIG__=53"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_FAST16_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USA_FBIT__=16"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT_LEAST64_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__GNUC_GNU_INLINE__=1"/>
+									<listOptionValue builtIn="false" value="__DEC128_MIN__=1E-6143DL"/>
+									<listOptionValue builtIn="false" value="__ULLACCUM_MAX__=0XFFFFFFFFFFFFFFFFP-32ULLK"/>
+									<listOptionValue builtIn="false" value="__FLT_HAS_INFINITY__=1"/>
+									<listOptionValue builtIn="false" value="&quot;__UINT8_TYPE__=unsigned char&quot;"/>
+									<listOptionValue builtIn="false" value="__USFRACT_MAX__=0XFFP-8UHR"/>
+									<listOptionValue builtIn="false" value="__UQQ_FBIT__=8"/>
+									<listOptionValue builtIn="false" value="__UFRACT_MAX__=0XFFFFP-16UR"/>
+									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
+									<listOptionValue builtIn="false" value="__QQ_IBIT__=0"/>
+									<listOptionValue builtIn="false" value="__DECIMAL_DIG__=17"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX_10_EXP__=308"/>
+									<listOptionValue builtIn="false" value="__UACCUM_MIN__=0.0UK"/>
+									<listOptionValue builtIn="false" value="__FRACT_EPSILON__=0x1P-15R"/>
+									<listOptionValue builtIn="false" value="__SIZEOF_LONG__=4"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_EPSILON__=0x1P-32ULK"/>
+									<listOptionValue builtIn="false" value="&quot;__UINTMAX_TYPE__=long long unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__USQ_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="__LDBL_MAX__=1.7976931348623157e+308L"/>
+									<listOptionValue builtIn="false" value="__FINITE_MATH_ONLY__=0"/>
+									<listOptionValue builtIn="false" value="__ULFRACT_FBIT__=32"/>
+									<listOptionValue builtIn="false" value="&quot;__WCHAR_TYPE__=unsigned int&quot;"/>
+									<listOptionValue builtIn="false" value="__ULACCUM_IBIT__=32"/>
+									<listOptionValue builtIn="false" value="__ULLFRACT_MIN__=0.0ULLR"/>
+									<listOptionValue builtIn="false" value="__GCC_ATOMIC_CHAR16_T_LOCK_FREE=1"/>
+									<listOptionValue builtIn="false" value="&quot;__CHAR16_TYPE__=short unsigned int&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths.489502183" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Work/Headers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/StdPeripheralDriver/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Headers}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections.1581523344" name="Function sections (-ffunction-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections.1125720687" name="Data sections (-fdata-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.530114865" name="Language Standard" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std" value="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.default" valueType="enumerated"/>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input.980438725" superClass="org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.compiler.release.2036724831" name="ARM Linux GCC C++ Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.compiler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.1279408779" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.linker.release.1378624296" name="ARM Linux GCC C Linker" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.c.linker.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile.1838618334" name="Script file (-T)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile" value="${workspace_loc:/${ProjName}/stm32f100rb.ld}" valueType="string"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections.1073581776" name="Remove unused sections (-Xlinker --gc-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections" value="true" valueType="boolean"/>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.c.linker.input.1655876651" superClass="org.eclipse.cdt.cross.arm.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.linker.release.1340972900" name="ARM Linux GCC C++ Linker" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.cpp.linker.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.archiver.base.775585457" name="ARM Linux GCC Archiver" superClass="org.eclipse.cdt.cross.arm.gnu.linux.archiver.base"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.createflash.release.279446818" name="ARM Linux GNU Create Flash Image" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.createflash.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice.484119088" name="Output file format (-O)" superClass="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice" value="org.eclipse.cdt.cross.arm.gnu.createflash.out.choice.elf32-littlearm" valueType="enumerated"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.createlisting.release.1600031065" name="ARM Linux GNU Create Listing" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.createlisting.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.linux.elf.printsize.release.321772826" name="ARM Linux GNU Print Size" superClass="org.eclipse.cdt.cross.arm.gnu.linux.elf.printsize.release"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="stm32vld_template.org.eclipse.cdt.cross.arm.gnu.linux.elf.243212570" name="ARM Cross Target Application" projectType="org.eclipse.cdt.cross.arm.gnu.linux.elf"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/stm32vld_template"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/stm32vld_template"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437;org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437.;org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.release.1682656267;org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input.980438725">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC"/>
+			<profile id="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC">
+				<buildOutputProvider>
+					<openAction enabled="true" filePath=""/>
+					<parser enabled="true"/>
+				</buildOutputProvider>
+				<scannerInfoProvider id="specsFile">
+					<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="arm-none-eabi-gcc" useDefault="true"/>
+					<parser enabled="true"/>
+				</scannerInfoProvider>
+			</profile>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080;org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080.;org.eclipse.cdt.cross.arm.gnu.linux.elf.c.compiler.debug.743813536;org.eclipse.cdt.cross.arm.gnu.linux.c.compiler.base.input.1934849894">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC"/>
+			<profile id="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC">
+				<buildOutputProvider>
+					<openAction enabled="true" filePath=""/>
+					<parser enabled="true"/>
+				</buildOutputProvider>
+				<scannerInfoProvider id="specsFile">
+					<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="arm-none-eabi-gcc" useDefault="true"/>
+					<parser enabled="true"/>
+				</scannerInfoProvider>
+			</profile>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080;org.eclipse.cdt.cross.arm.gnu.linux.elf.debug.46268080.;org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.debug.1293822858;org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input.1167306597">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC"/>
+			<profile id="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC">
+				<buildOutputProvider>
+					<openAction enabled="true" filePath=""/>
+					<parser enabled="true"/>
+				</buildOutputProvider>
+				<scannerInfoProvider id="specsFile">
+					<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="arm-none-eabi-gcc" useDefault="true"/>
+					<parser enabled="true"/>
+				</scannerInfoProvider>
+			</profile>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437;org.eclipse.cdt.cross.arm.gnu.linux.elf.release.1932093437.;org.eclipse.cdt.cross.arm.gnu.linux.elf.assembler.release.1251133818;org.eclipse.cdt.cross.arm.gnu.linux.assembler.base.input.2076210498">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC"/>
+			<profile id="org.eclipse.cdt.cross.arm.gnu.ARM_GCCManagedMakePerProjectProfileC">
+				<buildOutputProvider>
+					<openAction enabled="true" filePath=""/>
+					<parser enabled="true"/>
+				</buildOutputProvider>
+				<scannerInfoProvider id="specsFile">
+					<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="arm-none-eabi-gcc" useDefault="true"/>
+					<parser enabled="true"/>
+				</scannerInfoProvider>
+			</profile>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

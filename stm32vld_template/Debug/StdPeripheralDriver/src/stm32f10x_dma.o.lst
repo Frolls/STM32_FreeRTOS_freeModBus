@@ -1,0 +1,1532 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_dma.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.DMA_DeInit,"ax",%progbits
+  19              		.align	2
+  20              		.global	DMA_DeInit
+  21              		.thumb
+  22              		.thumb_func
+  24              	DMA_DeInit:
+  25              	.LFB29:
+  26              		.file 1 "../StdPeripheralDriver/src/stm32f10x_dma.c"
+   1:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+   2:../StdPeripheralDriver/src/stm32f10x_dma.c ****  ******************************************************************************
+   3:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @file    stm32f10x_dma.c
+   4:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @author  MCD Application Team
+   5:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @version V3.5.0
+   6:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @date    11-March-2011
+   7:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief   This file provides all the DMA firmware functions.
+   8:../StdPeripheralDriver/src/stm32f10x_dma.c ****  ******************************************************************************
+   9:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @attention
+  10:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *
+  11:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  12:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  13:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  14:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  15:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  16:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  17:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *
+  18:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  19:../StdPeripheralDriver/src/stm32f10x_dma.c ****  ******************************************************************************
+  20:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  21:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  22:../StdPeripheralDriver/src/stm32f10x_dma.c **** /* Includes ------------------------------------------------------------------*/
+  23:../StdPeripheralDriver/src/stm32f10x_dma.c **** #include "stm32f10x_dma.h"
+  24:../StdPeripheralDriver/src/stm32f10x_dma.c **** #include "stm32f10x_rcc.h"
+  25:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  26:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @addtogroup STM32F10x_StdPeriph_Driver
+  27:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  28:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  29:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  30:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA 
+  31:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief DMA driver modules
+  32:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  33:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  34:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  35:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_TypesDefinitions
+  36:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  37:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  38:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+  39:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @}
+  40:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  41:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  42:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_Defines
+  43:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  44:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  45:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  46:../StdPeripheralDriver/src/stm32f10x_dma.c **** /* DMA1 Channelx interrupt pending bit masks */
+  47:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel1_IT_Mask    ((uint32_t)(DMA_ISR_GIF1 | DMA_ISR_TCIF1 | DMA_ISR_HTIF1 | DMA_ISR
+  48:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel2_IT_Mask    ((uint32_t)(DMA_ISR_GIF2 | DMA_ISR_TCIF2 | DMA_ISR_HTIF2 | DMA_ISR
+  49:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel3_IT_Mask    ((uint32_t)(DMA_ISR_GIF3 | DMA_ISR_TCIF3 | DMA_ISR_HTIF3 | DMA_ISR
+  50:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel4_IT_Mask    ((uint32_t)(DMA_ISR_GIF4 | DMA_ISR_TCIF4 | DMA_ISR_HTIF4 | DMA_ISR
+  51:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel5_IT_Mask    ((uint32_t)(DMA_ISR_GIF5 | DMA_ISR_TCIF5 | DMA_ISR_HTIF5 | DMA_ISR
+  52:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel6_IT_Mask    ((uint32_t)(DMA_ISR_GIF6 | DMA_ISR_TCIF6 | DMA_ISR_HTIF6 | DMA_ISR
+  53:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA1_Channel7_IT_Mask    ((uint32_t)(DMA_ISR_GIF7 | DMA_ISR_TCIF7 | DMA_ISR_HTIF7 | DMA_ISR
+  54:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  55:../StdPeripheralDriver/src/stm32f10x_dma.c **** /* DMA2 Channelx interrupt pending bit masks */
+  56:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA2_Channel1_IT_Mask    ((uint32_t)(DMA_ISR_GIF1 | DMA_ISR_TCIF1 | DMA_ISR_HTIF1 | DMA_ISR
+  57:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA2_Channel2_IT_Mask    ((uint32_t)(DMA_ISR_GIF2 | DMA_ISR_TCIF2 | DMA_ISR_HTIF2 | DMA_ISR
+  58:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA2_Channel3_IT_Mask    ((uint32_t)(DMA_ISR_GIF3 | DMA_ISR_TCIF3 | DMA_ISR_HTIF3 | DMA_ISR
+  59:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA2_Channel4_IT_Mask    ((uint32_t)(DMA_ISR_GIF4 | DMA_ISR_TCIF4 | DMA_ISR_HTIF4 | DMA_ISR
+  60:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define DMA2_Channel5_IT_Mask    ((uint32_t)(DMA_ISR_GIF5 | DMA_ISR_TCIF5 | DMA_ISR_HTIF5 | DMA_ISR
+  61:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  62:../StdPeripheralDriver/src/stm32f10x_dma.c **** /* DMA2 FLAG mask */
+  63:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define FLAG_Mask                ((uint32_t)0x10000000)
+  64:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  65:../StdPeripheralDriver/src/stm32f10x_dma.c **** /* DMA registers Masks */
+  66:../StdPeripheralDriver/src/stm32f10x_dma.c **** #define CCR_CLEAR_Mask           ((uint32_t)0xFFFF800F)
+  67:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  68:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+  69:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @}
+  70:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  71:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  72:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_Macros
+  73:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  74:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  75:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  76:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+  77:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @}
+  78:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  79:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  80:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_Variables
+  81:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  82:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  83:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  84:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+  85:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @}
+  86:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  87:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  88:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_FunctionPrototypes
+  89:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  90:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  91:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  92:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+  93:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @}
+  94:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  95:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+  96:../StdPeripheralDriver/src/stm32f10x_dma.c **** /** @defgroup DMA_Private_Functions
+  97:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @{
+  98:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+  99:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 100:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 101:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Deinitializes the DMAy Channelx registers to their default reset
+ 102:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         values.
+ 103:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and
+ 104:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 105:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 106:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 107:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_DeInit(DMA_Channel_TypeDef* DMAy_Channelx) {
+  27              		.loc 1 107 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+ 108:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 109:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+ 110:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 111:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Disable the selected DMAy Channelx */
+ 112:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CCR &= (uint16_t) (~DMA_CCR1_EN );
+  43              		.loc 1 112 0
+  44 0008 7B68     		ldr	r3, [r7, #4]
+  45 000a 1A68     		ldr	r2, [r3, #0]
+  46 000c 4FF6FE73 		movw	r3, #65534
+  47 0010 1340     		ands	r3, r3, r2
+  48 0012 7A68     		ldr	r2, [r7, #4]
+  49 0014 1360     		str	r3, [r2, #0]
+ 113:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 114:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Reset DMAy Channelx control register */
+ 115:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CCR = 0;
+  50              		.loc 1 115 0
+  51 0016 7B68     		ldr	r3, [r7, #4]
+  52 0018 4FF00002 		mov	r2, #0
+  53 001c 1A60     		str	r2, [r3, #0]
+ 116:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 117:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Reset DMAy Channelx remaining bytes register */
+ 118:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CNDTR = 0;
+  54              		.loc 1 118 0
+  55 001e 7B68     		ldr	r3, [r7, #4]
+  56 0020 4FF00002 		mov	r2, #0
+  57 0024 5A60     		str	r2, [r3, #4]
+ 119:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 120:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Reset DMAy Channelx peripheral address register */
+ 121:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CPAR = 0;
+  58              		.loc 1 121 0
+  59 0026 7B68     		ldr	r3, [r7, #4]
+  60 0028 4FF00002 		mov	r2, #0
+  61 002c 9A60     		str	r2, [r3, #8]
+ 122:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 123:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Reset DMAy Channelx memory address register */
+ 124:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CMAR = 0;
+  62              		.loc 1 124 0
+  63 002e 7B68     		ldr	r3, [r7, #4]
+  64 0030 4FF00002 		mov	r2, #0
+  65 0034 DA60     		str	r2, [r3, #12]
+ 125:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 126:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if (DMAy_Channelx == DMA1_Channel1 ) {
+  66              		.loc 1 126 0
+  67 0036 7A68     		ldr	r2, [r7, #4]
+  68 0038 4FF00803 		mov	r3, #8
+  69 003c C4F20203 		movt	r3, 16386
+  70 0040 9A42     		cmp	r2, r3
+  71 0042 0CD1     		bne	.L2
+ 127:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel1 */
+ 128:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel1_IT_Mask;
+  72              		.loc 1 128 0
+  73 0044 4FF00003 		mov	r3, #0
+  74 0048 C4F20203 		movt	r3, 16386
+  75 004c 4FF00002 		mov	r2, #0
+  76 0050 C4F20202 		movt	r2, 16386
+  77 0054 5268     		ldr	r2, [r2, #4]
+  78 0056 42F00F02 		orr	r2, r2, #15
+  79 005a 5A60     		str	r2, [r3, #4]
+  80 005c DAE0     		b	.L1
+  81              	.L2:
+ 129:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel2 ) {
+  82              		.loc 1 129 0
+  83 005e 7A68     		ldr	r2, [r7, #4]
+  84 0060 4FF01C03 		mov	r3, #28
+  85 0064 C4F20203 		movt	r3, 16386
+  86 0068 9A42     		cmp	r2, r3
+  87 006a 0CD1     		bne	.L4
+ 130:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel2 */
+ 131:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel2_IT_Mask;
+  88              		.loc 1 131 0
+  89 006c 4FF00003 		mov	r3, #0
+  90 0070 C4F20203 		movt	r3, 16386
+  91 0074 4FF00002 		mov	r2, #0
+  92 0078 C4F20202 		movt	r2, 16386
+  93 007c 5268     		ldr	r2, [r2, #4]
+  94 007e 42F0F002 		orr	r2, r2, #240
+  95 0082 5A60     		str	r2, [r3, #4]
+  96 0084 C6E0     		b	.L1
+  97              	.L4:
+ 132:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel3 ) {
+  98              		.loc 1 132 0
+  99 0086 7A68     		ldr	r2, [r7, #4]
+ 100 0088 4FF03003 		mov	r3, #48
+ 101 008c C4F20203 		movt	r3, 16386
+ 102 0090 9A42     		cmp	r2, r3
+ 103 0092 0CD1     		bne	.L5
+ 133:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel3 */
+ 134:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel3_IT_Mask;
+ 104              		.loc 1 134 0
+ 105 0094 4FF00003 		mov	r3, #0
+ 106 0098 C4F20203 		movt	r3, 16386
+ 107 009c 4FF00002 		mov	r2, #0
+ 108 00a0 C4F20202 		movt	r2, 16386
+ 109 00a4 5268     		ldr	r2, [r2, #4]
+ 110 00a6 42F47062 		orr	r2, r2, #3840
+ 111 00aa 5A60     		str	r2, [r3, #4]
+ 112 00ac B2E0     		b	.L1
+ 113              	.L5:
+ 135:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel4 ) {
+ 114              		.loc 1 135 0
+ 115 00ae 7A68     		ldr	r2, [r7, #4]
+ 116 00b0 4FF04403 		mov	r3, #68
+ 117 00b4 C4F20203 		movt	r3, 16386
+ 118 00b8 9A42     		cmp	r2, r3
+ 119 00ba 0CD1     		bne	.L6
+ 136:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel4 */
+ 137:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel4_IT_Mask;
+ 120              		.loc 1 137 0
+ 121 00bc 4FF00003 		mov	r3, #0
+ 122 00c0 C4F20203 		movt	r3, 16386
+ 123 00c4 4FF00002 		mov	r2, #0
+ 124 00c8 C4F20202 		movt	r2, 16386
+ 125 00cc 5268     		ldr	r2, [r2, #4]
+ 126 00ce 42F47042 		orr	r2, r2, #61440
+ 127 00d2 5A60     		str	r2, [r3, #4]
+ 128 00d4 9EE0     		b	.L1
+ 129              	.L6:
+ 138:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel5 ) {
+ 130              		.loc 1 138 0
+ 131 00d6 7A68     		ldr	r2, [r7, #4]
+ 132 00d8 4FF05803 		mov	r3, #88
+ 133 00dc C4F20203 		movt	r3, 16386
+ 134 00e0 9A42     		cmp	r2, r3
+ 135 00e2 0CD1     		bne	.L7
+ 139:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel5 */
+ 140:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel5_IT_Mask;
+ 136              		.loc 1 140 0
+ 137 00e4 4FF00003 		mov	r3, #0
+ 138 00e8 C4F20203 		movt	r3, 16386
+ 139 00ec 4FF00002 		mov	r2, #0
+ 140 00f0 C4F20202 		movt	r2, 16386
+ 141 00f4 5268     		ldr	r2, [r2, #4]
+ 142 00f6 42F47022 		orr	r2, r2, #983040
+ 143 00fa 5A60     		str	r2, [r3, #4]
+ 144 00fc 8AE0     		b	.L1
+ 145              	.L7:
+ 141:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel6 ) {
+ 146              		.loc 1 141 0
+ 147 00fe 7A68     		ldr	r2, [r7, #4]
+ 148 0100 4FF06C03 		mov	r3, #108
+ 149 0104 C4F20203 		movt	r3, 16386
+ 150 0108 9A42     		cmp	r2, r3
+ 151 010a 0CD1     		bne	.L8
+ 142:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel6 */
+ 143:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel6_IT_Mask;
+ 152              		.loc 1 143 0
+ 153 010c 4FF00003 		mov	r3, #0
+ 154 0110 C4F20203 		movt	r3, 16386
+ 155 0114 4FF00002 		mov	r2, #0
+ 156 0118 C4F20202 		movt	r2, 16386
+ 157 011c 5268     		ldr	r2, [r2, #4]
+ 158 011e 42F47002 		orr	r2, r2, #15728640
+ 159 0122 5A60     		str	r2, [r3, #4]
+ 160 0124 76E0     		b	.L1
+ 161              	.L8:
+ 144:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA1_Channel7 ) {
+ 162              		.loc 1 144 0
+ 163 0126 7A68     		ldr	r2, [r7, #4]
+ 164 0128 4FF08003 		mov	r3, #128
+ 165 012c C4F20203 		movt	r3, 16386
+ 166 0130 9A42     		cmp	r2, r3
+ 167 0132 0CD1     		bne	.L9
+ 145:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA1 Channel7 */
+ 146:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA1 ->IFCR |= DMA1_Channel7_IT_Mask;
+ 168              		.loc 1 146 0
+ 169 0134 4FF00003 		mov	r3, #0
+ 170 0138 C4F20203 		movt	r3, 16386
+ 171 013c 4FF00002 		mov	r2, #0
+ 172 0140 C4F20202 		movt	r2, 16386
+ 173 0144 5268     		ldr	r2, [r2, #4]
+ 174 0146 42F07062 		orr	r2, r2, #251658240
+ 175 014a 5A60     		str	r2, [r3, #4]
+ 176 014c 62E0     		b	.L1
+ 177              	.L9:
+ 147:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA2_Channel1 ) {
+ 178              		.loc 1 147 0
+ 179 014e 7A68     		ldr	r2, [r7, #4]
+ 180 0150 4FF48163 		mov	r3, #1032
+ 181 0154 C4F20203 		movt	r3, 16386
+ 182 0158 9A42     		cmp	r2, r3
+ 183 015a 0CD1     		bne	.L10
+ 148:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA2 Channel1 */
+ 149:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA2 ->IFCR |= DMA2_Channel1_IT_Mask;
+ 184              		.loc 1 149 0
+ 185 015c 4FF48063 		mov	r3, #1024
+ 186 0160 C4F20203 		movt	r3, 16386
+ 187 0164 4FF48062 		mov	r2, #1024
+ 188 0168 C4F20202 		movt	r2, 16386
+ 189 016c 5268     		ldr	r2, [r2, #4]
+ 190 016e 42F00F02 		orr	r2, r2, #15
+ 191 0172 5A60     		str	r2, [r3, #4]
+ 192 0174 4EE0     		b	.L1
+ 193              	.L10:
+ 150:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA2_Channel2 ) {
+ 194              		.loc 1 150 0
+ 195 0176 7A68     		ldr	r2, [r7, #4]
+ 196 0178 40F21C43 		movw	r3, #1052
+ 197 017c C4F20203 		movt	r3, 16386
+ 198 0180 9A42     		cmp	r2, r3
+ 199 0182 0CD1     		bne	.L11
+ 151:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA2 Channel2 */
+ 152:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA2 ->IFCR |= DMA2_Channel2_IT_Mask;
+ 200              		.loc 1 152 0
+ 201 0184 4FF48063 		mov	r3, #1024
+ 202 0188 C4F20203 		movt	r3, 16386
+ 203 018c 4FF48062 		mov	r2, #1024
+ 204 0190 C4F20202 		movt	r2, 16386
+ 205 0194 5268     		ldr	r2, [r2, #4]
+ 206 0196 42F0F002 		orr	r2, r2, #240
+ 207 019a 5A60     		str	r2, [r3, #4]
+ 208 019c 3AE0     		b	.L1
+ 209              	.L11:
+ 153:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA2_Channel3 ) {
+ 210              		.loc 1 153 0
+ 211 019e 7A68     		ldr	r2, [r7, #4]
+ 212 01a0 4FF48663 		mov	r3, #1072
+ 213 01a4 C4F20203 		movt	r3, 16386
+ 214 01a8 9A42     		cmp	r2, r3
+ 215 01aa 0CD1     		bne	.L12
+ 154:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA2 Channel3 */
+ 155:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA2 ->IFCR |= DMA2_Channel3_IT_Mask;
+ 216              		.loc 1 155 0
+ 217 01ac 4FF48063 		mov	r3, #1024
+ 218 01b0 C4F20203 		movt	r3, 16386
+ 219 01b4 4FF48062 		mov	r2, #1024
+ 220 01b8 C4F20202 		movt	r2, 16386
+ 221 01bc 5268     		ldr	r2, [r2, #4]
+ 222 01be 42F47062 		orr	r2, r2, #3840
+ 223 01c2 5A60     		str	r2, [r3, #4]
+ 224 01c4 26E0     		b	.L1
+ 225              	.L12:
+ 156:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else if (DMAy_Channelx == DMA2_Channel4 ) {
+ 226              		.loc 1 156 0
+ 227 01c6 7A68     		ldr	r2, [r7, #4]
+ 228 01c8 40F24443 		movw	r3, #1092
+ 229 01cc C4F20203 		movt	r3, 16386
+ 230 01d0 9A42     		cmp	r2, r3
+ 231 01d2 0CD1     		bne	.L13
+ 157:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Reset interrupt pending bits for DMA2 Channel4 */
+ 158:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA2 ->IFCR |= DMA2_Channel4_IT_Mask;
+ 232              		.loc 1 158 0
+ 233 01d4 4FF48063 		mov	r3, #1024
+ 234 01d8 C4F20203 		movt	r3, 16386
+ 235 01dc 4FF48062 		mov	r2, #1024
+ 236 01e0 C4F20202 		movt	r2, 16386
+ 237 01e4 5268     		ldr	r2, [r2, #4]
+ 238 01e6 42F47042 		orr	r2, r2, #61440
+ 239 01ea 5A60     		str	r2, [r3, #4]
+ 240 01ec 12E0     		b	.L1
+ 241              	.L13:
+ 159:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else {
+ 160:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		if (DMAy_Channelx == DMA2_Channel5 ) {
+ 242              		.loc 1 160 0
+ 243 01ee 7A68     		ldr	r2, [r7, #4]
+ 244 01f0 4FF48B63 		mov	r3, #1112
+ 245 01f4 C4F20203 		movt	r3, 16386
+ 246 01f8 9A42     		cmp	r2, r3
+ 247 01fa 0BD1     		bne	.L1
+ 161:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			/* Reset interrupt pending bits for DMA2 Channel5 */
+ 162:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			DMA2 ->IFCR |= DMA2_Channel5_IT_Mask;
+ 248              		.loc 1 162 0
+ 249 01fc 4FF48063 		mov	r3, #1024
+ 250 0200 C4F20203 		movt	r3, 16386
+ 251 0204 4FF48062 		mov	r2, #1024
+ 252 0208 C4F20202 		movt	r2, 16386
+ 253 020c 5268     		ldr	r2, [r2, #4]
+ 254 020e 42F47022 		orr	r2, r2, #983040
+ 255 0212 5A60     		str	r2, [r3, #4]
+ 256              	.L1:
+ 163:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		}
+ 164:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	}
+ 165:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 257              		.loc 1 165 0
+ 258 0214 07F10C07 		add	r7, r7, #12
+ 259 0218 BD46     		mov	sp, r7
+ 260 021a 80BC     		pop	{r7}
+ 261 021c 7047     		bx	lr
+ 262              		.cfi_endproc
+ 263              	.LFE29:
+ 265 021e 00BF     		.section	.text.DMA_Init,"ax",%progbits
+ 266              		.align	2
+ 267              		.global	DMA_Init
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	DMA_Init:
+ 272              	.LFB30:
+ 166:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 167:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 168:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Initializes the DMAy Channelx according to the specified
+ 169:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         parameters in the DMA_InitStruct.
+ 170:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and 
+ 171:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 172:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMA_InitStruct: pointer to a DMA_InitTypeDef structure that
+ 173:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         contains the configuration information for the specified DMA Channel.
+ 174:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 175:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 176:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_Init(DMA_Channel_TypeDef* DMAy_Channelx,
+ 177:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMA_InitTypeDef* DMA_InitStruct) {
+ 273              		.loc 1 177 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 16
+ 276              		@ frame_needed = 1, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
+ 278 0000 80B4     		push	{r7}
+ 279              	.LCFI3:
+ 280              		.cfi_def_cfa_offset 4
+ 281              		.cfi_offset 7, -4
+ 282 0002 85B0     		sub	sp, sp, #20
+ 283              	.LCFI4:
+ 284              		.cfi_def_cfa_offset 24
+ 285 0004 00AF     		add	r7, sp, #0
+ 286              	.LCFI5:
+ 287              		.cfi_def_cfa_register 7
+ 288 0006 7860     		str	r0, [r7, #4]
+ 289 0008 3960     		str	r1, [r7, #0]
+ 178:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	uint32_t tmpreg = 0;
+ 290              		.loc 1 178 0
+ 291 000a 4FF00003 		mov	r3, #0
+ 292 000e FB60     		str	r3, [r7, #12]
+ 179:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 180:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 181:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx)); assert_param(IS_DMA_DIR(DMA_InitStruct->DMA_DIR));
+ 182:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 183:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*--------------------------- DMAy Channelx CCR Configuration -----------------*/
+ 184:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Get the DMAy_Channelx CCR value */
+ 185:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg = DMAy_Channelx->CCR;
+ 293              		.loc 1 185 0
+ 294 0010 7B68     		ldr	r3, [r7, #4]
+ 295 0012 1B68     		ldr	r3, [r3, #0]
+ 296 0014 FB60     		str	r3, [r7, #12]
+ 186:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Clear MEM2MEM, PL, MSIZE, PSIZE, MINC, PINC, CIRC and DIR bits */
+ 187:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg &= CCR_CLEAR_Mask;
+ 297              		.loc 1 187 0
+ 298 0016 FB68     		ldr	r3, [r7, #12]
+ 299 0018 23F4FF43 		bic	r3, r3, #32640
+ 300 001c 23F07003 		bic	r3, r3, #112
+ 301 0020 FB60     		str	r3, [r7, #12]
+ 188:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Configure DMAy Channelx: data transfer, data size, priority level and mode */
+ 189:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set DIR bit according to DMA_DIR value */
+ 190:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set CIRC bit according to DMA_Mode value */
+ 191:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set PINC bit according to DMA_PeripheralInc value */
+ 192:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set MINC bit according to DMA_MemoryInc value */
+ 193:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set PSIZE bits according to DMA_PeripheralDataSize value */
+ 194:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set MSIZE bits according to DMA_MemoryDataSize value */
+ 195:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set PL bits according to DMA_Priority value */
+ 196:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Set the MEM2MEM bit according to DMA_M2M value */
+ 197:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg |= DMA_InitStruct->DMA_DIR | DMA_InitStruct->DMA_Mode
+ 302              		.loc 1 197 0
+ 303 0022 3B68     		ldr	r3, [r7, #0]
+ 304 0024 9A68     		ldr	r2, [r3, #8]
+ 305 0026 3B68     		ldr	r3, [r7, #0]
+ 306 0028 1B6A     		ldr	r3, [r3, #32]
+ 307 002a 1A43     		orrs	r2, r2, r3
+ 198:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			| DMA_InitStruct->DMA_PeripheralInc | DMA_InitStruct->DMA_MemoryInc
+ 308              		.loc 1 198 0
+ 309 002c 3B68     		ldr	r3, [r7, #0]
+ 310 002e 1B69     		ldr	r3, [r3, #16]
+ 311 0030 1A43     		orrs	r2, r2, r3
+ 312 0032 3B68     		ldr	r3, [r7, #0]
+ 313 0034 5B69     		ldr	r3, [r3, #20]
+ 314 0036 1A43     		orrs	r2, r2, r3
+ 199:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			| DMA_InitStruct->DMA_PeripheralDataSize
+ 315              		.loc 1 199 0
+ 316 0038 3B68     		ldr	r3, [r7, #0]
+ 317 003a 9B69     		ldr	r3, [r3, #24]
+ 318 003c 1A43     		orrs	r2, r2, r3
+ 200:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			| DMA_InitStruct->DMA_MemoryDataSize | DMA_InitStruct->DMA_Priority
+ 319              		.loc 1 200 0
+ 320 003e 3B68     		ldr	r3, [r7, #0]
+ 321 0040 DB69     		ldr	r3, [r3, #28]
+ 322 0042 1A43     		orrs	r2, r2, r3
+ 323 0044 3B68     		ldr	r3, [r7, #0]
+ 324 0046 5B6A     		ldr	r3, [r3, #36]
+ 325 0048 1A43     		orrs	r2, r2, r3
+ 201:../StdPeripheralDriver/src/stm32f10x_dma.c **** 			| DMA_InitStruct->DMA_M2M;
+ 326              		.loc 1 201 0
+ 327 004a 3B68     		ldr	r3, [r7, #0]
+ 328 004c 9B6A     		ldr	r3, [r3, #40]
+ 329 004e 1343     		orrs	r3, r3, r2
+ 197:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg |= DMA_InitStruct->DMA_DIR | DMA_InitStruct->DMA_Mode
+ 330              		.loc 1 197 0
+ 331 0050 FA68     		ldr	r2, [r7, #12]
+ 332 0052 1343     		orrs	r3, r3, r2
+ 333 0054 FB60     		str	r3, [r7, #12]
+ 202:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 203:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Write to DMAy Channelx CCR */
+ 204:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CCR = tmpreg;
+ 334              		.loc 1 204 0
+ 335 0056 7B68     		ldr	r3, [r7, #4]
+ 336 0058 FA68     		ldr	r2, [r7, #12]
+ 337 005a 1A60     		str	r2, [r3, #0]
+ 205:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 206:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*--------------------------- DMAy Channelx CNDTR Configuration ---------------*/
+ 207:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Write to DMAy Channelx CNDTR */
+ 208:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CNDTR = DMA_InitStruct->DMA_BufferSize;
+ 338              		.loc 1 208 0
+ 339 005c 3B68     		ldr	r3, [r7, #0]
+ 340 005e DA68     		ldr	r2, [r3, #12]
+ 341 0060 7B68     		ldr	r3, [r7, #4]
+ 342 0062 5A60     		str	r2, [r3, #4]
+ 209:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 210:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*--------------------------- DMAy Channelx CPAR Configuration ----------------*/
+ 211:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Write to DMAy Channelx CPAR */
+ 212:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CPAR = DMA_InitStruct->DMA_PeripheralBaseAddr;
+ 343              		.loc 1 212 0
+ 344 0064 3B68     		ldr	r3, [r7, #0]
+ 345 0066 1A68     		ldr	r2, [r3, #0]
+ 346 0068 7B68     		ldr	r3, [r7, #4]
+ 347 006a 9A60     		str	r2, [r3, #8]
+ 213:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 214:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*--------------------------- DMAy Channelx CMAR Configuration ----------------*/
+ 215:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Write to DMAy Channelx CMAR */
+ 216:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CMAR = DMA_InitStruct->DMA_MemoryBaseAddr;
+ 348              		.loc 1 216 0
+ 349 006c 3B68     		ldr	r3, [r7, #0]
+ 350 006e 5A68     		ldr	r2, [r3, #4]
+ 351 0070 7B68     		ldr	r3, [r7, #4]
+ 352 0072 DA60     		str	r2, [r3, #12]
+ 217:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 353              		.loc 1 217 0
+ 354 0074 07F11407 		add	r7, r7, #20
+ 355 0078 BD46     		mov	sp, r7
+ 356 007a 80BC     		pop	{r7}
+ 357 007c 7047     		bx	lr
+ 358              		.cfi_endproc
+ 359              	.LFE30:
+ 361 007e 00BF     		.section	.text.DMA_StructInit,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	DMA_StructInit
+ 364              		.thumb
+ 365              		.thumb_func
+ 367              	DMA_StructInit:
+ 368              	.LFB31:
+ 218:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 219:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 220:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Fills each DMA_InitStruct member with its default value.
+ 221:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMA_InitStruct : pointer to a DMA_InitTypeDef structure which will
+ 222:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         be initialized.
+ 223:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 224:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 225:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_StructInit(DMA_InitTypeDef* DMA_InitStruct) {
+ 369              		.loc 1 225 0
+ 370              		.cfi_startproc
+ 371              		@ args = 0, pretend = 0, frame = 8
+ 372              		@ frame_needed = 1, uses_anonymous_args = 0
+ 373              		@ link register save eliminated.
+ 374 0000 80B4     		push	{r7}
+ 375              	.LCFI6:
+ 376              		.cfi_def_cfa_offset 4
+ 377              		.cfi_offset 7, -4
+ 378 0002 83B0     		sub	sp, sp, #12
+ 379              	.LCFI7:
+ 380              		.cfi_def_cfa_offset 16
+ 381 0004 00AF     		add	r7, sp, #0
+ 382              	.LCFI8:
+ 383              		.cfi_def_cfa_register 7
+ 384 0006 7860     		str	r0, [r7, #4]
+ 226:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*-------------- Reset DMA init structure parameters values ------------------*/
+ 227:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_PeripheralBaseAddr member */
+ 228:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_PeripheralBaseAddr = 0;
+ 385              		.loc 1 228 0
+ 386 0008 7B68     		ldr	r3, [r7, #4]
+ 387 000a 4FF00002 		mov	r2, #0
+ 388 000e 1A60     		str	r2, [r3, #0]
+ 229:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_MemoryBaseAddr member */
+ 230:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_MemoryBaseAddr = 0;
+ 389              		.loc 1 230 0
+ 390 0010 7B68     		ldr	r3, [r7, #4]
+ 391 0012 4FF00002 		mov	r2, #0
+ 392 0016 5A60     		str	r2, [r3, #4]
+ 231:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_DIR member */
+ 232:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_DIR = DMA_DIR_PeripheralSRC;
+ 393              		.loc 1 232 0
+ 394 0018 7B68     		ldr	r3, [r7, #4]
+ 395 001a 4FF00002 		mov	r2, #0
+ 396 001e 9A60     		str	r2, [r3, #8]
+ 233:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_BufferSize member */
+ 234:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_BufferSize = 0;
+ 397              		.loc 1 234 0
+ 398 0020 7B68     		ldr	r3, [r7, #4]
+ 399 0022 4FF00002 		mov	r2, #0
+ 400 0026 DA60     		str	r2, [r3, #12]
+ 235:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_PeripheralInc member */
+ 236:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+ 401              		.loc 1 236 0
+ 402 0028 7B68     		ldr	r3, [r7, #4]
+ 403 002a 4FF00002 		mov	r2, #0
+ 404 002e 1A61     		str	r2, [r3, #16]
+ 237:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_MemoryInc member */
+ 238:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_MemoryInc = DMA_MemoryInc_Disable;
+ 405              		.loc 1 238 0
+ 406 0030 7B68     		ldr	r3, [r7, #4]
+ 407 0032 4FF00002 		mov	r2, #0
+ 408 0036 5A61     		str	r2, [r3, #20]
+ 239:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_PeripheralDataSize member */
+ 240:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+ 409              		.loc 1 240 0
+ 410 0038 7B68     		ldr	r3, [r7, #4]
+ 411 003a 4FF00002 		mov	r2, #0
+ 412 003e 9A61     		str	r2, [r3, #24]
+ 241:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_MemoryDataSize member */
+ 242:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+ 413              		.loc 1 242 0
+ 414 0040 7B68     		ldr	r3, [r7, #4]
+ 415 0042 4FF00002 		mov	r2, #0
+ 416 0046 DA61     		str	r2, [r3, #28]
+ 243:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_Mode member */
+ 244:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_Mode = DMA_Mode_Normal;
+ 417              		.loc 1 244 0
+ 418 0048 7B68     		ldr	r3, [r7, #4]
+ 419 004a 4FF00002 		mov	r2, #0
+ 420 004e 1A62     		str	r2, [r3, #32]
+ 245:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_Priority member */
+ 246:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_Priority = DMA_Priority_Low;
+ 421              		.loc 1 246 0
+ 422 0050 7B68     		ldr	r3, [r7, #4]
+ 423 0052 4FF00002 		mov	r2, #0
+ 424 0056 5A62     		str	r2, [r3, #36]
+ 247:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Initialize the DMA_M2M member */
+ 248:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA_InitStruct->DMA_M2M = DMA_M2M_Disable;
+ 425              		.loc 1 248 0
+ 426 0058 7B68     		ldr	r3, [r7, #4]
+ 427 005a 4FF00002 		mov	r2, #0
+ 428 005e 9A62     		str	r2, [r3, #40]
+ 249:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 429              		.loc 1 249 0
+ 430 0060 07F10C07 		add	r7, r7, #12
+ 431 0064 BD46     		mov	sp, r7
+ 432 0066 80BC     		pop	{r7}
+ 433 0068 7047     		bx	lr
+ 434              		.cfi_endproc
+ 435              	.LFE31:
+ 437 006a 00BF     		.section	.text.DMA_Cmd,"ax",%progbits
+ 438              		.align	2
+ 439              		.global	DMA_Cmd
+ 440              		.thumb
+ 441              		.thumb_func
+ 443              	DMA_Cmd:
+ 444              	.LFB32:
+ 250:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 251:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 252:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Enables or disables the specified DMAy Channelx.
+ 253:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and 
+ 254:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 255:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  NewState: new state of the DMAy Channelx. 
+ 256:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be: ENABLE or DISABLE.
+ 257:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 258:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 259:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_Cmd(DMA_Channel_TypeDef* DMAy_Channelx, FunctionalState NewState) {
+ 445              		.loc 1 259 0
+ 446              		.cfi_startproc
+ 447              		@ args = 0, pretend = 0, frame = 8
+ 448              		@ frame_needed = 1, uses_anonymous_args = 0
+ 449              		@ link register save eliminated.
+ 450 0000 80B4     		push	{r7}
+ 451              	.LCFI9:
+ 452              		.cfi_def_cfa_offset 4
+ 453              		.cfi_offset 7, -4
+ 454 0002 83B0     		sub	sp, sp, #12
+ 455              	.LCFI10:
+ 456              		.cfi_def_cfa_offset 16
+ 457 0004 00AF     		add	r7, sp, #0
+ 458              	.LCFI11:
+ 459              		.cfi_def_cfa_register 7
+ 460 0006 7860     		str	r0, [r7, #4]
+ 461 0008 0B46     		mov	r3, r1
+ 462 000a FB70     		strb	r3, [r7, #3]
+ 260:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 261:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx)); assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 262:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 263:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if (NewState != DISABLE) {
+ 463              		.loc 1 263 0
+ 464 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 465 000e 002B     		cmp	r3, #0
+ 466 0010 06D0     		beq	.L17
+ 264:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Enable the selected DMAy Channelx */
+ 265:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMAy_Channelx->CCR |= DMA_CCR1_EN;
+ 467              		.loc 1 265 0
+ 468 0012 7B68     		ldr	r3, [r7, #4]
+ 469 0014 1B68     		ldr	r3, [r3, #0]
+ 470 0016 43F00102 		orr	r2, r3, #1
+ 471 001a 7B68     		ldr	r3, [r7, #4]
+ 472 001c 1A60     		str	r2, [r3, #0]
+ 473 001e 06E0     		b	.L16
+ 474              	.L17:
+ 266:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else {
+ 267:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Disable the selected DMAy Channelx */
+ 268:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMAy_Channelx->CCR &= (uint16_t) (~DMA_CCR1_EN );
+ 475              		.loc 1 268 0
+ 476 0020 7B68     		ldr	r3, [r7, #4]
+ 477 0022 1A68     		ldr	r2, [r3, #0]
+ 478 0024 4FF6FE73 		movw	r3, #65534
+ 479 0028 1340     		ands	r3, r3, r2
+ 480 002a 7A68     		ldr	r2, [r7, #4]
+ 481 002c 1360     		str	r3, [r2, #0]
+ 482              	.L16:
+ 269:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	}
+ 270:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 483              		.loc 1 270 0
+ 484 002e 07F10C07 		add	r7, r7, #12
+ 485 0032 BD46     		mov	sp, r7
+ 486 0034 80BC     		pop	{r7}
+ 487 0036 7047     		bx	lr
+ 488              		.cfi_endproc
+ 489              	.LFE32:
+ 491              		.section	.text.DMA_ITConfig,"ax",%progbits
+ 492              		.align	2
+ 493              		.global	DMA_ITConfig
+ 494              		.thumb
+ 495              		.thumb_func
+ 497              	DMA_ITConfig:
+ 498              	.LFB33:
+ 271:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 272:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 273:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Enables or disables the specified DMAy Channelx interrupts.
+ 274:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and 
+ 275:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 276:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMA_IT: specifies the DMA interrupts sources to be enabled
+ 277:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   or disabled. 
+ 278:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be any combination of the following values:
+ 279:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA_IT_TC:  Transfer complete interrupt mask
+ 280:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA_IT_HT:  Half transfer interrupt mask
+ 281:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA_IT_TE:  Transfer error interrupt mask
+ 282:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  NewState: new state of the specified DMA interrupts.
+ 283:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be: ENABLE or DISABLE.
+ 284:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 285:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 286:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_ITConfig(DMA_Channel_TypeDef* DMAy_Channelx, uint32_t DMA_IT,
+ 287:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		FunctionalState NewState) {
+ 499              		.loc 1 287 0
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 16
+ 502              		@ frame_needed = 1, uses_anonymous_args = 0
+ 503              		@ link register save eliminated.
+ 504 0000 80B4     		push	{r7}
+ 505              	.LCFI12:
+ 506              		.cfi_def_cfa_offset 4
+ 507              		.cfi_offset 7, -4
+ 508 0002 85B0     		sub	sp, sp, #20
+ 509              	.LCFI13:
+ 510              		.cfi_def_cfa_offset 24
+ 511 0004 00AF     		add	r7, sp, #0
+ 512              	.LCFI14:
+ 513              		.cfi_def_cfa_register 7
+ 514 0006 F860     		str	r0, [r7, #12]
+ 515 0008 B960     		str	r1, [r7, #8]
+ 516 000a 1346     		mov	r3, r2
+ 517 000c FB71     		strb	r3, [r7, #7]
+ 288:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 289:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx)); assert_param(IS_DMA_CONFIG_IT(DMA_IT)); assert_par
+ 290:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if (NewState != DISABLE) {
+ 518              		.loc 1 290 0
+ 519 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 520 0010 002B     		cmp	r3, #0
+ 521 0012 06D0     		beq	.L20
+ 291:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Enable the selected DMA interrupts */
+ 292:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMAy_Channelx->CCR |= DMA_IT;
+ 522              		.loc 1 292 0
+ 523 0014 FB68     		ldr	r3, [r7, #12]
+ 524 0016 1A68     		ldr	r2, [r3, #0]
+ 525 0018 BB68     		ldr	r3, [r7, #8]
+ 526 001a 1A43     		orrs	r2, r2, r3
+ 527 001c FB68     		ldr	r3, [r7, #12]
+ 528 001e 1A60     		str	r2, [r3, #0]
+ 529 0020 07E0     		b	.L19
+ 530              	.L20:
+ 293:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else {
+ 294:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* Disable the selected DMA interrupts */
+ 295:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		DMAy_Channelx->CCR &= ~DMA_IT;
+ 531              		.loc 1 295 0
+ 532 0022 FB68     		ldr	r3, [r7, #12]
+ 533 0024 1A68     		ldr	r2, [r3, #0]
+ 534 0026 BB68     		ldr	r3, [r7, #8]
+ 535 0028 6FEA0303 		mvn	r3, r3
+ 536 002c 1A40     		ands	r2, r2, r3
+ 537 002e FB68     		ldr	r3, [r7, #12]
+ 538 0030 1A60     		str	r2, [r3, #0]
+ 539              	.L19:
+ 296:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	}
+ 297:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 540              		.loc 1 297 0
+ 541 0032 07F11407 		add	r7, r7, #20
+ 542 0036 BD46     		mov	sp, r7
+ 543 0038 80BC     		pop	{r7}
+ 544 003a 7047     		bx	lr
+ 545              		.cfi_endproc
+ 546              	.LFE33:
+ 548              		.section	.text.DMA_SetCurrDataCounter,"ax",%progbits
+ 549              		.align	2
+ 550              		.global	DMA_SetCurrDataCounter
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	DMA_SetCurrDataCounter:
+ 555              	.LFB34:
+ 298:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 299:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 300:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Sets the number of data units in the current DMAy Channelx transfer.
+ 301:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and 
+ 302:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 303:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DataNumber: The number of data units in the current DMAy Channelx
+ 304:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         transfer.   
+ 305:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @note   This function can only be used when the DMAy_Channelx is disabled.                 
+ 306:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None.
+ 307:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 308:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_SetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx,
+ 309:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		uint16_t DataNumber) {
+ 556              		.loc 1 309 0
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 8
+ 559              		@ frame_needed = 1, uses_anonymous_args = 0
+ 560              		@ link register save eliminated.
+ 561 0000 80B4     		push	{r7}
+ 562              	.LCFI15:
+ 563              		.cfi_def_cfa_offset 4
+ 564              		.cfi_offset 7, -4
+ 565 0002 83B0     		sub	sp, sp, #12
+ 566              	.LCFI16:
+ 567              		.cfi_def_cfa_offset 16
+ 568 0004 00AF     		add	r7, sp, #0
+ 569              	.LCFI17:
+ 570              		.cfi_def_cfa_register 7
+ 571 0006 7860     		str	r0, [r7, #4]
+ 572 0008 0B46     		mov	r3, r1
+ 573 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 310:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 311:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+ 312:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 313:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/*--------------------------- DMAy Channelx CNDTR Configuration ---------------*/
+ 314:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Write to DMAy Channelx CNDTR */
+ 315:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMAy_Channelx->CNDTR = DataNumber;
+ 574              		.loc 1 315 0
+ 575 000c 7A88     		ldrh	r2, [r7, #2]
+ 576 000e 7B68     		ldr	r3, [r7, #4]
+ 577 0010 5A60     		str	r2, [r3, #4]
+ 316:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 578              		.loc 1 316 0
+ 579 0012 07F10C07 		add	r7, r7, #12
+ 580 0016 BD46     		mov	sp, r7
+ 581 0018 80BC     		pop	{r7}
+ 582 001a 7047     		bx	lr
+ 583              		.cfi_endproc
+ 584              	.LFE34:
+ 586              		.section	.text.DMA_GetCurrDataCounter,"ax",%progbits
+ 587              		.align	2
+ 588              		.global	DMA_GetCurrDataCounter
+ 589              		.thumb
+ 590              		.thumb_func
+ 592              	DMA_GetCurrDataCounter:
+ 593              	.LFB35:
+ 317:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 318:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 319:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Returns the number of remaining data units in the current
+ 320:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         DMAy Channelx transfer.
+ 321:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_Channelx: where y can be 1 or 2 to select the DMA and 
+ 322:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   x can be 1 to 7 for DMA1 and 1 to 5 for DMA2 to select the DMA Channel.
+ 323:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval The number of remaining data units in the current DMAy Channelx
+ 324:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *         transfer.
+ 325:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 326:../StdPeripheralDriver/src/stm32f10x_dma.c **** uint16_t DMA_GetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx) {
+ 594              		.loc 1 326 0
+ 595              		.cfi_startproc
+ 596              		@ args = 0, pretend = 0, frame = 8
+ 597              		@ frame_needed = 1, uses_anonymous_args = 0
+ 598              		@ link register save eliminated.
+ 599 0000 80B4     		push	{r7}
+ 600              	.LCFI18:
+ 601              		.cfi_def_cfa_offset 4
+ 602              		.cfi_offset 7, -4
+ 603 0002 83B0     		sub	sp, sp, #12
+ 604              	.LCFI19:
+ 605              		.cfi_def_cfa_offset 16
+ 606 0004 00AF     		add	r7, sp, #0
+ 607              	.LCFI20:
+ 608              		.cfi_def_cfa_register 7
+ 609 0006 7860     		str	r0, [r7, #4]
+ 327:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 328:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+ 329:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Return the number of remaining data units for DMAy Channelx */
+ 330:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	return ((uint16_t) (DMAy_Channelx->CNDTR));
+ 610              		.loc 1 330 0
+ 611 0008 7B68     		ldr	r3, [r7, #4]
+ 612 000a 5B68     		ldr	r3, [r3, #4]
+ 613 000c 9BB2     		uxth	r3, r3
+ 331:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 614              		.loc 1 331 0
+ 615 000e 1846     		mov	r0, r3
+ 616 0010 07F10C07 		add	r7, r7, #12
+ 617 0014 BD46     		mov	sp, r7
+ 618 0016 80BC     		pop	{r7}
+ 619 0018 7047     		bx	lr
+ 620              		.cfi_endproc
+ 621              	.LFE35:
+ 623 001a 00BF     		.section	.text.DMA_GetFlagStatus,"ax",%progbits
+ 624              		.align	2
+ 625              		.global	DMA_GetFlagStatus
+ 626              		.thumb
+ 627              		.thumb_func
+ 629              	DMA_GetFlagStatus:
+ 630              	.LFB36:
+ 332:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 333:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 334:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Checks whether the specified DMAy Channelx flag is set or not.
+ 335:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_FLAG: specifies the flag to check.
+ 336:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be one of the following values:
+ 337:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL1: DMA1 Channel1 global flag.
+ 338:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC1: DMA1 Channel1 transfer complete flag.
+ 339:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT1: DMA1 Channel1 half transfer flag.
+ 340:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE1: DMA1 Channel1 transfer error flag.
+ 341:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL2: DMA1 Channel2 global flag.
+ 342:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC2: DMA1 Channel2 transfer complete flag.
+ 343:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT2: DMA1 Channel2 half transfer flag.
+ 344:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE2: DMA1 Channel2 transfer error flag.
+ 345:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL3: DMA1 Channel3 global flag.
+ 346:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC3: DMA1 Channel3 transfer complete flag.
+ 347:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT3: DMA1 Channel3 half transfer flag.
+ 348:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE3: DMA1 Channel3 transfer error flag.
+ 349:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL4: DMA1 Channel4 global flag.
+ 350:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC4: DMA1 Channel4 transfer complete flag.
+ 351:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT4: DMA1 Channel4 half transfer flag.
+ 352:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE4: DMA1 Channel4 transfer error flag.
+ 353:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL5: DMA1 Channel5 global flag.
+ 354:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC5: DMA1 Channel5 transfer complete flag.
+ 355:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT5: DMA1 Channel5 half transfer flag.
+ 356:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE5: DMA1 Channel5 transfer error flag.
+ 357:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL6: DMA1 Channel6 global flag.
+ 358:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC6: DMA1 Channel6 transfer complete flag.
+ 359:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT6: DMA1 Channel6 half transfer flag.
+ 360:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE6: DMA1 Channel6 transfer error flag.
+ 361:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL7: DMA1 Channel7 global flag.
+ 362:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC7: DMA1 Channel7 transfer complete flag.
+ 363:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT7: DMA1 Channel7 half transfer flag.
+ 364:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE7: DMA1 Channel7 transfer error flag.
+ 365:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL1: DMA2 Channel1 global flag.
+ 366:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC1: DMA2 Channel1 transfer complete flag.
+ 367:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT1: DMA2 Channel1 half transfer flag.
+ 368:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE1: DMA2 Channel1 transfer error flag.
+ 369:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL2: DMA2 Channel2 global flag.
+ 370:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC2: DMA2 Channel2 transfer complete flag.
+ 371:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT2: DMA2 Channel2 half transfer flag.
+ 372:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE2: DMA2 Channel2 transfer error flag.
+ 373:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL3: DMA2 Channel3 global flag.
+ 374:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC3: DMA2 Channel3 transfer complete flag.
+ 375:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT3: DMA2 Channel3 half transfer flag.
+ 376:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE3: DMA2 Channel3 transfer error flag.
+ 377:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL4: DMA2 Channel4 global flag.
+ 378:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC4: DMA2 Channel4 transfer complete flag.
+ 379:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT4: DMA2 Channel4 half transfer flag.
+ 380:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE4: DMA2 Channel4 transfer error flag.
+ 381:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL5: DMA2 Channel5 global flag.
+ 382:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC5: DMA2 Channel5 transfer complete flag.
+ 383:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT5: DMA2 Channel5 half transfer flag.
+ 384:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE5: DMA2 Channel5 transfer error flag.
+ 385:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval The new state of DMAy_FLAG (SET or RESET).
+ 386:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 387:../StdPeripheralDriver/src/stm32f10x_dma.c **** FlagStatus DMA_GetFlagStatus(uint32_t DMAy_FLAG) {
+ 631              		.loc 1 387 0
+ 632              		.cfi_startproc
+ 633              		@ args = 0, pretend = 0, frame = 16
+ 634              		@ frame_needed = 1, uses_anonymous_args = 0
+ 635              		@ link register save eliminated.
+ 636 0000 80B4     		push	{r7}
+ 637              	.LCFI21:
+ 638              		.cfi_def_cfa_offset 4
+ 639              		.cfi_offset 7, -4
+ 640 0002 85B0     		sub	sp, sp, #20
+ 641              	.LCFI22:
+ 642              		.cfi_def_cfa_offset 24
+ 643 0004 00AF     		add	r7, sp, #0
+ 644              	.LCFI23:
+ 645              		.cfi_def_cfa_register 7
+ 646 0006 7860     		str	r0, [r7, #4]
+ 388:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	FlagStatus bitstatus = RESET;
+ 647              		.loc 1 388 0
+ 648 0008 4FF00003 		mov	r3, #0
+ 649 000c FB73     		strb	r3, [r7, #15]
+ 389:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	uint32_t tmpreg = 0;
+ 650              		.loc 1 389 0
+ 651 000e 4FF00003 		mov	r3, #0
+ 652 0012 BB60     		str	r3, [r7, #8]
+ 390:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 391:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 392:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_GET_FLAG(DMAy_FLAG));
+ 393:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 394:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Calculate the used DMAy */
+ 395:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((DMAy_FLAG & FLAG_Mask )!= (uint32_t)RESET){
+ 653              		.loc 1 395 0
+ 654 0014 7B68     		ldr	r3, [r7, #4]
+ 655 0016 03F08053 		and	r3, r3, #268435456
+ 656 001a 002B     		cmp	r3, #0
+ 657 001c 06D0     		beq	.L26
+ 396:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Get DMA2 ISR register value */
+ 397:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg = DMA2->ISR;
+ 658              		.loc 1 397 0
+ 659 001e 4FF48063 		mov	r3, #1024
+ 660 0022 C4F20203 		movt	r3, 16386
+ 661 0026 1B68     		ldr	r3, [r3, #0]
+ 662 0028 BB60     		str	r3, [r7, #8]
+ 663 002a 05E0     		b	.L27
+ 664              	.L26:
+ 398:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 399:../StdPeripheralDriver/src/stm32f10x_dma.c **** else
+ 400:../StdPeripheralDriver/src/stm32f10x_dma.c **** {
+ 401:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Get DMA1 ISR register value */
+ 402:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg = DMA1->ISR;
+ 665              		.loc 1 402 0
+ 666 002c 4FF00003 		mov	r3, #0
+ 667 0030 C4F20203 		movt	r3, 16386
+ 668 0034 1B68     		ldr	r3, [r3, #0]
+ 669 0036 BB60     		str	r3, [r7, #8]
+ 670              	.L27:
+ 403:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 404:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 405:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the status of the specified DMAy flag */
+ 406:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((tmpreg & DMAy_FLAG) != (uint32_t) RESET) {
+ 671              		.loc 1 406 0
+ 672 0038 BA68     		ldr	r2, [r7, #8]
+ 673 003a 7B68     		ldr	r3, [r7, #4]
+ 674 003c 1340     		ands	r3, r3, r2
+ 675 003e 002B     		cmp	r3, #0
+ 676 0040 03D0     		beq	.L28
+ 407:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* DMAy_FLAG is set */
+ 408:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		bitstatus = SET;
+ 677              		.loc 1 408 0
+ 678 0042 4FF00103 		mov	r3, #1
+ 679 0046 FB73     		strb	r3, [r7, #15]
+ 680 0048 02E0     		b	.L29
+ 681              	.L28:
+ 409:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else {
+ 410:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* DMAy_FLAG is reset */
+ 411:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		bitstatus = RESET;
+ 682              		.loc 1 411 0
+ 683 004a 4FF00003 		mov	r3, #0
+ 684 004e FB73     		strb	r3, [r7, #15]
+ 685              	.L29:
+ 412:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	}
+ 413:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 414:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Return the DMAy_FLAG status */
+ 415:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	return bitstatus;
+ 686              		.loc 1 415 0
+ 687 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 416:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 688              		.loc 1 416 0
+ 689 0052 1846     		mov	r0, r3
+ 690 0054 07F11407 		add	r7, r7, #20
+ 691 0058 BD46     		mov	sp, r7
+ 692 005a 80BC     		pop	{r7}
+ 693 005c 7047     		bx	lr
+ 694              		.cfi_endproc
+ 695              	.LFE36:
+ 697 005e 00BF     		.section	.text.DMA_ClearFlag,"ax",%progbits
+ 698              		.align	2
+ 699              		.global	DMA_ClearFlag
+ 700              		.thumb
+ 701              		.thumb_func
+ 703              	DMA_ClearFlag:
+ 704              	.LFB37:
+ 417:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 418:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 419:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Clears the DMAy Channelx's pending flags.
+ 420:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_FLAG: specifies the flag to clear.
+ 421:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be any combination (for the same DMA) of the following values:
+ 422:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL1: DMA1 Channel1 global flag.
+ 423:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC1: DMA1 Channel1 transfer complete flag.
+ 424:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT1: DMA1 Channel1 half transfer flag.
+ 425:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE1: DMA1 Channel1 transfer error flag.
+ 426:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL2: DMA1 Channel2 global flag.
+ 427:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC2: DMA1 Channel2 transfer complete flag.
+ 428:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT2: DMA1 Channel2 half transfer flag.
+ 429:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE2: DMA1 Channel2 transfer error flag.
+ 430:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL3: DMA1 Channel3 global flag.
+ 431:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC3: DMA1 Channel3 transfer complete flag.
+ 432:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT3: DMA1 Channel3 half transfer flag.
+ 433:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE3: DMA1 Channel3 transfer error flag.
+ 434:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL4: DMA1 Channel4 global flag.
+ 435:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC4: DMA1 Channel4 transfer complete flag.
+ 436:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT4: DMA1 Channel4 half transfer flag.
+ 437:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE4: DMA1 Channel4 transfer error flag.
+ 438:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL5: DMA1 Channel5 global flag.
+ 439:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC5: DMA1 Channel5 transfer complete flag.
+ 440:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT5: DMA1 Channel5 half transfer flag.
+ 441:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE5: DMA1 Channel5 transfer error flag.
+ 442:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL6: DMA1 Channel6 global flag.
+ 443:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC6: DMA1 Channel6 transfer complete flag.
+ 444:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT6: DMA1 Channel6 half transfer flag.
+ 445:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE6: DMA1 Channel6 transfer error flag.
+ 446:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_GL7: DMA1 Channel7 global flag.
+ 447:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TC7: DMA1 Channel7 transfer complete flag.
+ 448:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_HT7: DMA1 Channel7 half transfer flag.
+ 449:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_FLAG_TE7: DMA1 Channel7 transfer error flag.
+ 450:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL1: DMA2 Channel1 global flag.
+ 451:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC1: DMA2 Channel1 transfer complete flag.
+ 452:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT1: DMA2 Channel1 half transfer flag.
+ 453:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE1: DMA2 Channel1 transfer error flag.
+ 454:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL2: DMA2 Channel2 global flag.
+ 455:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC2: DMA2 Channel2 transfer complete flag.
+ 456:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT2: DMA2 Channel2 half transfer flag.
+ 457:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE2: DMA2 Channel2 transfer error flag.
+ 458:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL3: DMA2 Channel3 global flag.
+ 459:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC3: DMA2 Channel3 transfer complete flag.
+ 460:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT3: DMA2 Channel3 half transfer flag.
+ 461:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE3: DMA2 Channel3 transfer error flag.
+ 462:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL4: DMA2 Channel4 global flag.
+ 463:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC4: DMA2 Channel4 transfer complete flag.
+ 464:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT4: DMA2 Channel4 half transfer flag.
+ 465:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE4: DMA2 Channel4 transfer error flag.
+ 466:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_GL5: DMA2 Channel5 global flag.
+ 467:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TC5: DMA2 Channel5 transfer complete flag.
+ 468:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_HT5: DMA2 Channel5 half transfer flag.
+ 469:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_FLAG_TE5: DMA2 Channel5 transfer error flag.
+ 470:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 471:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 472:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_ClearFlag(uint32_t DMAy_FLAG) {
+ 705              		.loc 1 472 0
+ 706              		.cfi_startproc
+ 707              		@ args = 0, pretend = 0, frame = 8
+ 708              		@ frame_needed = 1, uses_anonymous_args = 0
+ 709              		@ link register save eliminated.
+ 710 0000 80B4     		push	{r7}
+ 711              	.LCFI24:
+ 712              		.cfi_def_cfa_offset 4
+ 713              		.cfi_offset 7, -4
+ 714 0002 83B0     		sub	sp, sp, #12
+ 715              	.LCFI25:
+ 716              		.cfi_def_cfa_offset 16
+ 717 0004 00AF     		add	r7, sp, #0
+ 718              	.LCFI26:
+ 719              		.cfi_def_cfa_register 7
+ 720 0006 7860     		str	r0, [r7, #4]
+ 473:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 474:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_CLEAR_FLAG(DMAy_FLAG));
+ 475:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 476:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Calculate the used DMAy */
+ 477:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((DMAy_FLAG & FLAG_Mask )!= (uint32_t)RESET){
+ 721              		.loc 1 477 0
+ 722 0008 7B68     		ldr	r3, [r7, #4]
+ 723 000a 03F08053 		and	r3, r3, #268435456
+ 724 000e 002B     		cmp	r3, #0
+ 725 0010 06D0     		beq	.L32
+ 478:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Clear the selected DMAy flags */
+ 479:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA2->IFCR = DMAy_FLAG;
+ 726              		.loc 1 479 0
+ 727 0012 4FF48063 		mov	r3, #1024
+ 728 0016 C4F20203 		movt	r3, 16386
+ 729 001a 7A68     		ldr	r2, [r7, #4]
+ 730 001c 5A60     		str	r2, [r3, #4]
+ 731 001e 05E0     		b	.L31
+ 732              	.L32:
+ 480:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 481:../StdPeripheralDriver/src/stm32f10x_dma.c **** else
+ 482:../StdPeripheralDriver/src/stm32f10x_dma.c **** {
+ 483:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Clear the selected DMAy flags */
+ 484:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA1->IFCR = DMAy_FLAG;
+ 733              		.loc 1 484 0
+ 734 0020 4FF00003 		mov	r3, #0
+ 735 0024 C4F20203 		movt	r3, 16386
+ 736 0028 7A68     		ldr	r2, [r7, #4]
+ 737 002a 5A60     		str	r2, [r3, #4]
+ 738              	.L31:
+ 485:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 486:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 739              		.loc 1 486 0
+ 740 002c 07F10C07 		add	r7, r7, #12
+ 741 0030 BD46     		mov	sp, r7
+ 742 0032 80BC     		pop	{r7}
+ 743 0034 7047     		bx	lr
+ 744              		.cfi_endproc
+ 745              	.LFE37:
+ 747 0036 00BF     		.section	.text.DMA_GetITStatus,"ax",%progbits
+ 748              		.align	2
+ 749              		.global	DMA_GetITStatus
+ 750              		.thumb
+ 751              		.thumb_func
+ 753              	DMA_GetITStatus:
+ 754              	.LFB38:
+ 487:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 488:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/**
+ 489:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 * @brief  Checks whether the specified DMAy Channelx interrupt has occurred or not.
+ 490:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 * @param  DMAy_IT: specifies the DMAy interrupt source to check. 
+ 491:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *   This parameter can be one of the following values:
+ 492:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL1: DMA1 Channel1 global interrupt.
+ 493:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC1: DMA1 Channel1 transfer complete interrupt.
+ 494:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT1: DMA1 Channel1 half transfer interrupt.
+ 495:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE1: DMA1 Channel1 transfer error interrupt.
+ 496:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL2: DMA1 Channel2 global interrupt.
+ 497:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC2: DMA1 Channel2 transfer complete interrupt.
+ 498:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT2: DMA1 Channel2 half transfer interrupt.
+ 499:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE2: DMA1 Channel2 transfer error interrupt.
+ 500:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL3: DMA1 Channel3 global interrupt.
+ 501:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC3: DMA1 Channel3 transfer complete interrupt.
+ 502:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT3: DMA1 Channel3 half transfer interrupt.
+ 503:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE3: DMA1 Channel3 transfer error interrupt.
+ 504:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL4: DMA1 Channel4 global interrupt.
+ 505:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC4: DMA1 Channel4 transfer complete interrupt.
+ 506:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT4: DMA1 Channel4 half transfer interrupt.
+ 507:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE4: DMA1 Channel4 transfer error interrupt.
+ 508:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL5: DMA1 Channel5 global interrupt.
+ 509:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC5: DMA1 Channel5 transfer complete interrupt.
+ 510:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT5: DMA1 Channel5 half transfer interrupt.
+ 511:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE5: DMA1 Channel5 transfer error interrupt.
+ 512:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL6: DMA1 Channel6 global interrupt.
+ 513:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC6: DMA1 Channel6 transfer complete interrupt.
+ 514:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT6: DMA1 Channel6 half transfer interrupt.
+ 515:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE6: DMA1 Channel6 transfer error interrupt.
+ 516:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_GL7: DMA1 Channel7 global interrupt.
+ 517:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TC7: DMA1 Channel7 transfer complete interrupt.
+ 518:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_HT7: DMA1 Channel7 half transfer interrupt.
+ 519:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA1_IT_TE7: DMA1 Channel7 transfer error interrupt.
+ 520:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_GL1: DMA2 Channel1 global interrupt.
+ 521:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TC1: DMA2 Channel1 transfer complete interrupt.
+ 522:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_HT1: DMA2 Channel1 half transfer interrupt.
+ 523:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TE1: DMA2 Channel1 transfer error interrupt.
+ 524:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_GL2: DMA2 Channel2 global interrupt.
+ 525:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TC2: DMA2 Channel2 transfer complete interrupt.
+ 526:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_HT2: DMA2 Channel2 half transfer interrupt.
+ 527:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TE2: DMA2 Channel2 transfer error interrupt.
+ 528:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_GL3: DMA2 Channel3 global interrupt.
+ 529:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TC3: DMA2 Channel3 transfer complete interrupt.
+ 530:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_HT3: DMA2 Channel3 half transfer interrupt.
+ 531:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TE3: DMA2 Channel3 transfer error interrupt.
+ 532:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_GL4: DMA2 Channel4 global interrupt.
+ 533:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TC4: DMA2 Channel4 transfer complete interrupt.
+ 534:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_HT4: DMA2 Channel4 half transfer interrupt.
+ 535:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TE4: DMA2 Channel4 transfer error interrupt.
+ 536:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_GL5: DMA2 Channel5 global interrupt.
+ 537:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TC5: DMA2 Channel5 transfer complete interrupt.
+ 538:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_HT5: DMA2 Channel5 half transfer interrupt.
+ 539:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 *     @arg DMA2_IT_TE5: DMA2 Channel5 transfer error interrupt.
+ 540:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 * @retval The new state of DMAy_IT (SET or RESET).
+ 541:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	 */
+ 542:../StdPeripheralDriver/src/stm32f10x_dma.c **** ITStatus DMA_GetITStatus(uint32_t DMAy_IT) {
+ 755              		.loc 1 542 0
+ 756              		.cfi_startproc
+ 757              		@ args = 0, pretend = 0, frame = 16
+ 758              		@ frame_needed = 1, uses_anonymous_args = 0
+ 759              		@ link register save eliminated.
+ 760 0000 80B4     		push	{r7}
+ 761              	.LCFI27:
+ 762              		.cfi_def_cfa_offset 4
+ 763              		.cfi_offset 7, -4
+ 764 0002 85B0     		sub	sp, sp, #20
+ 765              	.LCFI28:
+ 766              		.cfi_def_cfa_offset 24
+ 767 0004 00AF     		add	r7, sp, #0
+ 768              	.LCFI29:
+ 769              		.cfi_def_cfa_register 7
+ 770 0006 7860     		str	r0, [r7, #4]
+ 543:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	ITStatus bitstatus = RESET;
+ 771              		.loc 1 543 0
+ 772 0008 4FF00003 		mov	r3, #0
+ 773 000c FB73     		strb	r3, [r7, #15]
+ 544:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	uint32_t tmpreg = 0;
+ 774              		.loc 1 544 0
+ 775 000e 4FF00003 		mov	r3, #0
+ 776 0012 BB60     		str	r3, [r7, #8]
+ 545:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 546:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 547:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_GET_IT(DMAy_IT));
+ 548:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 549:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Calculate the used DMA */
+ 550:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((DMAy_IT & FLAG_Mask )!= (uint32_t)RESET){
+ 777              		.loc 1 550 0
+ 778 0014 7B68     		ldr	r3, [r7, #4]
+ 779 0016 03F08053 		and	r3, r3, #268435456
+ 780 001a 002B     		cmp	r3, #0
+ 781 001c 06D0     		beq	.L35
+ 551:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Get DMA2 ISR register value */
+ 552:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg = DMA2->ISR;
+ 782              		.loc 1 552 0
+ 783 001e 4FF48063 		mov	r3, #1024
+ 784 0022 C4F20203 		movt	r3, 16386
+ 785 0026 1B68     		ldr	r3, [r3, #0]
+ 786 0028 BB60     		str	r3, [r7, #8]
+ 787 002a 05E0     		b	.L36
+ 788              	.L35:
+ 553:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 554:../StdPeripheralDriver/src/stm32f10x_dma.c **** else
+ 555:../StdPeripheralDriver/src/stm32f10x_dma.c **** {
+ 556:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Get DMA1 ISR register value */
+ 557:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	tmpreg = DMA1->ISR;
+ 789              		.loc 1 557 0
+ 790 002c 4FF00003 		mov	r3, #0
+ 791 0030 C4F20203 		movt	r3, 16386
+ 792 0034 1B68     		ldr	r3, [r3, #0]
+ 793 0036 BB60     		str	r3, [r7, #8]
+ 794              	.L36:
+ 558:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 559:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 560:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the status of the specified DMAy interrupt */
+ 561:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((tmpreg & DMAy_IT) != (uint32_t) RESET) {
+ 795              		.loc 1 561 0
+ 796 0038 BA68     		ldr	r2, [r7, #8]
+ 797 003a 7B68     		ldr	r3, [r7, #4]
+ 798 003c 1340     		ands	r3, r3, r2
+ 799 003e 002B     		cmp	r3, #0
+ 800 0040 03D0     		beq	.L37
+ 562:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* DMAy_IT is set */
+ 563:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		bitstatus = SET;
+ 801              		.loc 1 563 0
+ 802 0042 4FF00103 		mov	r3, #1
+ 803 0046 FB73     		strb	r3, [r7, #15]
+ 804 0048 02E0     		b	.L38
+ 805              	.L37:
+ 564:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	} else {
+ 565:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		/* DMAy_IT is reset */
+ 566:../StdPeripheralDriver/src/stm32f10x_dma.c **** 		bitstatus = RESET;
+ 806              		.loc 1 566 0
+ 807 004a 4FF00003 		mov	r3, #0
+ 808 004e FB73     		strb	r3, [r7, #15]
+ 809              	.L38:
+ 567:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	}
+ 568:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Return the DMA_IT status */
+ 569:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	return bitstatus;
+ 810              		.loc 1 569 0
+ 811 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 570:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 812              		.loc 1 570 0
+ 813 0052 1846     		mov	r0, r3
+ 814 0054 07F11407 		add	r7, r7, #20
+ 815 0058 BD46     		mov	sp, r7
+ 816 005a 80BC     		pop	{r7}
+ 817 005c 7047     		bx	lr
+ 818              		.cfi_endproc
+ 819              	.LFE38:
+ 821 005e 00BF     		.section	.text.DMA_ClearITPendingBit,"ax",%progbits
+ 822              		.align	2
+ 823              		.global	DMA_ClearITPendingBit
+ 824              		.thumb
+ 825              		.thumb_func
+ 827              	DMA_ClearITPendingBit:
+ 828              	.LFB39:
+ 571:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 572:../StdPeripheralDriver/src/stm32f10x_dma.c **** /**
+ 573:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @brief  Clears the DMAy Channelx's interrupt pending bits.
+ 574:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @param  DMAy_IT: specifies the DMAy interrupt pending bit to clear.
+ 575:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *   This parameter can be any combination (for the same DMA) of the following values:
+ 576:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL1: DMA1 Channel1 global interrupt.
+ 577:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC1: DMA1 Channel1 transfer complete interrupt.
+ 578:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT1: DMA1 Channel1 half transfer interrupt.
+ 579:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE1: DMA1 Channel1 transfer error interrupt.
+ 580:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL2: DMA1 Channel2 global interrupt.
+ 581:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC2: DMA1 Channel2 transfer complete interrupt.
+ 582:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT2: DMA1 Channel2 half transfer interrupt.
+ 583:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE2: DMA1 Channel2 transfer error interrupt.
+ 584:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL3: DMA1 Channel3 global interrupt.
+ 585:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC3: DMA1 Channel3 transfer complete interrupt.
+ 586:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT3: DMA1 Channel3 half transfer interrupt.
+ 587:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE3: DMA1 Channel3 transfer error interrupt.
+ 588:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL4: DMA1 Channel4 global interrupt.
+ 589:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC4: DMA1 Channel4 transfer complete interrupt.
+ 590:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT4: DMA1 Channel4 half transfer interrupt.
+ 591:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE4: DMA1 Channel4 transfer error interrupt.
+ 592:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL5: DMA1 Channel5 global interrupt.
+ 593:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC5: DMA1 Channel5 transfer complete interrupt.
+ 594:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT5: DMA1 Channel5 half transfer interrupt.
+ 595:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE5: DMA1 Channel5 transfer error interrupt.
+ 596:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL6: DMA1 Channel6 global interrupt.
+ 597:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC6: DMA1 Channel6 transfer complete interrupt.
+ 598:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT6: DMA1 Channel6 half transfer interrupt.
+ 599:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE6: DMA1 Channel6 transfer error interrupt.
+ 600:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_GL7: DMA1 Channel7 global interrupt.
+ 601:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TC7: DMA1 Channel7 transfer complete interrupt.
+ 602:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_HT7: DMA1 Channel7 half transfer interrupt.
+ 603:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA1_IT_TE7: DMA1 Channel7 transfer error interrupt.
+ 604:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_GL1: DMA2 Channel1 global interrupt.
+ 605:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TC1: DMA2 Channel1 transfer complete interrupt.
+ 606:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_HT1: DMA2 Channel1 half transfer interrupt.
+ 607:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TE1: DMA2 Channel1 transfer error interrupt.
+ 608:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_GL2: DMA2 Channel2 global interrupt.
+ 609:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TC2: DMA2 Channel2 transfer complete interrupt.
+ 610:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_HT2: DMA2 Channel2 half transfer interrupt.
+ 611:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TE2: DMA2 Channel2 transfer error interrupt.
+ 612:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_GL3: DMA2 Channel3 global interrupt.
+ 613:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TC3: DMA2 Channel3 transfer complete interrupt.
+ 614:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_HT3: DMA2 Channel3 half transfer interrupt.
+ 615:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TE3: DMA2 Channel3 transfer error interrupt.
+ 616:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_GL4: DMA2 Channel4 global interrupt.
+ 617:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TC4: DMA2 Channel4 transfer complete interrupt.
+ 618:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_HT4: DMA2 Channel4 half transfer interrupt.
+ 619:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TE4: DMA2 Channel4 transfer error interrupt.
+ 620:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_GL5: DMA2 Channel5 global interrupt.
+ 621:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TC5: DMA2 Channel5 transfer complete interrupt.
+ 622:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_HT5: DMA2 Channel5 half transfer interrupt.
+ 623:../StdPeripheralDriver/src/stm32f10x_dma.c ****  *     @arg DMA2_IT_TE5: DMA2 Channel5 transfer error interrupt.
+ 624:../StdPeripheralDriver/src/stm32f10x_dma.c ****  * @retval None
+ 625:../StdPeripheralDriver/src/stm32f10x_dma.c ****  */
+ 626:../StdPeripheralDriver/src/stm32f10x_dma.c **** void DMA_ClearITPendingBit(uint32_t DMAy_IT) {
+ 829              		.loc 1 626 0
+ 830              		.cfi_startproc
+ 831              		@ args = 0, pretend = 0, frame = 8
+ 832              		@ frame_needed = 1, uses_anonymous_args = 0
+ 833              		@ link register save eliminated.
+ 834 0000 80B4     		push	{r7}
+ 835              	.LCFI30:
+ 836              		.cfi_def_cfa_offset 4
+ 837              		.cfi_offset 7, -4
+ 838 0002 83B0     		sub	sp, sp, #12
+ 839              	.LCFI31:
+ 840              		.cfi_def_cfa_offset 16
+ 841 0004 00AF     		add	r7, sp, #0
+ 842              	.LCFI32:
+ 843              		.cfi_def_cfa_register 7
+ 844 0006 7860     		str	r0, [r7, #4]
+ 627:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Check the parameters */
+ 628:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	assert_param(IS_DMA_CLEAR_IT(DMAy_IT));
+ 629:../StdPeripheralDriver/src/stm32f10x_dma.c **** 
+ 630:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Calculate the used DMAy */
+ 631:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	if ((DMAy_IT & FLAG_Mask )!= (uint32_t)RESET){
+ 845              		.loc 1 631 0
+ 846 0008 7B68     		ldr	r3, [r7, #4]
+ 847 000a 03F08053 		and	r3, r3, #268435456
+ 848 000e 002B     		cmp	r3, #0
+ 849 0010 06D0     		beq	.L41
+ 632:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Clear the selected DMAy interrupt pending bits */
+ 633:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA2->IFCR = DMAy_IT;
+ 850              		.loc 1 633 0
+ 851 0012 4FF48063 		mov	r3, #1024
+ 852 0016 C4F20203 		movt	r3, 16386
+ 853 001a 7A68     		ldr	r2, [r7, #4]
+ 854 001c 5A60     		str	r2, [r3, #4]
+ 855 001e 05E0     		b	.L40
+ 856              	.L41:
+ 634:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 635:../StdPeripheralDriver/src/stm32f10x_dma.c **** else
+ 636:../StdPeripheralDriver/src/stm32f10x_dma.c **** {
+ 637:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	/* Clear the selected DMAy interrupt pending bits */
+ 638:../StdPeripheralDriver/src/stm32f10x_dma.c **** 	DMA1->IFCR = DMAy_IT;
+ 857              		.loc 1 638 0
+ 858 0020 4FF00003 		mov	r3, #0
+ 859 0024 C4F20203 		movt	r3, 16386
+ 860 0028 7A68     		ldr	r2, [r7, #4]
+ 861 002a 5A60     		str	r2, [r3, #4]
+ 862              	.L40:
+ 639:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 640:../StdPeripheralDriver/src/stm32f10x_dma.c **** }
+ 863              		.loc 1 640 0
+ 864 002c 07F10C07 		add	r7, r7, #12
+ 865 0030 BD46     		mov	sp, r7
+ 866 0032 80BC     		pop	{r7}
+ 867 0034 7047     		bx	lr
+ 868              		.cfi_endproc
+ 869              	.LFE39:
+ 871 0036 00BF     		.text
+ 872              	.Letext0:
+ 873              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 874              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 875              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_dma.h"
+ 876              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_dma.c
+     /tmp/ccyegw5x.s:19     .text.DMA_DeInit:00000000 $t
+     /tmp/ccyegw5x.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
+     /tmp/ccyegw5x.s:266    .text.DMA_Init:00000000 $t
+     /tmp/ccyegw5x.s:271    .text.DMA_Init:00000000 DMA_Init
+     /tmp/ccyegw5x.s:362    .text.DMA_StructInit:00000000 $t
+     /tmp/ccyegw5x.s:367    .text.DMA_StructInit:00000000 DMA_StructInit
+     /tmp/ccyegw5x.s:438    .text.DMA_Cmd:00000000 $t
+     /tmp/ccyegw5x.s:443    .text.DMA_Cmd:00000000 DMA_Cmd
+     /tmp/ccyegw5x.s:492    .text.DMA_ITConfig:00000000 $t
+     /tmp/ccyegw5x.s:497    .text.DMA_ITConfig:00000000 DMA_ITConfig
+     /tmp/ccyegw5x.s:549    .text.DMA_SetCurrDataCounter:00000000 $t
+     /tmp/ccyegw5x.s:554    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
+     /tmp/ccyegw5x.s:587    .text.DMA_GetCurrDataCounter:00000000 $t
+     /tmp/ccyegw5x.s:592    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
+     /tmp/ccyegw5x.s:624    .text.DMA_GetFlagStatus:00000000 $t
+     /tmp/ccyegw5x.s:629    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
+     /tmp/ccyegw5x.s:698    .text.DMA_ClearFlag:00000000 $t
+     /tmp/ccyegw5x.s:703    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
+     /tmp/ccyegw5x.s:748    .text.DMA_GetITStatus:00000000 $t
+     /tmp/ccyegw5x.s:753    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
+     /tmp/ccyegw5x.s:822    .text.DMA_ClearITPendingBit:00000000 $t
+     /tmp/ccyegw5x.s:827    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_dma.h.95.3ba03f0eac1ed728f3bbe553623f105a
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+
+NO UNDEFINED SYMBOLS

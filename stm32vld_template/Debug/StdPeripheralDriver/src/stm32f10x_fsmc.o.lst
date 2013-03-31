@@ -1,0 +1,2833 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_fsmc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.FSMC_NORSRAMDeInit,"ax",%progbits
+  19              		.align	2
+  20              		.global	FSMC_NORSRAMDeInit
+  21              		.thumb
+  22              		.thumb_func
+  24              	FSMC_NORSRAMDeInit:
+  25              	.LFB29:
+  26              		.file 1 "../StdPeripheralDriver/src/stm32f10x_fsmc.c"
+   1:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+   2:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   ******************************************************************************
+   3:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @file    stm32f10x_fsmc.c
+   4:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @author  MCD Application Team
+   5:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @version V3.5.0
+   6:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @date    11-March-2011
+   7:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief   This file provides all the FSMC firmware functions.
+   8:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   ******************************************************************************
+   9:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @attention
+  10:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *
+  11:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  12:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  13:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  14:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  15:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  16:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  17:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *
+  18:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  19:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   ******************************************************************************
+  20:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  21:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  22:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /* Includes ------------------------------------------------------------------*/
+  23:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #include "stm32f10x_fsmc.h"
+  24:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #include "stm32f10x_rcc.h"
+  25:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  26:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @addtogroup STM32F10x_StdPeriph_Driver
+  27:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  28:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  29:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  30:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC 
+  31:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief FSMC driver modules
+  32:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  33:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */ 
+  34:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  35:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_TypesDefinitions
+  36:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  37:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */ 
+  38:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  39:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @}
+  40:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  41:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  42:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_Defines
+  43:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  44:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  45:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  46:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /* --------------------- FSMC registers bit mask ---------------------------- */
+  47:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  48:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /* FSMC BCRx Mask */
+  49:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define BCR_MBKEN_Set                       ((uint32_t)0x00000001)
+  50:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define BCR_MBKEN_Reset                     ((uint32_t)0x000FFFFE)
+  51:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define BCR_FACCEN_Set                      ((uint32_t)0x00000040)
+  52:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  53:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /* FSMC PCRx Mask */
+  54:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define PCR_PBKEN_Set                       ((uint32_t)0x00000004)
+  55:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define PCR_PBKEN_Reset                     ((uint32_t)0x000FFFFB)
+  56:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define PCR_ECCEN_Set                       ((uint32_t)0x00000040)
+  57:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define PCR_ECCEN_Reset                     ((uint32_t)0x000FFFBF)
+  58:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** #define PCR_MemoryType_NAND                 ((uint32_t)0x00000008)
+  59:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  60:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @}
+  61:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  62:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  63:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_Macros
+  64:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  65:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  66:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  67:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  68:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @}
+  69:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  70:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  71:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_Variables
+  72:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  73:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  74:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  75:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  76:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @}
+  77:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  78:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  79:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_FunctionPrototypes
+  80:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  81:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  82:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  83:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  84:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @}
+  85:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  86:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  87:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /** @defgroup FSMC_Private_Functions
+  88:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @{
+  89:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+  90:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+  91:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+  92:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Deinitializes the FSMC NOR/SRAM Banks registers to their default 
+  93:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         reset values.
+  94:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+  95:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+  96:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM1: FSMC Bank1 NOR/SRAM1  
+  97:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM2: FSMC Bank1 NOR/SRAM2 
+  98:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM3: FSMC Bank1 NOR/SRAM3 
+  99:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM4: FSMC Bank1 NOR/SRAM4 
+ 100:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 101:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 102:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NORSRAMDeInit(uint32_t FSMC_Bank)
+ 103:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+  27              		.loc 1 103 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+ 104:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameter */
+ 105:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NORSRAM_BANK(FSMC_Bank));
+ 106:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 107:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank1_NORSRAM1 */
+ 108:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank1_NORSRAM1)
+  43              		.loc 1 108 0
+  44 0008 7B68     		ldr	r3, [r7, #4]
+  45 000a 002B     		cmp	r3, #0
+  46 000c 07D1     		bne	.L2
+ 109:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 110:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1->BTCR[FSMC_Bank] = 0x000030DB;    
+  47              		.loc 1 110 0
+  48 000e 4FF02043 		mov	r3, #-1610612736
+  49 0012 7A68     		ldr	r2, [r7, #4]
+  50 0014 43F2DB01 		movw	r1, #12507
+  51 0018 43F82210 		str	r1, [r3, r2, lsl #2]
+  52 001c 06E0     		b	.L3
+  53              	.L2:
+ 111:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 112:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank1_NORSRAM2,  FSMC_Bank1_NORSRAM3 or FSMC_Bank1_NORSRAM4 */
+ 113:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 114:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {   
+ 115:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1->BTCR[FSMC_Bank] = 0x000030D2; 
+  54              		.loc 1 115 0
+  55 001e 4FF02043 		mov	r3, #-1610612736
+  56 0022 7A68     		ldr	r2, [r7, #4]
+  57 0024 43F2D201 		movw	r1, #12498
+  58 0028 43F82210 		str	r1, [r3, r2, lsl #2]
+  59              	.L3:
+ 116:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 117:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1->BTCR[FSMC_Bank + 1] = 0x0FFFFFFF;
+  60              		.loc 1 117 0
+  61 002c 4FF02043 		mov	r3, #-1610612736
+  62 0030 7A68     		ldr	r2, [r7, #4]
+  63 0032 02F10102 		add	r2, r2, #1
+  64 0036 6FF07041 		mvn	r1, #-268435456
+  65 003a 43F82210 		str	r1, [r3, r2, lsl #2]
+ 118:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1E->BWTR[FSMC_Bank] = 0x0FFFFFFF;  
+  66              		.loc 1 118 0
+  67 003e 4FF48273 		mov	r3, #260
+  68 0042 CAF20003 		movt	r3, 40960
+  69 0046 7A68     		ldr	r2, [r7, #4]
+  70 0048 6FF07041 		mvn	r1, #-268435456
+  71 004c 43F82210 		str	r1, [r3, r2, lsl #2]
+ 119:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+  72              		.loc 1 119 0
+  73 0050 07F10C07 		add	r7, r7, #12
+  74 0054 BD46     		mov	sp, r7
+  75 0056 80BC     		pop	{r7}
+  76 0058 7047     		bx	lr
+  77              		.cfi_endproc
+  78              	.LFE29:
+  80 005a 00BF     		.section	.text.FSMC_NANDDeInit,"ax",%progbits
+  81              		.align	2
+  82              		.global	FSMC_NANDDeInit
+  83              		.thumb
+  84              		.thumb_func
+  86              	FSMC_NANDDeInit:
+  87              	.LFB30:
+ 120:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 121:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 122:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Deinitializes the FSMC NAND Banks registers to their default reset values.
+ 123:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 124:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 125:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 126:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND 
+ 127:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 128:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 129:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NANDDeInit(uint32_t FSMC_Bank)
+ 130:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+  88              		.loc 1 130 0
+  89              		.cfi_startproc
+  90              		@ args = 0, pretend = 0, frame = 8
+  91              		@ frame_needed = 1, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  93 0000 80B4     		push	{r7}
+  94              	.LCFI3:
+  95              		.cfi_def_cfa_offset 4
+  96              		.cfi_offset 7, -4
+  97 0002 83B0     		sub	sp, sp, #12
+  98              	.LCFI4:
+  99              		.cfi_def_cfa_offset 16
+ 100 0004 00AF     		add	r7, sp, #0
+ 101              	.LCFI5:
+ 102              		.cfi_def_cfa_register 7
+ 103 0006 7860     		str	r0, [r7, #4]
+ 131:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameter */
+ 132:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NAND_BANK(FSMC_Bank));
+ 133:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 134:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 104              		.loc 1 134 0
+ 105 0008 7B68     		ldr	r3, [r7, #4]
+ 106 000a 102B     		cmp	r3, #16
+ 107 000c 1CD1     		bne	.L5
+ 135:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 136:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Set the FSMC_Bank2 registers to their reset values */
+ 137:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PCR2 = 0x00000018;
+ 108              		.loc 1 137 0
+ 109 000e 4FF06003 		mov	r3, #96
+ 110 0012 CAF20003 		movt	r3, 40960
+ 111 0016 4FF01802 		mov	r2, #24
+ 112 001a 1A60     		str	r2, [r3, #0]
+ 138:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->SR2 = 0x00000040;
+ 113              		.loc 1 138 0
+ 114 001c 4FF06003 		mov	r3, #96
+ 115 0020 CAF20003 		movt	r3, 40960
+ 116 0024 4FF04002 		mov	r2, #64
+ 117 0028 5A60     		str	r2, [r3, #4]
+ 139:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PMEM2 = 0xFCFCFCFC;
+ 118              		.loc 1 139 0
+ 119 002a 4FF06003 		mov	r3, #96
+ 120 002e CAF20003 		movt	r3, 40960
+ 121 0032 4FF0FC32 		mov	r2, #-50529028
+ 122 0036 9A60     		str	r2, [r3, #8]
+ 140:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PATT2 = 0xFCFCFCFC;  
+ 123              		.loc 1 140 0
+ 124 0038 4FF06003 		mov	r3, #96
+ 125 003c CAF20003 		movt	r3, 40960
+ 126 0040 4FF0FC32 		mov	r2, #-50529028
+ 127 0044 DA60     		str	r2, [r3, #12]
+ 128 0046 1BE0     		b	.L4
+ 129              	.L5:
+ 141:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 142:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank3_NAND */  
+ 143:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 144:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 145:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Set the FSMC_Bank3 registers to their reset values */
+ 146:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PCR3 = 0x00000018;
+ 130              		.loc 1 146 0
+ 131 0048 4FF08003 		mov	r3, #128
+ 132 004c CAF20003 		movt	r3, 40960
+ 133 0050 4FF01802 		mov	r2, #24
+ 134 0054 1A60     		str	r2, [r3, #0]
+ 147:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->SR3 = 0x00000040;
+ 135              		.loc 1 147 0
+ 136 0056 4FF08003 		mov	r3, #128
+ 137 005a CAF20003 		movt	r3, 40960
+ 138 005e 4FF04002 		mov	r2, #64
+ 139 0062 5A60     		str	r2, [r3, #4]
+ 148:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PMEM3 = 0xFCFCFCFC;
+ 140              		.loc 1 148 0
+ 141 0064 4FF08003 		mov	r3, #128
+ 142 0068 CAF20003 		movt	r3, 40960
+ 143 006c 4FF0FC32 		mov	r2, #-50529028
+ 144 0070 9A60     		str	r2, [r3, #8]
+ 149:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PATT3 = 0xFCFCFCFC; 
+ 145              		.loc 1 149 0
+ 146 0072 4FF08003 		mov	r3, #128
+ 147 0076 CAF20003 		movt	r3, 40960
+ 148 007a 4FF0FC32 		mov	r2, #-50529028
+ 149 007e DA60     		str	r2, [r3, #12]
+ 150              	.L4:
+ 150:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }  
+ 151:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 151              		.loc 1 151 0
+ 152 0080 07F10C07 		add	r7, r7, #12
+ 153 0084 BD46     		mov	sp, r7
+ 154 0086 80BC     		pop	{r7}
+ 155 0088 7047     		bx	lr
+ 156              		.cfi_endproc
+ 157              	.LFE30:
+ 159 008a 00BF     		.section	.text.FSMC_PCCARDDeInit,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	FSMC_PCCARDDeInit
+ 162              		.thumb
+ 163              		.thumb_func
+ 165              	FSMC_PCCARDDeInit:
+ 166              	.LFB31:
+ 152:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 153:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 154:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Deinitializes the FSMC PCCARD Bank registers to their default reset values.
+ 155:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  None                       
+ 156:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 157:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 158:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_PCCARDDeInit(void)
+ 159:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 167              		.loc 1 159 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 1, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+ 172 0000 80B4     		push	{r7}
+ 173              	.LCFI6:
+ 174              		.cfi_def_cfa_offset 4
+ 175              		.cfi_offset 7, -4
+ 176 0002 00AF     		add	r7, sp, #0
+ 177              	.LCFI7:
+ 178              		.cfi_def_cfa_register 7
+ 160:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set the FSMC_Bank4 registers to their reset values */
+ 161:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PCR4 = 0x00000018; 
+ 179              		.loc 1 161 0
+ 180 0004 4FF0A003 		mov	r3, #160
+ 181 0008 CAF20003 		movt	r3, 40960
+ 182 000c 4FF01802 		mov	r2, #24
+ 183 0010 1A60     		str	r2, [r3, #0]
+ 162:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->SR4 = 0x00000000;	
+ 184              		.loc 1 162 0
+ 185 0012 4FF0A003 		mov	r3, #160
+ 186 0016 CAF20003 		movt	r3, 40960
+ 187 001a 4FF00002 		mov	r2, #0
+ 188 001e 5A60     		str	r2, [r3, #4]
+ 163:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PMEM4 = 0xFCFCFCFC;
+ 189              		.loc 1 163 0
+ 190 0020 4FF0A003 		mov	r3, #160
+ 191 0024 CAF20003 		movt	r3, 40960
+ 192 0028 4FF0FC32 		mov	r2, #-50529028
+ 193 002c 9A60     		str	r2, [r3, #8]
+ 164:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PATT4 = 0xFCFCFCFC;
+ 194              		.loc 1 164 0
+ 195 002e 4FF0A003 		mov	r3, #160
+ 196 0032 CAF20003 		movt	r3, 40960
+ 197 0036 4FF0FC32 		mov	r2, #-50529028
+ 198 003a DA60     		str	r2, [r3, #12]
+ 165:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PIO4 = 0xFCFCFCFC;
+ 199              		.loc 1 165 0
+ 200 003c 4FF0A003 		mov	r3, #160
+ 201 0040 CAF20003 		movt	r3, 40960
+ 202 0044 4FF0FC32 		mov	r2, #-50529028
+ 203 0048 1A61     		str	r2, [r3, #16]
+ 166:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 204              		.loc 1 166 0
+ 205 004a BD46     		mov	sp, r7
+ 206 004c 80BC     		pop	{r7}
+ 207 004e 7047     		bx	lr
+ 208              		.cfi_endproc
+ 209              	.LFE31:
+ 211              		.section	.text.FSMC_NORSRAMInit,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	FSMC_NORSRAMInit
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	FSMC_NORSRAMInit:
+ 218              	.LFB32:
+ 167:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 168:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 169:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Initializes the FSMC NOR/SRAM Banks according to the specified
+ 170:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         parameters in the FSMC_NORSRAMInitStruct.
+ 171:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_NORSRAMInitStruct : pointer to a FSMC_NORSRAMInitTypeDef
+ 172:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure that contains the configuration information for 
+ 173:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *        the FSMC NOR/SRAM specified Banks.                       
+ 174:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 175:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 176:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NORSRAMInit(FSMC_NORSRAMInitTypeDef* FSMC_NORSRAMInitStruct)
+ 177:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** { 
+ 219              		.loc 1 177 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 8
+ 222              		@ frame_needed = 1, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224 0000 80B4     		push	{r7}
+ 225              	.LCFI8:
+ 226              		.cfi_def_cfa_offset 4
+ 227              		.cfi_offset 7, -4
+ 228 0002 83B0     		sub	sp, sp, #12
+ 229              	.LCFI9:
+ 230              		.cfi_def_cfa_offset 16
+ 231 0004 00AF     		add	r7, sp, #0
+ 232              	.LCFI10:
+ 233              		.cfi_def_cfa_register 7
+ 234 0006 7860     		str	r0, [r7, #4]
+ 178:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 179:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NORSRAM_BANK(FSMC_NORSRAMInitStruct->FSMC_Bank));
+ 180:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_MUX(FSMC_NORSRAMInitStruct->FSMC_DataAddressMux));
+ 181:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_MEMORY(FSMC_NORSRAMInitStruct->FSMC_MemoryType));
+ 182:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_MEMORY_WIDTH(FSMC_NORSRAMInitStruct->FSMC_MemoryDataWidth));
+ 183:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_BURSTMODE(FSMC_NORSRAMInitStruct->FSMC_BurstAccessMode));
+ 184:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_ASYNWAIT(FSMC_NORSRAMInitStruct->FSMC_AsynchronousWait));
+ 185:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_POLARITY(FSMC_NORSRAMInitStruct->FSMC_WaitSignalPolarity));
+ 186:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WRAP_MODE(FSMC_NORSRAMInitStruct->FSMC_WrapMode));
+ 187:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_SIGNAL_ACTIVE(FSMC_NORSRAMInitStruct->FSMC_WaitSignalActive));
+ 188:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WRITE_OPERATION(FSMC_NORSRAMInitStruct->FSMC_WriteOperation));
+ 189:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAITE_SIGNAL(FSMC_NORSRAMInitStruct->FSMC_WaitSignal));
+ 190:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_EXTENDED_MODE(FSMC_NORSRAMInitStruct->FSMC_ExtendedMode));
+ 191:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WRITE_BURST(FSMC_NORSRAMInitStruct->FSMC_WriteBurst));  
+ 192:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_ADDRESS_SETUP_TIME(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_
+ 193:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_ADDRESS_HOLD_TIME(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_A
+ 194:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_DATASETUP_TIME(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_Data
+ 195:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_TURNAROUND_TIME(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_Bus
+ 196:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_CLK_DIV(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_CLKDivision
+ 197:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_DATA_LATENCY(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataLa
+ 198:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_ACCESS_MODE(FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AccessM
+ 199:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 200:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Bank1 NOR/SRAM control register configuration */ 
+ 201:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1->BTCR[FSMC_NORSRAMInitStruct->FSMC_Bank] = 
+ 235              		.loc 1 201 0
+ 236 0008 4FF02043 		mov	r3, #-1610612736
+ 237 000c 7A68     		ldr	r2, [r7, #4]
+ 238 000e 1268     		ldr	r2, [r2, #0]
+ 202:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (uint32_t)FSMC_NORSRAMInitStruct->FSMC_DataAddressMux |
+ 239              		.loc 1 202 0
+ 240 0010 7968     		ldr	r1, [r7, #4]
+ 241 0012 4868     		ldr	r0, [r1, #4]
+ 203:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_MemoryType |
+ 242              		.loc 1 203 0
+ 243 0014 7968     		ldr	r1, [r7, #4]
+ 244 0016 8968     		ldr	r1, [r1, #8]
+ 202:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (uint32_t)FSMC_NORSRAMInitStruct->FSMC_DataAddressMux |
+ 245              		.loc 1 202 0
+ 246 0018 0843     		orrs	r0, r0, r1
+ 204:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_MemoryDataWidth |
+ 247              		.loc 1 204 0
+ 248 001a 7968     		ldr	r1, [r7, #4]
+ 249 001c C968     		ldr	r1, [r1, #12]
+ 203:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_MemoryType |
+ 250              		.loc 1 203 0
+ 251 001e 0843     		orrs	r0, r0, r1
+ 205:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_BurstAccessMode |
+ 252              		.loc 1 205 0
+ 253 0020 7968     		ldr	r1, [r7, #4]
+ 254 0022 0969     		ldr	r1, [r1, #16]
+ 204:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_MemoryDataWidth |
+ 255              		.loc 1 204 0
+ 256 0024 0843     		orrs	r0, r0, r1
+ 206:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_AsynchronousWait |
+ 257              		.loc 1 206 0
+ 258 0026 7968     		ldr	r1, [r7, #4]
+ 259 0028 4969     		ldr	r1, [r1, #20]
+ 205:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_BurstAccessMode |
+ 260              		.loc 1 205 0
+ 261 002a 0843     		orrs	r0, r0, r1
+ 207:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignalPolarity |
+ 262              		.loc 1 207 0
+ 263 002c 7968     		ldr	r1, [r7, #4]
+ 264 002e 8969     		ldr	r1, [r1, #24]
+ 206:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_AsynchronousWait |
+ 265              		.loc 1 206 0
+ 266 0030 0843     		orrs	r0, r0, r1
+ 208:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WrapMode |
+ 267              		.loc 1 208 0
+ 268 0032 7968     		ldr	r1, [r7, #4]
+ 269 0034 C969     		ldr	r1, [r1, #28]
+ 207:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignalPolarity |
+ 270              		.loc 1 207 0
+ 271 0036 0843     		orrs	r0, r0, r1
+ 209:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignalActive |
+ 272              		.loc 1 209 0
+ 273 0038 7968     		ldr	r1, [r7, #4]
+ 274 003a 096A     		ldr	r1, [r1, #32]
+ 208:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WrapMode |
+ 275              		.loc 1 208 0
+ 276 003c 0843     		orrs	r0, r0, r1
+ 210:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WriteOperation |
+ 277              		.loc 1 210 0
+ 278 003e 7968     		ldr	r1, [r7, #4]
+ 279 0040 496A     		ldr	r1, [r1, #36]
+ 209:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignalActive |
+ 280              		.loc 1 209 0
+ 281 0042 0843     		orrs	r0, r0, r1
+ 211:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignal |
+ 282              		.loc 1 211 0
+ 283 0044 7968     		ldr	r1, [r7, #4]
+ 284 0046 896A     		ldr	r1, [r1, #40]
+ 210:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WriteOperation |
+ 285              		.loc 1 210 0
+ 286 0048 0843     		orrs	r0, r0, r1
+ 212:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_ExtendedMode |
+ 287              		.loc 1 212 0
+ 288 004a 7968     		ldr	r1, [r7, #4]
+ 289 004c C96A     		ldr	r1, [r1, #44]
+ 211:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WaitSignal |
+ 290              		.loc 1 211 0
+ 291 004e 0843     		orrs	r0, r0, r1
+ 213:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_WriteBurst;
+ 292              		.loc 1 213 0
+ 293 0050 7968     		ldr	r1, [r7, #4]
+ 294 0052 096B     		ldr	r1, [r1, #48]
+ 212:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NORSRAMInitStruct->FSMC_ExtendedMode |
+ 295              		.loc 1 212 0
+ 296 0054 0143     		orrs	r1, r1, r0
+ 201:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1->BTCR[FSMC_NORSRAMInitStruct->FSMC_Bank] = 
+ 297              		.loc 1 201 0
+ 298 0056 43F82210 		str	r1, [r3, r2, lsl #2]
+ 214:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 215:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_NORSRAMInitStruct->FSMC_MemoryType == FSMC_MemoryType_NOR)
+ 299              		.loc 1 215 0
+ 300 005a 7B68     		ldr	r3, [r7, #4]
+ 301 005c 9B68     		ldr	r3, [r3, #8]
+ 302 005e 082B     		cmp	r3, #8
+ 303 0060 0DD1     		bne	.L9
+ 216:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 217:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1->BTCR[FSMC_NORSRAMInitStruct->FSMC_Bank] |= (uint32_t)BCR_FACCEN_Set;
+ 304              		.loc 1 217 0
+ 305 0062 4FF02043 		mov	r3, #-1610612736
+ 306 0066 7A68     		ldr	r2, [r7, #4]
+ 307 0068 1268     		ldr	r2, [r2, #0]
+ 308 006a 4FF02041 		mov	r1, #-1610612736
+ 309 006e 7868     		ldr	r0, [r7, #4]
+ 310 0070 0068     		ldr	r0, [r0, #0]
+ 311 0072 51F82010 		ldr	r1, [r1, r0, lsl #2]
+ 312 0076 41F04001 		orr	r1, r1, #64
+ 313 007a 43F82210 		str	r1, [r3, r2, lsl #2]
+ 314              	.L9:
+ 218:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 219:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 220:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Bank1 NOR/SRAM timing register configuration */
+ 221:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1->BTCR[FSMC_NORSRAMInitStruct->FSMC_Bank+1] = 
+ 315              		.loc 1 221 0
+ 316 007e 4FF02043 		mov	r3, #-1610612736
+ 317 0082 7A68     		ldr	r2, [r7, #4]
+ 318 0084 1268     		ldr	r2, [r2, #0]
+ 319 0086 02F10102 		add	r2, r2, #1
+ 222:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (uint32_t)FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressSetupTime |
+ 320              		.loc 1 222 0
+ 321 008a 7968     		ldr	r1, [r7, #4]
+ 322 008c 496B     		ldr	r1, [r1, #52]
+ 323 008e 0868     		ldr	r0, [r1, #0]
+ 223:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressHoldTime << 4) |
+ 324              		.loc 1 223 0
+ 325 0090 7968     		ldr	r1, [r7, #4]
+ 326 0092 496B     		ldr	r1, [r1, #52]
+ 327 0094 4968     		ldr	r1, [r1, #4]
+ 328 0096 4FEA0111 		lsl	r1, r1, #4
+ 222:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (uint32_t)FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressSetupTime |
+ 329              		.loc 1 222 0
+ 330 009a 0843     		orrs	r0, r0, r1
+ 224:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataSetupTime << 8) |
+ 331              		.loc 1 224 0
+ 332 009c 7968     		ldr	r1, [r7, #4]
+ 333 009e 496B     		ldr	r1, [r1, #52]
+ 334 00a0 8968     		ldr	r1, [r1, #8]
+ 335 00a2 4FEA0121 		lsl	r1, r1, #8
+ 223:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressHoldTime << 4) |
+ 336              		.loc 1 223 0
+ 337 00a6 0843     		orrs	r0, r0, r1
+ 225:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_BusTurnAroundDuration << 16) 
+ 338              		.loc 1 225 0
+ 339 00a8 7968     		ldr	r1, [r7, #4]
+ 340 00aa 496B     		ldr	r1, [r1, #52]
+ 341 00ac C968     		ldr	r1, [r1, #12]
+ 342 00ae 4FEA0141 		lsl	r1, r1, #16
+ 224:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataSetupTime << 8) |
+ 343              		.loc 1 224 0
+ 344 00b2 0843     		orrs	r0, r0, r1
+ 226:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_CLKDivision << 20) |
+ 345              		.loc 1 226 0
+ 346 00b4 7968     		ldr	r1, [r7, #4]
+ 347 00b6 496B     		ldr	r1, [r1, #52]
+ 348 00b8 0969     		ldr	r1, [r1, #16]
+ 349 00ba 4FEA0151 		lsl	r1, r1, #20
+ 225:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_BusTurnAroundDuration << 16) 
+ 350              		.loc 1 225 0
+ 351 00be 0843     		orrs	r0, r0, r1
+ 227:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataLatency << 24) |
+ 352              		.loc 1 227 0
+ 353 00c0 7968     		ldr	r1, [r7, #4]
+ 354 00c2 496B     		ldr	r1, [r1, #52]
+ 355 00c4 4969     		ldr	r1, [r1, #20]
+ 356 00c6 4FEA0161 		lsl	r1, r1, #24
+ 226:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_CLKDivision << 20) |
+ 357              		.loc 1 226 0
+ 358 00ca 0843     		orrs	r0, r0, r1
+ 228:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****              FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AccessMode;
+ 359              		.loc 1 228 0
+ 360 00cc 7968     		ldr	r1, [r7, #4]
+ 361 00ce 496B     		ldr	r1, [r1, #52]
+ 362 00d0 8969     		ldr	r1, [r1, #24]
+ 227:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataLatency << 24) |
+ 363              		.loc 1 227 0
+ 364 00d2 0143     		orrs	r1, r1, r0
+ 221:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank1->BTCR[FSMC_NORSRAMInitStruct->FSMC_Bank+1] = 
+ 365              		.loc 1 221 0
+ 366 00d4 43F82210 		str	r1, [r3, r2, lsl #2]
+ 229:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 230:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     
+ 231:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Bank1 NOR/SRAM timing register for write configuration, if extended mode is used */
+ 232:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_NORSRAMInitStruct->FSMC_ExtendedMode == FSMC_ExtendedMode_Enable)
+ 367              		.loc 1 232 0
+ 368 00d8 7B68     		ldr	r3, [r7, #4]
+ 369 00da DB6A     		ldr	r3, [r3, #44]
+ 370 00dc B3F5804F 		cmp	r3, #16384
+ 371 00e0 27D1     		bne	.L10
+ 233:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 234:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_ADDRESS_SETUP_TIME(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_Ad
+ 235:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_ADDRESS_HOLD_TIME(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_Add
+ 236:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_DATASETUP_TIME(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataSe
+ 237:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_CLK_DIV(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_CLKDivision))
+ 238:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_DATA_LATENCY(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataLate
+ 239:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     assert_param(IS_FSMC_ACCESS_MODE(FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AccessMod
+ 240:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1E->BWTR[FSMC_NORSRAMInitStruct->FSMC_Bank] = 
+ 372              		.loc 1 240 0
+ 373 00e2 4FF48273 		mov	r3, #260
+ 374 00e6 CAF20003 		movt	r3, 40960
+ 375 00ea 7A68     		ldr	r2, [r7, #4]
+ 376 00ec 1268     		ldr	r2, [r2, #0]
+ 241:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (uint32_t)FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressSetupTime |
+ 377              		.loc 1 241 0
+ 378 00ee 7968     		ldr	r1, [r7, #4]
+ 379 00f0 896B     		ldr	r1, [r1, #56]
+ 380 00f2 0868     		ldr	r0, [r1, #0]
+ 242:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressHoldTime << 4 )|
+ 381              		.loc 1 242 0
+ 382 00f4 7968     		ldr	r1, [r7, #4]
+ 383 00f6 896B     		ldr	r1, [r1, #56]
+ 384 00f8 4968     		ldr	r1, [r1, #4]
+ 385 00fa 4FEA0111 		lsl	r1, r1, #4
+ 241:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (uint32_t)FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressSetupTime |
+ 386              		.loc 1 241 0
+ 387 00fe 0843     		orrs	r0, r0, r1
+ 243:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataSetupTime << 8) |
+ 388              		.loc 1 243 0
+ 389 0100 7968     		ldr	r1, [r7, #4]
+ 390 0102 896B     		ldr	r1, [r1, #56]
+ 391 0104 8968     		ldr	r1, [r1, #8]
+ 392 0106 4FEA0121 		lsl	r1, r1, #8
+ 242:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressHoldTime << 4 )|
+ 393              		.loc 1 242 0
+ 394 010a 0843     		orrs	r0, r0, r1
+ 244:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_CLKDivision << 20) |
+ 395              		.loc 1 244 0
+ 396 010c 7968     		ldr	r1, [r7, #4]
+ 397 010e 896B     		ldr	r1, [r1, #56]
+ 398 0110 0969     		ldr	r1, [r1, #16]
+ 399 0112 4FEA0151 		lsl	r1, r1, #20
+ 243:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataSetupTime << 8) |
+ 400              		.loc 1 243 0
+ 401 0116 0843     		orrs	r0, r0, r1
+ 245:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataLatency << 24) |
+ 402              		.loc 1 245 0
+ 403 0118 7968     		ldr	r1, [r7, #4]
+ 404 011a 896B     		ldr	r1, [r1, #56]
+ 405 011c 4969     		ldr	r1, [r1, #20]
+ 406 011e 4FEA0161 		lsl	r1, r1, #24
+ 244:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_CLKDivision << 20) |
+ 407              		.loc 1 244 0
+ 408 0122 0843     		orrs	r0, r0, r1
+ 246:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AccessMode;
+ 409              		.loc 1 246 0
+ 410 0124 7968     		ldr	r1, [r7, #4]
+ 411 0126 896B     		ldr	r1, [r1, #56]
+ 412 0128 8969     		ldr	r1, [r1, #24]
+ 245:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****               (FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataLatency << 24) |
+ 413              		.loc 1 245 0
+ 414 012a 0143     		orrs	r1, r1, r0
+ 240:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1E->BWTR[FSMC_NORSRAMInitStruct->FSMC_Bank] = 
+ 415              		.loc 1 240 0
+ 416 012c 43F82210 		str	r1, [r3, r2, lsl #2]
+ 417 0130 09E0     		b	.L8
+ 418              	.L10:
+ 247:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 248:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 249:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 250:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1E->BWTR[FSMC_NORSRAMInitStruct->FSMC_Bank] = 0x0FFFFFFF;
+ 419              		.loc 1 250 0
+ 420 0132 4FF48273 		mov	r3, #260
+ 421 0136 CAF20003 		movt	r3, 40960
+ 422 013a 7A68     		ldr	r2, [r7, #4]
+ 423 013c 1268     		ldr	r2, [r2, #0]
+ 424 013e 6FF07041 		mvn	r1, #-268435456
+ 425 0142 43F82210 		str	r1, [r3, r2, lsl #2]
+ 426              	.L8:
+ 251:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 252:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 427              		.loc 1 252 0
+ 428 0146 07F10C07 		add	r7, r7, #12
+ 429 014a BD46     		mov	sp, r7
+ 430 014c 80BC     		pop	{r7}
+ 431 014e 7047     		bx	lr
+ 432              		.cfi_endproc
+ 433              	.LFE32:
+ 435              		.section	.text.FSMC_NANDInit,"ax",%progbits
+ 436              		.align	2
+ 437              		.global	FSMC_NANDInit
+ 438              		.thumb
+ 439              		.thumb_func
+ 441              	FSMC_NANDInit:
+ 442              	.LFB33:
+ 253:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 254:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 255:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Initializes the FSMC NAND Banks according to the specified 
+ 256:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         parameters in the FSMC_NANDInitStruct.
+ 257:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_NANDInitStruct : pointer to a FSMC_NANDInitTypeDef 
+ 258:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure that contains the configuration information for the FSMC 
+ 259:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         NAND specified Banks.                       
+ 260:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 261:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 262:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NANDInit(FSMC_NANDInitTypeDef* FSMC_NANDInitStruct)
+ 263:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 443              		.loc 1 263 0
+ 444              		.cfi_startproc
+ 445              		@ args = 0, pretend = 0, frame = 24
+ 446              		@ frame_needed = 1, uses_anonymous_args = 0
+ 447              		@ link register save eliminated.
+ 448 0000 80B4     		push	{r7}
+ 449              	.LCFI11:
+ 450              		.cfi_def_cfa_offset 4
+ 451              		.cfi_offset 7, -4
+ 452 0002 87B0     		sub	sp, sp, #28
+ 453              	.LCFI12:
+ 454              		.cfi_def_cfa_offset 32
+ 455 0004 00AF     		add	r7, sp, #0
+ 456              	.LCFI13:
+ 457              		.cfi_def_cfa_register 7
+ 458 0006 7860     		str	r0, [r7, #4]
+ 264:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   uint32_t tmppcr = 0x00000000, tmppmem = 0x00000000, tmppatt = 0x00000000; 
+ 459              		.loc 1 264 0
+ 460 0008 4FF00003 		mov	r3, #0
+ 461 000c 7B61     		str	r3, [r7, #20]
+ 462 000e 4FF00003 		mov	r3, #0
+ 463 0012 3B61     		str	r3, [r7, #16]
+ 464 0014 4FF00003 		mov	r3, #0
+ 465 0018 FB60     		str	r3, [r7, #12]
+ 265:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     
+ 266:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 267:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_NAND_BANK(FSMC_NANDInitStruct->FSMC_Bank));
+ 268:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_WAIT_FEATURE(FSMC_NANDInitStruct->FSMC_Waitfeature));
+ 269:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_MEMORY_WIDTH(FSMC_NANDInitStruct->FSMC_MemoryDataWidth));
+ 270:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_ECC_STATE(FSMC_NANDInitStruct->FSMC_ECC));
+ 271:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_ECCPAGE_SIZE(FSMC_NANDInitStruct->FSMC_ECCPageSize));
+ 272:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_TCLR_TIME(FSMC_NANDInitStruct->FSMC_TCLRSetupTime));
+ 273:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param( IS_FSMC_TAR_TIME(FSMC_NANDInitStruct->FSMC_TARSetupTime));
+ 274:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_SETUP_TIME(FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime
+ 275:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_TIME(FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupT
+ 276:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HOLD_TIME(FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupT
+ 277:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HIZ_TIME(FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupTim
+ 278:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_SETUP_TIME(FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupT
+ 279:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_TIME(FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSet
+ 280:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HOLD_TIME(FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSet
+ 281:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HIZ_TIME(FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSetup
+ 282:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 283:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set the tmppcr value according to FSMC_NANDInitStruct parameters */
+ 284:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppcr = (uint32_t)FSMC_NANDInitStruct->FSMC_Waitfeature |
+ 466              		.loc 1 284 0
+ 467 001a 7B68     		ldr	r3, [r7, #4]
+ 468 001c 5A68     		ldr	r2, [r3, #4]
+ 285:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             PCR_MemoryType_NAND |
+ 286:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_MemoryDataWidth |
+ 469              		.loc 1 286 0
+ 470 001e 7B68     		ldr	r3, [r7, #4]
+ 471 0020 9B68     		ldr	r3, [r3, #8]
+ 285:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             PCR_MemoryType_NAND |
+ 472              		.loc 1 285 0
+ 473 0022 1A43     		orrs	r2, r2, r3
+ 287:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_ECC |
+ 474              		.loc 1 287 0
+ 475 0024 7B68     		ldr	r3, [r7, #4]
+ 476 0026 DB68     		ldr	r3, [r3, #12]
+ 286:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_MemoryDataWidth |
+ 477              		.loc 1 286 0
+ 478 0028 1A43     		orrs	r2, r2, r3
+ 288:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_ECCPageSize |
+ 479              		.loc 1 288 0
+ 480 002a 7B68     		ldr	r3, [r7, #4]
+ 481 002c 1B69     		ldr	r3, [r3, #16]
+ 287:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_ECC |
+ 482              		.loc 1 287 0
+ 483 002e 1A43     		orrs	r2, r2, r3
+ 289:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_TCLRSetupTime << 9 )|
+ 484              		.loc 1 289 0
+ 485 0030 7B68     		ldr	r3, [r7, #4]
+ 486 0032 5B69     		ldr	r3, [r3, #20]
+ 487 0034 4FEA4323 		lsl	r3, r3, #9
+ 288:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             FSMC_NANDInitStruct->FSMC_ECCPageSize |
+ 488              		.loc 1 288 0
+ 489 0038 1A43     		orrs	r2, r2, r3
+ 290:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_TARSetupTime << 13);
+ 490              		.loc 1 290 0
+ 491 003a 7B68     		ldr	r3, [r7, #4]
+ 492 003c 9B69     		ldr	r3, [r3, #24]
+ 493 003e 4FEA4333 		lsl	r3, r3, #13
+ 289:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_TCLRSetupTime << 9 )|
+ 494              		.loc 1 289 0
+ 495 0042 1343     		orrs	r3, r3, r2
+ 284:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppcr = (uint32_t)FSMC_NANDInitStruct->FSMC_Waitfeature |
+ 496              		.loc 1 284 0
+ 497 0044 43F00803 		orr	r3, r3, #8
+ 498 0048 7B61     		str	r3, [r7, #20]
+ 291:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 292:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set tmppmem value according to FSMC_CommonSpaceTimingStructure parameters */
+ 293:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppmem = (uint32_t)FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime |
+ 499              		.loc 1 293 0
+ 500 004a 7B68     		ldr	r3, [r7, #4]
+ 501 004c DB69     		ldr	r3, [r3, #28]
+ 502 004e 1A68     		ldr	r2, [r3, #0]
+ 294:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 503              		.loc 1 294 0
+ 504 0050 7B68     		ldr	r3, [r7, #4]
+ 505 0052 DB69     		ldr	r3, [r3, #28]
+ 506 0054 5B68     		ldr	r3, [r3, #4]
+ 507 0056 4FEA0323 		lsl	r3, r3, #8
+ 293:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppmem = (uint32_t)FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime |
+ 508              		.loc 1 293 0
+ 509 005a 1A43     		orrs	r2, r2, r3
+ 295:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupTime << 16)|
+ 510              		.loc 1 295 0
+ 511 005c 7B68     		ldr	r3, [r7, #4]
+ 512 005e DB69     		ldr	r3, [r3, #28]
+ 513 0060 9B68     		ldr	r3, [r3, #8]
+ 514 0062 4FEA0343 		lsl	r3, r3, #16
+ 294:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 515              		.loc 1 294 0
+ 516 0066 1A43     		orrs	r2, r2, r3
+ 296:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupTime << 24); 
+ 517              		.loc 1 296 0
+ 518 0068 7B68     		ldr	r3, [r7, #4]
+ 519 006a DB69     		ldr	r3, [r3, #28]
+ 520 006c DB68     		ldr	r3, [r3, #12]
+ 521 006e 4FEA0363 		lsl	r3, r3, #24
+ 293:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppmem = (uint32_t)FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime |
+ 522              		.loc 1 293 0
+ 523 0072 1343     		orrs	r3, r3, r2
+ 524 0074 3B61     		str	r3, [r7, #16]
+ 297:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 298:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set tmppatt value according to FSMC_AttributeSpaceTimingStructure parameters */
+ 299:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppatt = (uint32_t)FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupTime |
+ 525              		.loc 1 299 0
+ 526 0076 7B68     		ldr	r3, [r7, #4]
+ 527 0078 1B6A     		ldr	r3, [r3, #32]
+ 528 007a 1A68     		ldr	r2, [r3, #0]
+ 300:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 529              		.loc 1 300 0
+ 530 007c 7B68     		ldr	r3, [r7, #4]
+ 531 007e 1B6A     		ldr	r3, [r3, #32]
+ 532 0080 5B68     		ldr	r3, [r3, #4]
+ 533 0082 4FEA0323 		lsl	r3, r3, #8
+ 299:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppatt = (uint32_t)FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupTime |
+ 534              		.loc 1 299 0
+ 535 0086 1A43     		orrs	r2, r2, r3
+ 301:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSetupTime << 16)|
+ 536              		.loc 1 301 0
+ 537 0088 7B68     		ldr	r3, [r7, #4]
+ 538 008a 1B6A     		ldr	r3, [r3, #32]
+ 539 008c 9B68     		ldr	r3, [r3, #8]
+ 540 008e 4FEA0343 		lsl	r3, r3, #16
+ 300:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 541              		.loc 1 300 0
+ 542 0092 1A43     		orrs	r2, r2, r3
+ 302:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             (FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSetupTime << 24);
+ 543              		.loc 1 302 0
+ 544 0094 7B68     		ldr	r3, [r7, #4]
+ 545 0096 1B6A     		ldr	r3, [r3, #32]
+ 546 0098 DB68     		ldr	r3, [r3, #12]
+ 547 009a 4FEA0363 		lsl	r3, r3, #24
+ 299:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   tmppatt = (uint32_t)FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupTime |
+ 548              		.loc 1 299 0
+ 549 009e 1343     		orrs	r3, r3, r2
+ 550 00a0 FB60     		str	r3, [r7, #12]
+ 303:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 304:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_NANDInitStruct->FSMC_Bank == FSMC_Bank2_NAND)
+ 551              		.loc 1 304 0
+ 552 00a2 7B68     		ldr	r3, [r7, #4]
+ 553 00a4 1B68     		ldr	r3, [r3, #0]
+ 554 00a6 102B     		cmp	r3, #16
+ 555 00a8 12D1     		bne	.L13
+ 305:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 306:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* FSMC_Bank2_NAND registers configuration */
+ 307:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PCR2 = tmppcr;
+ 556              		.loc 1 307 0
+ 557 00aa 4FF06003 		mov	r3, #96
+ 558 00ae CAF20003 		movt	r3, 40960
+ 559 00b2 7A69     		ldr	r2, [r7, #20]
+ 560 00b4 1A60     		str	r2, [r3, #0]
+ 308:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PMEM2 = tmppmem;
+ 561              		.loc 1 308 0
+ 562 00b6 4FF06003 		mov	r3, #96
+ 563 00ba CAF20003 		movt	r3, 40960
+ 564 00be 3A69     		ldr	r2, [r7, #16]
+ 565 00c0 9A60     		str	r2, [r3, #8]
+ 309:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->PATT2 = tmppatt;
+ 566              		.loc 1 309 0
+ 567 00c2 4FF06003 		mov	r3, #96
+ 568 00c6 CAF20003 		movt	r3, 40960
+ 569 00ca FA68     		ldr	r2, [r7, #12]
+ 570 00cc DA60     		str	r2, [r3, #12]
+ 571 00ce 11E0     		b	.L12
+ 572              	.L13:
+ 310:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 311:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 312:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 313:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* FSMC_Bank3_NAND registers configuration */
+ 314:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PCR3 = tmppcr;
+ 573              		.loc 1 314 0
+ 574 00d0 4FF08003 		mov	r3, #128
+ 575 00d4 CAF20003 		movt	r3, 40960
+ 576 00d8 7A69     		ldr	r2, [r7, #20]
+ 577 00da 1A60     		str	r2, [r3, #0]
+ 315:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PMEM3 = tmppmem;
+ 578              		.loc 1 315 0
+ 579 00dc 4FF08003 		mov	r3, #128
+ 580 00e0 CAF20003 		movt	r3, 40960
+ 581 00e4 3A69     		ldr	r2, [r7, #16]
+ 582 00e6 9A60     		str	r2, [r3, #8]
+ 316:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->PATT3 = tmppatt;
+ 583              		.loc 1 316 0
+ 584 00e8 4FF08003 		mov	r3, #128
+ 585 00ec CAF20003 		movt	r3, 40960
+ 586 00f0 FA68     		ldr	r2, [r7, #12]
+ 587 00f2 DA60     		str	r2, [r3, #12]
+ 588              	.L12:
+ 317:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 318:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 589              		.loc 1 318 0
+ 590 00f4 07F11C07 		add	r7, r7, #28
+ 591 00f8 BD46     		mov	sp, r7
+ 592 00fa 80BC     		pop	{r7}
+ 593 00fc 7047     		bx	lr
+ 594              		.cfi_endproc
+ 595              	.LFE33:
+ 597 00fe 00BF     		.section	.text.FSMC_PCCARDInit,"ax",%progbits
+ 598              		.align	2
+ 599              		.global	FSMC_PCCARDInit
+ 600              		.thumb
+ 601              		.thumb_func
+ 603              	FSMC_PCCARDInit:
+ 604              	.LFB34:
+ 319:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 320:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 321:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Initializes the FSMC PCCARD Bank according to the specified 
+ 322:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         parameters in the FSMC_PCCARDInitStruct.
+ 323:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_PCCARDInitStruct : pointer to a FSMC_PCCARDInitTypeDef
+ 324:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure that contains the configuration information for the FSMC 
+ 325:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         PCCARD Bank.                       
+ 326:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 327:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 328:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_PCCARDInit(FSMC_PCCARDInitTypeDef* FSMC_PCCARDInitStruct)
+ 329:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 605              		.loc 1 329 0
+ 606              		.cfi_startproc
+ 607              		@ args = 0, pretend = 0, frame = 8
+ 608              		@ frame_needed = 1, uses_anonymous_args = 0
+ 609              		@ link register save eliminated.
+ 610 0000 80B4     		push	{r7}
+ 611              	.LCFI14:
+ 612              		.cfi_def_cfa_offset 4
+ 613              		.cfi_offset 7, -4
+ 614 0002 83B0     		sub	sp, sp, #12
+ 615              	.LCFI15:
+ 616              		.cfi_def_cfa_offset 16
+ 617 0004 00AF     		add	r7, sp, #0
+ 618              	.LCFI16:
+ 619              		.cfi_def_cfa_register 7
+ 620 0006 7860     		str	r0, [r7, #4]
+ 330:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 331:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_FEATURE(FSMC_PCCARDInitStruct->FSMC_Waitfeature));
+ 332:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_TCLR_TIME(FSMC_PCCARDInitStruct->FSMC_TCLRSetupTime));
+ 333:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_TAR_TIME(FSMC_PCCARDInitStruct->FSMC_TARSetupTime));
+ 334:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****  
+ 335:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_SETUP_TIME(FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTi
+ 336:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_TIME(FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetu
+ 337:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HOLD_TIME(FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetu
+ 338:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HIZ_TIME(FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupT
+ 339:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 340:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_SETUP_TIME(FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_Setu
+ 341:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_TIME(FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitS
+ 342:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HOLD_TIME(FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldS
+ 343:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HIZ_TIME(FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSet
+ 344:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_SETUP_TIME(FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_SetupTime))
+ 345:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_WAIT_TIME(FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_WaitSetupTim
+ 346:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HOLD_TIME(FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HoldSetupTim
+ 347:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_HIZ_TIME(FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HiZSetupTime)
+ 348:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 349:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set the PCR4 register value according to FSMC_PCCARDInitStruct parameters */
+ 350:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PCR4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_Waitfeature |
+ 621              		.loc 1 350 0
+ 622 0008 4FF0A003 		mov	r3, #160
+ 623 000c CAF20003 		movt	r3, 40960
+ 624 0010 7A68     		ldr	r2, [r7, #4]
+ 625 0012 1168     		ldr	r1, [r2, #0]
+ 351:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      FSMC_MemoryDataWidth_16b |  
+ 352:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_TCLRSetupTime << 9) |
+ 626              		.loc 1 352 0
+ 627 0014 7A68     		ldr	r2, [r7, #4]
+ 628 0016 5268     		ldr	r2, [r2, #4]
+ 629 0018 4FEA4222 		lsl	r2, r2, #9
+ 351:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      FSMC_MemoryDataWidth_16b |  
+ 630              		.loc 1 351 0
+ 631 001c 1143     		orrs	r1, r1, r2
+ 353:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_TARSetupTime << 13);
+ 632              		.loc 1 353 0
+ 633 001e 7A68     		ldr	r2, [r7, #4]
+ 634 0020 9268     		ldr	r2, [r2, #8]
+ 635 0022 4FEA4232 		lsl	r2, r2, #13
+ 352:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_TCLRSetupTime << 9) |
+ 636              		.loc 1 352 0
+ 637 0026 0A43     		orrs	r2, r2, r1
+ 638 0028 42F01002 		orr	r2, r2, #16
+ 350:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PCR4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_Waitfeature |
+ 639              		.loc 1 350 0
+ 640 002c 1A60     		str	r2, [r3, #0]
+ 354:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 355:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set PMEM4 register value according to FSMC_CommonSpaceTimingStructure parameters */
+ 356:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PMEM4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime
+ 641              		.loc 1 356 0
+ 642 002e 4FF0A003 		mov	r3, #160
+ 643 0032 CAF20003 		movt	r3, 40960
+ 644 0036 7A68     		ldr	r2, [r7, #4]
+ 645 0038 D268     		ldr	r2, [r2, #12]
+ 646 003a 1168     		ldr	r1, [r2, #0]
+ 357:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime << 8
+ 647              		.loc 1 357 0
+ 648 003c 7A68     		ldr	r2, [r7, #4]
+ 649 003e D268     		ldr	r2, [r2, #12]
+ 650 0040 5268     		ldr	r2, [r2, #4]
+ 651 0042 4FEA0222 		lsl	r2, r2, #8
+ 356:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PMEM4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime
+ 652              		.loc 1 356 0
+ 653 0046 1143     		orrs	r1, r1, r2
+ 358:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupTime << 1
+ 654              		.loc 1 358 0
+ 655 0048 7A68     		ldr	r2, [r7, #4]
+ 656 004a D268     		ldr	r2, [r2, #12]
+ 657 004c 9268     		ldr	r2, [r2, #8]
+ 658 004e 4FEA0242 		lsl	r2, r2, #16
+ 357:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime << 8
+ 659              		.loc 1 357 0
+ 660 0052 1143     		orrs	r1, r1, r2
+ 359:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupTime << 24
+ 661              		.loc 1 359 0
+ 662 0054 7A68     		ldr	r2, [r7, #4]
+ 663 0056 D268     		ldr	r2, [r2, #12]
+ 664 0058 D268     		ldr	r2, [r2, #12]
+ 665 005a 4FEA0262 		lsl	r2, r2, #24
+ 358:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupTime << 1
+ 666              		.loc 1 358 0
+ 667 005e 0A43     		orrs	r2, r2, r1
+ 356:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PMEM4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime
+ 668              		.loc 1 356 0
+ 669 0060 9A60     		str	r2, [r3, #8]
+ 360:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 361:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set PATT4 register value according to FSMC_AttributeSpaceTimingStructure parameters */
+ 362:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PATT4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupT
+ 670              		.loc 1 362 0
+ 671 0062 4FF0A003 		mov	r3, #160
+ 672 0066 CAF20003 		movt	r3, 40960
+ 673 006a 7A68     		ldr	r2, [r7, #4]
+ 674 006c 1269     		ldr	r2, [r2, #16]
+ 675 006e 1168     		ldr	r1, [r2, #0]
+ 363:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime <
+ 676              		.loc 1 363 0
+ 677 0070 7A68     		ldr	r2, [r7, #4]
+ 678 0072 1269     		ldr	r2, [r2, #16]
+ 679 0074 5268     		ldr	r2, [r2, #4]
+ 680 0076 4FEA0222 		lsl	r2, r2, #8
+ 362:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PATT4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupT
+ 681              		.loc 1 362 0
+ 682 007a 1143     		orrs	r1, r1, r2
+ 364:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSetupTime <
+ 683              		.loc 1 364 0
+ 684 007c 7A68     		ldr	r2, [r7, #4]
+ 685 007e 1269     		ldr	r2, [r2, #16]
+ 686 0080 9268     		ldr	r2, [r2, #8]
+ 687 0082 4FEA0242 		lsl	r2, r2, #16
+ 363:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime <
+ 688              		.loc 1 363 0
+ 689 0086 1143     		orrs	r1, r1, r2
+ 365:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSetupTime <<
+ 690              		.loc 1 365 0
+ 691 0088 7A68     		ldr	r2, [r7, #4]
+ 692 008a 1269     		ldr	r2, [r2, #16]
+ 693 008c D268     		ldr	r2, [r2, #12]
+ 694 008e 4FEA0262 		lsl	r2, r2, #24
+ 364:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                       (FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSetupTime <
+ 695              		.loc 1 364 0
+ 696 0092 0A43     		orrs	r2, r2, r1
+ 362:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PATT4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupT
+ 697              		.loc 1 362 0
+ 698 0094 DA60     		str	r2, [r3, #12]
+ 366:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****             
+ 367:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Set PIO4 register value according to FSMC_IOSpaceTimingStructure parameters */
+ 368:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PIO4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_SetupTime |
+ 699              		.loc 1 368 0
+ 700 0096 4FF0A003 		mov	r3, #160
+ 701 009a CAF20003 		movt	r3, 40960
+ 702 009e 7A68     		ldr	r2, [r7, #4]
+ 703 00a0 5269     		ldr	r2, [r2, #20]
+ 704 00a2 1168     		ldr	r1, [r2, #0]
+ 369:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 705              		.loc 1 369 0
+ 706 00a4 7A68     		ldr	r2, [r7, #4]
+ 707 00a6 5269     		ldr	r2, [r2, #20]
+ 708 00a8 5268     		ldr	r2, [r2, #4]
+ 709 00aa 4FEA0222 		lsl	r2, r2, #8
+ 368:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PIO4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_SetupTime |
+ 710              		.loc 1 368 0
+ 711 00ae 1143     		orrs	r1, r1, r2
+ 370:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HoldSetupTime << 16)|
+ 712              		.loc 1 370 0
+ 713 00b0 7A68     		ldr	r2, [r7, #4]
+ 714 00b2 5269     		ldr	r2, [r2, #20]
+ 715 00b4 9268     		ldr	r2, [r2, #8]
+ 716 00b6 4FEA0242 		lsl	r2, r2, #16
+ 369:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_WaitSetupTime << 8) |
+ 717              		.loc 1 369 0
+ 718 00ba 1143     		orrs	r1, r1, r2
+ 371:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HiZSetupTime << 24);   
+ 719              		.loc 1 371 0
+ 720 00bc 7A68     		ldr	r2, [r7, #4]
+ 721 00be 5269     		ldr	r2, [r2, #20]
+ 722 00c0 D268     		ldr	r2, [r2, #12]
+ 723 00c2 4FEA0262 		lsl	r2, r2, #24
+ 370:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****                      (FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HoldSetupTime << 16)|
+ 724              		.loc 1 370 0
+ 725 00c6 0A43     		orrs	r2, r2, r1
+ 368:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_Bank4->PIO4 = (uint32_t)FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_SetupTime |
+ 726              		.loc 1 368 0
+ 727 00c8 1A61     		str	r2, [r3, #16]
+ 372:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 728              		.loc 1 372 0
+ 729 00ca 07F10C07 		add	r7, r7, #12
+ 730 00ce BD46     		mov	sp, r7
+ 731 00d0 80BC     		pop	{r7}
+ 732 00d2 7047     		bx	lr
+ 733              		.cfi_endproc
+ 734              	.LFE34:
+ 736              		.section	.text.FSMC_NORSRAMStructInit,"ax",%progbits
+ 737              		.align	2
+ 738              		.global	FSMC_NORSRAMStructInit
+ 739              		.thumb
+ 740              		.thumb_func
+ 742              	FSMC_NORSRAMStructInit:
+ 743              	.LFB35:
+ 373:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 374:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 375:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Fills each FSMC_NORSRAMInitStruct member with its default value.
+ 376:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_NORSRAMInitStruct: pointer to a FSMC_NORSRAMInitTypeDef 
+ 377:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure which will be initialized.
+ 378:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 379:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 380:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NORSRAMStructInit(FSMC_NORSRAMInitTypeDef* FSMC_NORSRAMInitStruct)
+ 381:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {  
+ 744              		.loc 1 381 0
+ 745              		.cfi_startproc
+ 746              		@ args = 0, pretend = 0, frame = 8
+ 747              		@ frame_needed = 1, uses_anonymous_args = 0
+ 748              		@ link register save eliminated.
+ 749 0000 80B4     		push	{r7}
+ 750              	.LCFI17:
+ 751              		.cfi_def_cfa_offset 4
+ 752              		.cfi_offset 7, -4
+ 753 0002 83B0     		sub	sp, sp, #12
+ 754              	.LCFI18:
+ 755              		.cfi_def_cfa_offset 16
+ 756 0004 00AF     		add	r7, sp, #0
+ 757              	.LCFI19:
+ 758              		.cfi_def_cfa_register 7
+ 759 0006 7860     		str	r0, [r7, #4]
+ 382:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Reset NOR/SRAM Init structure parameters values */
+ 383:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_Bank = FSMC_Bank1_NORSRAM1;
+ 760              		.loc 1 383 0
+ 761 0008 7B68     		ldr	r3, [r7, #4]
+ 762 000a 4FF00002 		mov	r2, #0
+ 763 000e 1A60     		str	r2, [r3, #0]
+ 384:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_DataAddressMux = FSMC_DataAddressMux_Enable;
+ 764              		.loc 1 384 0
+ 765 0010 7B68     		ldr	r3, [r7, #4]
+ 766 0012 4FF00202 		mov	r2, #2
+ 767 0016 5A60     		str	r2, [r3, #4]
+ 385:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_MemoryType = FSMC_MemoryType_SRAM;
+ 768              		.loc 1 385 0
+ 769 0018 7B68     		ldr	r3, [r7, #4]
+ 770 001a 4FF00002 		mov	r2, #0
+ 771 001e 9A60     		str	r2, [r3, #8]
+ 386:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_MemoryDataWidth = FSMC_MemoryDataWidth_8b;
+ 772              		.loc 1 386 0
+ 773 0020 7B68     		ldr	r3, [r7, #4]
+ 774 0022 4FF00002 		mov	r2, #0
+ 775 0026 DA60     		str	r2, [r3, #12]
+ 387:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_BurstAccessMode = FSMC_BurstAccessMode_Disable;
+ 776              		.loc 1 387 0
+ 777 0028 7B68     		ldr	r3, [r7, #4]
+ 778 002a 4FF00002 		mov	r2, #0
+ 779 002e 1A61     		str	r2, [r3, #16]
+ 388:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_AsynchronousWait = FSMC_AsynchronousWait_Disable;
+ 780              		.loc 1 388 0
+ 781 0030 7B68     		ldr	r3, [r7, #4]
+ 782 0032 4FF00002 		mov	r2, #0
+ 783 0036 5A61     		str	r2, [r3, #20]
+ 389:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WaitSignalPolarity = FSMC_WaitSignalPolarity_Low;
+ 784              		.loc 1 389 0
+ 785 0038 7B68     		ldr	r3, [r7, #4]
+ 786 003a 4FF00002 		mov	r2, #0
+ 787 003e 9A61     		str	r2, [r3, #24]
+ 390:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WrapMode = FSMC_WrapMode_Disable;
+ 788              		.loc 1 390 0
+ 789 0040 7B68     		ldr	r3, [r7, #4]
+ 790 0042 4FF00002 		mov	r2, #0
+ 791 0046 DA61     		str	r2, [r3, #28]
+ 391:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WaitSignalActive = FSMC_WaitSignalActive_BeforeWaitState;
+ 792              		.loc 1 391 0
+ 793 0048 7B68     		ldr	r3, [r7, #4]
+ 794 004a 4FF00002 		mov	r2, #0
+ 795 004e 1A62     		str	r2, [r3, #32]
+ 392:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteOperation = FSMC_WriteOperation_Enable;
+ 796              		.loc 1 392 0
+ 797 0050 7B68     		ldr	r3, [r7, #4]
+ 798 0052 4FF48052 		mov	r2, #4096
+ 799 0056 5A62     		str	r2, [r3, #36]
+ 393:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WaitSignal = FSMC_WaitSignal_Enable;
+ 800              		.loc 1 393 0
+ 801 0058 7B68     		ldr	r3, [r7, #4]
+ 802 005a 4FF40052 		mov	r2, #8192
+ 803 005e 9A62     		str	r2, [r3, #40]
+ 394:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ExtendedMode = FSMC_ExtendedMode_Disable;
+ 804              		.loc 1 394 0
+ 805 0060 7B68     		ldr	r3, [r7, #4]
+ 806 0062 4FF00002 		mov	r2, #0
+ 807 0066 DA62     		str	r2, [r3, #44]
+ 395:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteBurst = FSMC_WriteBurst_Disable;
+ 808              		.loc 1 395 0
+ 809 0068 7B68     		ldr	r3, [r7, #4]
+ 810 006a 4FF00002 		mov	r2, #0
+ 811 006e 1A63     		str	r2, [r3, #48]
+ 396:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressSetupTime = 0xF;
+ 812              		.loc 1 396 0
+ 813 0070 7B68     		ldr	r3, [r7, #4]
+ 814 0072 5B6B     		ldr	r3, [r3, #52]
+ 815 0074 4FF00F02 		mov	r2, #15
+ 816 0078 1A60     		str	r2, [r3, #0]
+ 397:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AddressHoldTime = 0xF;
+ 817              		.loc 1 397 0
+ 818 007a 7B68     		ldr	r3, [r7, #4]
+ 819 007c 5B6B     		ldr	r3, [r3, #52]
+ 820 007e 4FF00F02 		mov	r2, #15
+ 821 0082 5A60     		str	r2, [r3, #4]
+ 398:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataSetupTime = 0xFF;
+ 822              		.loc 1 398 0
+ 823 0084 7B68     		ldr	r3, [r7, #4]
+ 824 0086 5B6B     		ldr	r3, [r3, #52]
+ 825 0088 4FF0FF02 		mov	r2, #255
+ 826 008c 9A60     		str	r2, [r3, #8]
+ 399:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_BusTurnAroundDuration = 0xF;
+ 827              		.loc 1 399 0
+ 828 008e 7B68     		ldr	r3, [r7, #4]
+ 829 0090 5B6B     		ldr	r3, [r3, #52]
+ 830 0092 4FF00F02 		mov	r2, #15
+ 831 0096 DA60     		str	r2, [r3, #12]
+ 400:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_CLKDivision = 0xF;
+ 832              		.loc 1 400 0
+ 833 0098 7B68     		ldr	r3, [r7, #4]
+ 834 009a 5B6B     		ldr	r3, [r3, #52]
+ 835 009c 4FF00F02 		mov	r2, #15
+ 836 00a0 1A61     		str	r2, [r3, #16]
+ 401:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_DataLatency = 0xF;
+ 837              		.loc 1 401 0
+ 838 00a2 7B68     		ldr	r3, [r7, #4]
+ 839 00a4 5B6B     		ldr	r3, [r3, #52]
+ 840 00a6 4FF00F02 		mov	r2, #15
+ 841 00aa 5A61     		str	r2, [r3, #20]
+ 402:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_ReadWriteTimingStruct->FSMC_AccessMode = FSMC_AccessMode_A; 
+ 842              		.loc 1 402 0
+ 843 00ac 7B68     		ldr	r3, [r7, #4]
+ 844 00ae 5B6B     		ldr	r3, [r3, #52]
+ 845 00b0 4FF00002 		mov	r2, #0
+ 846 00b4 9A61     		str	r2, [r3, #24]
+ 403:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressSetupTime = 0xF;
+ 847              		.loc 1 403 0
+ 848 00b6 7B68     		ldr	r3, [r7, #4]
+ 849 00b8 9B6B     		ldr	r3, [r3, #56]
+ 850 00ba 4FF00F02 		mov	r2, #15
+ 851 00be 1A60     		str	r2, [r3, #0]
+ 404:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AddressHoldTime = 0xF;
+ 852              		.loc 1 404 0
+ 853 00c0 7B68     		ldr	r3, [r7, #4]
+ 854 00c2 9B6B     		ldr	r3, [r3, #56]
+ 855 00c4 4FF00F02 		mov	r2, #15
+ 856 00c8 5A60     		str	r2, [r3, #4]
+ 405:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataSetupTime = 0xFF;
+ 857              		.loc 1 405 0
+ 858 00ca 7B68     		ldr	r3, [r7, #4]
+ 859 00cc 9B6B     		ldr	r3, [r3, #56]
+ 860 00ce 4FF0FF02 		mov	r2, #255
+ 861 00d2 9A60     		str	r2, [r3, #8]
+ 406:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_BusTurnAroundDuration = 0xF;
+ 862              		.loc 1 406 0
+ 863 00d4 7B68     		ldr	r3, [r7, #4]
+ 864 00d6 9B6B     		ldr	r3, [r3, #56]
+ 865 00d8 4FF00F02 		mov	r2, #15
+ 866 00dc DA60     		str	r2, [r3, #12]
+ 407:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_CLKDivision = 0xF;
+ 867              		.loc 1 407 0
+ 868 00de 7B68     		ldr	r3, [r7, #4]
+ 869 00e0 9B6B     		ldr	r3, [r3, #56]
+ 870 00e2 4FF00F02 		mov	r2, #15
+ 871 00e6 1A61     		str	r2, [r3, #16]
+ 408:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_DataLatency = 0xF;
+ 872              		.loc 1 408 0
+ 873 00e8 7B68     		ldr	r3, [r7, #4]
+ 874 00ea 9B6B     		ldr	r3, [r3, #56]
+ 875 00ec 4FF00F02 		mov	r2, #15
+ 876 00f0 5A61     		str	r2, [r3, #20]
+ 409:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NORSRAMInitStruct->FSMC_WriteTimingStruct->FSMC_AccessMode = FSMC_AccessMode_A;
+ 877              		.loc 1 409 0
+ 878 00f2 7B68     		ldr	r3, [r7, #4]
+ 879 00f4 9B6B     		ldr	r3, [r3, #56]
+ 880 00f6 4FF00002 		mov	r2, #0
+ 881 00fa 9A61     		str	r2, [r3, #24]
+ 410:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 882              		.loc 1 410 0
+ 883 00fc 07F10C07 		add	r7, r7, #12
+ 884 0100 BD46     		mov	sp, r7
+ 885 0102 80BC     		pop	{r7}
+ 886 0104 7047     		bx	lr
+ 887              		.cfi_endproc
+ 888              	.LFE35:
+ 890 0106 00BF     		.section	.text.FSMC_NANDStructInit,"ax",%progbits
+ 891              		.align	2
+ 892              		.global	FSMC_NANDStructInit
+ 893              		.thumb
+ 894              		.thumb_func
+ 896              	FSMC_NANDStructInit:
+ 897              	.LFB36:
+ 411:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 412:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 413:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Fills each FSMC_NANDInitStruct member with its default value.
+ 414:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_NANDInitStruct: pointer to a FSMC_NANDInitTypeDef 
+ 415:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure which will be initialized.
+ 416:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 417:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 418:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NANDStructInit(FSMC_NANDInitTypeDef* FSMC_NANDInitStruct)
+ 419:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** { 
+ 898              		.loc 1 419 0
+ 899              		.cfi_startproc
+ 900              		@ args = 0, pretend = 0, frame = 8
+ 901              		@ frame_needed = 1, uses_anonymous_args = 0
+ 902              		@ link register save eliminated.
+ 903 0000 80B4     		push	{r7}
+ 904              	.LCFI20:
+ 905              		.cfi_def_cfa_offset 4
+ 906              		.cfi_offset 7, -4
+ 907 0002 83B0     		sub	sp, sp, #12
+ 908              	.LCFI21:
+ 909              		.cfi_def_cfa_offset 16
+ 910 0004 00AF     		add	r7, sp, #0
+ 911              	.LCFI22:
+ 912              		.cfi_def_cfa_register 7
+ 913 0006 7860     		str	r0, [r7, #4]
+ 420:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Reset NAND Init structure parameters values */
+ 421:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_Bank = FSMC_Bank2_NAND;
+ 914              		.loc 1 421 0
+ 915 0008 7B68     		ldr	r3, [r7, #4]
+ 916 000a 4FF01002 		mov	r2, #16
+ 917 000e 1A60     		str	r2, [r3, #0]
+ 422:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_Waitfeature = FSMC_Waitfeature_Disable;
+ 918              		.loc 1 422 0
+ 919 0010 7B68     		ldr	r3, [r7, #4]
+ 920 0012 4FF00002 		mov	r2, #0
+ 921 0016 5A60     		str	r2, [r3, #4]
+ 423:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_MemoryDataWidth = FSMC_MemoryDataWidth_8b;
+ 922              		.loc 1 423 0
+ 923 0018 7B68     		ldr	r3, [r7, #4]
+ 924 001a 4FF00002 		mov	r2, #0
+ 925 001e 9A60     		str	r2, [r3, #8]
+ 424:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_ECC = FSMC_ECC_Disable;
+ 926              		.loc 1 424 0
+ 927 0020 7B68     		ldr	r3, [r7, #4]
+ 928 0022 4FF00002 		mov	r2, #0
+ 929 0026 DA60     		str	r2, [r3, #12]
+ 425:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_ECCPageSize = FSMC_ECCPageSize_256Bytes;
+ 930              		.loc 1 425 0
+ 931 0028 7B68     		ldr	r3, [r7, #4]
+ 932 002a 4FF00002 		mov	r2, #0
+ 933 002e 1A61     		str	r2, [r3, #16]
+ 426:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_TCLRSetupTime = 0x0;
+ 934              		.loc 1 426 0
+ 935 0030 7B68     		ldr	r3, [r7, #4]
+ 936 0032 4FF00002 		mov	r2, #0
+ 937 0036 5A61     		str	r2, [r3, #20]
+ 427:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_TARSetupTime = 0x0;
+ 938              		.loc 1 427 0
+ 939 0038 7B68     		ldr	r3, [r7, #4]
+ 940 003a 4FF00002 		mov	r2, #0
+ 941 003e 9A61     		str	r2, [r3, #24]
+ 428:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime = 0xFC;
+ 942              		.loc 1 428 0
+ 943 0040 7B68     		ldr	r3, [r7, #4]
+ 944 0042 DB69     		ldr	r3, [r3, #28]
+ 945 0044 4FF0FC02 		mov	r2, #252
+ 946 0048 1A60     		str	r2, [r3, #0]
+ 429:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime = 0xFC;
+ 947              		.loc 1 429 0
+ 948 004a 7B68     		ldr	r3, [r7, #4]
+ 949 004c DB69     		ldr	r3, [r3, #28]
+ 950 004e 4FF0FC02 		mov	r2, #252
+ 951 0052 5A60     		str	r2, [r3, #4]
+ 430:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupTime = 0xFC;
+ 952              		.loc 1 430 0
+ 953 0054 7B68     		ldr	r3, [r7, #4]
+ 954 0056 DB69     		ldr	r3, [r3, #28]
+ 955 0058 4FF0FC02 		mov	r2, #252
+ 956 005c 9A60     		str	r2, [r3, #8]
+ 431:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupTime = 0xFC;
+ 957              		.loc 1 431 0
+ 958 005e 7B68     		ldr	r3, [r7, #4]
+ 959 0060 DB69     		ldr	r3, [r3, #28]
+ 960 0062 4FF0FC02 		mov	r2, #252
+ 961 0066 DA60     		str	r2, [r3, #12]
+ 432:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupTime = 0xFC;
+ 962              		.loc 1 432 0
+ 963 0068 7B68     		ldr	r3, [r7, #4]
+ 964 006a 1B6A     		ldr	r3, [r3, #32]
+ 965 006c 4FF0FC02 		mov	r2, #252
+ 966 0070 1A60     		str	r2, [r3, #0]
+ 433:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime = 0xFC;
+ 967              		.loc 1 433 0
+ 968 0072 7B68     		ldr	r3, [r7, #4]
+ 969 0074 1B6A     		ldr	r3, [r3, #32]
+ 970 0076 4FF0FC02 		mov	r2, #252
+ 971 007a 5A60     		str	r2, [r3, #4]
+ 434:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSetupTime = 0xFC;
+ 972              		.loc 1 434 0
+ 973 007c 7B68     		ldr	r3, [r7, #4]
+ 974 007e 1B6A     		ldr	r3, [r3, #32]
+ 975 0080 4FF0FC02 		mov	r2, #252
+ 976 0084 9A60     		str	r2, [r3, #8]
+ 435:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_NANDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSetupTime = 0xFC;	  
+ 977              		.loc 1 435 0
+ 978 0086 7B68     		ldr	r3, [r7, #4]
+ 979 0088 1B6A     		ldr	r3, [r3, #32]
+ 980 008a 4FF0FC02 		mov	r2, #252
+ 981 008e DA60     		str	r2, [r3, #12]
+ 436:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 982              		.loc 1 436 0
+ 983 0090 07F10C07 		add	r7, r7, #12
+ 984 0094 BD46     		mov	sp, r7
+ 985 0096 80BC     		pop	{r7}
+ 986 0098 7047     		bx	lr
+ 987              		.cfi_endproc
+ 988              	.LFE36:
+ 990 009a 00BF     		.section	.text.FSMC_PCCARDStructInit,"ax",%progbits
+ 991              		.align	2
+ 992              		.global	FSMC_PCCARDStructInit
+ 993              		.thumb
+ 994              		.thumb_func
+ 996              	FSMC_PCCARDStructInit:
+ 997              	.LFB37:
+ 437:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 438:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 439:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Fills each FSMC_PCCARDInitStruct member with its default value.
+ 440:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_PCCARDInitStruct: pointer to a FSMC_PCCARDInitTypeDef 
+ 441:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *         structure which will be initialized.
+ 442:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 443:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 444:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_PCCARDStructInit(FSMC_PCCARDInitTypeDef* FSMC_PCCARDInitStruct)
+ 445:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 998              		.loc 1 445 0
+ 999              		.cfi_startproc
+ 1000              		@ args = 0, pretend = 0, frame = 8
+ 1001              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1002              		@ link register save eliminated.
+ 1003 0000 80B4     		push	{r7}
+ 1004              	.LCFI23:
+ 1005              		.cfi_def_cfa_offset 4
+ 1006              		.cfi_offset 7, -4
+ 1007 0002 83B0     		sub	sp, sp, #12
+ 1008              	.LCFI24:
+ 1009              		.cfi_def_cfa_offset 16
+ 1010 0004 00AF     		add	r7, sp, #0
+ 1011              	.LCFI25:
+ 1012              		.cfi_def_cfa_register 7
+ 1013 0006 7860     		str	r0, [r7, #4]
+ 446:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Reset PCCARD Init structure parameters values */
+ 447:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_Waitfeature = FSMC_Waitfeature_Disable;
+ 1014              		.loc 1 447 0
+ 1015 0008 7B68     		ldr	r3, [r7, #4]
+ 1016 000a 4FF00002 		mov	r2, #0
+ 1017 000e 1A60     		str	r2, [r3, #0]
+ 448:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_TCLRSetupTime = 0x0;
+ 1018              		.loc 1 448 0
+ 1019 0010 7B68     		ldr	r3, [r7, #4]
+ 1020 0012 4FF00002 		mov	r2, #0
+ 1021 0016 5A60     		str	r2, [r3, #4]
+ 449:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_TARSetupTime = 0x0;
+ 1022              		.loc 1 449 0
+ 1023 0018 7B68     		ldr	r3, [r7, #4]
+ 1024 001a 4FF00002 		mov	r2, #0
+ 1025 001e 9A60     		str	r2, [r3, #8]
+ 450:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_SetupTime = 0xFC;
+ 1026              		.loc 1 450 0
+ 1027 0020 7B68     		ldr	r3, [r7, #4]
+ 1028 0022 DB68     		ldr	r3, [r3, #12]
+ 1029 0024 4FF0FC02 		mov	r2, #252
+ 1030 0028 1A60     		str	r2, [r3, #0]
+ 451:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_WaitSetupTime = 0xFC;
+ 1031              		.loc 1 451 0
+ 1032 002a 7B68     		ldr	r3, [r7, #4]
+ 1033 002c DB68     		ldr	r3, [r3, #12]
+ 1034 002e 4FF0FC02 		mov	r2, #252
+ 1035 0032 5A60     		str	r2, [r3, #4]
+ 452:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HoldSetupTime = 0xFC;
+ 1036              		.loc 1 452 0
+ 1037 0034 7B68     		ldr	r3, [r7, #4]
+ 1038 0036 DB68     		ldr	r3, [r3, #12]
+ 1039 0038 4FF0FC02 		mov	r2, #252
+ 1040 003c 9A60     		str	r2, [r3, #8]
+ 453:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_CommonSpaceTimingStruct->FSMC_HiZSetupTime = 0xFC;
+ 1041              		.loc 1 453 0
+ 1042 003e 7B68     		ldr	r3, [r7, #4]
+ 1043 0040 DB68     		ldr	r3, [r3, #12]
+ 1044 0042 4FF0FC02 		mov	r2, #252
+ 1045 0046 DA60     		str	r2, [r3, #12]
+ 454:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_SetupTime = 0xFC;
+ 1046              		.loc 1 454 0
+ 1047 0048 7B68     		ldr	r3, [r7, #4]
+ 1048 004a 1B69     		ldr	r3, [r3, #16]
+ 1049 004c 4FF0FC02 		mov	r2, #252
+ 1050 0050 1A60     		str	r2, [r3, #0]
+ 455:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_WaitSetupTime = 0xFC;
+ 1051              		.loc 1 455 0
+ 1052 0052 7B68     		ldr	r3, [r7, #4]
+ 1053 0054 1B69     		ldr	r3, [r3, #16]
+ 1054 0056 4FF0FC02 		mov	r2, #252
+ 1055 005a 5A60     		str	r2, [r3, #4]
+ 456:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HoldSetupTime = 0xFC;
+ 1056              		.loc 1 456 0
+ 1057 005c 7B68     		ldr	r3, [r7, #4]
+ 1058 005e 1B69     		ldr	r3, [r3, #16]
+ 1059 0060 4FF0FC02 		mov	r2, #252
+ 1060 0064 9A60     		str	r2, [r3, #8]
+ 457:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_AttributeSpaceTimingStruct->FSMC_HiZSetupTime = 0xFC;	
+ 1061              		.loc 1 457 0
+ 1062 0066 7B68     		ldr	r3, [r7, #4]
+ 1063 0068 1B69     		ldr	r3, [r3, #16]
+ 1064 006a 4FF0FC02 		mov	r2, #252
+ 1065 006e DA60     		str	r2, [r3, #12]
+ 458:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_SetupTime = 0xFC;
+ 1066              		.loc 1 458 0
+ 1067 0070 7B68     		ldr	r3, [r7, #4]
+ 1068 0072 5B69     		ldr	r3, [r3, #20]
+ 1069 0074 4FF0FC02 		mov	r2, #252
+ 1070 0078 1A60     		str	r2, [r3, #0]
+ 459:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_WaitSetupTime = 0xFC;
+ 1071              		.loc 1 459 0
+ 1072 007a 7B68     		ldr	r3, [r7, #4]
+ 1073 007c 5B69     		ldr	r3, [r3, #20]
+ 1074 007e 4FF0FC02 		mov	r2, #252
+ 1075 0082 5A60     		str	r2, [r3, #4]
+ 460:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HoldSetupTime = 0xFC;
+ 1076              		.loc 1 460 0
+ 1077 0084 7B68     		ldr	r3, [r7, #4]
+ 1078 0086 5B69     		ldr	r3, [r3, #20]
+ 1079 0088 4FF0FC02 		mov	r2, #252
+ 1080 008c 9A60     		str	r2, [r3, #8]
+ 461:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FSMC_PCCARDInitStruct->FSMC_IOSpaceTimingStruct->FSMC_HiZSetupTime = 0xFC;
+ 1081              		.loc 1 461 0
+ 1082 008e 7B68     		ldr	r3, [r7, #4]
+ 1083 0090 5B69     		ldr	r3, [r3, #20]
+ 1084 0092 4FF0FC02 		mov	r2, #252
+ 1085 0096 DA60     		str	r2, [r3, #12]
+ 462:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1086              		.loc 1 462 0
+ 1087 0098 07F10C07 		add	r7, r7, #12
+ 1088 009c BD46     		mov	sp, r7
+ 1089 009e 80BC     		pop	{r7}
+ 1090 00a0 7047     		bx	lr
+ 1091              		.cfi_endproc
+ 1092              	.LFE37:
+ 1094 00a2 00BF     		.section	.text.FSMC_NORSRAMCmd,"ax",%progbits
+ 1095              		.align	2
+ 1096              		.global	FSMC_NORSRAMCmd
+ 1097              		.thumb
+ 1098              		.thumb_func
+ 1100              	FSMC_NORSRAMCmd:
+ 1101              	.LFB38:
+ 463:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 464:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 465:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Enables or disables the specified NOR/SRAM Memory Bank.
+ 466:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 467:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 468:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM1: FSMC Bank1 NOR/SRAM1  
+ 469:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM2: FSMC Bank1 NOR/SRAM2 
+ 470:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM3: FSMC Bank1 NOR/SRAM3 
+ 471:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank1_NORSRAM4: FSMC Bank1 NOR/SRAM4 
+ 472:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  NewState: new state of the FSMC_Bank. This parameter can be: ENABLE or DISABLE.
+ 473:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 474:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 475:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NORSRAMCmd(uint32_t FSMC_Bank, FunctionalState NewState)
+ 476:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1102              		.loc 1 476 0
+ 1103              		.cfi_startproc
+ 1104              		@ args = 0, pretend = 0, frame = 8
+ 1105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1106              		@ link register save eliminated.
+ 1107 0000 80B4     		push	{r7}
+ 1108              	.LCFI26:
+ 1109              		.cfi_def_cfa_offset 4
+ 1110              		.cfi_offset 7, -4
+ 1111 0002 83B0     		sub	sp, sp, #12
+ 1112              	.LCFI27:
+ 1113              		.cfi_def_cfa_offset 16
+ 1114 0004 00AF     		add	r7, sp, #0
+ 1115              	.LCFI28:
+ 1116              		.cfi_def_cfa_register 7
+ 1117 0006 7860     		str	r0, [r7, #4]
+ 1118 0008 0B46     		mov	r3, r1
+ 1119 000a FB70     		strb	r3, [r7, #3]
+ 477:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NORSRAM_BANK(FSMC_Bank));
+ 478:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 479:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 480:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if (NewState != DISABLE)
+ 1120              		.loc 1 480 0
+ 1121 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1122 000e 002B     		cmp	r3, #0
+ 1123 0010 0CD0     		beq	.L20
+ 481:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 482:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected NOR/SRAM Bank by setting the PBKEN bit in the BCRx register */
+ 483:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1->BTCR[FSMC_Bank] |= BCR_MBKEN_Set;
+ 1124              		.loc 1 483 0
+ 1125 0012 4FF02043 		mov	r3, #-1610612736
+ 1126 0016 4FF02042 		mov	r2, #-1610612736
+ 1127 001a 7968     		ldr	r1, [r7, #4]
+ 1128 001c 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 1129 0020 42F00101 		orr	r1, r2, #1
+ 1130 0024 7A68     		ldr	r2, [r7, #4]
+ 1131 0026 43F82210 		str	r1, [r3, r2, lsl #2]
+ 1132 002a 0EE0     		b	.L19
+ 1133              	.L20:
+ 484:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 485:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 486:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 487:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected NOR/SRAM Bank by clearing the PBKEN bit in the BCRx register */
+ 488:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank1->BTCR[FSMC_Bank] &= BCR_MBKEN_Reset;
+ 1134              		.loc 1 488 0
+ 1135 002c 4FF02042 		mov	r2, #-1610612736
+ 1136 0030 4FF02043 		mov	r3, #-1610612736
+ 1137 0034 7968     		ldr	r1, [r7, #4]
+ 1138 0036 53F82110 		ldr	r1, [r3, r1, lsl #2]
+ 1139 003a 4FF6FE73 		movw	r3, #65534
+ 1140 003e C0F20F03 		movt	r3, 15
+ 1141 0042 0B40     		ands	r3, r3, r1
+ 1142 0044 7968     		ldr	r1, [r7, #4]
+ 1143 0046 42F82130 		str	r3, [r2, r1, lsl #2]
+ 1144              	.L19:
+ 489:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 490:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1145              		.loc 1 490 0
+ 1146 004a 07F10C07 		add	r7, r7, #12
+ 1147 004e BD46     		mov	sp, r7
+ 1148 0050 80BC     		pop	{r7}
+ 1149 0052 7047     		bx	lr
+ 1150              		.cfi_endproc
+ 1151              	.LFE38:
+ 1153              		.section	.text.FSMC_NANDCmd,"ax",%progbits
+ 1154              		.align	2
+ 1155              		.global	FSMC_NANDCmd
+ 1156              		.thumb
+ 1157              		.thumb_func
+ 1159              	FSMC_NANDCmd:
+ 1160              	.LFB39:
+ 491:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 492:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 493:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Enables or disables the specified NAND Memory Bank.
+ 494:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 495:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 496:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 497:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 498:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  NewState: new state of the FSMC_Bank. This parameter can be: ENABLE or DISABLE.
+ 499:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 500:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 501:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NANDCmd(uint32_t FSMC_Bank, FunctionalState NewState)
+ 502:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1161              		.loc 1 502 0
+ 1162              		.cfi_startproc
+ 1163              		@ args = 0, pretend = 0, frame = 8
+ 1164              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1165              		@ link register save eliminated.
+ 1166 0000 80B4     		push	{r7}
+ 1167              	.LCFI29:
+ 1168              		.cfi_def_cfa_offset 4
+ 1169              		.cfi_offset 7, -4
+ 1170 0002 83B0     		sub	sp, sp, #12
+ 1171              	.LCFI30:
+ 1172              		.cfi_def_cfa_offset 16
+ 1173 0004 00AF     		add	r7, sp, #0
+ 1174              	.LCFI31:
+ 1175              		.cfi_def_cfa_register 7
+ 1176 0006 7860     		str	r0, [r7, #4]
+ 1177 0008 0B46     		mov	r3, r1
+ 1178 000a FB70     		strb	r3, [r7, #3]
+ 503:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NAND_BANK(FSMC_Bank));
+ 504:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 505:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 506:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if (NewState != DISABLE)
+ 1179              		.loc 1 506 0
+ 1180 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1181 000e 002B     		cmp	r3, #0
+ 1182 0010 1CD0     		beq	.L23
+ 507:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 508:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected NAND Bank by setting the PBKEN bit in the PCRx register */
+ 509:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1183              		.loc 1 509 0
+ 1184 0012 7B68     		ldr	r3, [r7, #4]
+ 1185 0014 102B     		cmp	r3, #16
+ 1186 0016 0CD1     		bne	.L24
+ 510:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 511:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->PCR2 |= PCR_PBKEN_Set;
+ 1187              		.loc 1 511 0
+ 1188 0018 4FF06003 		mov	r3, #96
+ 1189 001c CAF20003 		movt	r3, 40960
+ 1190 0020 4FF06002 		mov	r2, #96
+ 1191 0024 CAF20002 		movt	r2, 40960
+ 1192 0028 1268     		ldr	r2, [r2, #0]
+ 1193 002a 42F00402 		orr	r2, r2, #4
+ 1194 002e 1A60     		str	r2, [r3, #0]
+ 1195 0030 2EE0     		b	.L22
+ 1196              	.L24:
+ 512:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 513:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 514:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 515:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->PCR3 |= PCR_PBKEN_Set;
+ 1197              		.loc 1 515 0
+ 1198 0032 4FF08003 		mov	r3, #128
+ 1199 0036 CAF20003 		movt	r3, 40960
+ 1200 003a 4FF08002 		mov	r2, #128
+ 1201 003e CAF20002 		movt	r2, 40960
+ 1202 0042 1268     		ldr	r2, [r2, #0]
+ 1203 0044 42F00402 		orr	r2, r2, #4
+ 1204 0048 1A60     		str	r2, [r3, #0]
+ 1205 004a 21E0     		b	.L22
+ 1206              	.L23:
+ 516:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 517:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 518:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 519:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 520:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected NAND Bank by clearing the PBKEN bit in the PCRx register */
+ 521:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1207              		.loc 1 521 0
+ 1208 004c 7B68     		ldr	r3, [r7, #4]
+ 1209 004e 102B     		cmp	r3, #16
+ 1210 0050 0FD1     		bne	.L26
+ 522:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 523:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->PCR2 &= PCR_PBKEN_Reset;
+ 1211              		.loc 1 523 0
+ 1212 0052 4FF06002 		mov	r2, #96
+ 1213 0056 CAF20002 		movt	r2, 40960
+ 1214 005a 4FF06003 		mov	r3, #96
+ 1215 005e CAF20003 		movt	r3, 40960
+ 1216 0062 1968     		ldr	r1, [r3, #0]
+ 1217 0064 4FF6FB73 		movw	r3, #65531
+ 1218 0068 C0F20F03 		movt	r3, 15
+ 1219 006c 0B40     		ands	r3, r3, r1
+ 1220 006e 1360     		str	r3, [r2, #0]
+ 1221 0070 0EE0     		b	.L22
+ 1222              	.L26:
+ 524:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 525:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 526:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 527:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->PCR3 &= PCR_PBKEN_Reset;
+ 1223              		.loc 1 527 0
+ 1224 0072 4FF08002 		mov	r2, #128
+ 1225 0076 CAF20002 		movt	r2, 40960
+ 1226 007a 4FF08003 		mov	r3, #128
+ 1227 007e CAF20003 		movt	r3, 40960
+ 1228 0082 1968     		ldr	r1, [r3, #0]
+ 1229 0084 4FF6FB73 		movw	r3, #65531
+ 1230 0088 C0F20F03 		movt	r3, 15
+ 1231 008c 0B40     		ands	r3, r3, r1
+ 1232 008e 1360     		str	r3, [r2, #0]
+ 1233              	.L22:
+ 528:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 529:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 530:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1234              		.loc 1 530 0
+ 1235 0090 07F10C07 		add	r7, r7, #12
+ 1236 0094 BD46     		mov	sp, r7
+ 1237 0096 80BC     		pop	{r7}
+ 1238 0098 7047     		bx	lr
+ 1239              		.cfi_endproc
+ 1240              	.LFE39:
+ 1242 009a 00BF     		.section	.text.FSMC_PCCARDCmd,"ax",%progbits
+ 1243              		.align	2
+ 1244              		.global	FSMC_PCCARDCmd
+ 1245              		.thumb
+ 1246              		.thumb_func
+ 1248              	FSMC_PCCARDCmd:
+ 1249              	.LFB40:
+ 531:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 532:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 533:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Enables or disables the PCCARD Memory Bank.
+ 534:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  NewState: new state of the PCCARD Memory Bank.  
+ 535:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 536:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 537:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 538:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_PCCARDCmd(FunctionalState NewState)
+ 539:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1250              		.loc 1 539 0
+ 1251              		.cfi_startproc
+ 1252              		@ args = 0, pretend = 0, frame = 8
+ 1253              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1254              		@ link register save eliminated.
+ 1255 0000 80B4     		push	{r7}
+ 1256              	.LCFI32:
+ 1257              		.cfi_def_cfa_offset 4
+ 1258              		.cfi_offset 7, -4
+ 1259 0002 83B0     		sub	sp, sp, #12
+ 1260              	.LCFI33:
+ 1261              		.cfi_def_cfa_offset 16
+ 1262 0004 00AF     		add	r7, sp, #0
+ 1263              	.LCFI34:
+ 1264              		.cfi_def_cfa_register 7
+ 1265 0006 0346     		mov	r3, r0
+ 1266 0008 FB71     		strb	r3, [r7, #7]
+ 540:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 541:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 542:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if (NewState != DISABLE)
+ 1267              		.loc 1 542 0
+ 1268 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1269 000c 002B     		cmp	r3, #0
+ 1270 000e 0CD0     		beq	.L28
+ 543:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 544:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the PCCARD Bank by setting the PBKEN bit in the PCR4 register */
+ 545:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank4->PCR4 |= PCR_PBKEN_Set;
+ 1271              		.loc 1 545 0
+ 1272 0010 4FF0A003 		mov	r3, #160
+ 1273 0014 CAF20003 		movt	r3, 40960
+ 1274 0018 4FF0A002 		mov	r2, #160
+ 1275 001c CAF20002 		movt	r2, 40960
+ 1276 0020 1268     		ldr	r2, [r2, #0]
+ 1277 0022 42F00402 		orr	r2, r2, #4
+ 1278 0026 1A60     		str	r2, [r3, #0]
+ 1279 0028 0EE0     		b	.L27
+ 1280              	.L28:
+ 546:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 547:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 548:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 549:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the PCCARD Bank by clearing the PBKEN bit in the PCR4 register */
+ 550:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank4->PCR4 &= PCR_PBKEN_Reset;
+ 1281              		.loc 1 550 0
+ 1282 002a 4FF0A002 		mov	r2, #160
+ 1283 002e CAF20002 		movt	r2, 40960
+ 1284 0032 4FF0A003 		mov	r3, #160
+ 1285 0036 CAF20003 		movt	r3, 40960
+ 1286 003a 1968     		ldr	r1, [r3, #0]
+ 1287 003c 4FF6FB73 		movw	r3, #65531
+ 1288 0040 C0F20F03 		movt	r3, 15
+ 1289 0044 0B40     		ands	r3, r3, r1
+ 1290 0046 1360     		str	r3, [r2, #0]
+ 1291              	.L27:
+ 551:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 552:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1292              		.loc 1 552 0
+ 1293 0048 07F10C07 		add	r7, r7, #12
+ 1294 004c BD46     		mov	sp, r7
+ 1295 004e 80BC     		pop	{r7}
+ 1296 0050 7047     		bx	lr
+ 1297              		.cfi_endproc
+ 1298              	.LFE40:
+ 1300 0052 00BF     		.section	.text.FSMC_NANDECCCmd,"ax",%progbits
+ 1301              		.align	2
+ 1302              		.global	FSMC_NANDECCCmd
+ 1303              		.thumb
+ 1304              		.thumb_func
+ 1306              	FSMC_NANDECCCmd:
+ 1307              	.LFB41:
+ 553:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 554:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 555:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Enables or disables the FSMC NAND ECC feature.
+ 556:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 557:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 558:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 559:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 560:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  NewState: new state of the FSMC NAND ECC feature.  
+ 561:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 562:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 563:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 564:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_NANDECCCmd(uint32_t FSMC_Bank, FunctionalState NewState)
+ 565:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1308              		.loc 1 565 0
+ 1309              		.cfi_startproc
+ 1310              		@ args = 0, pretend = 0, frame = 8
+ 1311              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1312              		@ link register save eliminated.
+ 1313 0000 80B4     		push	{r7}
+ 1314              	.LCFI35:
+ 1315              		.cfi_def_cfa_offset 4
+ 1316              		.cfi_offset 7, -4
+ 1317 0002 83B0     		sub	sp, sp, #12
+ 1318              	.LCFI36:
+ 1319              		.cfi_def_cfa_offset 16
+ 1320 0004 00AF     		add	r7, sp, #0
+ 1321              	.LCFI37:
+ 1322              		.cfi_def_cfa_register 7
+ 1323 0006 7860     		str	r0, [r7, #4]
+ 1324 0008 0B46     		mov	r3, r1
+ 1325 000a FB70     		strb	r3, [r7, #3]
+ 566:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_NAND_BANK(FSMC_Bank));
+ 567:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 568:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 569:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if (NewState != DISABLE)
+ 1326              		.loc 1 569 0
+ 1327 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1328 000e 002B     		cmp	r3, #0
+ 1329 0010 1CD0     		beq	.L31
+ 570:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 571:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected NAND Bank ECC function by setting the ECCEN bit in the PCRx register */
+ 572:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1330              		.loc 1 572 0
+ 1331 0012 7B68     		ldr	r3, [r7, #4]
+ 1332 0014 102B     		cmp	r3, #16
+ 1333 0016 0CD1     		bne	.L32
+ 573:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 574:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->PCR2 |= PCR_ECCEN_Set;
+ 1334              		.loc 1 574 0
+ 1335 0018 4FF06003 		mov	r3, #96
+ 1336 001c CAF20003 		movt	r3, 40960
+ 1337 0020 4FF06002 		mov	r2, #96
+ 1338 0024 CAF20002 		movt	r2, 40960
+ 1339 0028 1268     		ldr	r2, [r2, #0]
+ 1340 002a 42F04002 		orr	r2, r2, #64
+ 1341 002e 1A60     		str	r2, [r3, #0]
+ 1342 0030 2EE0     		b	.L30
+ 1343              	.L32:
+ 575:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 576:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 577:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 578:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->PCR3 |= PCR_ECCEN_Set;
+ 1344              		.loc 1 578 0
+ 1345 0032 4FF08003 		mov	r3, #128
+ 1346 0036 CAF20003 		movt	r3, 40960
+ 1347 003a 4FF08002 		mov	r2, #128
+ 1348 003e CAF20002 		movt	r2, 40960
+ 1349 0042 1268     		ldr	r2, [r2, #0]
+ 1350 0044 42F04002 		orr	r2, r2, #64
+ 1351 0048 1A60     		str	r2, [r3, #0]
+ 1352 004a 21E0     		b	.L30
+ 1353              	.L31:
+ 579:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 580:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 581:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 582:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 583:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected NAND Bank ECC function by clearing the ECCEN bit in the PCRx register *
+ 584:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1354              		.loc 1 584 0
+ 1355 004c 7B68     		ldr	r3, [r7, #4]
+ 1356 004e 102B     		cmp	r3, #16
+ 1357 0050 0FD1     		bne	.L34
+ 585:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 586:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->PCR2 &= PCR_ECCEN_Reset;
+ 1358              		.loc 1 586 0
+ 1359 0052 4FF06002 		mov	r2, #96
+ 1360 0056 CAF20002 		movt	r2, 40960
+ 1361 005a 4FF06003 		mov	r3, #96
+ 1362 005e CAF20003 		movt	r3, 40960
+ 1363 0062 1968     		ldr	r1, [r3, #0]
+ 1364 0064 4FF6BF73 		movw	r3, #65471
+ 1365 0068 C0F20F03 		movt	r3, 15
+ 1366 006c 0B40     		ands	r3, r3, r1
+ 1367 006e 1360     		str	r3, [r2, #0]
+ 1368 0070 0EE0     		b	.L30
+ 1369              	.L34:
+ 587:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 588:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 589:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 590:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->PCR3 &= PCR_ECCEN_Reset;
+ 1370              		.loc 1 590 0
+ 1371 0072 4FF08002 		mov	r2, #128
+ 1372 0076 CAF20002 		movt	r2, 40960
+ 1373 007a 4FF08003 		mov	r3, #128
+ 1374 007e CAF20003 		movt	r3, 40960
+ 1375 0082 1968     		ldr	r1, [r3, #0]
+ 1376 0084 4FF6BF73 		movw	r3, #65471
+ 1377 0088 C0F20F03 		movt	r3, 15
+ 1378 008c 0B40     		ands	r3, r3, r1
+ 1379 008e 1360     		str	r3, [r2, #0]
+ 1380              	.L30:
+ 591:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 592:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 593:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1381              		.loc 1 593 0
+ 1382 0090 07F10C07 		add	r7, r7, #12
+ 1383 0094 BD46     		mov	sp, r7
+ 1384 0096 80BC     		pop	{r7}
+ 1385 0098 7047     		bx	lr
+ 1386              		.cfi_endproc
+ 1387              	.LFE41:
+ 1389 009a 00BF     		.section	.text.FSMC_GetECC,"ax",%progbits
+ 1390              		.align	2
+ 1391              		.global	FSMC_GetECC
+ 1392              		.thumb
+ 1393              		.thumb_func
+ 1395              	FSMC_GetECC:
+ 1396              	.LFB42:
+ 594:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 595:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 596:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Returns the error correction code register value.
+ 597:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 598:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 599:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 600:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 601:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval The Error Correction Code (ECC) value.
+ 602:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 603:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** uint32_t FSMC_GetECC(uint32_t FSMC_Bank)
+ 604:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1397              		.loc 1 604 0
+ 1398              		.cfi_startproc
+ 1399              		@ args = 0, pretend = 0, frame = 16
+ 1400              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1401              		@ link register save eliminated.
+ 1402 0000 80B4     		push	{r7}
+ 1403              	.LCFI38:
+ 1404              		.cfi_def_cfa_offset 4
+ 1405              		.cfi_offset 7, -4
+ 1406 0002 85B0     		sub	sp, sp, #20
+ 1407              	.LCFI39:
+ 1408              		.cfi_def_cfa_offset 24
+ 1409 0004 00AF     		add	r7, sp, #0
+ 1410              	.LCFI40:
+ 1411              		.cfi_def_cfa_register 7
+ 1412 0006 7860     		str	r0, [r7, #4]
+ 605:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   uint32_t eccval = 0x00000000;
+ 1413              		.loc 1 605 0
+ 1414 0008 4FF00003 		mov	r3, #0
+ 1415 000c FB60     		str	r3, [r7, #12]
+ 606:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 607:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1416              		.loc 1 607 0
+ 1417 000e 7B68     		ldr	r3, [r7, #4]
+ 1418 0010 102B     		cmp	r3, #16
+ 1419 0012 06D1     		bne	.L36
+ 608:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 609:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Get the ECCR2 register value */
+ 610:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     eccval = FSMC_Bank2->ECCR2;
+ 1420              		.loc 1 610 0
+ 1421 0014 4FF06003 		mov	r3, #96
+ 1422 0018 CAF20003 		movt	r3, 40960
+ 1423 001c 5B69     		ldr	r3, [r3, #20]
+ 1424 001e FB60     		str	r3, [r7, #12]
+ 1425 0020 05E0     		b	.L37
+ 1426              	.L36:
+ 611:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 612:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 613:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 614:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Get the ECCR3 register value */
+ 615:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     eccval = FSMC_Bank3->ECCR3;
+ 1427              		.loc 1 615 0
+ 1428 0022 4FF08003 		mov	r3, #128
+ 1429 0026 CAF20003 		movt	r3, 40960
+ 1430 002a 5B69     		ldr	r3, [r3, #20]
+ 1431 002c FB60     		str	r3, [r7, #12]
+ 1432              	.L37:
+ 616:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 617:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Return the error correction code value */
+ 618:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   return(eccval);
+ 1433              		.loc 1 618 0
+ 1434 002e FB68     		ldr	r3, [r7, #12]
+ 619:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1435              		.loc 1 619 0
+ 1436 0030 1846     		mov	r0, r3
+ 1437 0032 07F11407 		add	r7, r7, #20
+ 1438 0036 BD46     		mov	sp, r7
+ 1439 0038 80BC     		pop	{r7}
+ 1440 003a 7047     		bx	lr
+ 1441              		.cfi_endproc
+ 1442              	.LFE42:
+ 1444              		.section	.text.FSMC_ITConfig,"ax",%progbits
+ 1445              		.align	2
+ 1446              		.global	FSMC_ITConfig
+ 1447              		.thumb
+ 1448              		.thumb_func
+ 1450              	FSMC_ITConfig:
+ 1451              	.LFB43:
+ 620:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 621:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 622:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Enables or disables the specified FSMC interrupts.
+ 623:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 624:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 625:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 626:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 627:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank4_PCCARD: FSMC Bank4 PCCARD
+ 628:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_IT: specifies the FSMC interrupt sources to be enabled or disabled.
+ 629:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be any combination of the following values:
+ 630:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_RisingEdge: Rising edge detection interrupt. 
+ 631:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_Level: Level edge detection interrupt.
+ 632:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_FallingEdge: Falling edge detection interrupt.
+ 633:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  NewState: new state of the specified FSMC interrupts.
+ 634:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 635:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 636:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 637:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_ITConfig(uint32_t FSMC_Bank, uint32_t FSMC_IT, FunctionalState NewState)
+ 638:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1452              		.loc 1 638 0
+ 1453              		.cfi_startproc
+ 1454              		@ args = 0, pretend = 0, frame = 16
+ 1455              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1456              		@ link register save eliminated.
+ 1457 0000 80B4     		push	{r7}
+ 1458              	.LCFI41:
+ 1459              		.cfi_def_cfa_offset 4
+ 1460              		.cfi_offset 7, -4
+ 1461 0002 85B0     		sub	sp, sp, #20
+ 1462              	.LCFI42:
+ 1463              		.cfi_def_cfa_offset 24
+ 1464 0004 00AF     		add	r7, sp, #0
+ 1465              	.LCFI43:
+ 1466              		.cfi_def_cfa_register 7
+ 1467 0006 F860     		str	r0, [r7, #12]
+ 1468 0008 B960     		str	r1, [r7, #8]
+ 1469 000a 1346     		mov	r3, r2
+ 1470 000c FB71     		strb	r3, [r7, #7]
+ 639:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_IT_BANK(FSMC_Bank));
+ 640:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_IT(FSMC_IT));	
+ 641:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 642:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 643:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if (NewState != DISABLE)
+ 1471              		.loc 1 643 0
+ 1472 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1473 0010 002B     		cmp	r3, #0
+ 1474 0012 2DD0     		beq	.L40
+ 644:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 645:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected FSMC_Bank2 interrupts */
+ 646:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1475              		.loc 1 646 0
+ 1476 0014 FB68     		ldr	r3, [r7, #12]
+ 1477 0016 102B     		cmp	r3, #16
+ 1478 0018 0CD1     		bne	.L41
+ 647:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 648:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->SR2 |= FSMC_IT;
+ 1479              		.loc 1 648 0
+ 1480 001a 4FF06003 		mov	r3, #96
+ 1481 001e CAF20003 		movt	r3, 40960
+ 1482 0022 4FF06002 		mov	r2, #96
+ 1483 0026 CAF20002 		movt	r2, 40960
+ 1484 002a 5168     		ldr	r1, [r2, #4]
+ 1485 002c BA68     		ldr	r2, [r7, #8]
+ 1486 002e 0A43     		orrs	r2, r2, r1
+ 1487 0030 5A60     		str	r2, [r3, #4]
+ 1488 0032 50E0     		b	.L39
+ 1489              	.L41:
+ 649:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 650:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected FSMC_Bank3 interrupts */
+ 651:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else if (FSMC_Bank == FSMC_Bank3_NAND)
+ 1490              		.loc 1 651 0
+ 1491 0034 FB68     		ldr	r3, [r7, #12]
+ 1492 0036 B3F5807F 		cmp	r3, #256
+ 1493 003a 0CD1     		bne	.L43
+ 652:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 653:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->SR3 |= FSMC_IT;
+ 1494              		.loc 1 653 0
+ 1495 003c 4FF08003 		mov	r3, #128
+ 1496 0040 CAF20003 		movt	r3, 40960
+ 1497 0044 4FF08002 		mov	r2, #128
+ 1498 0048 CAF20002 		movt	r2, 40960
+ 1499 004c 5168     		ldr	r1, [r2, #4]
+ 1500 004e BA68     		ldr	r2, [r7, #8]
+ 1501 0050 0A43     		orrs	r2, r2, r1
+ 1502 0052 5A60     		str	r2, [r3, #4]
+ 1503 0054 3FE0     		b	.L39
+ 1504              	.L43:
+ 654:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 655:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Enable the selected FSMC_Bank4 interrupts */
+ 656:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 657:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 658:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank4->SR4 |= FSMC_IT;    
+ 1505              		.loc 1 658 0
+ 1506 0056 4FF0A003 		mov	r3, #160
+ 1507 005a CAF20003 		movt	r3, 40960
+ 1508 005e 4FF0A002 		mov	r2, #160
+ 1509 0062 CAF20002 		movt	r2, 40960
+ 1510 0066 5168     		ldr	r1, [r2, #4]
+ 1511 0068 BA68     		ldr	r2, [r7, #8]
+ 1512 006a 0A43     		orrs	r2, r2, r1
+ 1513 006c 5A60     		str	r2, [r3, #4]
+ 1514 006e 32E0     		b	.L39
+ 1515              	.L40:
+ 659:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 660:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 661:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 662:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 663:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected FSMC_Bank2 interrupts */
+ 664:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1516              		.loc 1 664 0
+ 1517 0070 FB68     		ldr	r3, [r7, #12]
+ 1518 0072 102B     		cmp	r3, #16
+ 1519 0074 0ED1     		bne	.L44
+ 665:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 666:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       
+ 667:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank2->SR2 &= (uint32_t)~FSMC_IT;
+ 1520              		.loc 1 667 0
+ 1521 0076 4FF06003 		mov	r3, #96
+ 1522 007a CAF20003 		movt	r3, 40960
+ 1523 007e 4FF06002 		mov	r2, #96
+ 1524 0082 CAF20002 		movt	r2, 40960
+ 1525 0086 5168     		ldr	r1, [r2, #4]
+ 1526 0088 BA68     		ldr	r2, [r7, #8]
+ 1527 008a 6FEA0202 		mvn	r2, r2
+ 1528 008e 0A40     		ands	r2, r2, r1
+ 1529 0090 5A60     		str	r2, [r3, #4]
+ 1530 0092 20E0     		b	.L39
+ 1531              	.L44:
+ 668:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 669:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected FSMC_Bank3 interrupts */
+ 670:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else if (FSMC_Bank == FSMC_Bank3_NAND)
+ 1532              		.loc 1 670 0
+ 1533 0094 FB68     		ldr	r3, [r7, #12]
+ 1534 0096 B3F5807F 		cmp	r3, #256
+ 1535 009a 0ED1     		bne	.L45
+ 671:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 672:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank3->SR3 &= (uint32_t)~FSMC_IT;
+ 1536              		.loc 1 672 0
+ 1537 009c 4FF08003 		mov	r3, #128
+ 1538 00a0 CAF20003 		movt	r3, 40960
+ 1539 00a4 4FF08002 		mov	r2, #128
+ 1540 00a8 CAF20002 		movt	r2, 40960
+ 1541 00ac 5168     		ldr	r1, [r2, #4]
+ 1542 00ae BA68     		ldr	r2, [r7, #8]
+ 1543 00b0 6FEA0202 		mvn	r2, r2
+ 1544 00b4 0A40     		ands	r2, r2, r1
+ 1545 00b6 5A60     		str	r2, [r3, #4]
+ 1546 00b8 0DE0     		b	.L39
+ 1547              	.L45:
+ 673:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 674:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     /* Disable the selected FSMC_Bank4 interrupts */
+ 675:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     else
+ 676:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     {
+ 677:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****       FSMC_Bank4->SR4 &= (uint32_t)~FSMC_IT;    
+ 1548              		.loc 1 677 0
+ 1549 00ba 4FF0A003 		mov	r3, #160
+ 1550 00be CAF20003 		movt	r3, 40960
+ 1551 00c2 4FF0A002 		mov	r2, #160
+ 1552 00c6 CAF20002 		movt	r2, 40960
+ 1553 00ca 5168     		ldr	r1, [r2, #4]
+ 1554 00cc BA68     		ldr	r2, [r7, #8]
+ 1555 00ce 6FEA0202 		mvn	r2, r2
+ 1556 00d2 0A40     		ands	r2, r2, r1
+ 1557 00d4 5A60     		str	r2, [r3, #4]
+ 1558              	.L39:
+ 678:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     }
+ 679:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 680:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1559              		.loc 1 680 0
+ 1560 00d6 07F11407 		add	r7, r7, #20
+ 1561 00da BD46     		mov	sp, r7
+ 1562 00dc 80BC     		pop	{r7}
+ 1563 00de 7047     		bx	lr
+ 1564              		.cfi_endproc
+ 1565              	.LFE43:
+ 1567              		.section	.text.FSMC_GetFlagStatus,"ax",%progbits
+ 1568              		.align	2
+ 1569              		.global	FSMC_GetFlagStatus
+ 1570              		.thumb
+ 1571              		.thumb_func
+ 1573              	FSMC_GetFlagStatus:
+ 1574              	.LFB44:
+ 681:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 682:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 683:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Checks whether the specified FSMC flag is set or not.
+ 684:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 685:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 686:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 687:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 688:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank4_PCCARD: FSMC Bank4 PCCARD
+ 689:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_FLAG: specifies the flag to check.
+ 690:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 691:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_RisingEdge: Rising egde detection Flag.
+ 692:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_Level: Level detection Flag.
+ 693:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_FallingEdge: Falling egde detection Flag.
+ 694:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_FEMPT: Fifo empty Flag. 
+ 695:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval The new state of FSMC_FLAG (SET or RESET).
+ 696:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 697:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** FlagStatus FSMC_GetFlagStatus(uint32_t FSMC_Bank, uint32_t FSMC_FLAG)
+ 698:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1575              		.loc 1 698 0
+ 1576              		.cfi_startproc
+ 1577              		@ args = 0, pretend = 0, frame = 16
+ 1578              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1579              		@ link register save eliminated.
+ 1580 0000 80B4     		push	{r7}
+ 1581              	.LCFI44:
+ 1582              		.cfi_def_cfa_offset 4
+ 1583              		.cfi_offset 7, -4
+ 1584 0002 85B0     		sub	sp, sp, #20
+ 1585              	.LCFI45:
+ 1586              		.cfi_def_cfa_offset 24
+ 1587 0004 00AF     		add	r7, sp, #0
+ 1588              	.LCFI46:
+ 1589              		.cfi_def_cfa_register 7
+ 1590 0006 7860     		str	r0, [r7, #4]
+ 1591 0008 3960     		str	r1, [r7, #0]
+ 699:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   FlagStatus bitstatus = RESET;
+ 1592              		.loc 1 699 0
+ 1593 000a 4FF00003 		mov	r3, #0
+ 1594 000e FB73     		strb	r3, [r7, #15]
+ 700:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   uint32_t tmpsr = 0x00000000;
+ 1595              		.loc 1 700 0
+ 1596 0010 4FF00003 		mov	r3, #0
+ 1597 0014 BB60     		str	r3, [r7, #8]
+ 701:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 702:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 703:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_GETFLAG_BANK(FSMC_Bank));
+ 704:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_GET_FLAG(FSMC_FLAG));
+ 705:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 706:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1598              		.loc 1 706 0
+ 1599 0016 7B68     		ldr	r3, [r7, #4]
+ 1600 0018 102B     		cmp	r3, #16
+ 1601 001a 06D1     		bne	.L47
+ 707:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 708:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank2->SR2;
+ 1602              		.loc 1 708 0
+ 1603 001c 4FF06003 		mov	r3, #96
+ 1604 0020 CAF20003 		movt	r3, 40960
+ 1605 0024 5B68     		ldr	r3, [r3, #4]
+ 1606 0026 BB60     		str	r3, [r7, #8]
+ 1607 0028 10E0     		b	.L48
+ 1608              	.L47:
+ 709:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }  
+ 710:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else if(FSMC_Bank == FSMC_Bank3_NAND)
+ 1609              		.loc 1 710 0
+ 1610 002a 7B68     		ldr	r3, [r7, #4]
+ 1611 002c B3F5807F 		cmp	r3, #256
+ 1612 0030 06D1     		bne	.L49
+ 711:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 712:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank3->SR3;
+ 1613              		.loc 1 712 0
+ 1614 0032 4FF08003 		mov	r3, #128
+ 1615 0036 CAF20003 		movt	r3, 40960
+ 1616 003a 5B68     		ldr	r3, [r3, #4]
+ 1617 003c BB60     		str	r3, [r7, #8]
+ 1618 003e 05E0     		b	.L48
+ 1619              	.L49:
+ 713:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 714:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank4_PCCARD*/
+ 715:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 716:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 717:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank4->SR4;
+ 1620              		.loc 1 717 0
+ 1621 0040 4FF0A003 		mov	r3, #160
+ 1622 0044 CAF20003 		movt	r3, 40960
+ 1623 0048 5B68     		ldr	r3, [r3, #4]
+ 1624 004a BB60     		str	r3, [r7, #8]
+ 1625              	.L48:
+ 718:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   } 
+ 719:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 720:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Get the flag status */
+ 721:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if ((tmpsr & FSMC_FLAG) != (uint16_t)RESET )
+ 1626              		.loc 1 721 0
+ 1627 004c BA68     		ldr	r2, [r7, #8]
+ 1628 004e 3B68     		ldr	r3, [r7, #0]
+ 1629 0050 1340     		ands	r3, r3, r2
+ 1630 0052 002B     		cmp	r3, #0
+ 1631 0054 03D0     		beq	.L50
+ 722:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 723:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     bitstatus = SET;
+ 1632              		.loc 1 723 0
+ 1633 0056 4FF00103 		mov	r3, #1
+ 1634 005a FB73     		strb	r3, [r7, #15]
+ 1635 005c 02E0     		b	.L51
+ 1636              	.L50:
+ 724:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 725:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 726:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 727:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     bitstatus = RESET;
+ 1637              		.loc 1 727 0
+ 1638 005e 4FF00003 		mov	r3, #0
+ 1639 0062 FB73     		strb	r3, [r7, #15]
+ 1640              	.L51:
+ 728:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 729:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Return the flag status */
+ 730:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   return bitstatus;
+ 1641              		.loc 1 730 0
+ 1642 0064 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 731:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1643              		.loc 1 731 0
+ 1644 0066 1846     		mov	r0, r3
+ 1645 0068 07F11407 		add	r7, r7, #20
+ 1646 006c BD46     		mov	sp, r7
+ 1647 006e 80BC     		pop	{r7}
+ 1648 0070 7047     		bx	lr
+ 1649              		.cfi_endproc
+ 1650              	.LFE44:
+ 1652 0072 00BF     		.section	.text.FSMC_ClearFlag,"ax",%progbits
+ 1653              		.align	2
+ 1654              		.global	FSMC_ClearFlag
+ 1655              		.thumb
+ 1656              		.thumb_func
+ 1658              	FSMC_ClearFlag:
+ 1659              	.LFB45:
+ 732:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 733:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 734:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Clears the FSMC's pending flags.
+ 735:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 736:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 737:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 738:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 739:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank4_PCCARD: FSMC Bank4 PCCARD
+ 740:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_FLAG: specifies the flag to clear.
+ 741:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be any combination of the following values:
+ 742:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_RisingEdge: Rising egde detection Flag.
+ 743:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_Level: Level detection Flag.
+ 744:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_FLAG_FallingEdge: Falling egde detection Flag.
+ 745:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 746:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 747:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_ClearFlag(uint32_t FSMC_Bank, uint32_t FSMC_FLAG)
+ 748:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1660              		.loc 1 748 0
+ 1661              		.cfi_startproc
+ 1662              		@ args = 0, pretend = 0, frame = 8
+ 1663              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1664              		@ link register save eliminated.
+ 1665 0000 80B4     		push	{r7}
+ 1666              	.LCFI47:
+ 1667              		.cfi_def_cfa_offset 4
+ 1668              		.cfi_offset 7, -4
+ 1669 0002 83B0     		sub	sp, sp, #12
+ 1670              	.LCFI48:
+ 1671              		.cfi_def_cfa_offset 16
+ 1672 0004 00AF     		add	r7, sp, #0
+ 1673              	.LCFI49:
+ 1674              		.cfi_def_cfa_register 7
+ 1675 0006 7860     		str	r0, [r7, #4]
+ 1676 0008 3960     		str	r1, [r7, #0]
+ 749:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****  /* Check the parameters */
+ 750:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_GETFLAG_BANK(FSMC_Bank));
+ 751:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_CLEAR_FLAG(FSMC_FLAG)) ;
+ 752:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     
+ 753:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1677              		.loc 1 753 0
+ 1678 000a 7B68     		ldr	r3, [r7, #4]
+ 1679 000c 102B     		cmp	r3, #16
+ 1680 000e 0ED1     		bne	.L54
+ 754:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 755:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->SR2 &= ~FSMC_FLAG; 
+ 1681              		.loc 1 755 0
+ 1682 0010 4FF06003 		mov	r3, #96
+ 1683 0014 CAF20003 		movt	r3, 40960
+ 1684 0018 4FF06002 		mov	r2, #96
+ 1685 001c CAF20002 		movt	r2, 40960
+ 1686 0020 5168     		ldr	r1, [r2, #4]
+ 1687 0022 3A68     		ldr	r2, [r7, #0]
+ 1688 0024 6FEA0202 		mvn	r2, r2
+ 1689 0028 0A40     		ands	r2, r2, r1
+ 1690 002a 5A60     		str	r2, [r3, #4]
+ 1691 002c 20E0     		b	.L53
+ 1692              	.L54:
+ 756:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }  
+ 757:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else if(FSMC_Bank == FSMC_Bank3_NAND)
+ 1693              		.loc 1 757 0
+ 1694 002e 7B68     		ldr	r3, [r7, #4]
+ 1695 0030 B3F5807F 		cmp	r3, #256
+ 1696 0034 0ED1     		bne	.L56
+ 758:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 759:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->SR3 &= ~FSMC_FLAG;
+ 1697              		.loc 1 759 0
+ 1698 0036 4FF08003 		mov	r3, #128
+ 1699 003a CAF20003 		movt	r3, 40960
+ 1700 003e 4FF08002 		mov	r2, #128
+ 1701 0042 CAF20002 		movt	r2, 40960
+ 1702 0046 5168     		ldr	r1, [r2, #4]
+ 1703 0048 3A68     		ldr	r2, [r7, #0]
+ 1704 004a 6FEA0202 		mvn	r2, r2
+ 1705 004e 0A40     		ands	r2, r2, r1
+ 1706 0050 5A60     		str	r2, [r3, #4]
+ 1707 0052 0DE0     		b	.L53
+ 1708              	.L56:
+ 760:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 761:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank4_PCCARD*/
+ 762:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 763:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 764:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank4->SR4 &= ~FSMC_FLAG;
+ 1709              		.loc 1 764 0
+ 1710 0054 4FF0A003 		mov	r3, #160
+ 1711 0058 CAF20003 		movt	r3, 40960
+ 1712 005c 4FF0A002 		mov	r2, #160
+ 1713 0060 CAF20002 		movt	r2, 40960
+ 1714 0064 5168     		ldr	r1, [r2, #4]
+ 1715 0066 3A68     		ldr	r2, [r7, #0]
+ 1716 0068 6FEA0202 		mvn	r2, r2
+ 1717 006c 0A40     		ands	r2, r2, r1
+ 1718 006e 5A60     		str	r2, [r3, #4]
+ 1719              	.L53:
+ 765:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 766:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1720              		.loc 1 766 0
+ 1721 0070 07F10C07 		add	r7, r7, #12
+ 1722 0074 BD46     		mov	sp, r7
+ 1723 0076 80BC     		pop	{r7}
+ 1724 0078 7047     		bx	lr
+ 1725              		.cfi_endproc
+ 1726              	.LFE45:
+ 1728 007a 00BF     		.section	.text.FSMC_GetITStatus,"ax",%progbits
+ 1729              		.align	2
+ 1730              		.global	FSMC_GetITStatus
+ 1731              		.thumb
+ 1732              		.thumb_func
+ 1734              	FSMC_GetITStatus:
+ 1735              	.LFB46:
+ 767:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 768:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 769:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Checks whether the specified FSMC interrupt has occurred or not.
+ 770:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 771:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 772:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 773:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 774:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank4_PCCARD: FSMC Bank4 PCCARD
+ 775:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_IT: specifies the FSMC interrupt source to check.
+ 776:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 777:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_RisingEdge: Rising edge detection interrupt. 
+ 778:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_Level: Level edge detection interrupt.
+ 779:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_FallingEdge: Falling edge detection interrupt. 
+ 780:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval The new state of FSMC_IT (SET or RESET).
+ 781:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 782:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** ITStatus FSMC_GetITStatus(uint32_t FSMC_Bank, uint32_t FSMC_IT)
+ 783:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1736              		.loc 1 783 0
+ 1737              		.cfi_startproc
+ 1738              		@ args = 0, pretend = 0, frame = 24
+ 1739              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1740              		@ link register save eliminated.
+ 1741 0000 80B4     		push	{r7}
+ 1742              	.LCFI50:
+ 1743              		.cfi_def_cfa_offset 4
+ 1744              		.cfi_offset 7, -4
+ 1745 0002 87B0     		sub	sp, sp, #28
+ 1746              	.LCFI51:
+ 1747              		.cfi_def_cfa_offset 32
+ 1748 0004 00AF     		add	r7, sp, #0
+ 1749              	.LCFI52:
+ 1750              		.cfi_def_cfa_register 7
+ 1751 0006 7860     		str	r0, [r7, #4]
+ 1752 0008 3960     		str	r1, [r7, #0]
+ 784:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   ITStatus bitstatus = RESET;
+ 1753              		.loc 1 784 0
+ 1754 000a 4FF00003 		mov	r3, #0
+ 1755 000e FB75     		strb	r3, [r7, #23]
+ 785:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   uint32_t tmpsr = 0x0, itstatus = 0x0, itenable = 0x0; 
+ 1756              		.loc 1 785 0
+ 1757 0010 4FF00003 		mov	r3, #0
+ 1758 0014 3B61     		str	r3, [r7, #16]
+ 1759 0016 4FF00003 		mov	r3, #0
+ 1760 001a FB60     		str	r3, [r7, #12]
+ 1761 001c 4FF00003 		mov	r3, #0
+ 1762 0020 BB60     		str	r3, [r7, #8]
+ 786:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 787:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 788:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_IT_BANK(FSMC_Bank));
+ 789:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_GET_IT(FSMC_IT));
+ 790:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 791:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1763              		.loc 1 791 0
+ 1764 0022 7B68     		ldr	r3, [r7, #4]
+ 1765 0024 102B     		cmp	r3, #16
+ 1766 0026 06D1     		bne	.L58
+ 792:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 793:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank2->SR2;
+ 1767              		.loc 1 793 0
+ 1768 0028 4FF06003 		mov	r3, #96
+ 1769 002c CAF20003 		movt	r3, 40960
+ 1770 0030 5B68     		ldr	r3, [r3, #4]
+ 1771 0032 3B61     		str	r3, [r7, #16]
+ 1772 0034 10E0     		b	.L59
+ 1773              	.L58:
+ 794:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }  
+ 795:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else if(FSMC_Bank == FSMC_Bank3_NAND)
+ 1774              		.loc 1 795 0
+ 1775 0036 7B68     		ldr	r3, [r7, #4]
+ 1776 0038 B3F5807F 		cmp	r3, #256
+ 1777 003c 06D1     		bne	.L60
+ 796:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 797:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank3->SR3;
+ 1778              		.loc 1 797 0
+ 1779 003e 4FF08003 		mov	r3, #128
+ 1780 0042 CAF20003 		movt	r3, 40960
+ 1781 0046 5B68     		ldr	r3, [r3, #4]
+ 1782 0048 3B61     		str	r3, [r7, #16]
+ 1783 004a 05E0     		b	.L59
+ 1784              	.L60:
+ 798:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 799:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank4_PCCARD*/
+ 800:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 801:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 802:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     tmpsr = FSMC_Bank4->SR4;
+ 1785              		.loc 1 802 0
+ 1786 004c 4FF0A003 		mov	r3, #160
+ 1787 0050 CAF20003 		movt	r3, 40960
+ 1788 0054 5B68     		ldr	r3, [r3, #4]
+ 1789 0056 3B61     		str	r3, [r7, #16]
+ 1790              	.L59:
+ 803:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   } 
+ 804:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 805:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   itstatus = tmpsr & FSMC_IT;
+ 1791              		.loc 1 805 0
+ 1792 0058 3A69     		ldr	r2, [r7, #16]
+ 1793 005a 3B68     		ldr	r3, [r7, #0]
+ 1794 005c 1340     		ands	r3, r3, r2
+ 1795 005e FB60     		str	r3, [r7, #12]
+ 806:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   
+ 807:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   itenable = tmpsr & (FSMC_IT >> 3);
+ 1796              		.loc 1 807 0
+ 1797 0060 3B68     		ldr	r3, [r7, #0]
+ 1798 0062 4FEAD302 		lsr	r2, r3, #3
+ 1799 0066 3B69     		ldr	r3, [r7, #16]
+ 1800 0068 1340     		ands	r3, r3, r2
+ 1801 006a BB60     		str	r3, [r7, #8]
+ 808:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if ((itstatus != (uint32_t)RESET)  && (itenable != (uint32_t)RESET))
+ 1802              		.loc 1 808 0
+ 1803 006c FB68     		ldr	r3, [r7, #12]
+ 1804 006e 002B     		cmp	r3, #0
+ 1805 0070 06D0     		beq	.L61
+ 1806              		.loc 1 808 0 is_stmt 0 discriminator 1
+ 1807 0072 BB68     		ldr	r3, [r7, #8]
+ 1808 0074 002B     		cmp	r3, #0
+ 1809 0076 03D0     		beq	.L61
+ 809:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 810:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     bitstatus = SET;
+ 1810              		.loc 1 810 0 is_stmt 1
+ 1811 0078 4FF00103 		mov	r3, #1
+ 1812 007c FB75     		strb	r3, [r7, #23]
+ 1813 007e 02E0     		b	.L62
+ 1814              	.L61:
+ 811:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 812:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 813:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 814:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     bitstatus = RESET;
+ 1815              		.loc 1 814 0
+ 1816 0080 4FF00003 		mov	r3, #0
+ 1817 0084 FB75     		strb	r3, [r7, #23]
+ 1818              	.L62:
+ 815:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 816:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   return bitstatus; 
+ 1819              		.loc 1 816 0
+ 1820 0086 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 817:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1821              		.loc 1 817 0
+ 1822 0088 1846     		mov	r0, r3
+ 1823 008a 07F11C07 		add	r7, r7, #28
+ 1824 008e BD46     		mov	sp, r7
+ 1825 0090 80BC     		pop	{r7}
+ 1826 0092 7047     		bx	lr
+ 1827              		.cfi_endproc
+ 1828              	.LFE46:
+ 1830              		.section	.text.FSMC_ClearITPendingBit,"ax",%progbits
+ 1831              		.align	2
+ 1832              		.global	FSMC_ClearITPendingBit
+ 1833              		.thumb
+ 1834              		.thumb_func
+ 1836              	FSMC_ClearITPendingBit:
+ 1837              	.LFB47:
+ 818:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** 
+ 819:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** /**
+ 820:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @brief  Clears the FSMC's interrupt pending bits.
+ 821:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_Bank: specifies the FSMC Bank to be used
+ 822:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be one of the following values:
+ 823:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank2_NAND: FSMC Bank2 NAND 
+ 824:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank3_NAND: FSMC Bank3 NAND
+ 825:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_Bank4_PCCARD: FSMC Bank4 PCCARD
+ 826:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @param  FSMC_IT: specifies the interrupt pending bit to clear.
+ 827:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *   This parameter can be any combination of the following values:
+ 828:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_RisingEdge: Rising edge detection interrupt. 
+ 829:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_Level: Level edge detection interrupt.
+ 830:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   *     @arg FSMC_IT_FallingEdge: Falling edge detection interrupt.
+ 831:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   * @retval None
+ 832:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   */
+ 833:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** void FSMC_ClearITPendingBit(uint32_t FSMC_Bank, uint32_t FSMC_IT)
+ 834:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** {
+ 1838              		.loc 1 834 0
+ 1839              		.cfi_startproc
+ 1840              		@ args = 0, pretend = 0, frame = 8
+ 1841              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1842              		@ link register save eliminated.
+ 1843 0000 80B4     		push	{r7}
+ 1844              	.LCFI53:
+ 1845              		.cfi_def_cfa_offset 4
+ 1846              		.cfi_offset 7, -4
+ 1847 0002 83B0     		sub	sp, sp, #12
+ 1848              	.LCFI54:
+ 1849              		.cfi_def_cfa_offset 16
+ 1850 0004 00AF     		add	r7, sp, #0
+ 1851              	.LCFI55:
+ 1852              		.cfi_def_cfa_register 7
+ 1853 0006 7860     		str	r0, [r7, #4]
+ 1854 0008 3960     		str	r1, [r7, #0]
+ 835:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* Check the parameters */
+ 836:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_IT_BANK(FSMC_Bank));
+ 837:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   assert_param(IS_FSMC_IT(FSMC_IT));
+ 838:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     
+ 839:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   if(FSMC_Bank == FSMC_Bank2_NAND)
+ 1855              		.loc 1 839 0
+ 1856 000a 7B68     		ldr	r3, [r7, #4]
+ 1857 000c 102B     		cmp	r3, #16
+ 1858 000e 10D1     		bne	.L65
+ 840:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 841:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank2->SR2 &= ~(FSMC_IT >> 3); 
+ 1859              		.loc 1 841 0
+ 1860 0010 4FF06003 		mov	r3, #96
+ 1861 0014 CAF20003 		movt	r3, 40960
+ 1862 0018 4FF06002 		mov	r2, #96
+ 1863 001c CAF20002 		movt	r2, 40960
+ 1864 0020 5168     		ldr	r1, [r2, #4]
+ 1865 0022 3A68     		ldr	r2, [r7, #0]
+ 1866 0024 4FEAD202 		lsr	r2, r2, #3
+ 1867 0028 6FEA0202 		mvn	r2, r2
+ 1868 002c 0A40     		ands	r2, r2, r1
+ 1869 002e 5A60     		str	r2, [r3, #4]
+ 1870 0030 24E0     		b	.L64
+ 1871              	.L65:
+ 842:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }  
+ 843:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else if(FSMC_Bank == FSMC_Bank3_NAND)
+ 1872              		.loc 1 843 0
+ 1873 0032 7B68     		ldr	r3, [r7, #4]
+ 1874 0034 B3F5807F 		cmp	r3, #256
+ 1875 0038 10D1     		bne	.L67
+ 844:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 845:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank3->SR3 &= ~(FSMC_IT >> 3);
+ 1876              		.loc 1 845 0
+ 1877 003a 4FF08003 		mov	r3, #128
+ 1878 003e CAF20003 		movt	r3, 40960
+ 1879 0042 4FF08002 		mov	r2, #128
+ 1880 0046 CAF20002 		movt	r2, 40960
+ 1881 004a 5168     		ldr	r1, [r2, #4]
+ 1882 004c 3A68     		ldr	r2, [r7, #0]
+ 1883 004e 4FEAD202 		lsr	r2, r2, #3
+ 1884 0052 6FEA0202 		mvn	r2, r2
+ 1885 0056 0A40     		ands	r2, r2, r1
+ 1886 0058 5A60     		str	r2, [r3, #4]
+ 1887 005a 0FE0     		b	.L64
+ 1888              	.L67:
+ 846:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 847:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   /* FSMC_Bank4_PCCARD*/
+ 848:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   else
+ 849:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   {
+ 850:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****     FSMC_Bank4->SR4 &= ~(FSMC_IT >> 3);
+ 1889              		.loc 1 850 0
+ 1890 005c 4FF0A003 		mov	r3, #160
+ 1891 0060 CAF20003 		movt	r3, 40960
+ 1892 0064 4FF0A002 		mov	r2, #160
+ 1893 0068 CAF20002 		movt	r2, 40960
+ 1894 006c 5168     		ldr	r1, [r2, #4]
+ 1895 006e 3A68     		ldr	r2, [r7, #0]
+ 1896 0070 4FEAD202 		lsr	r2, r2, #3
+ 1897 0074 6FEA0202 		mvn	r2, r2
+ 1898 0078 0A40     		ands	r2, r2, r1
+ 1899 007a 5A60     		str	r2, [r3, #4]
+ 1900              	.L64:
+ 851:../StdPeripheralDriver/src/stm32f10x_fsmc.c ****   }
+ 852:../StdPeripheralDriver/src/stm32f10x_fsmc.c **** }
+ 1901              		.loc 1 852 0
+ 1902 007c 07F10C07 		add	r7, r7, #12
+ 1903 0080 BD46     		mov	sp, r7
+ 1904 0082 80BC     		pop	{r7}
+ 1905 0084 7047     		bx	lr
+ 1906              		.cfi_endproc
+ 1907              	.LFE47:
+ 1909 0086 00BF     		.text
+ 1910              	.Letext0:
+ 1911              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 1912              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 1913              		.file 4 "/home/frolls/ARM/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_fsmc.h"
+ 1914              		.file 5 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_fsmc.c
+     /tmp/ccT54Xa4.s:19     .text.FSMC_NORSRAMDeInit:00000000 $t
+     /tmp/ccT54Xa4.s:24     .text.FSMC_NORSRAMDeInit:00000000 FSMC_NORSRAMDeInit
+     /tmp/ccT54Xa4.s:81     .text.FSMC_NANDDeInit:00000000 $t
+     /tmp/ccT54Xa4.s:86     .text.FSMC_NANDDeInit:00000000 FSMC_NANDDeInit
+     /tmp/ccT54Xa4.s:160    .text.FSMC_PCCARDDeInit:00000000 $t
+     /tmp/ccT54Xa4.s:165    .text.FSMC_PCCARDDeInit:00000000 FSMC_PCCARDDeInit
+     /tmp/ccT54Xa4.s:212    .text.FSMC_NORSRAMInit:00000000 $t
+     /tmp/ccT54Xa4.s:217    .text.FSMC_NORSRAMInit:00000000 FSMC_NORSRAMInit
+     /tmp/ccT54Xa4.s:436    .text.FSMC_NANDInit:00000000 $t
+     /tmp/ccT54Xa4.s:441    .text.FSMC_NANDInit:00000000 FSMC_NANDInit
+     /tmp/ccT54Xa4.s:598    .text.FSMC_PCCARDInit:00000000 $t
+     /tmp/ccT54Xa4.s:603    .text.FSMC_PCCARDInit:00000000 FSMC_PCCARDInit
+     /tmp/ccT54Xa4.s:737    .text.FSMC_NORSRAMStructInit:00000000 $t
+     /tmp/ccT54Xa4.s:742    .text.FSMC_NORSRAMStructInit:00000000 FSMC_NORSRAMStructInit
+     /tmp/ccT54Xa4.s:891    .text.FSMC_NANDStructInit:00000000 $t
+     /tmp/ccT54Xa4.s:896    .text.FSMC_NANDStructInit:00000000 FSMC_NANDStructInit
+     /tmp/ccT54Xa4.s:991    .text.FSMC_PCCARDStructInit:00000000 $t
+     /tmp/ccT54Xa4.s:996    .text.FSMC_PCCARDStructInit:00000000 FSMC_PCCARDStructInit
+     /tmp/ccT54Xa4.s:1095   .text.FSMC_NORSRAMCmd:00000000 $t
+     /tmp/ccT54Xa4.s:1100   .text.FSMC_NORSRAMCmd:00000000 FSMC_NORSRAMCmd
+     /tmp/ccT54Xa4.s:1154   .text.FSMC_NANDCmd:00000000 $t
+     /tmp/ccT54Xa4.s:1159   .text.FSMC_NANDCmd:00000000 FSMC_NANDCmd
+     /tmp/ccT54Xa4.s:1243   .text.FSMC_PCCARDCmd:00000000 $t
+     /tmp/ccT54Xa4.s:1248   .text.FSMC_PCCARDCmd:00000000 FSMC_PCCARDCmd
+     /tmp/ccT54Xa4.s:1301   .text.FSMC_NANDECCCmd:00000000 $t
+     /tmp/ccT54Xa4.s:1306   .text.FSMC_NANDECCCmd:00000000 FSMC_NANDECCCmd
+     /tmp/ccT54Xa4.s:1390   .text.FSMC_GetECC:00000000 $t
+     /tmp/ccT54Xa4.s:1395   .text.FSMC_GetECC:00000000 FSMC_GetECC
+     /tmp/ccT54Xa4.s:1445   .text.FSMC_ITConfig:00000000 $t
+     /tmp/ccT54Xa4.s:1450   .text.FSMC_ITConfig:00000000 FSMC_ITConfig
+     /tmp/ccT54Xa4.s:1568   .text.FSMC_GetFlagStatus:00000000 $t
+     /tmp/ccT54Xa4.s:1573   .text.FSMC_GetFlagStatus:00000000 FSMC_GetFlagStatus
+     /tmp/ccT54Xa4.s:1653   .text.FSMC_ClearFlag:00000000 $t
+     /tmp/ccT54Xa4.s:1658   .text.FSMC_ClearFlag:00000000 FSMC_ClearFlag
+     /tmp/ccT54Xa4.s:1729   .text.FSMC_GetITStatus:00000000 $t
+     /tmp/ccT54Xa4.s:1734   .text.FSMC_GetITStatus:00000000 FSMC_GetITStatus
+     /tmp/ccT54Xa4.s:1831   .text.FSMC_ClearITPendingBit:00000000 $t
+     /tmp/ccT54Xa4.s:1836   .text.FSMC_ClearITPendingBit:00000000 FSMC_ClearITPendingBit
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_fsmc.h.243.b5646cf066694a223e657508144b8443
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+
+NO UNDEFINED SYMBOLS

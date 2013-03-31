@@ -1,0 +1,336 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"portother.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.bss.xOriginalState,"aw",%nobits
+  21              	xOriginalState:
+  22 0000 00       		.space	1
+  23              		.section	.bss.ulNesting,"aw",%nobits
+  24              		.align	2
+  27              	ulNesting:
+  28 0000 00000000 		.space	4
+  29              		.section	.text.getprimask,"ax",%progbits
+  30              		.align	2
+  31              		.thumb
+  32              		.thumb_func
+  34              	getprimask:
+  35              	.LFB29:
+  36              		.file 1 "../FreeModbus/STM32/port/portother.c"
+   1:../FreeModbus/STM32/port/portother.c **** /*
+   2:../FreeModbus/STM32/port/portother.c ****  * portother.c
+   3:../FreeModbus/STM32/port/portother.c ****  *
+   4:../FreeModbus/STM32/port/portother.c ****  *  Created on: 10.03.2013
+   5:../FreeModbus/STM32/port/portother.c ****  *      Author: frolls
+   6:../FreeModbus/STM32/port/portother.c ****  */
+   7:../FreeModbus/STM32/port/portother.c **** /* ----------------------- Modbus includes ----------------------------------*/
+   8:../FreeModbus/STM32/port/portother.c **** #include "mb.h"
+   9:../FreeModbus/STM32/port/portother.c **** #include "mbport.h"
+  10:../FreeModbus/STM32/port/portother.c **** 
+  11:../FreeModbus/STM32/port/portother.c **** /* ----------------------- Static variables ---------------------------------*/
+  12:../FreeModbus/STM32/port/portother.c **** static UCHAR    xOriginalState;
+  13:../FreeModbus/STM32/port/portother.c **** static ULONG    ulNesting;
+  14:../FreeModbus/STM32/port/portother.c **** 
+  15:../FreeModbus/STM32/port/portother.c **** /* ----------------------- Cortex-M3 PRIMASK enable/disable -----------------*/
+  16:../FreeModbus/STM32/port/portother.c **** /* Gregory Nutt <spudmonkey@racsa.co.cr> */
+  17:../FreeModbus/STM32/port/portother.c **** 
+  18:../FreeModbus/STM32/port/portother.c **** /* Get/set the primask register to control global DI/EI*/
+  19:../FreeModbus/STM32/port/portother.c **** 
+  20:../FreeModbus/STM32/port/portother.c **** static inline uint8_t getprimask(void)
+  21:../FreeModbus/STM32/port/portother.c **** {
+  37              		.loc 1 21 0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 8
+  40              		@ frame_needed = 1, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 90B4     		push	{r4, r7}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 8
+  45              		.cfi_offset 4, -8
+  46              		.cfi_offset 7, -4
+  47 0002 82B0     		sub	sp, sp, #8
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 16
+  50 0004 00AF     		add	r7, sp, #0
+  51              	.LCFI2:
+  52              		.cfi_def_cfa_register 7
+  22:../FreeModbus/STM32/port/portother.c ****   uint32_t primask;
+  23:../FreeModbus/STM32/port/portother.c ****   __asm__ __volatile__
+  53              		.loc 1 23 0
+  54              	@ 23 "../FreeModbus/STM32/port/portother.c" 1
+  55 0006 EFF31084 			mrs  r4, primask
+  56              	
+  57              	@ 0 "" 2
+  58              		.thumb
+  59 000a 7C60     		str	r4, [r7, #4]
+  24:../FreeModbus/STM32/port/portother.c ****     (
+  25:../FreeModbus/STM32/port/portother.c ****      "\tmrs  %0, primask\n"
+  26:../FreeModbus/STM32/port/portother.c ****      : "=r" (primask)
+  27:../FreeModbus/STM32/port/portother.c ****      :
+  28:../FreeModbus/STM32/port/portother.c ****      : "memory");
+  29:../FreeModbus/STM32/port/portother.c ****   return (uint8_t)primask;
+  60              		.loc 1 29 0
+  61 000c 7B68     		ldr	r3, [r7, #4]
+  62 000e DBB2     		uxtb	r3, r3
+  30:../FreeModbus/STM32/port/portother.c **** }
+  63              		.loc 1 30 0
+  64 0010 1846     		mov	r0, r3
+  65 0012 07F10807 		add	r7, r7, #8
+  66 0016 BD46     		mov	sp, r7
+  67 0018 90BC     		pop	{r4, r7}
+  68 001a 7047     		bx	lr
+  69              		.cfi_endproc
+  70              	.LFE29:
+  72              		.section	.text.setprimask,"ax",%progbits
+  73              		.align	2
+  74              		.thumb
+  75              		.thumb_func
+  77              	setprimask:
+  78              	.LFB30:
+  31:../FreeModbus/STM32/port/portother.c **** 
+  32:../FreeModbus/STM32/port/portother.c **** static inline void setprimask(uint32_t primask)
+  33:../FreeModbus/STM32/port/portother.c **** {
+  79              		.loc 1 33 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 8
+  82              		@ frame_needed = 1, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84 0000 80B4     		push	{r7}
+  85              	.LCFI3:
+  86              		.cfi_def_cfa_offset 4
+  87              		.cfi_offset 7, -4
+  88 0002 83B0     		sub	sp, sp, #12
+  89              	.LCFI4:
+  90              		.cfi_def_cfa_offset 16
+  91 0004 00AF     		add	r7, sp, #0
+  92              	.LCFI5:
+  93              		.cfi_def_cfa_register 7
+  94 0006 7860     		str	r0, [r7, #4]
+  34:../FreeModbus/STM32/port/portother.c ****   __asm__ __volatile__
+  95              		.loc 1 34 0
+  96 0008 7B68     		ldr	r3, [r7, #4]
+  97              	@ 34 "../FreeModbus/STM32/port/portother.c" 1
+  98 000a 83F31088 			msr primask, r3
+  99              	
+ 100              	@ 0 "" 2
+  35:../FreeModbus/STM32/port/portother.c ****     (
+  36:../FreeModbus/STM32/port/portother.c ****       "\tmsr primask, %0\n"
+  37:../FreeModbus/STM32/port/portother.c ****       :
+  38:../FreeModbus/STM32/port/portother.c ****       : "r" (primask)
+  39:../FreeModbus/STM32/port/portother.c ****       : "memory");
+  40:../FreeModbus/STM32/port/portother.c **** }
+ 101              		.loc 1 40 0
+ 102              		.thumb
+ 103 000e 07F10C07 		add	r7, r7, #12
+ 104 0012 BD46     		mov	sp, r7
+ 105 0014 80BC     		pop	{r7}
+ 106 0016 7047     		bx	lr
+ 107              		.cfi_endproc
+ 108              	.LFE30:
+ 110              		.section	.text.vMBPortEnterCritical,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	vMBPortEnterCritical
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	vMBPortEnterCritical:
+ 117              	.LFB31:
+  41:../FreeModbus/STM32/port/portother.c **** /* ----------------------- Critical Section handler -----------------------------*/
+  42:../FreeModbus/STM32/port/portother.c **** /* Check if PRIMASK was set, and disable it on entry. On exit, if it was originally
+  43:../FreeModbus/STM32/port/portother.c **** set then set it back again otherwise leave it unset. */
+  44:../FreeModbus/STM32/port/portother.c **** void
+  45:../FreeModbus/STM32/port/portother.c **** vMBPortEnterCritical( void )
+  46:../FreeModbus/STM32/port/portother.c **** {
+ 118              		.loc 1 46 0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 1, uses_anonymous_args = 0
+ 122 0000 80B5     		push	{r7, lr}
+ 123              	.LCFI6:
+ 124              		.cfi_def_cfa_offset 8
+ 125              		.cfi_offset 7, -8
+ 126              		.cfi_offset 14, -4
+ 127 0002 00AF     		add	r7, sp, #0
+ 128              	.LCFI7:
+ 129              		.cfi_def_cfa_register 7
+  47:../FreeModbus/STM32/port/portother.c ****     if(ulNesting == 0)
+ 130              		.loc 1 47 0
+ 131 0004 40F20003 		movw	r3, #:lower16:ulNesting
+ 132 0008 C0F20003 		movt	r3, #:upper16:ulNesting
+ 133 000c 1B68     		ldr	r3, [r3, #0]
+ 134 000e 002B     		cmp	r3, #0
+ 135 0010 08D1     		bne	.L5
+  48:../FreeModbus/STM32/port/portother.c ****     {
+  49:../FreeModbus/STM32/port/portother.c **** 		xOriginalState = getprimask();
+ 136              		.loc 1 49 0
+ 137 0012 FFF7FEFF 		bl	getprimask
+ 138 0016 0346     		mov	r3, r0
+ 139 0018 1A46     		mov	r2, r3
+ 140 001a 40F20003 		movw	r3, #:lower16:xOriginalState
+ 141 001e C0F20003 		movt	r3, #:upper16:xOriginalState
+ 142 0022 1A70     		strb	r2, [r3, #0]
+ 143              	.L5:
+  50:../FreeModbus/STM32/port/portother.c ****     }
+  51:../FreeModbus/STM32/port/portother.c ****     ulNesting++;
+ 144              		.loc 1 51 0
+ 145 0024 40F20003 		movw	r3, #:lower16:ulNesting
+ 146 0028 C0F20003 		movt	r3, #:upper16:ulNesting
+ 147 002c 1B68     		ldr	r3, [r3, #0]
+ 148 002e 03F10102 		add	r2, r3, #1
+ 149 0032 40F20003 		movw	r3, #:lower16:ulNesting
+ 150 0036 C0F20003 		movt	r3, #:upper16:ulNesting
+ 151 003a 1A60     		str	r2, [r3, #0]
+  52:../FreeModbus/STM32/port/portother.c **** 	setprimask(1);
+ 152              		.loc 1 52 0
+ 153 003c 4FF00100 		mov	r0, #1
+ 154 0040 FFF7FEFF 		bl	setprimask
+  53:../FreeModbus/STM32/port/portother.c **** }
+ 155              		.loc 1 53 0
+ 156 0044 80BD     		pop	{r7, pc}
+ 157              		.cfi_endproc
+ 158              	.LFE31:
+ 160 0046 00BF     		.section	.text.vMBPortExitCritical,"ax",%progbits
+ 161              		.align	2
+ 162              		.global	vMBPortExitCritical
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	vMBPortExitCritical:
+ 167              	.LFB32:
+  54:../FreeModbus/STM32/port/portother.c **** 
+  55:../FreeModbus/STM32/port/portother.c **** void
+  56:../FreeModbus/STM32/port/portother.c **** vMBPortExitCritical( void )
+  57:../FreeModbus/STM32/port/portother.c **** {
+ 168              		.loc 1 57 0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 1, uses_anonymous_args = 0
+ 172 0000 80B5     		push	{r7, lr}
+ 173              	.LCFI8:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 7, -8
+ 176              		.cfi_offset 14, -4
+ 177 0002 00AF     		add	r7, sp, #0
+ 178              	.LCFI9:
+ 179              		.cfi_def_cfa_register 7
+  58:../FreeModbus/STM32/port/portother.c ****     ulNesting--;
+ 180              		.loc 1 58 0
+ 181 0004 40F20003 		movw	r3, #:lower16:ulNesting
+ 182 0008 C0F20003 		movt	r3, #:upper16:ulNesting
+ 183 000c 1B68     		ldr	r3, [r3, #0]
+ 184 000e 03F1FF32 		add	r2, r3, #-1
+ 185 0012 40F20003 		movw	r3, #:lower16:ulNesting
+ 186 0016 C0F20003 		movt	r3, #:upper16:ulNesting
+ 187 001a 1A60     		str	r2, [r3, #0]
+  59:../FreeModbus/STM32/port/portother.c ****     if(ulNesting == 0)
+ 188              		.loc 1 59 0
+ 189 001c 40F20003 		movw	r3, #:lower16:ulNesting
+ 190 0020 C0F20003 		movt	r3, #:upper16:ulNesting
+ 191 0024 1B68     		ldr	r3, [r3, #0]
+ 192 0026 002B     		cmp	r3, #0
+ 193 0028 07D1     		bne	.L6
+  60:../FreeModbus/STM32/port/portother.c ****     {
+  61:../FreeModbus/STM32/port/portother.c **** 		setprimask(xOriginalState);
+ 194              		.loc 1 61 0
+ 195 002a 40F20003 		movw	r3, #:lower16:xOriginalState
+ 196 002e C0F20003 		movt	r3, #:upper16:xOriginalState
+ 197 0032 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 198 0034 1846     		mov	r0, r3
+ 199 0036 FFF7FEFF 		bl	setprimask
+ 200              	.L6:
+  62:../FreeModbus/STM32/port/portother.c **** 	}
+  63:../FreeModbus/STM32/port/portother.c **** }
+ 201              		.loc 1 63 0
+ 202 003a 80BD     		pop	{r7, pc}
+ 203              		.cfi_endproc
+ 204              	.LFE32:
+ 206              		.section	.text.vMBPortClose,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	vMBPortClose
+ 209              		.thumb
+ 210              		.thumb_func
+ 212              	vMBPortClose:
+ 213              	.LFB33:
+  64:../FreeModbus/STM32/port/portother.c **** 
+  65:../FreeModbus/STM32/port/portother.c **** /* ----------------------- Close Ports -----------------------------*/
+  66:../FreeModbus/STM32/port/portother.c **** void
+  67:../FreeModbus/STM32/port/portother.c **** vMBPortClose( void )
+  68:../FreeModbus/STM32/port/portother.c **** {
+ 214              		.loc 1 68 0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 1, uses_anonymous_args = 0
+ 218 0000 80B5     		push	{r7, lr}
+ 219              	.LCFI10:
+ 220              		.cfi_def_cfa_offset 8
+ 221              		.cfi_offset 7, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 00AF     		add	r7, sp, #0
+ 224              	.LCFI11:
+ 225              		.cfi_def_cfa_register 7
+  69:../FreeModbus/STM32/port/portother.c ****     extern void vMBPortSerialClose( void );
+  70:../FreeModbus/STM32/port/portother.c ****     extern void vMBPortTimersDisable( void );
+  71:../FreeModbus/STM32/port/portother.c ****     vMBPortSerialClose(  );
+ 226              		.loc 1 71 0
+ 227 0004 FFF7FEFF 		bl	vMBPortSerialClose
+  72:../FreeModbus/STM32/port/portother.c ****     vMBPortTimersDisable(  );
+ 228              		.loc 1 72 0
+ 229 0008 FFF7FEFF 		bl	vMBPortTimersDisable
+  73:../FreeModbus/STM32/port/portother.c **** }
+ 230              		.loc 1 73 0
+ 231 000c 80BD     		pop	{r7, pc}
+ 232              		.cfi_endproc
+ 233              	.LFE33:
+ 235 000e 00BF     		.text
+ 236              	.Letext0:
+ 237              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 238              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
+ 239              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 portother.c
+     /tmp/ccPpw2dx.s:21     .bss.xOriginalState:00000000 xOriginalState
+     /tmp/ccPpw2dx.s:22     .bss.xOriginalState:00000000 $d
+     /tmp/ccPpw2dx.s:24     .bss.ulNesting:00000000 $d
+     /tmp/ccPpw2dx.s:27     .bss.ulNesting:00000000 ulNesting
+     /tmp/ccPpw2dx.s:30     .text.getprimask:00000000 $t
+     /tmp/ccPpw2dx.s:34     .text.getprimask:00000000 getprimask
+     /tmp/ccPpw2dx.s:73     .text.setprimask:00000000 $t
+     /tmp/ccPpw2dx.s:77     .text.setprimask:00000000 setprimask
+     /tmp/ccPpw2dx.s:111    .text.vMBPortEnterCritical:00000000 $t
+     /tmp/ccPpw2dx.s:116    .text.vMBPortEnterCritical:00000000 vMBPortEnterCritical
+     /tmp/ccPpw2dx.s:161    .text.vMBPortExitCritical:00000000 $t
+     /tmp/ccPpw2dx.s:166    .text.vMBPortExitCritical:00000000 vMBPortExitCritical
+     /tmp/ccPpw2dx.s:207    .text.vMBPortClose:00000000 $t
+     /tmp/ccPpw2dx.s:212    .text.vMBPortClose:00000000 vMBPortClose
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
+                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+                           .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
+
+UNDEFINED SYMBOLS
+vMBPortSerialClose
+vMBPortTimersDisable

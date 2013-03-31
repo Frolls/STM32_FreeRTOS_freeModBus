@@ -1,0 +1,266 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CRC.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Crc8Dallas,"ax",%progbits
+  19              		.align	2
+  20              		.global	Crc8Dallas
+  21              		.thumb
+  22              		.thumb_func
+  24              	Crc8Dallas:
+  25              	.LFB0:
+  26              		.file 1 "../Work/Sources/CRC.c"
+   1:../Work/Sources/CRC.c **** /*
+   2:../Work/Sources/CRC.c ****  * CRC.c
+   3:../Work/Sources/CRC.c ****  *
+   4:../Work/Sources/CRC.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/CRC.c ****  *      Author: frolls
+   6:../Work/Sources/CRC.c ****  */
+   7:../Work/Sources/CRC.c **** #include "CRC.h"
+   8:../Work/Sources/CRC.c **** 
+   9:../Work/Sources/CRC.c **** unsigned char Crc8Dallas(unsigned char len, unsigned char *pData)
+  10:../Work/Sources/CRC.c **** {
+  27              		.loc 1 10 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 0346     		mov	r3, r0
+  43 0008 3960     		str	r1, [r7, #0]
+  44 000a FB71     		strb	r3, [r7, #7]
+  11:../Work/Sources/CRC.c ****  	unsigned char crc = 0;
+  45              		.loc 1 11 0
+  46 000c 4FF00003 		mov	r3, #0
+  47 0010 FB73     		strb	r3, [r7, #15]
+  12:../Work/Sources/CRC.c ****  	unsigned char i;
+  13:../Work/Sources/CRC.c **** 
+  14:../Work/Sources/CRC.c ****  	while (len--)
+  48              		.loc 1 14 0
+  49 0012 27E0     		b	.L2
+  50              	.L7:
+  15:../Work/Sources/CRC.c ****  	{
+  16:../Work/Sources/CRC.c ****  		crc ^= *pData++;
+  51              		.loc 1 16 0
+  52 0014 3B68     		ldr	r3, [r7, #0]
+  53 0016 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+  54 0018 FB7B     		ldrb	r3, [r7, #15]
+  55 001a 5340     		eors	r3, r3, r2
+  56 001c FB73     		strb	r3, [r7, #15]
+  57 001e 3B68     		ldr	r3, [r7, #0]
+  58 0020 03F10103 		add	r3, r3, #1
+  59 0024 3B60     		str	r3, [r7, #0]
+  17:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+  60              		.loc 1 17 0
+  61 0026 4FF00003 		mov	r3, #0
+  62 002a BB73     		strb	r3, [r7, #14]
+  63 002c 17E0     		b	.L3
+  64              	.L6:
+  18:../Work/Sources/CRC.c ****  		crc = crc & 0x01 ? (crc >> 1) ^ 0x8C : crc >> 1;
+  65              		.loc 1 18 0
+  66 002e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  67 0030 03F00103 		and	r3, r3, #1
+  68 0034 002B     		cmp	r3, #0
+  69 0036 09D0     		beq	.L4
+  70              		.loc 1 18 0 is_stmt 0 discriminator 1
+  71 0038 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  72 003a 4FEA5303 		lsr	r3, r3, #1
+  73 003e DBB2     		uxtb	r3, r3
+  74 0040 83F07303 		eor	r3, r3, #115
+  75 0044 6FEA0303 		mvn	r3, r3
+  76 0048 DBB2     		uxtb	r3, r3
+  77 004a 03E0     		b	.L5
+  78              	.L4:
+  79              		.loc 1 18 0 discriminator 2
+  80 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  81 004e 4FEA5303 		lsr	r3, r3, #1
+  82 0052 DBB2     		uxtb	r3, r3
+  83              	.L5:
+  84              		.loc 1 18 0 discriminator 3
+  85 0054 FB73     		strb	r3, [r7, #15]
+  17:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+  86              		.loc 1 17 0 is_stmt 1 discriminator 3
+  87 0056 BB7B     		ldrb	r3, [r7, #14]
+  88 0058 03F10103 		add	r3, r3, #1
+  89 005c BB73     		strb	r3, [r7, #14]
+  90              	.L3:
+  17:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+  91              		.loc 1 17 0 is_stmt 0 discriminator 1
+  92 005e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+  93 0060 072B     		cmp	r3, #7
+  94 0062 E4D9     		bls	.L6
+  95              	.L2:
+  14:../Work/Sources/CRC.c ****  	while (len--)
+  96              		.loc 1 14 0 is_stmt 1 discriminator 1
+  97 0064 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  98 0066 002B     		cmp	r3, #0
+  99 0068 0CBF     		ite	eq
+ 100 006a 0023     		moveq	r3, #0
+ 101 006c 0123     		movne	r3, #1
+ 102 006e DBB2     		uxtb	r3, r3
+ 103 0070 FA79     		ldrb	r2, [r7, #7]
+ 104 0072 02F1FF32 		add	r2, r2, #-1
+ 105 0076 FA71     		strb	r2, [r7, #7]
+ 106 0078 002B     		cmp	r3, #0
+ 107 007a CBD1     		bne	.L7
+  19:../Work/Sources/CRC.c ****  	}
+  20:../Work/Sources/CRC.c **** 	return crc;
+ 108              		.loc 1 20 0
+ 109 007c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  21:../Work/Sources/CRC.c ****  }
+ 110              		.loc 1 21 0
+ 111 007e 1846     		mov	r0, r3
+ 112 0080 07F11407 		add	r7, r7, #20
+ 113 0084 BD46     		mov	sp, r7
+ 114 0086 80BC     		pop	{r7}
+ 115 0088 7047     		bx	lr
+ 116              		.cfi_endproc
+ 117              	.LFE0:
+ 119 008a 00BF     		.section	.text.Crc8,"ax",%progbits
+ 120              		.align	2
+ 121              		.global	Crc8
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	Crc8:
+ 126              	.LFB1:
+  22:../Work/Sources/CRC.c **** 
+  23:../Work/Sources/CRC.c **** unsigned char Crc8(unsigned int len, unsigned char *pcBlock)
+  24:../Work/Sources/CRC.c **** {
+ 127              		.loc 1 24 0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 16
+ 130              		@ frame_needed = 1, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132 0000 80B4     		push	{r7}
+ 133              	.LCFI3:
+ 134              		.cfi_def_cfa_offset 4
+ 135              		.cfi_offset 7, -4
+ 136 0002 85B0     		sub	sp, sp, #20
+ 137              	.LCFI4:
+ 138              		.cfi_def_cfa_offset 24
+ 139 0004 00AF     		add	r7, sp, #0
+ 140              	.LCFI5:
+ 141              		.cfi_def_cfa_register 7
+ 142 0006 7860     		str	r0, [r7, #4]
+ 143 0008 3960     		str	r1, [r7, #0]
+  25:../Work/Sources/CRC.c **** 	unsigned char crc = 0xFF;
+ 144              		.loc 1 25 0
+ 145 000a 4FF0FF03 		mov	r3, #255
+ 146 000e FB73     		strb	r3, [r7, #15]
+  26:../Work/Sources/CRC.c ****  	unsigned int i;
+  27:../Work/Sources/CRC.c **** 
+  28:../Work/Sources/CRC.c ****  	while (len--)
+ 147              		.loc 1 28 0
+ 148 0010 25E0     		b	.L10
+ 149              	.L15:
+  29:../Work/Sources/CRC.c ****  	{
+  30:../Work/Sources/CRC.c ****  		crc ^= *pcBlock++;
+ 150              		.loc 1 30 0
+ 151 0012 3B68     		ldr	r3, [r7, #0]
+ 152 0014 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 153 0016 FB7B     		ldrb	r3, [r7, #15]
+ 154 0018 5340     		eors	r3, r3, r2
+ 155 001a FB73     		strb	r3, [r7, #15]
+ 156 001c 3B68     		ldr	r3, [r7, #0]
+ 157 001e 03F10103 		add	r3, r3, #1
+ 158 0022 3B60     		str	r3, [r7, #0]
+  31:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+ 159              		.loc 1 31 0
+ 160 0024 4FF00003 		mov	r3, #0
+ 161 0028 BB60     		str	r3, [r7, #8]
+ 162 002a 15E0     		b	.L11
+ 163              	.L14:
+  32:../Work/Sources/CRC.c ****  		crc = crc & 0x80 ? (crc << 1) ^ 0x31 : crc << 1;
+ 164              		.loc 1 32 0
+ 165 002c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 166 002e 5BB2     		sxtb	r3, r3
+ 167 0030 002B     		cmp	r3, #0
+ 168 0032 08DA     		bge	.L12
+ 169              		.loc 1 32 0 is_stmt 0 discriminator 1
+ 170 0034 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 171 0036 4FEA4303 		lsl	r3, r3, #1
+ 172 003a DBB2     		uxtb	r3, r3
+ 173 003c 83F03103 		eor	r3, r3, #49
+ 174 0040 DBB2     		uxtb	r3, r3
+ 175 0042 DBB2     		uxtb	r3, r3
+ 176 0044 03E0     		b	.L13
+ 177              	.L12:
+ 178              		.loc 1 32 0 discriminator 2
+ 179 0046 FB7B     		ldrb	r3, [r7, #15]
+ 180 0048 4FEA4303 		lsl	r3, r3, #1
+ 181 004c DBB2     		uxtb	r3, r3
+ 182              	.L13:
+ 183              		.loc 1 32 0 discriminator 3
+ 184 004e FB73     		strb	r3, [r7, #15]
+  31:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+ 185              		.loc 1 31 0 is_stmt 1 discriminator 3
+ 186 0050 BB68     		ldr	r3, [r7, #8]
+ 187 0052 03F10103 		add	r3, r3, #1
+ 188 0056 BB60     		str	r3, [r7, #8]
+ 189              	.L11:
+  31:../Work/Sources/CRC.c **** 		for (i = 0; i < 8; i++)
+ 190              		.loc 1 31 0 is_stmt 0 discriminator 1
+ 191 0058 BB68     		ldr	r3, [r7, #8]
+ 192 005a 072B     		cmp	r3, #7
+ 193 005c E6D9     		bls	.L14
+ 194              	.L10:
+  28:../Work/Sources/CRC.c ****  	while (len--)
+ 195              		.loc 1 28 0 is_stmt 1 discriminator 1
+ 196 005e 7B68     		ldr	r3, [r7, #4]
+ 197 0060 002B     		cmp	r3, #0
+ 198 0062 0CBF     		ite	eq
+ 199 0064 0023     		moveq	r3, #0
+ 200 0066 0123     		movne	r3, #1
+ 201 0068 DBB2     		uxtb	r3, r3
+ 202 006a 7A68     		ldr	r2, [r7, #4]
+ 203 006c 02F1FF32 		add	r2, r2, #-1
+ 204 0070 7A60     		str	r2, [r7, #4]
+ 205 0072 002B     		cmp	r3, #0
+ 206 0074 CDD1     		bne	.L15
+  33:../Work/Sources/CRC.c ****  	}
+  34:../Work/Sources/CRC.c ****  	return crc;
+ 207              		.loc 1 34 0
+ 208 0076 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  35:../Work/Sources/CRC.c **** }
+ 209              		.loc 1 35 0
+ 210 0078 1846     		mov	r0, r3
+ 211 007a 07F11407 		add	r7, r7, #20
+ 212 007e BD46     		mov	sp, r7
+ 213 0080 80BC     		pop	{r7}
+ 214 0082 7047     		bx	lr
+ 215              		.cfi_endproc
+ 216              	.LFE1:
+ 218              		.text
+ 219              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 CRC.c
+     /tmp/ccryQPXe.s:19     .text.Crc8Dallas:00000000 $t
+     /tmp/ccryQPXe.s:24     .text.Crc8Dallas:00000000 Crc8Dallas
+     /tmp/ccryQPXe.s:120    .text.Crc8:00000000 $t
+     /tmp/ccryQPXe.s:125    .text.Crc8:00000000 Crc8
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,510 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"mbutils.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 2E2E2F46 		.ascii	"../FreeModbus/functions/mbutils.c\000"
+  21      7265654D 
+  21      6F646275 
+  21      732F6675 
+  21      6E637469 
+  22 0022 0000     		.align	2
+  23              	.LC1:
+  24 0024 75634E42 		.ascii	"ucNBits <= 8\000"
+  24      69747320 
+  24      3C3D2038 
+  24      00
+  25 0031 000000   		.section	.text.xMBUtilSetBits,"ax",%progbits
+  26              		.align	2
+  27              		.global	xMBUtilSetBits
+  28              		.thumb
+  29              		.thumb_func
+  31              	xMBUtilSetBits:
+  32              	.LFB29:
+  33              		.file 1 "../FreeModbus/functions/mbutils.c"
+   1:../FreeModbus/functions/mbutils.c **** /* 
+   2:../FreeModbus/functions/mbutils.c ****  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
+   3:../FreeModbus/functions/mbutils.c ****  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
+   4:../FreeModbus/functions/mbutils.c ****  * All rights reserved.
+   5:../FreeModbus/functions/mbutils.c ****  *
+   6:../FreeModbus/functions/mbutils.c ****  * Redistribution and use in source and binary forms, with or without
+   7:../FreeModbus/functions/mbutils.c ****  * modification, are permitted provided that the following conditions
+   8:../FreeModbus/functions/mbutils.c ****  * are met:
+   9:../FreeModbus/functions/mbutils.c ****  * 1. Redistributions of source code must retain the above copyright
+  10:../FreeModbus/functions/mbutils.c ****  *    notice, this list of conditions and the following disclaimer.
+  11:../FreeModbus/functions/mbutils.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  12:../FreeModbus/functions/mbutils.c ****  *    notice, this list of conditions and the following disclaimer in the
+  13:../FreeModbus/functions/mbutils.c ****  *    documentation and/or other materials provided with the distribution.
+  14:../FreeModbus/functions/mbutils.c ****  * 3. The name of the author may not be used to endorse or promote products
+  15:../FreeModbus/functions/mbutils.c ****  *    derived from this software without specific prior written permission.
+  16:../FreeModbus/functions/mbutils.c ****  *
+  17:../FreeModbus/functions/mbutils.c ****  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+  18:../FreeModbus/functions/mbutils.c ****  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+  19:../FreeModbus/functions/mbutils.c ****  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  20:../FreeModbus/functions/mbutils.c ****  * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+  21:../FreeModbus/functions/mbutils.c ****  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  22:../FreeModbus/functions/mbutils.c ****  * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  23:../FreeModbus/functions/mbutils.c ****  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  24:../FreeModbus/functions/mbutils.c ****  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  25:../FreeModbus/functions/mbutils.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  26:../FreeModbus/functions/mbutils.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  27:../FreeModbus/functions/mbutils.c ****  *
+  28:../FreeModbus/functions/mbutils.c ****  * File: $Id: mbutils.c,v 1.6 2007/02/18 23:49:07 wolti Exp $
+  29:../FreeModbus/functions/mbutils.c ****  */
+  30:../FreeModbus/functions/mbutils.c **** 
+  31:../FreeModbus/functions/mbutils.c **** /* ----------------------- System includes ----------------------------------*/
+  32:../FreeModbus/functions/mbutils.c **** #include "stdlib.h"
+  33:../FreeModbus/functions/mbutils.c **** #include "string.h"
+  34:../FreeModbus/functions/mbutils.c **** 
+  35:../FreeModbus/functions/mbutils.c **** /* ----------------------- Platform includes --------------------------------*/
+  36:../FreeModbus/functions/mbutils.c **** #include "port.h"
+  37:../FreeModbus/functions/mbutils.c **** 
+  38:../FreeModbus/functions/mbutils.c **** /* ----------------------- Modbus includes ----------------------------------*/
+  39:../FreeModbus/functions/mbutils.c **** #include "mb.h"
+  40:../FreeModbus/functions/mbutils.c **** #include "mbproto.h"
+  41:../FreeModbus/functions/mbutils.c **** 
+  42:../FreeModbus/functions/mbutils.c **** /* ----------------------- Defines ------------------------------------------*/
+  43:../FreeModbus/functions/mbutils.c **** #define BITS_UCHAR      8U
+  44:../FreeModbus/functions/mbutils.c **** 
+  45:../FreeModbus/functions/mbutils.c **** /* ----------------------- Start implementation -----------------------------*/
+  46:../FreeModbus/functions/mbutils.c **** void
+  47:../FreeModbus/functions/mbutils.c **** xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits,
+  48:../FreeModbus/functions/mbutils.c ****                 UCHAR ucValue )
+  49:../FreeModbus/functions/mbutils.c **** {
+  34              		.loc 1 49 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 24
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 86B0     		sub	sp, sp, #24
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 32
+  46 0004 00AF     		add	r7, sp, #0
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 7
+  49 0006 7860     		str	r0, [r7, #4]
+  50 0008 7980     		strh	r1, [r7, #2]	@ movhi
+  51 000a 7A70     		strb	r2, [r7, #1]
+  52 000c 3B70     		strb	r3, [r7, #0]
+  50:../FreeModbus/functions/mbutils.c ****     USHORT          usWordBuf;
+  51:../FreeModbus/functions/mbutils.c ****     USHORT          usMask;
+  52:../FreeModbus/functions/mbutils.c ****     USHORT          usByteOffset;
+  53:../FreeModbus/functions/mbutils.c ****     USHORT          usNPreBits;
+  54:../FreeModbus/functions/mbutils.c ****     USHORT          usValue = ucValue;
+  53              		.loc 1 54 0
+  54 000e 3B78     		ldrb	r3, [r7, #0]	@ zero_extendqisi2
+  55 0010 FB82     		strh	r3, [r7, #22]	@ movhi
+  55:../FreeModbus/functions/mbutils.c **** 
+  56:../FreeModbus/functions/mbutils.c ****     assert( ucNBits <= 8 );
+  56              		.loc 1 56 0
+  57 0012 7B78     		ldrb	r3, [r7, #1]	@ zero_extendqisi2
+  58 0014 082B     		cmp	r3, #8
+  59 0016 0FD9     		bls	.L2
+  60              		.loc 1 56 0 is_stmt 0 discriminator 1
+  61 0018 40F20000 		movw	r0, #:lower16:.LC0
+  62 001c C0F20000 		movt	r0, #:upper16:.LC0
+  63 0020 4FF03801 		mov	r1, #56
+  64 0024 40F20002 		movw	r2, #:lower16:__FUNCTION__.6294
+  65 0028 C0F20002 		movt	r2, #:upper16:__FUNCTION__.6294
+  66 002c 40F20003 		movw	r3, #:lower16:.LC1
+  67 0030 C0F20003 		movt	r3, #:upper16:.LC1
+  68 0034 FFF7FEFF 		bl	__assert_func
+  69              	.L2:
+  57:../FreeModbus/functions/mbutils.c ****     assert( ( size_t )BITS_UCHAR == sizeof( UCHAR ) * 8 );
+  58:../FreeModbus/functions/mbutils.c **** 
+  59:../FreeModbus/functions/mbutils.c ****     /* Calculate byte offset for first byte containing the bit values starting
+  60:../FreeModbus/functions/mbutils.c ****      * at usBitOffset. */
+  61:../FreeModbus/functions/mbutils.c ****     usByteOffset = ( USHORT )( ( usBitOffset ) / BITS_UCHAR );
+  70              		.loc 1 61 0 is_stmt 1
+  71 0038 7B88     		ldrh	r3, [r7, #2]
+  72 003a 4FEAD303 		lsr	r3, r3, #3
+  73 003e BB82     		strh	r3, [r7, #20]	@ movhi
+  62:../FreeModbus/functions/mbutils.c **** 
+  63:../FreeModbus/functions/mbutils.c ****     /* How many bits precede our bits to set. */
+  64:../FreeModbus/functions/mbutils.c ****     usNPreBits = ( USHORT )( usBitOffset - usByteOffset * BITS_UCHAR );
+  74              		.loc 1 64 0
+  75 0040 BB8A     		ldrh	r3, [r7, #20]	@ movhi
+  76 0042 4FEAC303 		lsl	r3, r3, #3
+  77 0046 9BB2     		uxth	r3, r3
+  78 0048 7A88     		ldrh	r2, [r7, #2]	@ movhi
+  79 004a D31A     		subs	r3, r2, r3
+  80 004c 7B82     		strh	r3, [r7, #18]	@ movhi
+  65:../FreeModbus/functions/mbutils.c **** 
+  66:../FreeModbus/functions/mbutils.c ****     /* Move bit field into position over bits to set */
+  67:../FreeModbus/functions/mbutils.c ****     usValue <<= usNPreBits;
+  81              		.loc 1 67 0
+  82 004e FA8A     		ldrh	r2, [r7, #22]
+  83 0050 7B8A     		ldrh	r3, [r7, #18]
+  84 0052 02FA03F3 		lsl	r3, r2, r3
+  85 0056 FB82     		strh	r3, [r7, #22]	@ movhi
+  68:../FreeModbus/functions/mbutils.c **** 
+  69:../FreeModbus/functions/mbutils.c ****     /* Prepare a mask for setting the new bits. */
+  70:../FreeModbus/functions/mbutils.c ****     usMask = ( USHORT )( ( 1 << ( USHORT ) ucNBits ) - 1 );
+  86              		.loc 1 70 0
+  87 0058 7B78     		ldrb	r3, [r7, #1]	@ zero_extendqisi2
+  88 005a 4FF00102 		mov	r2, #1
+  89 005e 02FA03F3 		lsl	r3, r2, r3
+  90 0062 9BB2     		uxth	r3, r3
+  91 0064 03F1FF33 		add	r3, r3, #-1
+  92 0068 3B82     		strh	r3, [r7, #16]	@ movhi
+  71:../FreeModbus/functions/mbutils.c ****     usMask <<= usBitOffset - usByteOffset * BITS_UCHAR;
+  93              		.loc 1 71 0
+  94 006a 3A8A     		ldrh	r2, [r7, #16]
+  95 006c 7988     		ldrh	r1, [r7, #2]
+  96 006e BB8A     		ldrh	r3, [r7, #20]
+  97 0070 4FEAC303 		lsl	r3, r3, #3
+  98 0074 CB1A     		subs	r3, r1, r3
+  99 0076 02FA03F3 		lsl	r3, r2, r3
+ 100 007a 3B82     		strh	r3, [r7, #16]	@ movhi
+  72:../FreeModbus/functions/mbutils.c **** 
+  73:../FreeModbus/functions/mbutils.c ****     /* copy bits into temporary storage. */
+  74:../FreeModbus/functions/mbutils.c ****     usWordBuf = ucByteBuf[usByteOffset];
+ 101              		.loc 1 74 0
+ 102 007c BB8A     		ldrh	r3, [r7, #20]
+ 103 007e 7A68     		ldr	r2, [r7, #4]
+ 104 0080 D318     		adds	r3, r2, r3
+ 105 0082 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 106 0084 FB81     		strh	r3, [r7, #14]	@ movhi
+  75:../FreeModbus/functions/mbutils.c ****     usWordBuf |= ucByteBuf[usByteOffset + 1] << BITS_UCHAR;
+ 107              		.loc 1 75 0
+ 108 0086 BB8A     		ldrh	r3, [r7, #20]
+ 109 0088 03F10103 		add	r3, r3, #1
+ 110 008c 7A68     		ldr	r2, [r7, #4]
+ 111 008e D318     		adds	r3, r2, r3
+ 112 0090 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 113 0092 4FEA0323 		lsl	r3, r3, #8
+ 114 0096 9AB2     		uxth	r2, r3
+ 115 0098 FB89     		ldrh	r3, [r7, #14]
+ 116 009a 1343     		orrs	r3, r3, r2
+ 117 009c 9BB2     		uxth	r3, r3
+ 118 009e FB81     		strh	r3, [r7, #14]	@ movhi
+  76:../FreeModbus/functions/mbutils.c **** 
+  77:../FreeModbus/functions/mbutils.c ****     /* Zero out bit field bits and then or value bits into them. */
+  78:../FreeModbus/functions/mbutils.c ****     usWordBuf = ( USHORT )( ( usWordBuf & ( ~usMask ) ) | usValue );
+ 119              		.loc 1 78 0
+ 120 00a0 3B8A     		ldrh	r3, [r7, #16]
+ 121 00a2 6FEA0303 		mvn	r3, r3
+ 122 00a6 9AB2     		uxth	r2, r3
+ 123 00a8 FB89     		ldrh	r3, [r7, #14]
+ 124 00aa 1340     		ands	r3, r3, r2
+ 125 00ac 9AB2     		uxth	r2, r3
+ 126 00ae FB8A     		ldrh	r3, [r7, #22]
+ 127 00b0 1343     		orrs	r3, r3, r2
+ 128 00b2 9BB2     		uxth	r3, r3
+ 129 00b4 FB81     		strh	r3, [r7, #14]	@ movhi
+  79:../FreeModbus/functions/mbutils.c **** 
+  80:../FreeModbus/functions/mbutils.c ****     /* move bits back into storage */
+  81:../FreeModbus/functions/mbutils.c ****     ucByteBuf[usByteOffset] = ( UCHAR )( usWordBuf & 0xFF );
+ 130              		.loc 1 81 0
+ 131 00b6 BB8A     		ldrh	r3, [r7, #20]
+ 132 00b8 7A68     		ldr	r2, [r7, #4]
+ 133 00ba D318     		adds	r3, r2, r3
+ 134 00bc FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 135 00be D2B2     		uxtb	r2, r2
+ 136 00c0 1A70     		strb	r2, [r3, #0]
+  82:../FreeModbus/functions/mbutils.c ****     ucByteBuf[usByteOffset + 1] = ( UCHAR )( usWordBuf >> BITS_UCHAR );
+ 137              		.loc 1 82 0
+ 138 00c2 BB8A     		ldrh	r3, [r7, #20]
+ 139 00c4 03F10103 		add	r3, r3, #1
+ 140 00c8 7A68     		ldr	r2, [r7, #4]
+ 141 00ca D318     		adds	r3, r2, r3
+ 142 00cc FA89     		ldrh	r2, [r7, #14]
+ 143 00ce 4FEA1222 		lsr	r2, r2, #8
+ 144 00d2 92B2     		uxth	r2, r2
+ 145 00d4 D2B2     		uxtb	r2, r2
+ 146 00d6 1A70     		strb	r2, [r3, #0]
+  83:../FreeModbus/functions/mbutils.c **** }
+ 147              		.loc 1 83 0
+ 148 00d8 07F11807 		add	r7, r7, #24
+ 149 00dc BD46     		mov	sp, r7
+ 150 00de 80BD     		pop	{r7, pc}
+ 151              		.cfi_endproc
+ 152              	.LFE29:
+ 154              		.section	.text.xMBUtilGetBits,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	xMBUtilGetBits
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	xMBUtilGetBits:
+ 161              	.LFB30:
+  84:../FreeModbus/functions/mbutils.c **** 
+  85:../FreeModbus/functions/mbutils.c **** UCHAR
+  86:../FreeModbus/functions/mbutils.c **** xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits )
+  87:../FreeModbus/functions/mbutils.c **** {
+ 162              		.loc 1 87 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 16
+ 165              		@ frame_needed = 1, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167 0000 80B4     		push	{r7}
+ 168              	.LCFI3:
+ 169              		.cfi_def_cfa_offset 4
+ 170              		.cfi_offset 7, -4
+ 171 0002 85B0     		sub	sp, sp, #20
+ 172              	.LCFI4:
+ 173              		.cfi_def_cfa_offset 24
+ 174 0004 00AF     		add	r7, sp, #0
+ 175              	.LCFI5:
+ 176              		.cfi_def_cfa_register 7
+ 177 0006 7860     		str	r0, [r7, #4]
+ 178 0008 1346     		mov	r3, r2
+ 179 000a 0A46     		mov	r2, r1	@ movhi
+ 180 000c 7A80     		strh	r2, [r7, #2]	@ movhi
+ 181 000e 7B70     		strb	r3, [r7, #1]
+  88:../FreeModbus/functions/mbutils.c ****     USHORT          usWordBuf;
+  89:../FreeModbus/functions/mbutils.c ****     USHORT          usMask;
+  90:../FreeModbus/functions/mbutils.c ****     USHORT          usByteOffset;
+  91:../FreeModbus/functions/mbutils.c ****     USHORT          usNPreBits;
+  92:../FreeModbus/functions/mbutils.c **** 
+  93:../FreeModbus/functions/mbutils.c ****     /* Calculate byte offset for first byte containing the bit values starting
+  94:../FreeModbus/functions/mbutils.c ****      * at usBitOffset. */
+  95:../FreeModbus/functions/mbutils.c ****     usByteOffset = ( USHORT )( ( usBitOffset ) / BITS_UCHAR );
+ 182              		.loc 1 95 0
+ 183 0010 7B88     		ldrh	r3, [r7, #2]
+ 184 0012 4FEAD303 		lsr	r3, r3, #3
+ 185 0016 FB81     		strh	r3, [r7, #14]	@ movhi
+  96:../FreeModbus/functions/mbutils.c **** 
+  97:../FreeModbus/functions/mbutils.c ****     /* How many bits precede our bits to set. */
+  98:../FreeModbus/functions/mbutils.c ****     usNPreBits = ( USHORT )( usBitOffset - usByteOffset * BITS_UCHAR );
+ 186              		.loc 1 98 0
+ 187 0018 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 188 001a 4FEAC303 		lsl	r3, r3, #3
+ 189 001e 9BB2     		uxth	r3, r3
+ 190 0020 7A88     		ldrh	r2, [r7, #2]	@ movhi
+ 191 0022 D31A     		subs	r3, r2, r3
+ 192 0024 BB81     		strh	r3, [r7, #12]	@ movhi
+  99:../FreeModbus/functions/mbutils.c **** 
+ 100:../FreeModbus/functions/mbutils.c ****     /* Prepare a mask for setting the new bits. */
+ 101:../FreeModbus/functions/mbutils.c ****     usMask = ( USHORT )( ( 1 << ( USHORT ) ucNBits ) - 1 );
+ 193              		.loc 1 101 0
+ 194 0026 7B78     		ldrb	r3, [r7, #1]	@ zero_extendqisi2
+ 195 0028 4FF00102 		mov	r2, #1
+ 196 002c 02FA03F3 		lsl	r3, r2, r3
+ 197 0030 9BB2     		uxth	r3, r3
+ 198 0032 03F1FF33 		add	r3, r3, #-1
+ 199 0036 7B81     		strh	r3, [r7, #10]	@ movhi
+ 102:../FreeModbus/functions/mbutils.c **** 
+ 103:../FreeModbus/functions/mbutils.c ****     /* copy bits into temporary storage. */
+ 104:../FreeModbus/functions/mbutils.c ****     usWordBuf = ucByteBuf[usByteOffset];
+ 200              		.loc 1 104 0
+ 201 0038 FB89     		ldrh	r3, [r7, #14]
+ 202 003a 7A68     		ldr	r2, [r7, #4]
+ 203 003c D318     		adds	r3, r2, r3
+ 204 003e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 205 0040 3B81     		strh	r3, [r7, #8]	@ movhi
+ 105:../FreeModbus/functions/mbutils.c ****     usWordBuf |= ucByteBuf[usByteOffset + 1] << BITS_UCHAR;
+ 206              		.loc 1 105 0
+ 207 0042 FB89     		ldrh	r3, [r7, #14]
+ 208 0044 03F10103 		add	r3, r3, #1
+ 209 0048 7A68     		ldr	r2, [r7, #4]
+ 210 004a D318     		adds	r3, r2, r3
+ 211 004c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 212 004e 4FEA0323 		lsl	r3, r3, #8
+ 213 0052 9AB2     		uxth	r2, r3
+ 214 0054 3B89     		ldrh	r3, [r7, #8]
+ 215 0056 1343     		orrs	r3, r3, r2
+ 216 0058 9BB2     		uxth	r3, r3
+ 217 005a 3B81     		strh	r3, [r7, #8]	@ movhi
+ 106:../FreeModbus/functions/mbutils.c **** 
+ 107:../FreeModbus/functions/mbutils.c ****     /* throw away unneeded bits. */
+ 108:../FreeModbus/functions/mbutils.c ****     usWordBuf >>= usNPreBits;
+ 218              		.loc 1 108 0
+ 219 005c 3A89     		ldrh	r2, [r7, #8]
+ 220 005e BB89     		ldrh	r3, [r7, #12]
+ 221 0060 42FA03F3 		asr	r3, r2, r3
+ 222 0064 3B81     		strh	r3, [r7, #8]	@ movhi
+ 109:../FreeModbus/functions/mbutils.c **** 
+ 110:../FreeModbus/functions/mbutils.c ****     /* mask away bits above the requested bitfield. */
+ 111:../FreeModbus/functions/mbutils.c ****     usWordBuf &= usMask;
+ 223              		.loc 1 111 0
+ 224 0066 3A89     		ldrh	r2, [r7, #8]	@ movhi
+ 225 0068 7B89     		ldrh	r3, [r7, #10]	@ movhi
+ 226 006a 1340     		ands	r3, r3, r2
+ 227 006c 3B81     		strh	r3, [r7, #8]	@ movhi
+ 112:../FreeModbus/functions/mbutils.c **** 
+ 113:../FreeModbus/functions/mbutils.c ****     return ( UCHAR ) usWordBuf;
+ 228              		.loc 1 113 0
+ 229 006e 3B89     		ldrh	r3, [r7, #8]	@ movhi
+ 230 0070 DBB2     		uxtb	r3, r3
+ 114:../FreeModbus/functions/mbutils.c **** }
+ 231              		.loc 1 114 0
+ 232 0072 1846     		mov	r0, r3
+ 233 0074 07F11407 		add	r7, r7, #20
+ 234 0078 BD46     		mov	sp, r7
+ 235 007a 80BC     		pop	{r7}
+ 236 007c 7047     		bx	lr
+ 237              		.cfi_endproc
+ 238              	.LFE30:
+ 240 007e 00BF     		.section	.text.prveMBError2Exception,"ax",%progbits
+ 241              		.align	2
+ 242              		.global	prveMBError2Exception
+ 243              		.thumb
+ 244              		.thumb_func
+ 246              	prveMBError2Exception:
+ 247              	.LFB31:
+ 115:../FreeModbus/functions/mbutils.c **** 
+ 116:../FreeModbus/functions/mbutils.c **** eMBException
+ 117:../FreeModbus/functions/mbutils.c **** prveMBError2Exception( eMBErrorCode eErrorCode )
+ 118:../FreeModbus/functions/mbutils.c **** {
+ 248              		.loc 1 118 0
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 16
+ 251              		@ frame_needed = 1, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253 0000 80B4     		push	{r7}
+ 254              	.LCFI6:
+ 255              		.cfi_def_cfa_offset 4
+ 256              		.cfi_offset 7, -4
+ 257 0002 85B0     		sub	sp, sp, #20
+ 258              	.LCFI7:
+ 259              		.cfi_def_cfa_offset 24
+ 260 0004 00AF     		add	r7, sp, #0
+ 261              	.LCFI8:
+ 262              		.cfi_def_cfa_register 7
+ 263 0006 0346     		mov	r3, r0
+ 264 0008 FB71     		strb	r3, [r7, #7]
+ 119:../FreeModbus/functions/mbutils.c ****     eMBException    eStatus;
+ 120:../FreeModbus/functions/mbutils.c **** 
+ 121:../FreeModbus/functions/mbutils.c ****     switch ( eErrorCode )
+ 265              		.loc 1 121 0
+ 266 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 267 000c 012B     		cmp	r3, #1
+ 268 000e 07D0     		beq	.L8
+ 269 0010 072B     		cmp	r3, #7
+ 270 0012 09D0     		beq	.L9
+ 271 0014 002B     		cmp	r3, #0
+ 272 0016 0BD1     		bne	.L12
+ 273              	.L7:
+ 122:../FreeModbus/functions/mbutils.c ****     {
+ 123:../FreeModbus/functions/mbutils.c ****         case MB_ENOERR:
+ 124:../FreeModbus/functions/mbutils.c ****             eStatus = MB_EX_NONE;
+ 274              		.loc 1 124 0
+ 275 0018 4FF00003 		mov	r3, #0
+ 276 001c FB73     		strb	r3, [r7, #15]
+ 125:../FreeModbus/functions/mbutils.c ****             break;
+ 277              		.loc 1 125 0
+ 278 001e 0BE0     		b	.L10
+ 279              	.L8:
+ 126:../FreeModbus/functions/mbutils.c **** 
+ 127:../FreeModbus/functions/mbutils.c ****         case MB_ENOREG:
+ 128:../FreeModbus/functions/mbutils.c ****             eStatus = MB_EX_ILLEGAL_DATA_ADDRESS;
+ 280              		.loc 1 128 0
+ 281 0020 4FF00203 		mov	r3, #2
+ 282 0024 FB73     		strb	r3, [r7, #15]
+ 129:../FreeModbus/functions/mbutils.c ****             break;
+ 283              		.loc 1 129 0
+ 284 0026 07E0     		b	.L10
+ 285              	.L9:
+ 130:../FreeModbus/functions/mbutils.c **** 
+ 131:../FreeModbus/functions/mbutils.c ****         case MB_ETIMEDOUT:
+ 132:../FreeModbus/functions/mbutils.c ****             eStatus = MB_EX_SLAVE_BUSY;
+ 286              		.loc 1 132 0
+ 287 0028 4FF00603 		mov	r3, #6
+ 288 002c FB73     		strb	r3, [r7, #15]
+ 133:../FreeModbus/functions/mbutils.c ****             break;
+ 289              		.loc 1 133 0
+ 290 002e 03E0     		b	.L10
+ 291              	.L12:
+ 134:../FreeModbus/functions/mbutils.c **** 
+ 135:../FreeModbus/functions/mbutils.c ****         default:
+ 136:../FreeModbus/functions/mbutils.c ****             eStatus = MB_EX_SLAVE_DEVICE_FAILURE;
+ 292              		.loc 1 136 0
+ 293 0030 4FF00403 		mov	r3, #4
+ 294 0034 FB73     		strb	r3, [r7, #15]
+ 137:../FreeModbus/functions/mbutils.c ****             break;
+ 295              		.loc 1 137 0
+ 296 0036 00BF     		nop
+ 297              	.L10:
+ 138:../FreeModbus/functions/mbutils.c ****     }
+ 139:../FreeModbus/functions/mbutils.c **** 
+ 140:../FreeModbus/functions/mbutils.c ****     return eStatus;
+ 298              		.loc 1 140 0
+ 299 0038 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 141:../FreeModbus/functions/mbutils.c **** }
+ 300              		.loc 1 141 0
+ 301 003a 1846     		mov	r0, r3
+ 302 003c 07F11407 		add	r7, r7, #20
+ 303 0040 BD46     		mov	sp, r7
+ 304 0042 80BC     		pop	{r7}
+ 305 0044 7047     		bx	lr
+ 306              		.cfi_endproc
+ 307              	.LFE31:
+ 309 0046 00BF     		.section	.rodata.__FUNCTION__.6294,"a",%progbits
+ 310              		.align	2
+ 313              	__FUNCTION__.6294:
+ 314 0000 784D4255 		.ascii	"xMBUtilSetBits\000"
+ 314      74696C53 
+ 314      65744269 
+ 314      747300
+ 315 000f 00       		.text
+ 316              	.Letext0:
+ 317              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
+ 318              		.file 3 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 319              		.file 4 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
+ 320              		.file 5 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mbproto.h"
+ 321              		.file 6 "/home/frolls/ARM/stm32vld_template/FreeModbus/include/mb.h"
+ 322              		.file 7 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mbutils.c
+     /tmp/ccH6YFZd.s:19     .rodata:00000000 $d
+     /tmp/ccH6YFZd.s:20     .rodata:00000000 .LC0
+     /tmp/ccH6YFZd.s:23     .rodata:00000024 .LC1
+     /tmp/ccH6YFZd.s:26     .text.xMBUtilSetBits:00000000 $t
+     /tmp/ccH6YFZd.s:31     .text.xMBUtilSetBits:00000000 xMBUtilSetBits
+     /tmp/ccH6YFZd.s:313    .rodata.__FUNCTION__.6294:00000000 __FUNCTION__.6294
+     /tmp/ccH6YFZd.s:155    .text.xMBUtilGetBits:00000000 $t
+     /tmp/ccH6YFZd.s:160    .text.xMBUtilGetBits:00000000 xMBUtilGetBits
+     /tmp/ccH6YFZd.s:241    .text.prveMBError2Exception:00000000 $t
+     /tmp/ccH6YFZd.s:246    .text.prveMBError2Exception:00000000 prveMBError2Exception
+     /tmp/ccH6YFZd.s:310    .rodata.__FUNCTION__.6294:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
+                           .group:00000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
+                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
+                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
+                           .group:00000000 wm4.string.h.8.ef946ad0bc9ad5c970c365dcd1fc4b0a
+                           .group:00000000 wm4.stddef.h.235.d9f4f80b8c4429535175712282cda6a6
+                           .group:00000000 wm4.string.h.86.d5c872ff52e2712c985b588a0ef39f3c
+                           .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
+                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+                           .group:00000000 wm4.mbproto.h.32.da85c2bdd9bdb84e975a92c999a4b490
+
+UNDEFINED SYMBOLS
+__assert_func

@@ -1,0 +1,757 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"mbcrc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata.aucCRCHi,"a",%progbits
+  19              		.align	2
+  22              	aucCRCHi:
+  23 0000 00       		.byte	0
+  24 0001 C1       		.byte	-63
+  25 0002 81       		.byte	-127
+  26 0003 40       		.byte	64
+  27 0004 01       		.byte	1
+  28 0005 C0       		.byte	-64
+  29 0006 80       		.byte	-128
+  30 0007 41       		.byte	65
+  31 0008 01       		.byte	1
+  32 0009 C0       		.byte	-64
+  33 000a 80       		.byte	-128
+  34 000b 41       		.byte	65
+  35 000c 00       		.byte	0
+  36 000d C1       		.byte	-63
+  37 000e 81       		.byte	-127
+  38 000f 40       		.byte	64
+  39 0010 01       		.byte	1
+  40 0011 C0       		.byte	-64
+  41 0012 80       		.byte	-128
+  42 0013 41       		.byte	65
+  43 0014 00       		.byte	0
+  44 0015 C1       		.byte	-63
+  45 0016 81       		.byte	-127
+  46 0017 40       		.byte	64
+  47 0018 00       		.byte	0
+  48 0019 C1       		.byte	-63
+  49 001a 81       		.byte	-127
+  50 001b 40       		.byte	64
+  51 001c 01       		.byte	1
+  52 001d C0       		.byte	-64
+  53 001e 80       		.byte	-128
+  54 001f 41       		.byte	65
+  55 0020 01       		.byte	1
+  56 0021 C0       		.byte	-64
+  57 0022 80       		.byte	-128
+  58 0023 41       		.byte	65
+  59 0024 00       		.byte	0
+  60 0025 C1       		.byte	-63
+  61 0026 81       		.byte	-127
+  62 0027 40       		.byte	64
+  63 0028 00       		.byte	0
+  64 0029 C1       		.byte	-63
+  65 002a 81       		.byte	-127
+  66 002b 40       		.byte	64
+  67 002c 01       		.byte	1
+  68 002d C0       		.byte	-64
+  69 002e 80       		.byte	-128
+  70 002f 41       		.byte	65
+  71 0030 00       		.byte	0
+  72 0031 C1       		.byte	-63
+  73 0032 81       		.byte	-127
+  74 0033 40       		.byte	64
+  75 0034 01       		.byte	1
+  76 0035 C0       		.byte	-64
+  77 0036 80       		.byte	-128
+  78 0037 41       		.byte	65
+  79 0038 01       		.byte	1
+  80 0039 C0       		.byte	-64
+  81 003a 80       		.byte	-128
+  82 003b 41       		.byte	65
+  83 003c 00       		.byte	0
+  84 003d C1       		.byte	-63
+  85 003e 81       		.byte	-127
+  86 003f 40       		.byte	64
+  87 0040 01       		.byte	1
+  88 0041 C0       		.byte	-64
+  89 0042 80       		.byte	-128
+  90 0043 41       		.byte	65
+  91 0044 00       		.byte	0
+  92 0045 C1       		.byte	-63
+  93 0046 81       		.byte	-127
+  94 0047 40       		.byte	64
+  95 0048 00       		.byte	0
+  96 0049 C1       		.byte	-63
+  97 004a 81       		.byte	-127
+  98 004b 40       		.byte	64
+  99 004c 01       		.byte	1
+ 100 004d C0       		.byte	-64
+ 101 004e 80       		.byte	-128
+ 102 004f 41       		.byte	65
+ 103 0050 00       		.byte	0
+ 104 0051 C1       		.byte	-63
+ 105 0052 81       		.byte	-127
+ 106 0053 40       		.byte	64
+ 107 0054 01       		.byte	1
+ 108 0055 C0       		.byte	-64
+ 109 0056 80       		.byte	-128
+ 110 0057 41       		.byte	65
+ 111 0058 01       		.byte	1
+ 112 0059 C0       		.byte	-64
+ 113 005a 80       		.byte	-128
+ 114 005b 41       		.byte	65
+ 115 005c 00       		.byte	0
+ 116 005d C1       		.byte	-63
+ 117 005e 81       		.byte	-127
+ 118 005f 40       		.byte	64
+ 119 0060 00       		.byte	0
+ 120 0061 C1       		.byte	-63
+ 121 0062 81       		.byte	-127
+ 122 0063 40       		.byte	64
+ 123 0064 01       		.byte	1
+ 124 0065 C0       		.byte	-64
+ 125 0066 80       		.byte	-128
+ 126 0067 41       		.byte	65
+ 127 0068 01       		.byte	1
+ 128 0069 C0       		.byte	-64
+ 129 006a 80       		.byte	-128
+ 130 006b 41       		.byte	65
+ 131 006c 00       		.byte	0
+ 132 006d C1       		.byte	-63
+ 133 006e 81       		.byte	-127
+ 134 006f 40       		.byte	64
+ 135 0070 01       		.byte	1
+ 136 0071 C0       		.byte	-64
+ 137 0072 80       		.byte	-128
+ 138 0073 41       		.byte	65
+ 139 0074 00       		.byte	0
+ 140 0075 C1       		.byte	-63
+ 141 0076 81       		.byte	-127
+ 142 0077 40       		.byte	64
+ 143 0078 00       		.byte	0
+ 144 0079 C1       		.byte	-63
+ 145 007a 81       		.byte	-127
+ 146 007b 40       		.byte	64
+ 147 007c 01       		.byte	1
+ 148 007d C0       		.byte	-64
+ 149 007e 80       		.byte	-128
+ 150 007f 41       		.byte	65
+ 151 0080 01       		.byte	1
+ 152 0081 C0       		.byte	-64
+ 153 0082 80       		.byte	-128
+ 154 0083 41       		.byte	65
+ 155 0084 00       		.byte	0
+ 156 0085 C1       		.byte	-63
+ 157 0086 81       		.byte	-127
+ 158 0087 40       		.byte	64
+ 159 0088 00       		.byte	0
+ 160 0089 C1       		.byte	-63
+ 161 008a 81       		.byte	-127
+ 162 008b 40       		.byte	64
+ 163 008c 01       		.byte	1
+ 164 008d C0       		.byte	-64
+ 165 008e 80       		.byte	-128
+ 166 008f 41       		.byte	65
+ 167 0090 00       		.byte	0
+ 168 0091 C1       		.byte	-63
+ 169 0092 81       		.byte	-127
+ 170 0093 40       		.byte	64
+ 171 0094 01       		.byte	1
+ 172 0095 C0       		.byte	-64
+ 173 0096 80       		.byte	-128
+ 174 0097 41       		.byte	65
+ 175 0098 01       		.byte	1
+ 176 0099 C0       		.byte	-64
+ 177 009a 80       		.byte	-128
+ 178 009b 41       		.byte	65
+ 179 009c 00       		.byte	0
+ 180 009d C1       		.byte	-63
+ 181 009e 81       		.byte	-127
+ 182 009f 40       		.byte	64
+ 183 00a0 00       		.byte	0
+ 184 00a1 C1       		.byte	-63
+ 185 00a2 81       		.byte	-127
+ 186 00a3 40       		.byte	64
+ 187 00a4 01       		.byte	1
+ 188 00a5 C0       		.byte	-64
+ 189 00a6 80       		.byte	-128
+ 190 00a7 41       		.byte	65
+ 191 00a8 01       		.byte	1
+ 192 00a9 C0       		.byte	-64
+ 193 00aa 80       		.byte	-128
+ 194 00ab 41       		.byte	65
+ 195 00ac 00       		.byte	0
+ 196 00ad C1       		.byte	-63
+ 197 00ae 81       		.byte	-127
+ 198 00af 40       		.byte	64
+ 199 00b0 01       		.byte	1
+ 200 00b1 C0       		.byte	-64
+ 201 00b2 80       		.byte	-128
+ 202 00b3 41       		.byte	65
+ 203 00b4 00       		.byte	0
+ 204 00b5 C1       		.byte	-63
+ 205 00b6 81       		.byte	-127
+ 206 00b7 40       		.byte	64
+ 207 00b8 00       		.byte	0
+ 208 00b9 C1       		.byte	-63
+ 209 00ba 81       		.byte	-127
+ 210 00bb 40       		.byte	64
+ 211 00bc 01       		.byte	1
+ 212 00bd C0       		.byte	-64
+ 213 00be 80       		.byte	-128
+ 214 00bf 41       		.byte	65
+ 215 00c0 00       		.byte	0
+ 216 00c1 C1       		.byte	-63
+ 217 00c2 81       		.byte	-127
+ 218 00c3 40       		.byte	64
+ 219 00c4 01       		.byte	1
+ 220 00c5 C0       		.byte	-64
+ 221 00c6 80       		.byte	-128
+ 222 00c7 41       		.byte	65
+ 223 00c8 01       		.byte	1
+ 224 00c9 C0       		.byte	-64
+ 225 00ca 80       		.byte	-128
+ 226 00cb 41       		.byte	65
+ 227 00cc 00       		.byte	0
+ 228 00cd C1       		.byte	-63
+ 229 00ce 81       		.byte	-127
+ 230 00cf 40       		.byte	64
+ 231 00d0 01       		.byte	1
+ 232 00d1 C0       		.byte	-64
+ 233 00d2 80       		.byte	-128
+ 234 00d3 41       		.byte	65
+ 235 00d4 00       		.byte	0
+ 236 00d5 C1       		.byte	-63
+ 237 00d6 81       		.byte	-127
+ 238 00d7 40       		.byte	64
+ 239 00d8 00       		.byte	0
+ 240 00d9 C1       		.byte	-63
+ 241 00da 81       		.byte	-127
+ 242 00db 40       		.byte	64
+ 243 00dc 01       		.byte	1
+ 244 00dd C0       		.byte	-64
+ 245 00de 80       		.byte	-128
+ 246 00df 41       		.byte	65
+ 247 00e0 01       		.byte	1
+ 248 00e1 C0       		.byte	-64
+ 249 00e2 80       		.byte	-128
+ 250 00e3 41       		.byte	65
+ 251 00e4 00       		.byte	0
+ 252 00e5 C1       		.byte	-63
+ 253 00e6 81       		.byte	-127
+ 254 00e7 40       		.byte	64
+ 255 00e8 00       		.byte	0
+ 256 00e9 C1       		.byte	-63
+ 257 00ea 81       		.byte	-127
+ 258 00eb 40       		.byte	64
+ 259 00ec 01       		.byte	1
+ 260 00ed C0       		.byte	-64
+ 261 00ee 80       		.byte	-128
+ 262 00ef 41       		.byte	65
+ 263 00f0 00       		.byte	0
+ 264 00f1 C1       		.byte	-63
+ 265 00f2 81       		.byte	-127
+ 266 00f3 40       		.byte	64
+ 267 00f4 01       		.byte	1
+ 268 00f5 C0       		.byte	-64
+ 269 00f6 80       		.byte	-128
+ 270 00f7 41       		.byte	65
+ 271 00f8 01       		.byte	1
+ 272 00f9 C0       		.byte	-64
+ 273 00fa 80       		.byte	-128
+ 274 00fb 41       		.byte	65
+ 275 00fc 00       		.byte	0
+ 276 00fd C1       		.byte	-63
+ 277 00fe 81       		.byte	-127
+ 278 00ff 40       		.byte	64
+ 279              		.section	.rodata.aucCRCLo,"a",%progbits
+ 280              		.align	2
+ 283              	aucCRCLo:
+ 284 0000 00       		.byte	0
+ 285 0001 C0       		.byte	-64
+ 286 0002 C1       		.byte	-63
+ 287 0003 01       		.byte	1
+ 288 0004 C3       		.byte	-61
+ 289 0005 03       		.byte	3
+ 290 0006 02       		.byte	2
+ 291 0007 C2       		.byte	-62
+ 292 0008 C6       		.byte	-58
+ 293 0009 06       		.byte	6
+ 294 000a 07       		.byte	7
+ 295 000b C7       		.byte	-57
+ 296 000c 05       		.byte	5
+ 297 000d C5       		.byte	-59
+ 298 000e C4       		.byte	-60
+ 299 000f 04       		.byte	4
+ 300 0010 CC       		.byte	-52
+ 301 0011 0C       		.byte	12
+ 302 0012 0D       		.byte	13
+ 303 0013 CD       		.byte	-51
+ 304 0014 0F       		.byte	15
+ 305 0015 CF       		.byte	-49
+ 306 0016 CE       		.byte	-50
+ 307 0017 0E       		.byte	14
+ 308 0018 0A       		.byte	10
+ 309 0019 CA       		.byte	-54
+ 310 001a CB       		.byte	-53
+ 311 001b 0B       		.byte	11
+ 312 001c C9       		.byte	-55
+ 313 001d 09       		.byte	9
+ 314 001e 08       		.byte	8
+ 315 001f C8       		.byte	-56
+ 316 0020 D8       		.byte	-40
+ 317 0021 18       		.byte	24
+ 318 0022 19       		.byte	25
+ 319 0023 D9       		.byte	-39
+ 320 0024 1B       		.byte	27
+ 321 0025 DB       		.byte	-37
+ 322 0026 DA       		.byte	-38
+ 323 0027 1A       		.byte	26
+ 324 0028 1E       		.byte	30
+ 325 0029 DE       		.byte	-34
+ 326 002a DF       		.byte	-33
+ 327 002b 1F       		.byte	31
+ 328 002c DD       		.byte	-35
+ 329 002d 1D       		.byte	29
+ 330 002e 1C       		.byte	28
+ 331 002f DC       		.byte	-36
+ 332 0030 14       		.byte	20
+ 333 0031 D4       		.byte	-44
+ 334 0032 D5       		.byte	-43
+ 335 0033 15       		.byte	21
+ 336 0034 D7       		.byte	-41
+ 337 0035 17       		.byte	23
+ 338 0036 16       		.byte	22
+ 339 0037 D6       		.byte	-42
+ 340 0038 D2       		.byte	-46
+ 341 0039 12       		.byte	18
+ 342 003a 13       		.byte	19
+ 343 003b D3       		.byte	-45
+ 344 003c 11       		.byte	17
+ 345 003d D1       		.byte	-47
+ 346 003e D0       		.byte	-48
+ 347 003f 10       		.byte	16
+ 348 0040 F0       		.byte	-16
+ 349 0041 30       		.byte	48
+ 350 0042 31       		.byte	49
+ 351 0043 F1       		.byte	-15
+ 352 0044 33       		.byte	51
+ 353 0045 F3       		.byte	-13
+ 354 0046 F2       		.byte	-14
+ 355 0047 32       		.byte	50
+ 356 0048 36       		.byte	54
+ 357 0049 F6       		.byte	-10
+ 358 004a F7       		.byte	-9
+ 359 004b 37       		.byte	55
+ 360 004c F5       		.byte	-11
+ 361 004d 35       		.byte	53
+ 362 004e 34       		.byte	52
+ 363 004f F4       		.byte	-12
+ 364 0050 3C       		.byte	60
+ 365 0051 FC       		.byte	-4
+ 366 0052 FD       		.byte	-3
+ 367 0053 3D       		.byte	61
+ 368 0054 FF       		.byte	-1
+ 369 0055 3F       		.byte	63
+ 370 0056 3E       		.byte	62
+ 371 0057 FE       		.byte	-2
+ 372 0058 FA       		.byte	-6
+ 373 0059 3A       		.byte	58
+ 374 005a 3B       		.byte	59
+ 375 005b FB       		.byte	-5
+ 376 005c 39       		.byte	57
+ 377 005d F9       		.byte	-7
+ 378 005e F8       		.byte	-8
+ 379 005f 38       		.byte	56
+ 380 0060 28       		.byte	40
+ 381 0061 E8       		.byte	-24
+ 382 0062 E9       		.byte	-23
+ 383 0063 29       		.byte	41
+ 384 0064 EB       		.byte	-21
+ 385 0065 2B       		.byte	43
+ 386 0066 2A       		.byte	42
+ 387 0067 EA       		.byte	-22
+ 388 0068 EE       		.byte	-18
+ 389 0069 2E       		.byte	46
+ 390 006a 2F       		.byte	47
+ 391 006b EF       		.byte	-17
+ 392 006c 2D       		.byte	45
+ 393 006d ED       		.byte	-19
+ 394 006e EC       		.byte	-20
+ 395 006f 2C       		.byte	44
+ 396 0070 E4       		.byte	-28
+ 397 0071 24       		.byte	36
+ 398 0072 25       		.byte	37
+ 399 0073 E5       		.byte	-27
+ 400 0074 27       		.byte	39
+ 401 0075 E7       		.byte	-25
+ 402 0076 E6       		.byte	-26
+ 403 0077 26       		.byte	38
+ 404 0078 22       		.byte	34
+ 405 0079 E2       		.byte	-30
+ 406 007a E3       		.byte	-29
+ 407 007b 23       		.byte	35
+ 408 007c E1       		.byte	-31
+ 409 007d 21       		.byte	33
+ 410 007e 20       		.byte	32
+ 411 007f E0       		.byte	-32
+ 412 0080 A0       		.byte	-96
+ 413 0081 60       		.byte	96
+ 414 0082 61       		.byte	97
+ 415 0083 A1       		.byte	-95
+ 416 0084 63       		.byte	99
+ 417 0085 A3       		.byte	-93
+ 418 0086 A2       		.byte	-94
+ 419 0087 62       		.byte	98
+ 420 0088 66       		.byte	102
+ 421 0089 A6       		.byte	-90
+ 422 008a A7       		.byte	-89
+ 423 008b 67       		.byte	103
+ 424 008c A5       		.byte	-91
+ 425 008d 65       		.byte	101
+ 426 008e 64       		.byte	100
+ 427 008f A4       		.byte	-92
+ 428 0090 6C       		.byte	108
+ 429 0091 AC       		.byte	-84
+ 430 0092 AD       		.byte	-83
+ 431 0093 6D       		.byte	109
+ 432 0094 AF       		.byte	-81
+ 433 0095 6F       		.byte	111
+ 434 0096 6E       		.byte	110
+ 435 0097 AE       		.byte	-82
+ 436 0098 AA       		.byte	-86
+ 437 0099 6A       		.byte	106
+ 438 009a 6B       		.byte	107
+ 439 009b AB       		.byte	-85
+ 440 009c 69       		.byte	105
+ 441 009d A9       		.byte	-87
+ 442 009e A8       		.byte	-88
+ 443 009f 68       		.byte	104
+ 444 00a0 78       		.byte	120
+ 445 00a1 B8       		.byte	-72
+ 446 00a2 B9       		.byte	-71
+ 447 00a3 79       		.byte	121
+ 448 00a4 BB       		.byte	-69
+ 449 00a5 7B       		.byte	123
+ 450 00a6 7A       		.byte	122
+ 451 00a7 BA       		.byte	-70
+ 452 00a8 BE       		.byte	-66
+ 453 00a9 7E       		.byte	126
+ 454 00aa 7F       		.byte	127
+ 455 00ab BF       		.byte	-65
+ 456 00ac 7D       		.byte	125
+ 457 00ad BD       		.byte	-67
+ 458 00ae BC       		.byte	-68
+ 459 00af 7C       		.byte	124
+ 460 00b0 B4       		.byte	-76
+ 461 00b1 74       		.byte	116
+ 462 00b2 75       		.byte	117
+ 463 00b3 B5       		.byte	-75
+ 464 00b4 77       		.byte	119
+ 465 00b5 B7       		.byte	-73
+ 466 00b6 B6       		.byte	-74
+ 467 00b7 76       		.byte	118
+ 468 00b8 72       		.byte	114
+ 469 00b9 B2       		.byte	-78
+ 470 00ba B3       		.byte	-77
+ 471 00bb 73       		.byte	115
+ 472 00bc B1       		.byte	-79
+ 473 00bd 71       		.byte	113
+ 474 00be 70       		.byte	112
+ 475 00bf B0       		.byte	-80
+ 476 00c0 50       		.byte	80
+ 477 00c1 90       		.byte	-112
+ 478 00c2 91       		.byte	-111
+ 479 00c3 51       		.byte	81
+ 480 00c4 93       		.byte	-109
+ 481 00c5 53       		.byte	83
+ 482 00c6 52       		.byte	82
+ 483 00c7 92       		.byte	-110
+ 484 00c8 96       		.byte	-106
+ 485 00c9 56       		.byte	86
+ 486 00ca 57       		.byte	87
+ 487 00cb 97       		.byte	-105
+ 488 00cc 55       		.byte	85
+ 489 00cd 95       		.byte	-107
+ 490 00ce 94       		.byte	-108
+ 491 00cf 54       		.byte	84
+ 492 00d0 9C       		.byte	-100
+ 493 00d1 5C       		.byte	92
+ 494 00d2 5D       		.byte	93
+ 495 00d3 9D       		.byte	-99
+ 496 00d4 5F       		.byte	95
+ 497 00d5 9F       		.byte	-97
+ 498 00d6 9E       		.byte	-98
+ 499 00d7 5E       		.byte	94
+ 500 00d8 5A       		.byte	90
+ 501 00d9 9A       		.byte	-102
+ 502 00da 9B       		.byte	-101
+ 503 00db 5B       		.byte	91
+ 504 00dc 99       		.byte	-103
+ 505 00dd 59       		.byte	89
+ 506 00de 58       		.byte	88
+ 507 00df 98       		.byte	-104
+ 508 00e0 88       		.byte	-120
+ 509 00e1 48       		.byte	72
+ 510 00e2 49       		.byte	73
+ 511 00e3 89       		.byte	-119
+ 512 00e4 4B       		.byte	75
+ 513 00e5 8B       		.byte	-117
+ 514 00e6 8A       		.byte	-118
+ 515 00e7 4A       		.byte	74
+ 516 00e8 4E       		.byte	78
+ 517 00e9 8E       		.byte	-114
+ 518 00ea 8F       		.byte	-113
+ 519 00eb 4F       		.byte	79
+ 520 00ec 8D       		.byte	-115
+ 521 00ed 4D       		.byte	77
+ 522 00ee 4C       		.byte	76
+ 523 00ef 8C       		.byte	-116
+ 524 00f0 44       		.byte	68
+ 525 00f1 84       		.byte	-124
+ 526 00f2 85       		.byte	-123
+ 527 00f3 45       		.byte	69
+ 528 00f4 87       		.byte	-121
+ 529 00f5 47       		.byte	71
+ 530 00f6 46       		.byte	70
+ 531 00f7 86       		.byte	-122
+ 532 00f8 82       		.byte	-126
+ 533 00f9 42       		.byte	66
+ 534 00fa 43       		.byte	67
+ 535 00fb 83       		.byte	-125
+ 536 00fc 41       		.byte	65
+ 537 00fd 81       		.byte	-127
+ 538 00fe 80       		.byte	-128
+ 539 00ff 40       		.byte	64
+ 540              		.section	.text.usMBCRC16,"ax",%progbits
+ 541              		.align	2
+ 542              		.global	usMBCRC16
+ 543              		.thumb
+ 544              		.thumb_func
+ 546              	usMBCRC16:
+ 547              	.LFB29:
+ 548              		.file 1 "../FreeModbus/rtu/mbcrc.c"
+   1:../FreeModbus/rtu/mbcrc.c **** /* 
+   2:../FreeModbus/rtu/mbcrc.c ****  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
+   3:../FreeModbus/rtu/mbcrc.c ****  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
+   4:../FreeModbus/rtu/mbcrc.c ****  * All rights reserved.
+   5:../FreeModbus/rtu/mbcrc.c ****  *
+   6:../FreeModbus/rtu/mbcrc.c ****  * Redistribution and use in source and binary forms, with or without
+   7:../FreeModbus/rtu/mbcrc.c ****  * modification, are permitted provided that the following conditions
+   8:../FreeModbus/rtu/mbcrc.c ****  * are met:
+   9:../FreeModbus/rtu/mbcrc.c ****  * 1. Redistributions of source code must retain the above copyright
+  10:../FreeModbus/rtu/mbcrc.c ****  *    notice, this list of conditions and the following disclaimer.
+  11:../FreeModbus/rtu/mbcrc.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  12:../FreeModbus/rtu/mbcrc.c ****  *    notice, this list of conditions and the following disclaimer in the
+  13:../FreeModbus/rtu/mbcrc.c ****  *    documentation and/or other materials provided with the distribution.
+  14:../FreeModbus/rtu/mbcrc.c ****  * 3. The name of the author may not be used to endorse or promote products
+  15:../FreeModbus/rtu/mbcrc.c ****  *    derived from this software without specific prior written permission.
+  16:../FreeModbus/rtu/mbcrc.c ****  *
+  17:../FreeModbus/rtu/mbcrc.c ****  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+  18:../FreeModbus/rtu/mbcrc.c ****  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+  19:../FreeModbus/rtu/mbcrc.c ****  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  20:../FreeModbus/rtu/mbcrc.c ****  * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+  21:../FreeModbus/rtu/mbcrc.c ****  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  22:../FreeModbus/rtu/mbcrc.c ****  * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  23:../FreeModbus/rtu/mbcrc.c ****  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  24:../FreeModbus/rtu/mbcrc.c ****  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  25:../FreeModbus/rtu/mbcrc.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  26:../FreeModbus/rtu/mbcrc.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  27:../FreeModbus/rtu/mbcrc.c ****  *
+  28:../FreeModbus/rtu/mbcrc.c ****  * File: $Id: mbcrc.c,v 1.7 2007/02/18 23:50:27 wolti Exp $
+  29:../FreeModbus/rtu/mbcrc.c ****  */
+  30:../FreeModbus/rtu/mbcrc.c **** 
+  31:../FreeModbus/rtu/mbcrc.c **** /* ----------------------- Platform includes --------------------------------*/
+  32:../FreeModbus/rtu/mbcrc.c **** #include "port.h"
+  33:../FreeModbus/rtu/mbcrc.c **** 
+  34:../FreeModbus/rtu/mbcrc.c **** static const UCHAR aucCRCHi[] = {
+  35:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  36:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  37:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  38:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+  39:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  40:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  41:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  42:../FreeModbus/rtu/mbcrc.c ****     0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  43:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  44:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  45:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  46:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 
+  47:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  48:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 
+  49:../FreeModbus/rtu/mbcrc.c ****     0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+  50:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+  51:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 
+  52:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  53:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  54:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+  55:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  56:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC1, 0x81, 0x40
+  57:../FreeModbus/rtu/mbcrc.c **** };
+  58:../FreeModbus/rtu/mbcrc.c **** 
+  59:../FreeModbus/rtu/mbcrc.c **** static const UCHAR aucCRCLo[] = {
+  60:../FreeModbus/rtu/mbcrc.c ****     0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06, 0x07, 0xC7,
+  61:../FreeModbus/rtu/mbcrc.c ****     0x05, 0xC5, 0xC4, 0x04, 0xCC, 0x0C, 0x0D, 0xCD, 0x0F, 0xCF, 0xCE, 0x0E,
+  62:../FreeModbus/rtu/mbcrc.c ****     0x0A, 0xCA, 0xCB, 0x0B, 0xC9, 0x09, 0x08, 0xC8, 0xD8, 0x18, 0x19, 0xD9,
+  63:../FreeModbus/rtu/mbcrc.c ****     0x1B, 0xDB, 0xDA, 0x1A, 0x1E, 0xDE, 0xDF, 0x1F, 0xDD, 0x1D, 0x1C, 0xDC,
+  64:../FreeModbus/rtu/mbcrc.c ****     0x14, 0xD4, 0xD5, 0x15, 0xD7, 0x17, 0x16, 0xD6, 0xD2, 0x12, 0x13, 0xD3,
+  65:../FreeModbus/rtu/mbcrc.c ****     0x11, 0xD1, 0xD0, 0x10, 0xF0, 0x30, 0x31, 0xF1, 0x33, 0xF3, 0xF2, 0x32,
+  66:../FreeModbus/rtu/mbcrc.c ****     0x36, 0xF6, 0xF7, 0x37, 0xF5, 0x35, 0x34, 0xF4, 0x3C, 0xFC, 0xFD, 0x3D,
+  67:../FreeModbus/rtu/mbcrc.c ****     0xFF, 0x3F, 0x3E, 0xFE, 0xFA, 0x3A, 0x3B, 0xFB, 0x39, 0xF9, 0xF8, 0x38, 
+  68:../FreeModbus/rtu/mbcrc.c ****     0x28, 0xE8, 0xE9, 0x29, 0xEB, 0x2B, 0x2A, 0xEA, 0xEE, 0x2E, 0x2F, 0xEF,
+  69:../FreeModbus/rtu/mbcrc.c ****     0x2D, 0xED, 0xEC, 0x2C, 0xE4, 0x24, 0x25, 0xE5, 0x27, 0xE7, 0xE6, 0x26,
+  70:../FreeModbus/rtu/mbcrc.c ****     0x22, 0xE2, 0xE3, 0x23, 0xE1, 0x21, 0x20, 0xE0, 0xA0, 0x60, 0x61, 0xA1,
+  71:../FreeModbus/rtu/mbcrc.c ****     0x63, 0xA3, 0xA2, 0x62, 0x66, 0xA6, 0xA7, 0x67, 0xA5, 0x65, 0x64, 0xA4,
+  72:../FreeModbus/rtu/mbcrc.c ****     0x6C, 0xAC, 0xAD, 0x6D, 0xAF, 0x6F, 0x6E, 0xAE, 0xAA, 0x6A, 0x6B, 0xAB, 
+  73:../FreeModbus/rtu/mbcrc.c ****     0x69, 0xA9, 0xA8, 0x68, 0x78, 0xB8, 0xB9, 0x79, 0xBB, 0x7B, 0x7A, 0xBA,
+  74:../FreeModbus/rtu/mbcrc.c ****     0xBE, 0x7E, 0x7F, 0xBF, 0x7D, 0xBD, 0xBC, 0x7C, 0xB4, 0x74, 0x75, 0xB5,
+  75:../FreeModbus/rtu/mbcrc.c ****     0x77, 0xB7, 0xB6, 0x76, 0x72, 0xB2, 0xB3, 0x73, 0xB1, 0x71, 0x70, 0xB0,
+  76:../FreeModbus/rtu/mbcrc.c ****     0x50, 0x90, 0x91, 0x51, 0x93, 0x53, 0x52, 0x92, 0x96, 0x56, 0x57, 0x97,
+  77:../FreeModbus/rtu/mbcrc.c ****     0x55, 0x95, 0x94, 0x54, 0x9C, 0x5C, 0x5D, 0x9D, 0x5F, 0x9F, 0x9E, 0x5E,
+  78:../FreeModbus/rtu/mbcrc.c ****     0x5A, 0x9A, 0x9B, 0x5B, 0x99, 0x59, 0x58, 0x98, 0x88, 0x48, 0x49, 0x89,
+  79:../FreeModbus/rtu/mbcrc.c ****     0x4B, 0x8B, 0x8A, 0x4A, 0x4E, 0x8E, 0x8F, 0x4F, 0x8D, 0x4D, 0x4C, 0x8C,
+  80:../FreeModbus/rtu/mbcrc.c ****     0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83,
+  81:../FreeModbus/rtu/mbcrc.c ****     0x41, 0x81, 0x80, 0x40
+  82:../FreeModbus/rtu/mbcrc.c **** };
+  83:../FreeModbus/rtu/mbcrc.c **** 
+  84:../FreeModbus/rtu/mbcrc.c **** USHORT
+  85:../FreeModbus/rtu/mbcrc.c **** usMBCRC16( UCHAR * pucFrame, USHORT usLen )
+  86:../FreeModbus/rtu/mbcrc.c **** {
+ 549              		.loc 1 86 0
+ 550              		.cfi_startproc
+ 551              		@ args = 0, pretend = 0, frame = 16
+ 552              		@ frame_needed = 1, uses_anonymous_args = 0
+ 553              		@ link register save eliminated.
+ 554 0000 80B4     		push	{r7}
+ 555              	.LCFI0:
+ 556              		.cfi_def_cfa_offset 4
+ 557              		.cfi_offset 7, -4
+ 558 0002 85B0     		sub	sp, sp, #20
+ 559              	.LCFI1:
+ 560              		.cfi_def_cfa_offset 24
+ 561 0004 00AF     		add	r7, sp, #0
+ 562              	.LCFI2:
+ 563              		.cfi_def_cfa_register 7
+ 564 0006 7860     		str	r0, [r7, #4]
+ 565 0008 0B46     		mov	r3, r1
+ 566 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  87:../FreeModbus/rtu/mbcrc.c ****     UCHAR           ucCRCHi = 0xFF;
+ 567              		.loc 1 87 0
+ 568 000c 4FF0FF03 		mov	r3, #255
+ 569 0010 FB73     		strb	r3, [r7, #15]
+  88:../FreeModbus/rtu/mbcrc.c ****     UCHAR           ucCRCLo = 0xFF;
+ 570              		.loc 1 88 0
+ 571 0012 4FF0FF03 		mov	r3, #255
+ 572 0016 BB73     		strb	r3, [r7, #14]
+  89:../FreeModbus/rtu/mbcrc.c ****     int             iIndex;
+  90:../FreeModbus/rtu/mbcrc.c **** 
+  91:../FreeModbus/rtu/mbcrc.c ****     while( usLen-- )
+ 573              		.loc 1 91 0
+ 574 0018 1BE0     		b	.L2
+ 575              	.L3:
+  92:../FreeModbus/rtu/mbcrc.c ****     {
+  93:../FreeModbus/rtu/mbcrc.c ****         iIndex = ucCRCLo ^ *( pucFrame++ );
+ 576              		.loc 1 93 0
+ 577 001a 7B68     		ldr	r3, [r7, #4]
+ 578 001c 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 579 001e BB7B     		ldrb	r3, [r7, #14]
+ 580 0020 5340     		eors	r3, r3, r2
+ 581 0022 DBB2     		uxtb	r3, r3
+ 582 0024 BB60     		str	r3, [r7, #8]
+ 583 0026 7B68     		ldr	r3, [r7, #4]
+ 584 0028 03F10103 		add	r3, r3, #1
+ 585 002c 7B60     		str	r3, [r7, #4]
+  94:../FreeModbus/rtu/mbcrc.c ****         ucCRCLo = ( UCHAR )( ucCRCHi ^ aucCRCHi[iIndex] );
+ 586              		.loc 1 94 0
+ 587 002e 40F20003 		movw	r3, #:lower16:aucCRCHi
+ 588 0032 C0F20003 		movt	r3, #:upper16:aucCRCHi
+ 589 0036 BA68     		ldr	r2, [r7, #8]
+ 590 0038 9B18     		adds	r3, r3, r2
+ 591 003a 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 592 003c FB7B     		ldrb	r3, [r7, #15]
+ 593 003e 5340     		eors	r3, r3, r2
+ 594 0040 BB73     		strb	r3, [r7, #14]
+  95:../FreeModbus/rtu/mbcrc.c ****         ucCRCHi = aucCRCLo[iIndex];
+ 595              		.loc 1 95 0
+ 596 0042 40F20003 		movw	r3, #:lower16:aucCRCLo
+ 597 0046 C0F20003 		movt	r3, #:upper16:aucCRCLo
+ 598 004a BA68     		ldr	r2, [r7, #8]
+ 599 004c 9B18     		adds	r3, r3, r2
+ 600 004e 1B78     		ldrb	r3, [r3, #0]
+ 601 0050 FB73     		strb	r3, [r7, #15]
+ 602              	.L2:
+  91:../FreeModbus/rtu/mbcrc.c ****     while( usLen-- )
+ 603              		.loc 1 91 0 discriminator 1
+ 604 0052 7B88     		ldrh	r3, [r7, #2]
+ 605 0054 002B     		cmp	r3, #0
+ 606 0056 0CBF     		ite	eq
+ 607 0058 0023     		moveq	r3, #0
+ 608 005a 0123     		movne	r3, #1
+ 609 005c DBB2     		uxtb	r3, r3
+ 610 005e 7A88     		ldrh	r2, [r7, #2]	@ movhi
+ 611 0060 02F1FF32 		add	r2, r2, #-1
+ 612 0064 7A80     		strh	r2, [r7, #2]	@ movhi
+ 613 0066 002B     		cmp	r3, #0
+ 614 0068 D7D1     		bne	.L3
+  96:../FreeModbus/rtu/mbcrc.c ****     }
+  97:../FreeModbus/rtu/mbcrc.c ****     return ( USHORT )( ucCRCHi << 8 | ucCRCLo );
+ 615              		.loc 1 97 0
+ 616 006a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 617 006c 4FEA0323 		lsl	r3, r3, #8
+ 618 0070 9AB2     		uxth	r2, r3
+ 619 0072 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 620 0074 9BB2     		uxth	r3, r3
+ 621 0076 1343     		orrs	r3, r3, r2
+ 622 0078 9BB2     		uxth	r3, r3
+ 623 007a 9BB2     		uxth	r3, r3
+  98:../FreeModbus/rtu/mbcrc.c **** }
+ 624              		.loc 1 98 0
+ 625 007c 1846     		mov	r0, r3
+ 626 007e 07F11407 		add	r7, r7, #20
+ 627 0082 BD46     		mov	sp, r7
+ 628 0084 80BC     		pop	{r7}
+ 629 0086 7047     		bx	lr
+ 630              		.cfi_endproc
+ 631              	.LFE29:
+ 633              		.text
+ 634              	.Letext0:
+ 635              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 636              		.file 3 "/home/frolls/ARM/stm32vld_template/FreeModbus/STM32/port/port.h"
+ 637              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mbcrc.c
+     /tmp/cca917Eb.s:19     .rodata.aucCRCHi:00000000 $d
+     /tmp/cca917Eb.s:22     .rodata.aucCRCHi:00000000 aucCRCHi
+     /tmp/cca917Eb.s:280    .rodata.aucCRCLo:00000000 $d
+     /tmp/cca917Eb.s:283    .rodata.aucCRCLo:00000000 aucCRCLo
+     /tmp/cca917Eb.s:541    .text.usMBCRC16:00000000 $t
+     /tmp/cca917Eb.s:546    .text.usMBCRC16:00000000 usMBCRC16
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
+                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:00000000 wm4.assert.h.11.f9b6feb3ce5083ec030f5895cd9c4353
+                           .group:00000000 wm4.stm32f10x.h.51.b859cb68ed44ee02c916b41cb8c68f1c
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.522.a925aafc848b1f088438cf0e9b167b78
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.fe8897e7491f2eb0cff54551d08eb765
+                           .group:00000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:00000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:00000000 wm4.port.h.31.c65f7045ab74541fcd8cda05fe501502
+
+NO UNDEFINED SYMBOLS

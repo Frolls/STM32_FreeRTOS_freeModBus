@@ -1,0 +1,438 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_iwdg.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.IWDG_WriteAccessCmd,"ax",%progbits
+  19              		.align	2
+  20              		.global	IWDG_WriteAccessCmd
+  21              		.thumb
+  22              		.thumb_func
+  24              	IWDG_WriteAccessCmd:
+  25              	.LFB29:
+  26              		.file 1 "../StdPeripheralDriver/src/stm32f10x_iwdg.c"
+   1:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+   2:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  ******************************************************************************
+   3:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @file    stm32f10x_iwdg.c
+   4:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @author  MCD Application Team
+   5:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @version V3.5.0
+   6:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @date    11-March-2011
+   7:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief   This file provides all the IWDG firmware functions.
+   8:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  ******************************************************************************
+   9:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @attention
+  10:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *
+  11:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  12:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  13:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  14:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  15:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  16:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  17:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *
+  18:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  19:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  ******************************************************************************
+  20:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  21:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  22:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /* Includes ------------------------------------------------------------------*/
+  23:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** #include "stm32f10x_iwdg.h"
+  24:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  25:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @addtogroup STM32F10x_StdPeriph_Driver
+  26:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  27:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  28:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  29:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG 
+  30:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief IWDG driver modules
+  31:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  32:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  33:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  34:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_TypesDefinitions
+  35:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  36:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  37:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  38:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  39:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @}
+  40:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  41:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  42:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_Defines
+  43:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  44:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  45:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  46:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /* ---------------------- IWDG registers bit mask ----------------------------*/
+  47:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  48:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /* KR register bit mask */
+  49:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** #define KR_KEY_Reload    ((uint16_t)0xAAAA)
+  50:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** #define KR_KEY_Enable    ((uint16_t)0xCCCC)
+  51:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  52:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  53:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @}
+  54:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  55:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  56:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_Macros
+  57:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  58:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  59:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  60:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  61:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @}
+  62:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  63:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  64:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_Variables
+  65:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  66:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  67:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  68:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  69:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @}
+  70:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  71:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  72:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_FunctionPrototypes
+  73:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  74:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  75:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  76:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  77:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @}
+  78:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  79:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  80:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /** @defgroup IWDG_Private_Functions
+  81:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @{
+  82:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  83:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  84:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  85:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Enables or disables write access to IWDG_PR and IWDG_RLR registers.
+  86:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  IWDG_WriteAccess: new state of write access to IWDG_PR and IWDG_RLR registers.
+  87:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *   This parameter can be one of the following values:
+  88:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_WriteAccess_Enable: Enable write access to IWDG_PR and IWDG_RLR registers
+  89:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_WriteAccess_Disable: Disable write access to IWDG_PR and IWDG_RLR registers
+  90:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval None
+  91:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+  92:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** void IWDG_WriteAccessCmd(uint16_t IWDG_WriteAccess) {
+  27              		.loc 1 92 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 0346     		mov	r3, r0
+  43 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  93:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	/* Check the parameters */
+  94:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	assert_param(IS_IWDG_WRITE_ACCESS(IWDG_WriteAccess));
+  95:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	IWDG ->KR = IWDG_WriteAccess;
+  44              		.loc 1 95 0
+  45 000a 4FF44053 		mov	r3, #12288
+  46 000e C4F20003 		movt	r3, 16384
+  47 0012 FA88     		ldrh	r2, [r7, #6]
+  48 0014 1A60     		str	r2, [r3, #0]
+  96:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+  49              		.loc 1 96 0
+  50 0016 07F10C07 		add	r7, r7, #12
+  51 001a BD46     		mov	sp, r7
+  52 001c 80BC     		pop	{r7}
+  53 001e 7047     		bx	lr
+  54              		.cfi_endproc
+  55              	.LFE29:
+  57              		.section	.text.IWDG_SetPrescaler,"ax",%progbits
+  58              		.align	2
+  59              		.global	IWDG_SetPrescaler
+  60              		.thumb
+  61              		.thumb_func
+  63              	IWDG_SetPrescaler:
+  64              	.LFB30:
+  97:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+  98:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+  99:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Sets IWDG Prescaler value.
+ 100:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  IWDG_Prescaler: specifies the IWDG Prescaler value.
+ 101:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *   This parameter can be one of the following values:
+ 102:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_4: IWDG prescaler set to 4
+ 103:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_8: IWDG prescaler set to 8
+ 104:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_16: IWDG prescaler set to 16
+ 105:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_32: IWDG prescaler set to 32
+ 106:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_64: IWDG prescaler set to 64
+ 107:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_128: IWDG prescaler set to 128
+ 108:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_Prescaler_256: IWDG prescaler set to 256
+ 109:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval None
+ 110:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+ 111:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** void IWDG_SetPrescaler(uint8_t IWDG_Prescaler) {
+  65              		.loc 1 111 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 8
+  68              		@ frame_needed = 1, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 80B4     		push	{r7}
+  71              	.LCFI3:
+  72              		.cfi_def_cfa_offset 4
+  73              		.cfi_offset 7, -4
+  74 0002 83B0     		sub	sp, sp, #12
+  75              	.LCFI4:
+  76              		.cfi_def_cfa_offset 16
+  77 0004 00AF     		add	r7, sp, #0
+  78              	.LCFI5:
+  79              		.cfi_def_cfa_register 7
+  80 0006 0346     		mov	r3, r0
+  81 0008 FB71     		strb	r3, [r7, #7]
+ 112:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	/* Check the parameters */
+ 113:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	assert_param(IS_IWDG_PRESCALER(IWDG_Prescaler));
+ 114:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	IWDG ->PR = IWDG_Prescaler;
+  82              		.loc 1 114 0
+  83 000a 4FF44053 		mov	r3, #12288
+  84 000e C4F20003 		movt	r3, 16384
+  85 0012 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+  86 0014 5A60     		str	r2, [r3, #4]
+ 115:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+  87              		.loc 1 115 0
+  88 0016 07F10C07 		add	r7, r7, #12
+  89 001a BD46     		mov	sp, r7
+  90 001c 80BC     		pop	{r7}
+  91 001e 7047     		bx	lr
+  92              		.cfi_endproc
+  93              	.LFE30:
+  95              		.section	.text.IWDG_SetReload,"ax",%progbits
+  96              		.align	2
+  97              		.global	IWDG_SetReload
+  98              		.thumb
+  99              		.thumb_func
+ 101              	IWDG_SetReload:
+ 102              	.LFB31:
+ 116:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+ 117:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+ 118:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Sets IWDG Reload value.
+ 119:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  Reload: specifies the IWDG Reload value.
+ 120:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *   This parameter must be a number between 0 and 0x0FFF.
+ 121:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval None
+ 122:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+ 123:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** void IWDG_SetReload(uint16_t Reload) {
+ 103              		.loc 1 123 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 8
+ 106              		@ frame_needed = 1, uses_anonymous_args = 0
+ 107              		@ link register save eliminated.
+ 108 0000 80B4     		push	{r7}
+ 109              	.LCFI6:
+ 110              		.cfi_def_cfa_offset 4
+ 111              		.cfi_offset 7, -4
+ 112 0002 83B0     		sub	sp, sp, #12
+ 113              	.LCFI7:
+ 114              		.cfi_def_cfa_offset 16
+ 115 0004 00AF     		add	r7, sp, #0
+ 116              	.LCFI8:
+ 117              		.cfi_def_cfa_register 7
+ 118 0006 0346     		mov	r3, r0
+ 119 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 124:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	/* Check the parameters */
+ 125:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	assert_param(IS_IWDG_RELOAD(Reload));
+ 126:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	IWDG ->RLR = Reload;
+ 120              		.loc 1 126 0
+ 121 000a 4FF44053 		mov	r3, #12288
+ 122 000e C4F20003 		movt	r3, 16384
+ 123 0012 FA88     		ldrh	r2, [r7, #6]
+ 124 0014 9A60     		str	r2, [r3, #8]
+ 127:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+ 125              		.loc 1 127 0
+ 126 0016 07F10C07 		add	r7, r7, #12
+ 127 001a BD46     		mov	sp, r7
+ 128 001c 80BC     		pop	{r7}
+ 129 001e 7047     		bx	lr
+ 130              		.cfi_endproc
+ 131              	.LFE31:
+ 133              		.section	.text.IWDG_ReloadCounter,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	IWDG_ReloadCounter
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	IWDG_ReloadCounter:
+ 140              	.LFB32:
+ 128:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+ 129:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+ 130:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Reloads IWDG counter with value defined in the reload register
+ 131:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *   (write access to IWDG_PR and IWDG_RLR registers disabled).
+ 132:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  None
+ 133:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval None
+ 134:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+ 135:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** void IWDG_ReloadCounter(void) {
+ 141              		.loc 1 135 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 146 0000 80B4     		push	{r7}
+ 147              	.LCFI9:
+ 148              		.cfi_def_cfa_offset 4
+ 149              		.cfi_offset 7, -4
+ 150 0002 00AF     		add	r7, sp, #0
+ 151              	.LCFI10:
+ 152              		.cfi_def_cfa_register 7
+ 136:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	IWDG ->KR = KR_KEY_Reload;
+ 153              		.loc 1 136 0
+ 154 0004 4FF44053 		mov	r3, #12288
+ 155 0008 C4F20003 		movt	r3, 16384
+ 156 000c 4AF6AA22 		movw	r2, #43690
+ 157 0010 1A60     		str	r2, [r3, #0]
+ 137:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+ 158              		.loc 1 137 0
+ 159 0012 BD46     		mov	sp, r7
+ 160 0014 80BC     		pop	{r7}
+ 161 0016 7047     		bx	lr
+ 162              		.cfi_endproc
+ 163              	.LFE32:
+ 165              		.section	.text.IWDG_Enable,"ax",%progbits
+ 166              		.align	2
+ 167              		.global	IWDG_Enable
+ 168              		.thumb
+ 169              		.thumb_func
+ 171              	IWDG_Enable:
+ 172              	.LFB33:
+ 138:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+ 139:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+ 140:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Enables IWDG (write access to IWDG_PR and IWDG_RLR registers disabled).
+ 141:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  None
+ 142:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval None
+ 143:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+ 144:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** void IWDG_Enable(void) {
+ 173              		.loc 1 144 0
+ 174              		.cfi_startproc
+ 175              		@ args = 0, pretend = 0, frame = 0
+ 176              		@ frame_needed = 1, uses_anonymous_args = 0
+ 177              		@ link register save eliminated.
+ 178 0000 80B4     		push	{r7}
+ 179              	.LCFI11:
+ 180              		.cfi_def_cfa_offset 4
+ 181              		.cfi_offset 7, -4
+ 182 0002 00AF     		add	r7, sp, #0
+ 183              	.LCFI12:
+ 184              		.cfi_def_cfa_register 7
+ 145:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	IWDG ->KR = KR_KEY_Enable;
+ 185              		.loc 1 145 0
+ 186 0004 4FF44053 		mov	r3, #12288
+ 187 0008 C4F20003 		movt	r3, 16384
+ 188 000c 4CF6CC42 		movw	r2, #52428
+ 189 0010 1A60     		str	r2, [r3, #0]
+ 146:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+ 190              		.loc 1 146 0
+ 191 0012 BD46     		mov	sp, r7
+ 192 0014 80BC     		pop	{r7}
+ 193 0016 7047     		bx	lr
+ 194              		.cfi_endproc
+ 195              	.LFE33:
+ 197              		.section	.text.IWDG_GetFlagStatus,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	IWDG_GetFlagStatus
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	IWDG_GetFlagStatus:
+ 204              	.LFB34:
+ 147:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 
+ 148:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** /**
+ 149:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @brief  Checks whether the specified IWDG flag is set or not.
+ 150:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @param  IWDG_FLAG: specifies the flag to check.
+ 151:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *   This parameter can be one of the following values:
+ 152:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_FLAG_PVU: Prescaler Value Update on going
+ 153:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  *     @arg IWDG_FLAG_RVU: Reload Value Update on going
+ 154:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  * @retval The new state of IWDG_FLAG (SET or RESET).
+ 155:../StdPeripheralDriver/src/stm32f10x_iwdg.c ****  */
+ 156:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** FlagStatus IWDG_GetFlagStatus(uint16_t IWDG_FLAG) {
+ 205              		.loc 1 156 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 16
+ 208              		@ frame_needed = 1, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 210 0000 80B4     		push	{r7}
+ 211              	.LCFI13:
+ 212              		.cfi_def_cfa_offset 4
+ 213              		.cfi_offset 7, -4
+ 214 0002 85B0     		sub	sp, sp, #20
+ 215              	.LCFI14:
+ 216              		.cfi_def_cfa_offset 24
+ 217 0004 00AF     		add	r7, sp, #0
+ 218              	.LCFI15:
+ 219              		.cfi_def_cfa_register 7
+ 220 0006 0346     		mov	r3, r0
+ 221 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 157:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	FlagStatus bitstatus = RESET;
+ 222              		.loc 1 157 0
+ 223 000a 4FF00003 		mov	r3, #0
+ 224 000e FB73     		strb	r3, [r7, #15]
+ 158:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	/* Check the parameters */
+ 159:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	assert_param(IS_IWDG_FLAG(IWDG_FLAG));
+ 160:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	if ((IWDG ->SR & IWDG_FLAG) != (uint32_t) RESET) {
+ 225              		.loc 1 160 0
+ 226 0010 4FF44053 		mov	r3, #12288
+ 227 0014 C4F20003 		movt	r3, 16384
+ 228 0018 DA68     		ldr	r2, [r3, #12]
+ 229 001a FB88     		ldrh	r3, [r7, #6]
+ 230 001c 1340     		ands	r3, r3, r2
+ 231 001e 002B     		cmp	r3, #0
+ 232 0020 03D0     		beq	.L7
+ 161:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 		bitstatus = SET;
+ 233              		.loc 1 161 0
+ 234 0022 4FF00103 		mov	r3, #1
+ 235 0026 FB73     		strb	r3, [r7, #15]
+ 236 0028 02E0     		b	.L8
+ 237              	.L7:
+ 162:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	} else {
+ 163:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 		bitstatus = RESET;
+ 238              		.loc 1 163 0
+ 239 002a 4FF00003 		mov	r3, #0
+ 240 002e FB73     		strb	r3, [r7, #15]
+ 241              	.L8:
+ 164:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	}
+ 165:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	/* Return the flag status */
+ 166:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** 	return bitstatus;
+ 242              		.loc 1 166 0
+ 243 0030 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 167:../StdPeripheralDriver/src/stm32f10x_iwdg.c **** }
+ 244              		.loc 1 167 0
+ 245 0032 1846     		mov	r0, r3
+ 246 0034 07F11407 		add	r7, r7, #20
+ 247 0038 BD46     		mov	sp, r7
+ 248 003a 80BC     		pop	{r7}
+ 249 003c 7047     		bx	lr
+ 250              		.cfi_endproc
+ 251              	.LFE34:
+ 253 003e 00BF     		.text
+ 254              	.Letext0:
+ 255              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 256              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 257              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_iwdg.c
+     /tmp/ccSrmBUs.s:19     .text.IWDG_WriteAccessCmd:00000000 $t
+     /tmp/ccSrmBUs.s:24     .text.IWDG_WriteAccessCmd:00000000 IWDG_WriteAccessCmd
+     /tmp/ccSrmBUs.s:58     .text.IWDG_SetPrescaler:00000000 $t
+     /tmp/ccSrmBUs.s:63     .text.IWDG_SetPrescaler:00000000 IWDG_SetPrescaler
+     /tmp/ccSrmBUs.s:96     .text.IWDG_SetReload:00000000 $t
+     /tmp/ccSrmBUs.s:101    .text.IWDG_SetReload:00000000 IWDG_SetReload
+     /tmp/ccSrmBUs.s:134    .text.IWDG_ReloadCounter:00000000 $t
+     /tmp/ccSrmBUs.s:139    .text.IWDG_ReloadCounter:00000000 IWDG_ReloadCounter
+     /tmp/ccSrmBUs.s:166    .text.IWDG_Enable:00000000 $t
+     /tmp/ccSrmBUs.s:171    .text.IWDG_Enable:00000000 IWDG_Enable
+     /tmp/ccSrmBUs.s:198    .text.IWDG_GetFlagStatus:00000000 $t
+     /tmp/ccSrmBUs.s:203    .text.IWDG_GetFlagStatus:00000000 IWDG_GetFlagStatus
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_iwdg.h.58.8c33ccd1cbd71674b543d304c0fe08ec
+
+NO UNDEFINED SYMBOLS

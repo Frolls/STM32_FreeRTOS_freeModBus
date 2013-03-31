@@ -1,0 +1,523 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"oneWire.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.One_Wire_Reset,"ax",%progbits
+  19              		.align	2
+  20              		.global	One_Wire_Reset
+  21              		.thumb
+  22              		.thumb_func
+  24              	One_Wire_Reset:
+  25              	.LFB29:
+  26              		.file 1 "../Work/Sources/oneWire.c"
+   1:../Work/Sources/oneWire.c **** /*
+   2:../Work/Sources/oneWire.c ****  * oneWire.c
+   3:../Work/Sources/oneWire.c ****  *
+   4:../Work/Sources/oneWire.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/oneWire.c ****  *      Author: frolls
+   6:../Work/Sources/oneWire.c ****  */
+   7:../Work/Sources/oneWire.c **** 
+   8:../Work/Sources/oneWire.c **** #include "oneWire.h"
+   9:../Work/Sources/oneWire.c **** 
+  10:../Work/Sources/oneWire.c **** unsigned int One_Wire_Reset(GPIO_TypeDef * GPIOx, u16 PINx)
+  11:../Work/Sources/oneWire.c **** {
+  27              		.loc 1 11 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 0B46     		mov	r3, r1
+  44 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  12:../Work/Sources/oneWire.c **** 	unsigned int tmp;
+  13:../Work/Sources/oneWire.c **** 	PIN_IN(GPIOx, PINx);
+  45              		.loc 1 13 0
+  46 000c 7B88     		ldrh	r3, [r7, #2]
+  47 000e 7868     		ldr	r0, [r7, #4]
+  48 0010 1946     		mov	r1, r3
+  49 0012 FFF7FEFF 		bl	PIN_IN
+  14:../Work/Sources/oneWire.c **** 	if ((PIN_SYG(GPIOx, PINx))==0)	return One_Wire_Bus_Low_Error;
+  50              		.loc 1 14 0
+  51 0016 7B88     		ldrh	r3, [r7, #2]
+  52 0018 7868     		ldr	r0, [r7, #4]
+  53 001a 1946     		mov	r1, r3
+  54 001c FFF7FEFF 		bl	PIN_SYG
+  55 0020 0346     		mov	r3, r0
+  56 0022 002B     		cmp	r3, #0
+  57 0024 02D1     		bne	.L2
+  58              		.loc 1 14 0 is_stmt 0 discriminator 1
+  59 0026 4FF00203 		mov	r3, #2
+  60 002a 2FE0     		b	.L3
+  61              	.L2:
+  15:../Work/Sources/oneWire.c **** 	PIN_OUT_PP(GPIOx, PINx);
+  62              		.loc 1 15 0 is_stmt 1
+  63 002c 7B88     		ldrh	r3, [r7, #2]
+  64 002e 7868     		ldr	r0, [r7, #4]
+  65 0030 1946     		mov	r1, r3
+  66 0032 FFF7FEFF 		bl	PIN_OUT_PP
+  16:../Work/Sources/oneWire.c **** 	PIN_OFF(GPIOx, PINx);
+  67              		.loc 1 16 0
+  68 0036 7B88     		ldrh	r3, [r7, #2]
+  69 0038 7868     		ldr	r0, [r7, #4]
+  70 003a 1946     		mov	r1, r3
+  71 003c FFF7FEFF 		bl	PIN_OFF
+  17:../Work/Sources/oneWire.c **** 	delay_us(Time_Reset_Low);
+  72              		.loc 1 17 0
+  73 0040 4FF4F070 		mov	r0, #480
+  74 0044 FFF7FEFF 		bl	delay_us
+  18:../Work/Sources/oneWire.c **** 	PIN_ON(GPIOx, PINx);
+  75              		.loc 1 18 0
+  76 0048 7B88     		ldrh	r3, [r7, #2]
+  77 004a 7868     		ldr	r0, [r7, #4]
+  78 004c 1946     		mov	r1, r3
+  79 004e FFF7FEFF 		bl	PIN_ON
+  19:../Work/Sources/oneWire.c **** 	PIN_IN(GPIOx, PINx);
+  80              		.loc 1 19 0
+  81 0052 7B88     		ldrh	r3, [r7, #2]
+  82 0054 7868     		ldr	r0, [r7, #4]
+  83 0056 1946     		mov	r1, r3
+  84 0058 FFF7FEFF 		bl	PIN_IN
+  20:../Work/Sources/oneWire.c **** 	delay_us(Time_Pulse_Delay_High);
+  85              		.loc 1 20 0
+  86 005c 4FF03C00 		mov	r0, #60
+  87 0060 FFF7FEFF 		bl	delay_us
+  21:../Work/Sources/oneWire.c **** 	if ((PIN_SYG(GPIOx, PINx))==0) tmp=One_Wire_Success;
+  88              		.loc 1 21 0
+  89 0064 7B88     		ldrh	r3, [r7, #2]
+  90 0066 7868     		ldr	r0, [r7, #4]
+  91 0068 1946     		mov	r1, r3
+  92 006a FFF7FEFF 		bl	PIN_SYG
+  93 006e 0346     		mov	r3, r0
+  94 0070 002B     		cmp	r3, #0
+  95 0072 03D1     		bne	.L4
+  96              		.loc 1 21 0 is_stmt 0 discriminator 1
+  97 0074 4FF00003 		mov	r3, #0
+  98 0078 FB60     		str	r3, [r7, #12]
+  99 007a 02E0     		b	.L5
+ 100              	.L4:
+  22:../Work/Sources/oneWire.c **** 		else tmp=One_Wire_Error_No_Echo;
+ 101              		.loc 1 22 0 is_stmt 1
+ 102 007c 4FF00103 		mov	r3, #1
+ 103 0080 FB60     		str	r3, [r7, #12]
+ 104              	.L5:
+  23:../Work/Sources/oneWire.c **** 	delay_us(Time_After_Reset);
+ 105              		.loc 1 23 0
+ 106 0082 4FF4AF70 		mov	r0, #350
+ 107 0086 FFF7FEFF 		bl	delay_us
+  24:../Work/Sources/oneWire.c **** 	return tmp;
+ 108              		.loc 1 24 0
+ 109 008a FB68     		ldr	r3, [r7, #12]
+ 110              	.L3:
+  25:../Work/Sources/oneWire.c **** }
+ 111              		.loc 1 25 0
+ 112 008c 1846     		mov	r0, r3
+ 113 008e 07F11007 		add	r7, r7, #16
+ 114 0092 BD46     		mov	sp, r7
+ 115 0094 80BD     		pop	{r7, pc}
+ 116              		.cfi_endproc
+ 117              	.LFE29:
+ 119 0096 00BF     		.section	.text.One_Wire_Write_Byte,"ax",%progbits
+ 120              		.align	2
+ 121              		.global	One_Wire_Write_Byte
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	One_Wire_Write_Byte:
+ 126              	.LFB30:
+  26:../Work/Sources/oneWire.c **** 
+  27:../Work/Sources/oneWire.c **** void One_Wire_Write_Byte(unsigned char Byte,GPIO_TypeDef * GPIOx, u16 PINx)
+  28:../Work/Sources/oneWire.c **** {
+ 127              		.loc 1 28 0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 16
+ 130              		@ frame_needed = 1, uses_anonymous_args = 0
+ 131 0000 80B5     		push	{r7, lr}
+ 132              	.LCFI3:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 7, -8
+ 135              		.cfi_offset 14, -4
+ 136 0002 84B0     		sub	sp, sp, #16
+ 137              	.LCFI4:
+ 138              		.cfi_def_cfa_offset 24
+ 139 0004 00AF     		add	r7, sp, #0
+ 140              	.LCFI5:
+ 141              		.cfi_def_cfa_register 7
+ 142 0006 3960     		str	r1, [r7, #0]
+ 143 0008 1346     		mov	r3, r2
+ 144 000a 0246     		mov	r2, r0
+ 145 000c FA71     		strb	r2, [r7, #7]
+ 146 000e BB80     		strh	r3, [r7, #4]	@ movhi
+  29:../Work/Sources/oneWire.c **** 	unsigned char cnt;
+  30:../Work/Sources/oneWire.c **** 	for (cnt=0;cnt!=8;cnt++) One_Wire_Write_Bit(Byte&(1<<cnt),GPIOx, PINx);
+ 147              		.loc 1 30 0
+ 148 0010 4FF00003 		mov	r3, #0
+ 149 0014 FB73     		strb	r3, [r7, #15]
+ 150 0016 13E0     		b	.L7
+ 151              	.L8:
+ 152              		.loc 1 30 0 is_stmt 0 discriminator 2
+ 153 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 154 001a 4FF00102 		mov	r2, #1
+ 155 001e 02FA03F3 		lsl	r3, r2, r3
+ 156 0022 DAB2     		uxtb	r2, r3
+ 157 0024 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 158 0026 1340     		ands	r3, r3, r2
+ 159 0028 DBB2     		uxtb	r3, r3
+ 160 002a DAB2     		uxtb	r2, r3
+ 161 002c BB88     		ldrh	r3, [r7, #4]
+ 162 002e 1046     		mov	r0, r2
+ 163 0030 3968     		ldr	r1, [r7, #0]
+ 164 0032 1A46     		mov	r2, r3
+ 165 0034 FFF7FEFF 		bl	One_Wire_Write_Bit
+ 166 0038 FB7B     		ldrb	r3, [r7, #15]
+ 167 003a 03F10103 		add	r3, r3, #1
+ 168 003e FB73     		strb	r3, [r7, #15]
+ 169              	.L7:
+ 170              		.loc 1 30 0 discriminator 1
+ 171 0040 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 172 0042 082B     		cmp	r3, #8
+ 173 0044 E8D1     		bne	.L8
+  31:../Work/Sources/oneWire.c **** }
+ 174              		.loc 1 31 0 is_stmt 1
+ 175 0046 07F11007 		add	r7, r7, #16
+ 176 004a BD46     		mov	sp, r7
+ 177 004c 80BD     		pop	{r7, pc}
+ 178              		.cfi_endproc
+ 179              	.LFE30:
+ 181 004e 00BF     		.section	.text.One_Wire_Write_Bit,"ax",%progbits
+ 182              		.align	2
+ 183              		.global	One_Wire_Write_Bit
+ 184              		.thumb
+ 185              		.thumb_func
+ 187              	One_Wire_Write_Bit:
+ 188              	.LFB31:
+  32:../Work/Sources/oneWire.c **** 
+  33:../Work/Sources/oneWire.c **** void One_Wire_Write_Bit (unsigned char Bit,GPIO_TypeDef * GPIOx, u16 PINx)
+  34:../Work/Sources/oneWire.c **** {
+ 189              		.loc 1 34 0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 8
+ 192              		@ frame_needed = 1, uses_anonymous_args = 0
+ 193 0000 80B5     		push	{r7, lr}
+ 194              	.LCFI6:
+ 195              		.cfi_def_cfa_offset 8
+ 196              		.cfi_offset 7, -8
+ 197              		.cfi_offset 14, -4
+ 198 0002 82B0     		sub	sp, sp, #8
+ 199              	.LCFI7:
+ 200              		.cfi_def_cfa_offset 16
+ 201 0004 00AF     		add	r7, sp, #0
+ 202              	.LCFI8:
+ 203              		.cfi_def_cfa_register 7
+ 204 0006 3960     		str	r1, [r7, #0]
+ 205 0008 1346     		mov	r3, r2
+ 206 000a 0246     		mov	r2, r0
+ 207 000c FA71     		strb	r2, [r7, #7]
+ 208 000e BB80     		strh	r3, [r7, #4]	@ movhi
+  35:../Work/Sources/oneWire.c **** 	PIN_OUT_PP(GPIOx, PINx);
+ 209              		.loc 1 35 0
+ 210 0010 BB88     		ldrh	r3, [r7, #4]
+ 211 0012 3868     		ldr	r0, [r7, #0]
+ 212 0014 1946     		mov	r1, r3
+ 213 0016 FFF7FEFF 		bl	PIN_OUT_PP
+  36:../Work/Sources/oneWire.c **** 	PIN_OFF(GPIOx, PINx);
+ 214              		.loc 1 36 0
+ 215 001a BB88     		ldrh	r3, [r7, #4]
+ 216 001c 3868     		ldr	r0, [r7, #0]
+ 217 001e 1946     		mov	r1, r3
+ 218 0020 FFF7FEFF 		bl	PIN_OFF
+  37:../Work/Sources/oneWire.c **** 	if (Bit==0)
+ 219              		.loc 1 37 0
+ 220 0024 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 221 0026 002B     		cmp	r3, #0
+ 222 0028 0DD1     		bne	.L10
+  38:../Work/Sources/oneWire.c **** 	{
+  39:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_High);
+ 223              		.loc 1 39 0
+ 224 002a 4FF03C00 		mov	r0, #60
+ 225 002e FFF7FEFF 		bl	delay_us
+  40:../Work/Sources/oneWire.c **** 		PIN_ON(GPIOx, PINx);
+ 226              		.loc 1 40 0
+ 227 0032 BB88     		ldrh	r3, [r7, #4]
+ 228 0034 3868     		ldr	r0, [r7, #0]
+ 229 0036 1946     		mov	r1, r3
+ 230 0038 FFF7FEFF 		bl	PIN_ON
+  41:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_Low);
+ 231              		.loc 1 41 0
+ 232 003c 4FF00A00 		mov	r0, #10
+ 233 0040 FFF7FEFF 		bl	delay_us
+ 234 0044 0CE0     		b	.L11
+ 235              	.L10:
+  42:../Work/Sources/oneWire.c **** 	}
+  43:../Work/Sources/oneWire.c **** 	else
+  44:../Work/Sources/oneWire.c **** 	{
+  45:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_Low);
+ 236              		.loc 1 45 0
+ 237 0046 4FF00A00 		mov	r0, #10
+ 238 004a FFF7FEFF 		bl	delay_us
+  46:../Work/Sources/oneWire.c **** 		PIN_ON(GPIOx, PINx);
+ 239              		.loc 1 46 0
+ 240 004e BB88     		ldrh	r3, [r7, #4]
+ 241 0050 3868     		ldr	r0, [r7, #0]
+ 242 0052 1946     		mov	r1, r3
+ 243 0054 FFF7FEFF 		bl	PIN_ON
+  47:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_High);
+ 244              		.loc 1 47 0
+ 245 0058 4FF03C00 		mov	r0, #60
+ 246 005c FFF7FEFF 		bl	delay_us
+ 247              	.L11:
+  48:../Work/Sources/oneWire.c **** 	}
+  49:../Work/Sources/oneWire.c **** 	PIN_IN(GPIOx, PINx);
+ 248              		.loc 1 49 0
+ 249 0060 BB88     		ldrh	r3, [r7, #4]
+ 250 0062 3868     		ldr	r0, [r7, #0]
+ 251 0064 1946     		mov	r1, r3
+ 252 0066 FFF7FEFF 		bl	PIN_IN
+  50:../Work/Sources/oneWire.c **** }
+ 253              		.loc 1 50 0
+ 254 006a 07F10807 		add	r7, r7, #8
+ 255 006e BD46     		mov	sp, r7
+ 256 0070 80BD     		pop	{r7, pc}
+ 257              		.cfi_endproc
+ 258              	.LFE31:
+ 260 0072 00BF     		.section	.text.One_Wire_Read_Byte,"ax",%progbits
+ 261              		.align	2
+ 262              		.global	One_Wire_Read_Byte
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	One_Wire_Read_Byte:
+ 267              	.LFB32:
+  51:../Work/Sources/oneWire.c **** 
+  52:../Work/Sources/oneWire.c **** unsigned char One_Wire_Read_Byte(GPIO_TypeDef * GPIOx, u16 PINx)
+  53:../Work/Sources/oneWire.c **** {
+ 268              		.loc 1 53 0
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 16
+ 271              		@ frame_needed = 1, uses_anonymous_args = 0
+ 272 0000 80B5     		push	{r7, lr}
+ 273              	.LCFI9:
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 7, -8
+ 276              		.cfi_offset 14, -4
+ 277 0002 84B0     		sub	sp, sp, #16
+ 278              	.LCFI10:
+ 279              		.cfi_def_cfa_offset 24
+ 280 0004 00AF     		add	r7, sp, #0
+ 281              	.LCFI11:
+ 282              		.cfi_def_cfa_register 7
+ 283 0006 7860     		str	r0, [r7, #4]
+ 284 0008 0B46     		mov	r3, r1
+ 285 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  54:../Work/Sources/oneWire.c **** 	unsigned char tmp=0;
+ 286              		.loc 1 54 0
+ 287 000c 4FF00003 		mov	r3, #0
+ 288 0010 FB73     		strb	r3, [r7, #15]
+  55:../Work/Sources/oneWire.c **** 	unsigned char cnt;
+  56:../Work/Sources/oneWire.c **** 	for (cnt=0;cnt!=8;cnt++)
+ 289              		.loc 1 56 0
+ 290 0012 4FF00003 		mov	r3, #0
+ 291 0016 BB73     		strb	r3, [r7, #14]
+ 292 0018 15E0     		b	.L13
+ 293              	.L15:
+  57:../Work/Sources/oneWire.c **** 		if (One_Wire_Read_Bit(GPIOx, PINx)!=0)	tmp|=(1<<cnt);
+ 294              		.loc 1 57 0
+ 295 001a 7B88     		ldrh	r3, [r7, #2]
+ 296 001c 7868     		ldr	r0, [r7, #4]
+ 297 001e 1946     		mov	r1, r3
+ 298 0020 FFF7FEFF 		bl	One_Wire_Read_Bit
+ 299 0024 0346     		mov	r3, r0
+ 300 0026 002B     		cmp	r3, #0
+ 301 0028 09D0     		beq	.L14
+ 302              		.loc 1 57 0 is_stmt 0 discriminator 1
+ 303 002a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 304 002c 4FF00102 		mov	r2, #1
+ 305 0030 02FA03F3 		lsl	r3, r2, r3
+ 306 0034 DAB2     		uxtb	r2, r3
+ 307 0036 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 308 0038 1343     		orrs	r3, r3, r2
+ 309 003a DBB2     		uxtb	r3, r3
+ 310 003c FB73     		strb	r3, [r7, #15]
+ 311              	.L14:
+  56:../Work/Sources/oneWire.c **** 	for (cnt=0;cnt!=8;cnt++)
+ 312              		.loc 1 56 0 is_stmt 1
+ 313 003e BB7B     		ldrb	r3, [r7, #14]
+ 314 0040 03F10103 		add	r3, r3, #1
+ 315 0044 BB73     		strb	r3, [r7, #14]
+ 316              	.L13:
+  56:../Work/Sources/oneWire.c **** 	for (cnt=0;cnt!=8;cnt++)
+ 317              		.loc 1 56 0 is_stmt 0 discriminator 1
+ 318 0046 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 319 0048 082B     		cmp	r3, #8
+ 320 004a E6D1     		bne	.L15
+  58:../Work/Sources/oneWire.c **** 	delay_us(Time_Pulse_Delay_High);
+ 321              		.loc 1 58 0 is_stmt 1
+ 322 004c 4FF03C00 		mov	r0, #60
+ 323 0050 FFF7FEFF 		bl	delay_us
+  59:../Work/Sources/oneWire.c **** 	return tmp;
+ 324              		.loc 1 59 0
+ 325 0054 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  60:../Work/Sources/oneWire.c **** }
+ 326              		.loc 1 60 0
+ 327 0056 1846     		mov	r0, r3
+ 328 0058 07F11007 		add	r7, r7, #16
+ 329 005c BD46     		mov	sp, r7
+ 330 005e 80BD     		pop	{r7, pc}
+ 331              		.cfi_endproc
+ 332              	.LFE32:
+ 334              		.section	.text.One_Wire_Read_Bit,"ax",%progbits
+ 335              		.align	2
+ 336              		.global	One_Wire_Read_Bit
+ 337              		.thumb
+ 338              		.thumb_func
+ 340              	One_Wire_Read_Bit:
+ 341              	.LFB33:
+  61:../Work/Sources/oneWire.c **** 
+  62:../Work/Sources/oneWire.c **** unsigned char One_Wire_Read_Bit (GPIO_TypeDef * GPIOx, u16 PINx)
+  63:../Work/Sources/oneWire.c **** {
+ 342              		.loc 1 63 0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 16
+ 345              		@ frame_needed = 1, uses_anonymous_args = 0
+ 346 0000 80B5     		push	{r7, lr}
+ 347              	.LCFI12:
+ 348              		.cfi_def_cfa_offset 8
+ 349              		.cfi_offset 7, -8
+ 350              		.cfi_offset 14, -4
+ 351 0002 84B0     		sub	sp, sp, #16
+ 352              	.LCFI13:
+ 353              		.cfi_def_cfa_offset 24
+ 354 0004 00AF     		add	r7, sp, #0
+ 355              	.LCFI14:
+ 356              		.cfi_def_cfa_register 7
+ 357 0006 7860     		str	r0, [r7, #4]
+ 358 0008 0B46     		mov	r3, r1
+ 359 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  64:../Work/Sources/oneWire.c **** 		unsigned char tmp;
+  65:../Work/Sources/oneWire.c **** 	 	PIN_OUT_PP(GPIOx, PINx);
+ 360              		.loc 1 65 0
+ 361 000c 7B88     		ldrh	r3, [r7, #2]
+ 362 000e 7868     		ldr	r0, [r7, #4]
+ 363 0010 1946     		mov	r1, r3
+ 364 0012 FFF7FEFF 		bl	PIN_OUT_PP
+  66:../Work/Sources/oneWire.c **** 		PIN_OFF(GPIOx, PINx);
+ 365              		.loc 1 66 0
+ 366 0016 7B88     		ldrh	r3, [r7, #2]
+ 367 0018 7868     		ldr	r0, [r7, #4]
+ 368 001a 1946     		mov	r1, r3
+ 369 001c FFF7FEFF 		bl	PIN_OFF
+  67:../Work/Sources/oneWire.c **** 		delay_us(Time_Hold_Down);
+ 370              		.loc 1 67 0
+ 371 0020 4FF00200 		mov	r0, #2
+ 372 0024 FFF7FEFF 		bl	delay_us
+  68:../Work/Sources/oneWire.c **** 		PIN_IN(GPIOx, PINx);
+ 373              		.loc 1 68 0
+ 374 0028 7B88     		ldrh	r3, [r7, #2]
+ 375 002a 7868     		ldr	r0, [r7, #4]
+ 376 002c 1946     		mov	r1, r3
+ 377 002e FFF7FEFF 		bl	PIN_IN
+  69:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_Low);
+ 378              		.loc 1 69 0
+ 379 0032 4FF00A00 		mov	r0, #10
+ 380 0036 FFF7FEFF 		bl	delay_us
+  70:../Work/Sources/oneWire.c **** 		if ((PIN_SYG(GPIOx, PINx))!=0)	tmp = 1;
+ 381              		.loc 1 70 0
+ 382 003a 7B88     		ldrh	r3, [r7, #2]
+ 383 003c 7868     		ldr	r0, [r7, #4]
+ 384 003e 1946     		mov	r1, r3
+ 385 0040 FFF7FEFF 		bl	PIN_SYG
+ 386 0044 0346     		mov	r3, r0
+ 387 0046 002B     		cmp	r3, #0
+ 388 0048 03D0     		beq	.L18
+ 389              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 390 004a 4FF00103 		mov	r3, #1
+ 391 004e FB73     		strb	r3, [r7, #15]
+ 392 0050 02E0     		b	.L19
+ 393              	.L18:
+  71:../Work/Sources/oneWire.c **** 			else tmp = 0;
+ 394              		.loc 1 71 0 is_stmt 1
+ 395 0052 4FF00003 		mov	r3, #0
+ 396 0056 FB73     		strb	r3, [r7, #15]
+ 397              	.L19:
+  72:../Work/Sources/oneWire.c **** 		delay_us(Time_Pulse_Delay_High);
+ 398              		.loc 1 72 0
+ 399 0058 4FF03C00 		mov	r0, #60
+ 400 005c FFF7FEFF 		bl	delay_us
+  73:../Work/Sources/oneWire.c **** 		return tmp;
+ 401              		.loc 1 73 0
+ 402 0060 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  74:../Work/Sources/oneWire.c **** }
+ 403              		.loc 1 74 0
+ 404 0062 1846     		mov	r0, r3
+ 405 0064 07F11007 		add	r7, r7, #16
+ 406 0068 BD46     		mov	sp, r7
+ 407 006a 80BD     		pop	{r7, pc}
+ 408              		.cfi_endproc
+ 409              	.LFE33:
+ 411              		.text
+ 412              	.Letext0:
+ 413              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 414              		.file 3 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 415              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 oneWire.c
+     /tmp/cc03qwoU.s:19     .text.One_Wire_Reset:00000000 $t
+     /tmp/cc03qwoU.s:24     .text.One_Wire_Reset:00000000 One_Wire_Reset
+     /tmp/cc03qwoU.s:120    .text.One_Wire_Write_Byte:00000000 $t
+     /tmp/cc03qwoU.s:125    .text.One_Wire_Write_Byte:00000000 One_Wire_Write_Byte
+     /tmp/cc03qwoU.s:187    .text.One_Wire_Write_Bit:00000000 One_Wire_Write_Bit
+     /tmp/cc03qwoU.s:182    .text.One_Wire_Write_Bit:00000000 $t
+     /tmp/cc03qwoU.s:261    .text.One_Wire_Read_Byte:00000000 $t
+     /tmp/cc03qwoU.s:266    .text.One_Wire_Read_Byte:00000000 One_Wire_Read_Byte
+     /tmp/cc03qwoU.s:340    .text.One_Wire_Read_Bit:00000000 One_Wire_Read_Bit
+     /tmp/cc03qwoU.s:335    .text.One_Wire_Read_Bit:00000000 $t
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_rcc.h.66.7684c7e822659b814addf0d50b975514
+                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
+                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
+                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
+                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
+                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
+                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
+                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
+                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
+                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
+                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
+                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
+                           .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
+
+UNDEFINED SYMBOLS
+PIN_IN
+PIN_SYG
+PIN_OUT_PP
+PIN_OFF
+delay_us
+PIN_ON

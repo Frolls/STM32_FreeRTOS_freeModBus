@@ -1,0 +1,572 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ds1821.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.DS1821_Start_Conversion,"ax",%progbits
+  19              		.align	2
+  20              		.global	DS1821_Start_Conversion
+  21              		.thumb
+  22              		.thumb_func
+  24              	DS1821_Start_Conversion:
+  25              	.LFB29:
+  26              		.file 1 "../Work/Sources/ds1821.c"
+   1:../Work/Sources/ds1821.c **** /*
+   2:../Work/Sources/ds1821.c ****  * ds1821.c
+   3:../Work/Sources/ds1821.c ****  *
+   4:../Work/Sources/ds1821.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/ds1821.c ****  *      Author: frolls
+   6:../Work/Sources/ds1821.c ****  */
+   7:../Work/Sources/ds1821.c **** #include "ds1821.h"
+   8:../Work/Sources/ds1821.c **** 
+   9:../Work/Sources/ds1821.c **** unsigned char DS1821_Start_Conversion (GPIO_TypeDef * GPIOx, unsigned long PINx)
+  10:../Work/Sources/ds1821.c **** {
+  27              		.loc 1 10 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 3960     		str	r1, [r7, #0]
+  11:../Work/Sources/ds1821.c **** 	unsigned char cnt;
+  12:../Work/Sources/ds1821.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+  44              		.loc 1 12 0
+  45 000a 3B68     		ldr	r3, [r7, #0]
+  46 000c 9BB2     		uxth	r3, r3
+  47 000e 7868     		ldr	r0, [r7, #4]
+  48 0010 1946     		mov	r1, r3
+  49 0012 FFF7FEFF 		bl	One_Wire_Reset
+  50 0016 0346     		mov	r3, r0
+  51 0018 FB73     		strb	r3, [r7, #15]
+  13:../Work/Sources/ds1821.c **** 	if (cnt!=One_Wire_Success) return cnt;
+  52              		.loc 1 13 0
+  53 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  54 001c 002B     		cmp	r3, #0
+  55 001e 01D0     		beq	.L2
+  56              		.loc 1 13 0 is_stmt 0 discriminator 1
+  57 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  58 0022 09E0     		b	.L3
+  59              	.L2:
+  14:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_START_CONVERT_T,GPIOx, PINx);
+  60              		.loc 1 14 0 is_stmt 1
+  61 0024 3B68     		ldr	r3, [r7, #0]
+  62 0026 9BB2     		uxth	r3, r3
+  63 0028 4FF0EE00 		mov	r0, #238
+  64 002c 7968     		ldr	r1, [r7, #4]
+  65 002e 1A46     		mov	r2, r3
+  66 0030 FFF7FEFF 		bl	One_Wire_Write_Byte
+  15:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+  67              		.loc 1 15 0
+  68 0034 4FF00003 		mov	r3, #0
+  69              	.L3:
+  16:../Work/Sources/ds1821.c **** }
+  70              		.loc 1 16 0
+  71 0038 1846     		mov	r0, r3
+  72 003a 07F11007 		add	r7, r7, #16
+  73 003e BD46     		mov	sp, r7
+  74 0040 80BD     		pop	{r7, pc}
+  75              		.cfi_endproc
+  76              	.LFE29:
+  78 0042 00BF     		.section	.text.DS1821_Stop_Conversion,"ax",%progbits
+  79              		.align	2
+  80              		.global	DS1821_Stop_Conversion
+  81              		.thumb
+  82              		.thumb_func
+  84              	DS1821_Stop_Conversion:
+  85              	.LFB30:
+  17:../Work/Sources/ds1821.c **** 
+  18:../Work/Sources/ds1821.c **** unsigned char DS1821_Stop_Conversion(GPIO_TypeDef * GPIOx, unsigned long PINx)
+  19:../Work/Sources/ds1821.c **** {
+  86              		.loc 1 19 0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 16
+  89              		@ frame_needed = 1, uses_anonymous_args = 0
+  90 0000 80B5     		push	{r7, lr}
+  91              	.LCFI3:
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 7, -8
+  94              		.cfi_offset 14, -4
+  95 0002 84B0     		sub	sp, sp, #16
+  96              	.LCFI4:
+  97              		.cfi_def_cfa_offset 24
+  98 0004 00AF     		add	r7, sp, #0
+  99              	.LCFI5:
+ 100              		.cfi_def_cfa_register 7
+ 101 0006 7860     		str	r0, [r7, #4]
+ 102 0008 3960     		str	r1, [r7, #0]
+  20:../Work/Sources/ds1821.c **** 	unsigned char cnt;
+  21:../Work/Sources/ds1821.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+ 103              		.loc 1 21 0
+ 104 000a 3B68     		ldr	r3, [r7, #0]
+ 105 000c 9BB2     		uxth	r3, r3
+ 106 000e 7868     		ldr	r0, [r7, #4]
+ 107 0010 1946     		mov	r1, r3
+ 108 0012 FFF7FEFF 		bl	One_Wire_Reset
+ 109 0016 0346     		mov	r3, r0
+ 110 0018 FB73     		strb	r3, [r7, #15]
+  22:../Work/Sources/ds1821.c **** 	if (cnt!=One_Wire_Success) return cnt;
+ 111              		.loc 1 22 0
+ 112 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 113 001c 002B     		cmp	r3, #0
+ 114 001e 01D0     		beq	.L5
+ 115              		.loc 1 22 0 is_stmt 0 discriminator 1
+ 116 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 117 0022 09E0     		b	.L6
+ 118              	.L5:
+  23:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_STOP_CONVERT_T,GPIOx, PINx);
+ 119              		.loc 1 23 0 is_stmt 1
+ 120 0024 3B68     		ldr	r3, [r7, #0]
+ 121 0026 9BB2     		uxth	r3, r3
+ 122 0028 4FF02200 		mov	r0, #34
+ 123 002c 7968     		ldr	r1, [r7, #4]
+ 124 002e 1A46     		mov	r2, r3
+ 125 0030 FFF7FEFF 		bl	One_Wire_Write_Byte
+  24:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 126              		.loc 1 24 0
+ 127 0034 4FF00003 		mov	r3, #0
+ 128              	.L6:
+  25:../Work/Sources/ds1821.c **** }
+ 129              		.loc 1 25 0
+ 130 0038 1846     		mov	r0, r3
+ 131 003a 07F11007 		add	r7, r7, #16
+ 132 003e BD46     		mov	sp, r7
+ 133 0040 80BD     		pop	{r7, pc}
+ 134              		.cfi_endproc
+ 135              	.LFE30:
+ 137 0042 00BF     		.section	.text.DS1821_Read_Temp,"ax",%progbits
+ 138              		.align	2
+ 139              		.global	DS1821_Read_Temp
+ 140              		.thumb
+ 141              		.thumb_func
+ 143              	DS1821_Read_Temp:
+ 144              	.LFB31:
+  26:../Work/Sources/ds1821.c **** 
+  27:../Work/Sources/ds1821.c **** unsigned char DS1821_Read_Temp(unsigned int * temperature, GPIO_TypeDef * GPIOx, unsigned long PINx
+  28:../Work/Sources/ds1821.c **** {
+ 145              		.loc 1 28 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 24
+ 148              		@ frame_needed = 1, uses_anonymous_args = 0
+ 149 0000 80B5     		push	{r7, lr}
+ 150              	.LCFI6:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 86B0     		sub	sp, sp, #24
+ 155              	.LCFI7:
+ 156              		.cfi_def_cfa_offset 32
+ 157 0004 00AF     		add	r7, sp, #0
+ 158              	.LCFI8:
+ 159              		.cfi_def_cfa_register 7
+ 160 0006 F860     		str	r0, [r7, #12]
+ 161 0008 B960     		str	r1, [r7, #8]
+ 162 000a 7A60     		str	r2, [r7, #4]
+  29:../Work/Sources/ds1821.c **** 	unsigned char tmp;
+  30:../Work/Sources/ds1821.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+ 163              		.loc 1 30 0
+ 164 000c 7B68     		ldr	r3, [r7, #4]
+ 165 000e 9BB2     		uxth	r3, r3
+ 166 0010 B868     		ldr	r0, [r7, #8]
+ 167 0012 1946     		mov	r1, r3
+ 168 0014 FFF7FEFF 		bl	One_Wire_Reset
+ 169 0018 0346     		mov	r3, r0
+ 170 001a FB75     		strb	r3, [r7, #23]
+  31:../Work/Sources/ds1821.c **** 	if (tmp!=One_Wire_Success) return tmp;
+ 171              		.loc 1 31 0
+ 172 001c FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 173 001e 002B     		cmp	r3, #0
+ 174 0020 01D0     		beq	.L8
+ 175              		.loc 1 31 0 is_stmt 0 discriminator 1
+ 176 0022 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 177 0024 13E0     		b	.L9
+ 178              	.L8:
+  32:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_READ_TEMPERATURE, GPIOx, PINx);
+ 179              		.loc 1 32 0 is_stmt 1
+ 180 0026 7B68     		ldr	r3, [r7, #4]
+ 181 0028 9BB2     		uxth	r3, r3
+ 182 002a 4FF0AA00 		mov	r0, #170
+ 183 002e B968     		ldr	r1, [r7, #8]
+ 184 0030 1A46     		mov	r2, r3
+ 185 0032 FFF7FEFF 		bl	One_Wire_Write_Byte
+  33:../Work/Sources/ds1821.c **** 	* temperature = One_Wire_Read_Byte(GPIOx, PINx);
+ 186              		.loc 1 33 0
+ 187 0036 7B68     		ldr	r3, [r7, #4]
+ 188 0038 9BB2     		uxth	r3, r3
+ 189 003a B868     		ldr	r0, [r7, #8]
+ 190 003c 1946     		mov	r1, r3
+ 191 003e FFF7FEFF 		bl	One_Wire_Read_Byte
+ 192 0042 0346     		mov	r3, r0
+ 193 0044 1A46     		mov	r2, r3
+ 194 0046 FB68     		ldr	r3, [r7, #12]
+ 195 0048 1A60     		str	r2, [r3, #0]
+  34:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 196              		.loc 1 34 0
+ 197 004a 4FF00003 		mov	r3, #0
+ 198              	.L9:
+  35:../Work/Sources/ds1821.c **** }
+ 199              		.loc 1 35 0
+ 200 004e 1846     		mov	r0, r3
+ 201 0050 07F11807 		add	r7, r7, #24
+ 202 0054 BD46     		mov	sp, r7
+ 203 0056 80BD     		pop	{r7, pc}
+ 204              		.cfi_endproc
+ 205              	.LFE31:
+ 207              		.section	.text.DS1821_Load_Counter,"ax",%progbits
+ 208              		.align	2
+ 209              		.global	DS1821_Load_Counter
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	DS1821_Load_Counter:
+ 214              	.LFB32:
+  36:../Work/Sources/ds1821.c **** 
+  37:../Work/Sources/ds1821.c **** unsigned char DS1821_Load_Counter (GPIO_TypeDef * GPIOx, unsigned long PINx)
+  38:../Work/Sources/ds1821.c **** {
+ 215              		.loc 1 38 0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 16
+ 218              		@ frame_needed = 1, uses_anonymous_args = 0
+ 219 0000 80B5     		push	{r7, lr}
+ 220              	.LCFI9:
+ 221              		.cfi_def_cfa_offset 8
+ 222              		.cfi_offset 7, -8
+ 223              		.cfi_offset 14, -4
+ 224 0002 84B0     		sub	sp, sp, #16
+ 225              	.LCFI10:
+ 226              		.cfi_def_cfa_offset 24
+ 227 0004 00AF     		add	r7, sp, #0
+ 228              	.LCFI11:
+ 229              		.cfi_def_cfa_register 7
+ 230 0006 7860     		str	r0, [r7, #4]
+ 231 0008 3960     		str	r1, [r7, #0]
+  39:../Work/Sources/ds1821.c **** 	unsigned char cnt;
+  40:../Work/Sources/ds1821.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+ 232              		.loc 1 40 0
+ 233 000a 3B68     		ldr	r3, [r7, #0]
+ 234 000c 9BB2     		uxth	r3, r3
+ 235 000e 7868     		ldr	r0, [r7, #4]
+ 236 0010 1946     		mov	r1, r3
+ 237 0012 FFF7FEFF 		bl	One_Wire_Reset
+ 238 0016 0346     		mov	r3, r0
+ 239 0018 FB73     		strb	r3, [r7, #15]
+  41:../Work/Sources/ds1821.c **** 	if (cnt!=One_Wire_Success) return cnt;
+ 240              		.loc 1 41 0
+ 241 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 242 001c 002B     		cmp	r3, #0
+ 243 001e 01D0     		beq	.L11
+ 244              		.loc 1 41 0 is_stmt 0 discriminator 1
+ 245 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 246 0022 09E0     		b	.L12
+ 247              	.L11:
+  42:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_LOAD_COUNTER,GPIOx, PINx);
+ 248              		.loc 1 42 0 is_stmt 1
+ 249 0024 3B68     		ldr	r3, [r7, #0]
+ 250 0026 9BB2     		uxth	r3, r3
+ 251 0028 4FF04100 		mov	r0, #65
+ 252 002c 7968     		ldr	r1, [r7, #4]
+ 253 002e 1A46     		mov	r2, r3
+ 254 0030 FFF7FEFF 		bl	One_Wire_Write_Byte
+  43:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 255              		.loc 1 43 0
+ 256 0034 4FF00003 		mov	r3, #0
+ 257              	.L12:
+  44:../Work/Sources/ds1821.c **** }
+ 258              		.loc 1 44 0
+ 259 0038 1846     		mov	r0, r3
+ 260 003a 07F11007 		add	r7, r7, #16
+ 261 003e BD46     		mov	sp, r7
+ 262 0040 80BD     		pop	{r7, pc}
+ 263              		.cfi_endproc
+ 264              	.LFE32:
+ 266 0042 00BF     		.section	.text.DS1821_Read_Counter,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	DS1821_Read_Counter
+ 269              		.thumb
+ 270              		.thumb_func
+ 272              	DS1821_Read_Counter:
+ 273              	.LFB33:
+  45:../Work/Sources/ds1821.c **** 
+  46:../Work/Sources/ds1821.c **** unsigned char DS1821_Read_Counter(unsigned int * counter, GPIO_TypeDef * GPIOx, unsigned long PINx)
+  47:../Work/Sources/ds1821.c **** {
+ 274              		.loc 1 47 0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 24
+ 277              		@ frame_needed = 1, uses_anonymous_args = 0
+ 278 0000 80B5     		push	{r7, lr}
+ 279              	.LCFI12:
+ 280              		.cfi_def_cfa_offset 8
+ 281              		.cfi_offset 7, -8
+ 282              		.cfi_offset 14, -4
+ 283 0002 86B0     		sub	sp, sp, #24
+ 284              	.LCFI13:
+ 285              		.cfi_def_cfa_offset 32
+ 286 0004 00AF     		add	r7, sp, #0
+ 287              	.LCFI14:
+ 288              		.cfi_def_cfa_register 7
+ 289 0006 F860     		str	r0, [r7, #12]
+ 290 0008 B960     		str	r1, [r7, #8]
+ 291 000a 7A60     		str	r2, [r7, #4]
+  48:../Work/Sources/ds1821.c **** 	unsigned char tmp;
+  49:../Work/Sources/ds1821.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+ 292              		.loc 1 49 0
+ 293 000c 7B68     		ldr	r3, [r7, #4]
+ 294 000e 9BB2     		uxth	r3, r3
+ 295 0010 B868     		ldr	r0, [r7, #8]
+ 296 0012 1946     		mov	r1, r3
+ 297 0014 FFF7FEFF 		bl	One_Wire_Reset
+ 298 0018 0346     		mov	r3, r0
+ 299 001a FB75     		strb	r3, [r7, #23]
+  50:../Work/Sources/ds1821.c **** 	if (tmp!=One_Wire_Success) return tmp;
+ 300              		.loc 1 50 0
+ 301 001c FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 302 001e 002B     		cmp	r3, #0
+ 303 0020 01D0     		beq	.L14
+ 304              		.loc 1 50 0 is_stmt 0 discriminator 1
+ 305 0022 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 306 0024 13E0     		b	.L15
+ 307              	.L14:
+  51:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_READ_COUNTER,GPIOx, PINx);
+ 308              		.loc 1 51 0 is_stmt 1
+ 309 0026 7B68     		ldr	r3, [r7, #4]
+ 310 0028 9BB2     		uxth	r3, r3
+ 311 002a 4FF0A000 		mov	r0, #160
+ 312 002e B968     		ldr	r1, [r7, #8]
+ 313 0030 1A46     		mov	r2, r3
+ 314 0032 FFF7FEFF 		bl	One_Wire_Write_Byte
+  52:../Work/Sources/ds1821.c **** 	* counter = One_Wire_Read_Byte(GPIOx, PINx);
+ 315              		.loc 1 52 0
+ 316 0036 7B68     		ldr	r3, [r7, #4]
+ 317 0038 9BB2     		uxth	r3, r3
+ 318 003a B868     		ldr	r0, [r7, #8]
+ 319 003c 1946     		mov	r1, r3
+ 320 003e FFF7FEFF 		bl	One_Wire_Read_Byte
+ 321 0042 0346     		mov	r3, r0
+ 322 0044 1A46     		mov	r2, r3
+ 323 0046 FB68     		ldr	r3, [r7, #12]
+ 324 0048 1A60     		str	r2, [r3, #0]
+  53:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 325              		.loc 1 53 0
+ 326 004a 4FF00003 		mov	r3, #0
+ 327              	.L15:
+  54:../Work/Sources/ds1821.c **** }
+ 328              		.loc 1 54 0
+ 329 004e 1846     		mov	r0, r3
+ 330 0050 07F11807 		add	r7, r7, #24
+ 331 0054 BD46     		mov	sp, r7
+ 332 0056 80BD     		pop	{r7, pc}
+ 333              		.cfi_endproc
+ 334              	.LFE33:
+ 336              		.section	.text.DS1821_Write_Status,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	DS1821_Write_Status
+ 339              		.thumb
+ 340              		.thumb_func
+ 342              	DS1821_Write_Status:
+ 343              	.LFB34:
+  55:../Work/Sources/ds1821.c **** 
+  56:../Work/Sources/ds1821.c **** unsigned char DS1821_Write_Status (GPIO_TypeDef * GPIOx, unsigned long PINx)
+  57:../Work/Sources/ds1821.c **** {
+ 344              		.loc 1 57 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 16
+ 347              		@ frame_needed = 1, uses_anonymous_args = 0
+ 348 0000 80B5     		push	{r7, lr}
+ 349              	.LCFI15:
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 7, -8
+ 352              		.cfi_offset 14, -4
+ 353 0002 84B0     		sub	sp, sp, #16
+ 354              	.LCFI16:
+ 355              		.cfi_def_cfa_offset 24
+ 356 0004 00AF     		add	r7, sp, #0
+ 357              	.LCFI17:
+ 358              		.cfi_def_cfa_register 7
+ 359 0006 7860     		str	r0, [r7, #4]
+ 360 0008 3960     		str	r1, [r7, #0]
+  58:../Work/Sources/ds1821.c **** 	unsigned char cnt;
+  59:../Work/Sources/ds1821.c **** 	cnt=One_Wire_Reset(GPIOx, PINx);
+ 361              		.loc 1 59 0
+ 362 000a 3B68     		ldr	r3, [r7, #0]
+ 363 000c 9BB2     		uxth	r3, r3
+ 364 000e 7868     		ldr	r0, [r7, #4]
+ 365 0010 1946     		mov	r1, r3
+ 366 0012 FFF7FEFF 		bl	One_Wire_Reset
+ 367 0016 0346     		mov	r3, r0
+ 368 0018 FB73     		strb	r3, [r7, #15]
+  60:../Work/Sources/ds1821.c **** 	if (cnt!=One_Wire_Success) return cnt;
+ 369              		.loc 1 60 0
+ 370 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 371 001c 002B     		cmp	r3, #0
+ 372 001e 01D0     		beq	.L17
+ 373              		.loc 1 60 0 is_stmt 0 discriminator 1
+ 374 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 375 0022 09E0     		b	.L18
+ 376              	.L17:
+  61:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_WRITE_STATUS,GPIOx, PINx);
+ 377              		.loc 1 61 0 is_stmt 1
+ 378 0024 3B68     		ldr	r3, [r7, #0]
+ 379 0026 9BB2     		uxth	r3, r3
+ 380 0028 4FF00C00 		mov	r0, #12
+ 381 002c 7968     		ldr	r1, [r7, #4]
+ 382 002e 1A46     		mov	r2, r3
+ 383 0030 FFF7FEFF 		bl	One_Wire_Write_Byte
+  62:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 384              		.loc 1 62 0
+ 385 0034 4FF00003 		mov	r3, #0
+ 386              	.L18:
+  63:../Work/Sources/ds1821.c **** }
+ 387              		.loc 1 63 0
+ 388 0038 1846     		mov	r0, r3
+ 389 003a 07F11007 		add	r7, r7, #16
+ 390 003e BD46     		mov	sp, r7
+ 391 0040 80BD     		pop	{r7, pc}
+ 392              		.cfi_endproc
+ 393              	.LFE34:
+ 395 0042 00BF     		.section	.text.DS1821_Read_Status,"ax",%progbits
+ 396              		.align	2
+ 397              		.global	DS1821_Read_Status
+ 398              		.thumb
+ 399              		.thumb_func
+ 401              	DS1821_Read_Status:
+ 402              	.LFB35:
+  64:../Work/Sources/ds1821.c **** 
+  65:../Work/Sources/ds1821.c **** unsigned char DS1821_Read_Status(unsigned int * status, GPIO_TypeDef * GPIOx, unsigned long PINx)
+  66:../Work/Sources/ds1821.c **** {
+ 403              		.loc 1 66 0
+ 404              		.cfi_startproc
+ 405              		@ args = 0, pretend = 0, frame = 24
+ 406              		@ frame_needed = 1, uses_anonymous_args = 0
+ 407 0000 80B5     		push	{r7, lr}
+ 408              	.LCFI18:
+ 409              		.cfi_def_cfa_offset 8
+ 410              		.cfi_offset 7, -8
+ 411              		.cfi_offset 14, -4
+ 412 0002 86B0     		sub	sp, sp, #24
+ 413              	.LCFI19:
+ 414              		.cfi_def_cfa_offset 32
+ 415 0004 00AF     		add	r7, sp, #0
+ 416              	.LCFI20:
+ 417              		.cfi_def_cfa_register 7
+ 418 0006 F860     		str	r0, [r7, #12]
+ 419 0008 B960     		str	r1, [r7, #8]
+ 420 000a 7A60     		str	r2, [r7, #4]
+  67:../Work/Sources/ds1821.c **** 	unsigned char tmp;
+  68:../Work/Sources/ds1821.c **** 	tmp=One_Wire_Reset(GPIOx, PINx);
+ 421              		.loc 1 68 0
+ 422 000c 7B68     		ldr	r3, [r7, #4]
+ 423 000e 9BB2     		uxth	r3, r3
+ 424 0010 B868     		ldr	r0, [r7, #8]
+ 425 0012 1946     		mov	r1, r3
+ 426 0014 FFF7FEFF 		bl	One_Wire_Reset
+ 427 0018 0346     		mov	r3, r0
+ 428 001a FB75     		strb	r3, [r7, #23]
+  69:../Work/Sources/ds1821.c **** 	if (tmp!=One_Wire_Success) return tmp;
+ 429              		.loc 1 69 0
+ 430 001c FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 431 001e 002B     		cmp	r3, #0
+ 432 0020 01D0     		beq	.L20
+ 433              		.loc 1 69 0 is_stmt 0 discriminator 1
+ 434 0022 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 435 0024 13E0     		b	.L21
+ 436              	.L20:
+  70:../Work/Sources/ds1821.c **** 	One_Wire_Write_Byte(DS1821_READ_STATUS,GPIOx, PINx);
+ 437              		.loc 1 70 0 is_stmt 1
+ 438 0026 7B68     		ldr	r3, [r7, #4]
+ 439 0028 9BB2     		uxth	r3, r3
+ 440 002a 4FF0AC00 		mov	r0, #172
+ 441 002e B968     		ldr	r1, [r7, #8]
+ 442 0030 1A46     		mov	r2, r3
+ 443 0032 FFF7FEFF 		bl	One_Wire_Write_Byte
+  71:../Work/Sources/ds1821.c **** 	* status = One_Wire_Read_Byte(GPIOx, PINx);
+ 444              		.loc 1 71 0
+ 445 0036 7B68     		ldr	r3, [r7, #4]
+ 446 0038 9BB2     		uxth	r3, r3
+ 447 003a B868     		ldr	r0, [r7, #8]
+ 448 003c 1946     		mov	r1, r3
+ 449 003e FFF7FEFF 		bl	One_Wire_Read_Byte
+ 450 0042 0346     		mov	r3, r0
+ 451 0044 1A46     		mov	r2, r3
+ 452 0046 FB68     		ldr	r3, [r7, #12]
+ 453 0048 1A60     		str	r2, [r3, #0]
+  72:../Work/Sources/ds1821.c **** 	return One_Wire_Success;
+ 454              		.loc 1 72 0
+ 455 004a 4FF00003 		mov	r3, #0
+ 456              	.L21:
+  73:../Work/Sources/ds1821.c **** }
+ 457              		.loc 1 73 0
+ 458 004e 1846     		mov	r0, r3
+ 459 0050 07F11807 		add	r7, r7, #24
+ 460 0054 BD46     		mov	sp, r7
+ 461 0056 80BD     		pop	{r7, pc}
+ 462              		.cfi_endproc
+ 463              	.LFE35:
+ 465              		.text
+ 466              	.Letext0:
+ 467              		.file 2 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 468              		.file 3 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 469              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ds1821.c
+     /tmp/ccwjAHKw.s:19     .text.DS1821_Start_Conversion:00000000 $t
+     /tmp/ccwjAHKw.s:24     .text.DS1821_Start_Conversion:00000000 DS1821_Start_Conversion
+     /tmp/ccwjAHKw.s:79     .text.DS1821_Stop_Conversion:00000000 $t
+     /tmp/ccwjAHKw.s:84     .text.DS1821_Stop_Conversion:00000000 DS1821_Stop_Conversion
+     /tmp/ccwjAHKw.s:138    .text.DS1821_Read_Temp:00000000 $t
+     /tmp/ccwjAHKw.s:143    .text.DS1821_Read_Temp:00000000 DS1821_Read_Temp
+     /tmp/ccwjAHKw.s:208    .text.DS1821_Load_Counter:00000000 $t
+     /tmp/ccwjAHKw.s:213    .text.DS1821_Load_Counter:00000000 DS1821_Load_Counter
+     /tmp/ccwjAHKw.s:267    .text.DS1821_Read_Counter:00000000 $t
+     /tmp/ccwjAHKw.s:272    .text.DS1821_Read_Counter:00000000 DS1821_Read_Counter
+     /tmp/ccwjAHKw.s:337    .text.DS1821_Write_Status:00000000 $t
+     /tmp/ccwjAHKw.s:342    .text.DS1821_Write_Status:00000000 DS1821_Write_Status
+     /tmp/ccwjAHKw.s:396    .text.DS1821_Read_Status:00000000 $t
+     /tmp/ccwjAHKw.s:401    .text.DS1821_Read_Status:00000000 DS1821_Read_Status
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
+                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
+                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
+                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
+                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
+                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
+                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
+                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
+                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
+                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
+                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
+                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
+                           .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
+                           .group:00000000 wm4.ds1821.h.14.68693e8168dc8fdc9849075b4c0da9f1
+
+UNDEFINED SYMBOLS
+One_Wire_Reset
+One_Wire_Write_Byte
+One_Wire_Read_Byte

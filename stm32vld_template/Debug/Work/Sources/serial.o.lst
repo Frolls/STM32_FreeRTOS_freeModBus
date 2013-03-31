@@ -1,0 +1,484 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"serial.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.uart_send_char,"ax",%progbits
+  19              		.align	2
+  20              		.global	uart_send_char
+  21              		.thumb
+  22              		.thumb_func
+  24              	uart_send_char:
+  25              	.LFB29:
+  26              		.file 1 "../Work/Sources/serial.c"
+   1:../Work/Sources/serial.c **** /*
+   2:../Work/Sources/serial.c ****  * serial.c
+   3:../Work/Sources/serial.c ****  *
+   4:../Work/Sources/serial.c ****  *  Created on: 22.03.2013
+   5:../Work/Sources/serial.c ****  *      Author: frolls
+   6:../Work/Sources/serial.c ****  */
+   7:../Work/Sources/serial.c **** #include "serial.h"
+   8:../Work/Sources/serial.c **** void uart_send_char (USART_TypeDef * USARTx, char dat)
+   9:../Work/Sources/serial.c **** {
+  27              		.loc 1 9 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 0B46     		mov	r3, r1
+  44 000a FB70     		strb	r3, [r7, #3]
+  10:../Work/Sources/serial.c **** 	while (!(USARTx->SR & USART_SR_TXE)) {}
+  45              		.loc 1 10 0
+  46 000c 00BF     		nop
+  47              	.L2:
+  48              		.loc 1 10 0 is_stmt 0 discriminator 1
+  49 000e 7B68     		ldr	r3, [r7, #4]
+  50 0010 1B88     		ldrh	r3, [r3, #0]	@ movhi
+  51 0012 9BB2     		uxth	r3, r3
+  52 0014 03F08003 		and	r3, r3, #128
+  53 0018 002B     		cmp	r3, #0
+  54 001a F8D0     		beq	.L2
+  11:../Work/Sources/serial.c ****   	USART_SendData(USARTx,dat);
+  55              		.loc 1 11 0 is_stmt 1
+  56 001c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  57 001e 9BB2     		uxth	r3, r3
+  58 0020 7868     		ldr	r0, [r7, #4]
+  59 0022 1946     		mov	r1, r3
+  60 0024 FFF7FEFF 		bl	USART_SendData
+  12:../Work/Sources/serial.c **** }
+  61              		.loc 1 12 0
+  62 0028 07F10807 		add	r7, r7, #8
+  63 002c BD46     		mov	sp, r7
+  64 002e 80BD     		pop	{r7, pc}
+  65              		.cfi_endproc
+  66              	.LFE29:
+  68              		.section	.text.uart_print_string,"ax",%progbits
+  69              		.align	2
+  70              		.global	uart_print_string
+  71              		.thumb
+  72              		.thumb_func
+  74              	uart_print_string:
+  75              	.LFB30:
+  13:../Work/Sources/serial.c **** 
+  14:../Work/Sources/serial.c **** void uart_print_string(USART_TypeDef * USARTx, char * string, char newline)
+  15:../Work/Sources/serial.c **** {
+  76              		.loc 1 15 0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 16
+  79              		@ frame_needed = 1, uses_anonymous_args = 0
+  80 0000 80B5     		push	{r7, lr}
+  81              	.LCFI3:
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 7, -8
+  84              		.cfi_offset 14, -4
+  85 0002 84B0     		sub	sp, sp, #16
+  86              	.LCFI4:
+  87              		.cfi_def_cfa_offset 24
+  88 0004 00AF     		add	r7, sp, #0
+  89              	.LCFI5:
+  90              		.cfi_def_cfa_register 7
+  91 0006 F860     		str	r0, [r7, #12]
+  92 0008 B960     		str	r1, [r7, #8]
+  93 000a 1346     		mov	r3, r2
+  94 000c FB71     		strb	r3, [r7, #7]
+  16:../Work/Sources/serial.c **** 	while (*string != 0x00){ uart_send_char(USARTx, *string++);}
+  95              		.loc 1 16 0
+  96 000e 09E0     		b	.L4
+  97              	.L5:
+  98              		.loc 1 16 0 is_stmt 0 discriminator 2
+  99 0010 BB68     		ldr	r3, [r7, #8]
+ 100 0012 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 101 0014 BA68     		ldr	r2, [r7, #8]
+ 102 0016 02F10102 		add	r2, r2, #1
+ 103 001a BA60     		str	r2, [r7, #8]
+ 104 001c F868     		ldr	r0, [r7, #12]
+ 105 001e 1946     		mov	r1, r3
+ 106 0020 FFF7FEFF 		bl	uart_send_char
+ 107              	.L4:
+ 108              		.loc 1 16 0 discriminator 1
+ 109 0024 BB68     		ldr	r3, [r7, #8]
+ 110 0026 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 111 0028 002B     		cmp	r3, #0
+ 112 002a F1D1     		bne	.L5
+  17:../Work/Sources/serial.c **** 	if (newline !=0 ){
+ 113              		.loc 1 17 0 is_stmt 1
+ 114 002c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 115 002e 002B     		cmp	r3, #0
+ 116 0030 04D0     		beq	.L3
+  18:../Work/Sources/serial.c **** 		uart_send_char(USARTx, '\n');
+ 117              		.loc 1 18 0
+ 118 0032 F868     		ldr	r0, [r7, #12]
+ 119 0034 4FF00A01 		mov	r1, #10
+ 120 0038 FFF7FEFF 		bl	uart_send_char
+ 121              	.L3:
+  19:../Work/Sources/serial.c **** 		//uart_send_char(USARTx, 13);
+  20:../Work/Sources/serial.c **** 	}
+  21:../Work/Sources/serial.c **** }
+ 122              		.loc 1 21 0
+ 123 003c 07F11007 		add	r7, r7, #16
+ 124 0040 BD46     		mov	sp, r7
+ 125 0042 80BD     		pop	{r7, pc}
+ 126              		.cfi_endproc
+ 127              	.LFE30:
+ 129              		.section	.rodata
+ 130              		.align	2
+ 131              	.LC0:
+ 132 0000 30313233 		.ascii	"0123456789\000"
+ 132      34353637 
+ 132      383900
+ 133              		.section	.text.uart_print_value,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	uart_print_value
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	uart_print_value:
+ 140              	.LFB31:
+  22:../Work/Sources/serial.c **** 
+  23:../Work/Sources/serial.c **** void uart_print_value(USART_TypeDef * USARTx, long val)
+  24:../Work/Sources/serial.c **** {
+ 141              		.loc 1 24 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 24
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              	.LCFI6:
+ 147              		.cfi_def_cfa_offset 8
+ 148              		.cfi_offset 7, -8
+ 149              		.cfi_offset 14, -4
+ 150 0002 86B0     		sub	sp, sp, #24
+ 151              	.LCFI7:
+ 152              		.cfi_def_cfa_offset 32
+ 153 0004 00AF     		add	r7, sp, #0
+ 154              	.LCFI8:
+ 155              		.cfi_def_cfa_register 7
+ 156 0006 7860     		str	r0, [r7, #4]
+ 157 0008 3960     		str	r1, [r7, #0]
+  25:../Work/Sources/serial.c **** 	char buffer[10] = {0};
+ 158              		.loc 1 25 0
+ 159 000a 07F10803 		add	r3, r7, #8
+ 160 000e 4FF00002 		mov	r2, #0
+ 161 0012 1A60     		str	r2, [r3, #0]
+ 162 0014 03F10403 		add	r3, r3, #4
+ 163 0018 4FF00002 		mov	r2, #0
+ 164 001c 1A60     		str	r2, [r3, #0]
+ 165 001e 03F10403 		add	r3, r3, #4
+ 166 0022 4FF00002 		mov	r2, #0
+ 167 0026 1A80     		strh	r2, [r3, #0]	@ movhi
+ 168 0028 03F10203 		add	r3, r3, #2
+  26:../Work/Sources/serial.c **** 	char * head = buffer;
+ 169              		.loc 1 26 0
+ 170 002c 07F10803 		add	r3, r7, #8
+ 171 0030 7B61     		str	r3, [r7, #20]
+  27:../Work/Sources/serial.c **** 	char cnt=0;
+ 172              		.loc 1 27 0
+ 173 0032 4FF00003 		mov	r3, #0
+ 174 0036 FB74     		strb	r3, [r7, #19]
+  28:../Work/Sources/serial.c **** 	if (val!=0)
+ 175              		.loc 1 28 0
+ 176 0038 3B68     		ldr	r3, [r7, #0]
+ 177 003a 002B     		cmp	r3, #0
+ 178 003c 45D0     		beq	.L8
+  29:../Work/Sources/serial.c **** 	{
+  30:../Work/Sources/serial.c **** 		while( val )
+ 179              		.loc 1 30 0
+ 180 003e 2EE0     		b	.L9
+ 181              	.L10:
+  31:../Work/Sources/serial.c **** 		{
+  32:../Work/Sources/serial.c ****     		*head++ = (val % 10)["0123456789"];
+ 182              		.loc 1 32 0
+ 183 0040 3968     		ldr	r1, [r7, #0]
+ 184 0042 46F26763 		movw	r3, #26215
+ 185 0046 C6F26663 		movt	r3, 26214
+ 186 004a 83FB0123 		smull	r2, r3, r3, r1
+ 187 004e 4FEAA302 		asr	r2, r3, #2
+ 188 0052 4FEAE173 		asr	r3, r1, #31
+ 189 0056 D21A     		subs	r2, r2, r3
+ 190 0058 1346     		mov	r3, r2
+ 191 005a 4FEA8303 		lsl	r3, r3, #2
+ 192 005e 9B18     		adds	r3, r3, r2
+ 193 0060 4FEA4303 		lsl	r3, r3, #1
+ 194 0064 CA1A     		subs	r2, r1, r3
+ 195 0066 40F20003 		movw	r3, #:lower16:.LC0
+ 196 006a C0F20003 		movt	r3, #:upper16:.LC0
+ 197 006e 9A5C     		ldrb	r2, [r3, r2]	@ zero_extendqisi2
+ 198 0070 7B69     		ldr	r3, [r7, #20]
+ 199 0072 1A70     		strb	r2, [r3, #0]
+ 200 0074 7B69     		ldr	r3, [r7, #20]
+ 201 0076 03F10103 		add	r3, r3, #1
+ 202 007a 7B61     		str	r3, [r7, #20]
+  33:../Work/Sources/serial.c ****     		val /= 10;
+ 203              		.loc 1 33 0
+ 204 007c 3A68     		ldr	r2, [r7, #0]
+ 205 007e 46F26763 		movw	r3, #26215
+ 206 0082 C6F26663 		movt	r3, 26214
+ 207 0086 83FB0213 		smull	r1, r3, r3, r2
+ 208 008a 4FEAA301 		asr	r1, r3, #2
+ 209 008e 4FEAE273 		asr	r3, r2, #31
+ 210 0092 CB1A     		subs	r3, r1, r3
+ 211 0094 3B60     		str	r3, [r7, #0]
+  34:../Work/Sources/serial.c **** 			cnt++;
+ 212              		.loc 1 34 0
+ 213 0096 FB7C     		ldrb	r3, [r7, #19]
+ 214 0098 03F10103 		add	r3, r3, #1
+ 215 009c FB74     		strb	r3, [r7, #19]
+ 216              	.L9:
+  30:../Work/Sources/serial.c **** 		while( val )
+ 217              		.loc 1 30 0 discriminator 1
+ 218 009e 3B68     		ldr	r3, [r7, #0]
+ 219 00a0 002B     		cmp	r3, #0
+ 220 00a2 CDD1     		bne	.L10
+  35:../Work/Sources/serial.c **** 		}
+  36:../Work/Sources/serial.c **** 		while (cnt!=0){ cnt--; uart_send_char(USARTx, (buffer[cnt])); }
+ 221              		.loc 1 36 0
+ 222 00a4 0DE0     		b	.L11
+ 223              	.L12:
+ 224              		.loc 1 36 0 is_stmt 0 discriminator 2
+ 225 00a6 FB7C     		ldrb	r3, [r7, #19]
+ 226 00a8 03F1FF33 		add	r3, r3, #-1
+ 227 00ac FB74     		strb	r3, [r7, #19]
+ 228 00ae FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 229 00b0 07F11802 		add	r2, r7, #24
+ 230 00b4 D318     		adds	r3, r2, r3
+ 231 00b6 13F8103C 		ldrb	r3, [r3, #-16]	@ zero_extendqisi2
+ 232 00ba 7868     		ldr	r0, [r7, #4]
+ 233 00bc 1946     		mov	r1, r3
+ 234 00be FFF7FEFF 		bl	uart_send_char
+ 235              	.L11:
+ 236              		.loc 1 36 0 discriminator 1
+ 237 00c2 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 238 00c4 002B     		cmp	r3, #0
+ 239 00c6 EED1     		bne	.L12
+ 240              		.loc 1 36 0
+ 241 00c8 04E0     		b	.L7
+ 242              	.L8:
+  37:../Work/Sources/serial.c **** 	}
+  38:../Work/Sources/serial.c **** 	else
+  39:../Work/Sources/serial.c **** 	{
+  40:../Work/Sources/serial.c **** 		uart_send_char(USARTx, ('0'));
+ 243              		.loc 1 40 0 is_stmt 1
+ 244 00ca 7868     		ldr	r0, [r7, #4]
+ 245 00cc 4FF03001 		mov	r1, #48
+ 246 00d0 FFF7FEFF 		bl	uart_send_char
+ 247              	.L7:
+  41:../Work/Sources/serial.c **** 	}
+  42:../Work/Sources/serial.c **** }
+ 248              		.loc 1 42 0
+ 249 00d4 07F11807 		add	r7, r7, #24
+ 250 00d8 BD46     		mov	sp, r7
+ 251 00da 80BD     		pop	{r7, pc}
+ 252              		.cfi_endproc
+ 253              	.LFE31:
+ 255              		.section	.rodata
+ 256 000b 00       		.align	2
+ 257              	.LC1:
+ 258 000c 30313233 		.ascii	"0123456789ABCDEF\000"
+ 258      34353637 
+ 258      38394142 
+ 258      43444546 
+ 258      00
+ 259 001d 000000   		.section	.text.uart_print_hex_value,"ax",%progbits
+ 260              		.align	2
+ 261              		.global	uart_print_hex_value
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	uart_print_hex_value:
+ 266              	.LFB32:
+  43:../Work/Sources/serial.c **** 
+  44:../Work/Sources/serial.c **** void uart_print_hex_value(USART_TypeDef * USARTx, long val)
+  45:../Work/Sources/serial.c **** {
+ 267              		.loc 1 45 0
+ 268              		.cfi_startproc
+ 269              		@ args = 0, pretend = 0, frame = 24
+ 270              		@ frame_needed = 1, uses_anonymous_args = 0
+ 271 0000 80B5     		push	{r7, lr}
+ 272              	.LCFI9:
+ 273              		.cfi_def_cfa_offset 8
+ 274              		.cfi_offset 7, -8
+ 275              		.cfi_offset 14, -4
+ 276 0002 86B0     		sub	sp, sp, #24
+ 277              	.LCFI10:
+ 278              		.cfi_def_cfa_offset 32
+ 279 0004 00AF     		add	r7, sp, #0
+ 280              	.LCFI11:
+ 281              		.cfi_def_cfa_register 7
+ 282 0006 7860     		str	r0, [r7, #4]
+ 283 0008 3960     		str	r1, [r7, #0]
+  46:../Work/Sources/serial.c **** 	char buffer[10] = {0};
+ 284              		.loc 1 46 0
+ 285 000a 07F10803 		add	r3, r7, #8
+ 286 000e 4FF00002 		mov	r2, #0
+ 287 0012 1A60     		str	r2, [r3, #0]
+ 288 0014 03F10403 		add	r3, r3, #4
+ 289 0018 4FF00002 		mov	r2, #0
+ 290 001c 1A60     		str	r2, [r3, #0]
+ 291 001e 03F10403 		add	r3, r3, #4
+ 292 0022 4FF00002 		mov	r2, #0
+ 293 0026 1A80     		strh	r2, [r3, #0]	@ movhi
+ 294 0028 03F10203 		add	r3, r3, #2
+  47:../Work/Sources/serial.c **** 	char * head = buffer;
+ 295              		.loc 1 47 0
+ 296 002c 07F10803 		add	r3, r7, #8
+ 297 0030 7B61     		str	r3, [r7, #20]
+  48:../Work/Sources/serial.c **** 	char cnt=0;
+ 298              		.loc 1 48 0
+ 299 0032 4FF00003 		mov	r3, #0
+ 300 0036 FB74     		strb	r3, [r7, #19]
+  49:../Work/Sources/serial.c **** 	uart_send_char(USARTx, ('0'));
+ 301              		.loc 1 49 0
+ 302 0038 7868     		ldr	r0, [r7, #4]
+ 303 003a 4FF03001 		mov	r1, #48
+ 304 003e FFF7FEFF 		bl	uart_send_char
+  50:../Work/Sources/serial.c **** 	uart_send_char(USARTx, ('x'));
+ 305              		.loc 1 50 0
+ 306 0042 7868     		ldr	r0, [r7, #4]
+ 307 0044 4FF07801 		mov	r1, #120
+ 308 0048 FFF7FEFF 		bl	uart_send_char
+  51:../Work/Sources/serial.c **** 	if (val<=9)	uart_send_char(USARTx, ('0'));
+ 309              		.loc 1 51 0
+ 310 004c 3B68     		ldr	r3, [r7, #0]
+ 311 004e 092B     		cmp	r3, #9
+ 312 0050 04DC     		bgt	.L15
+ 313              		.loc 1 51 0 is_stmt 0 discriminator 1
+ 314 0052 7868     		ldr	r0, [r7, #4]
+ 315 0054 4FF03001 		mov	r1, #48
+ 316 0058 FFF7FEFF 		bl	uart_send_char
+ 317              	.L15:
+  52:../Work/Sources/serial.c **** 	if (val!=0)
+ 318              		.loc 1 52 0 is_stmt 1
+ 319 005c 3B68     		ldr	r3, [r7, #0]
+ 320 005e 002B     		cmp	r3, #0
+ 321 0060 2CD0     		beq	.L16
+  53:../Work/Sources/serial.c **** 	{
+  54:../Work/Sources/serial.c **** 		while( val )
+ 322              		.loc 1 54 0
+ 323 0062 15E0     		b	.L17
+ 324              	.L18:
+  55:../Work/Sources/serial.c **** 		{
+  56:../Work/Sources/serial.c ****     		*head++ = (val & 0x0F)["0123456789ABCDEF"];
+ 325              		.loc 1 56 0
+ 326 0064 3B68     		ldr	r3, [r7, #0]
+ 327 0066 03F00F02 		and	r2, r3, #15
+ 328 006a 40F20003 		movw	r3, #:lower16:.LC1
+ 329 006e C0F20003 		movt	r3, #:upper16:.LC1
+ 330 0072 9A5C     		ldrb	r2, [r3, r2]	@ zero_extendqisi2
+ 331 0074 7B69     		ldr	r3, [r7, #20]
+ 332 0076 1A70     		strb	r2, [r3, #0]
+ 333 0078 7B69     		ldr	r3, [r7, #20]
+ 334 007a 03F10103 		add	r3, r3, #1
+ 335 007e 7B61     		str	r3, [r7, #20]
+  57:../Work/Sources/serial.c ****     		val=val>>4;
+ 336              		.loc 1 57 0
+ 337 0080 3B68     		ldr	r3, [r7, #0]
+ 338 0082 4FEA2313 		asr	r3, r3, #4
+ 339 0086 3B60     		str	r3, [r7, #0]
+  58:../Work/Sources/serial.c **** 			cnt++;
+ 340              		.loc 1 58 0
+ 341 0088 FB7C     		ldrb	r3, [r7, #19]
+ 342 008a 03F10103 		add	r3, r3, #1
+ 343 008e FB74     		strb	r3, [r7, #19]
+ 344              	.L17:
+  54:../Work/Sources/serial.c **** 		while( val )
+ 345              		.loc 1 54 0 discriminator 1
+ 346 0090 3B68     		ldr	r3, [r7, #0]
+ 347 0092 002B     		cmp	r3, #0
+ 348 0094 E6D1     		bne	.L18
+  59:../Work/Sources/serial.c **** 		}
+  60:../Work/Sources/serial.c **** 		while (cnt!=0){ cnt--; uart_send_char(USARTx, (buffer[cnt])); }
+ 349              		.loc 1 60 0
+ 350 0096 0DE0     		b	.L19
+ 351              	.L20:
+ 352              		.loc 1 60 0 is_stmt 0 discriminator 2
+ 353 0098 FB7C     		ldrb	r3, [r7, #19]
+ 354 009a 03F1FF33 		add	r3, r3, #-1
+ 355 009e FB74     		strb	r3, [r7, #19]
+ 356 00a0 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 357 00a2 07F11802 		add	r2, r7, #24
+ 358 00a6 D318     		adds	r3, r2, r3
+ 359 00a8 13F8103C 		ldrb	r3, [r3, #-16]	@ zero_extendqisi2
+ 360 00ac 7868     		ldr	r0, [r7, #4]
+ 361 00ae 1946     		mov	r1, r3
+ 362 00b0 FFF7FEFF 		bl	uart_send_char
+ 363              	.L19:
+ 364              		.loc 1 60 0 discriminator 1
+ 365 00b4 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 366 00b6 002B     		cmp	r3, #0
+ 367 00b8 EED1     		bne	.L20
+ 368              		.loc 1 60 0
+ 369 00ba 04E0     		b	.L21
+ 370              	.L16:
+  61:../Work/Sources/serial.c **** 	}
+  62:../Work/Sources/serial.c **** 	else
+  63:../Work/Sources/serial.c **** 	{
+  64:../Work/Sources/serial.c **** 		uart_send_char(USARTx, ('0'));
+ 371              		.loc 1 64 0 is_stmt 1
+ 372 00bc 7868     		ldr	r0, [r7, #4]
+ 373 00be 4FF03001 		mov	r1, #48
+ 374 00c2 FFF7FEFF 		bl	uart_send_char
+ 375              	.L21:
+  65:../Work/Sources/serial.c **** 	}
+  66:../Work/Sources/serial.c **** 	uart_send_char(USARTx, (' '));
+ 376              		.loc 1 66 0
+ 377 00c6 7868     		ldr	r0, [r7, #4]
+ 378 00c8 4FF02001 		mov	r1, #32
+ 379 00cc FFF7FEFF 		bl	uart_send_char
+  67:../Work/Sources/serial.c **** }
+ 380              		.loc 1 67 0
+ 381 00d0 07F11807 		add	r7, r7, #24
+ 382 00d4 BD46     		mov	sp, r7
+ 383 00d6 80BD     		pop	{r7, pc}
+ 384              		.cfi_endproc
+ 385              	.LFE32:
+ 387              		.text
+ 388              	.Letext0:
+ 389              		.file 2 "/home/frolls/ARM/stm32vld_template/CMSIS/stm32f10x.h"
+ 390              		.file 3 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 391              		.file 4 "/home/frolls/ARM/stm32vld_template/CMSIS/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 serial.c
+     /tmp/ccrCTUq5.s:19     .text.uart_send_char:00000000 $t
+     /tmp/ccrCTUq5.s:24     .text.uart_send_char:00000000 uart_send_char
+     /tmp/ccrCTUq5.s:69     .text.uart_print_string:00000000 $t
+     /tmp/ccrCTUq5.s:74     .text.uart_print_string:00000000 uart_print_string
+     /tmp/ccrCTUq5.s:130    .rodata:00000000 $d
+     /tmp/ccrCTUq5.s:131    .rodata:00000000 .LC0
+     /tmp/ccrCTUq5.s:134    .text.uart_print_value:00000000 $t
+     /tmp/ccrCTUq5.s:139    .text.uart_print_value:00000000 uart_print_value
+     /tmp/ccrCTUq5.s:257    .rodata:0000000c .LC1
+     /tmp/ccrCTUq5.s:260    .text.uart_print_hex_value:00000000 $t
+     /tmp/ccrCTUq5.s:265    .text.uart_print_hex_value:00000000 uart_print_hex_value
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_usart.h.107.8846ccd7e61ab380957a621cc3460139
+
+UNDEFINED SYMBOLS
+USART_SendData
