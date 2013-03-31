@@ -48,7 +48,7 @@ all: stm32vld_template.elf secondary-outputs
 stm32vld_template.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linux GCC C Linker'
-	arm-none-eabi-gcc -T"/home/frolls/ARM/stm32vld_template/stm32f100rb.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,stm32vld_template.map -mcpu=cortex-m3 -mthumb -g3 -gdwarf-2 -o "stm32vld_template.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -T"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/stm32f100rb.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,stm32vld_template.map -mcpu=cortex-m3 -mthumb -g3 -gdwarf-2 -o "stm32vld_template.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
