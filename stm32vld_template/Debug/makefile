@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Work/Sources/subdir.mk
+-include Work/Headers/subdir.mk
 -include StdPeripheralDriver/src/subdir.mk
 -include FreeRTOS/Sources/subdir.mk
 -include FreeModbus/modbus/rtu/subdir.mk

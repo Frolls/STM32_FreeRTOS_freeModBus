@@ -21,6 +21,7 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 . \
 Work/Sources \
+Work/Headers \
 StdPeripheralDriver/src \
 FreeRTOS/Sources \
 FreeModbus/modbus/rtu \

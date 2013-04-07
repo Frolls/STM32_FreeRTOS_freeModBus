@@ -26,7 +26,10 @@ main.d: ../main.c \
  /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/ds1821.h \
  /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/stm32_GPIO.h \
  /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/oneWire.h \
- /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/timer6.h
+ /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/timer6.h \
+ /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/rtc.h \
+ /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_rtc.h \
+ /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_pwr.h
 
 /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/FreeRTOS.h:
 
@@ -83,3 +86,9 @@ main.d: ../main.c \
 /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/oneWire.h:
 
 /home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/timer6.h:
+
+/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers/rtc.h:
+
+/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_rtc.h:
+
+/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm32f10x_pwr.h:

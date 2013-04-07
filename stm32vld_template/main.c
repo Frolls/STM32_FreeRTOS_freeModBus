@@ -25,6 +25,7 @@
 
 #include "timer6.h"
 #include "ds1821.h"
+#include "rtc.h"
 
 
 #define LED_PORT GPIOC
@@ -308,6 +309,7 @@ void vTaskDS1821(void *pvParameters)
 
 			//error_handle(DS1821_Stop_Conversion(One_Wire_Pin));
 			//error_handle(DS1821_Read_Temp(&t, One_Wire_Pin));
+			uart_print_string(USART1, "Температура:   ", 0);
 			DS1821_Read_Temp(&t, One_Wire_Pin);
 			uart_send_char(USART1, 8);
 			uart_send_char(USART1, 8);
@@ -317,6 +319,13 @@ void vTaskDS1821(void *pvParameters)
 						//vTaskDelay(10);
 			delay_ms(10);
 			LED_PORT->ODR ^= LED_GREEN;
+			uart_print_string(USART1, " Uptime: ", 0);
+			uart_print_value(USART1, Time_GetHours(GetTime()));
+			uart_print_string(USART1, ":", 0);
+			uart_print_value(USART1, Time_GetMinutes(GetTime()));
+			uart_print_string(USART1, ":", 0);
+			uart_print_value(USART1, Time_GetSeconds(GetTime()));
+			uart_print_string(USART1, "", 1);
 			//////////////////
 			vTaskDelay(1000);
 	}
@@ -328,6 +337,8 @@ void vTaskDS1821(void *pvParameters)
 int main()
 {
 	vFreeRTOSInitAll();
+
+	RTC_Config();
 
 	xTaskCreate( vTaskLED, ( signed char * ) "LED", configMINIMAL_STACK_SIZE, NULL, 2,
 	                        ( xTaskHandle * ) NULL);

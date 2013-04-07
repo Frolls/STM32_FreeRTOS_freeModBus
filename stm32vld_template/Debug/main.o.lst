@@ -55,23 +55,24 @@
   25:../main.c     **** 
   26:../main.c     **** #include "timer6.h"
   27:../main.c     **** #include "ds1821.h"
-  28:../main.c     **** 
+  28:../main.c     **** #include "rtc.h"
   29:../main.c     **** 
-  30:../main.c     **** #define LED_PORT GPIOC
-  31:../main.c     **** #define LED_GREEN GPIO_Pin_9
-  32:../main.c     **** #define LED_BLUE GPIO_Pin_8
-  33:../main.c     **** 
-  34:../main.c     **** #define One_Wire_Pin 		GPIOC, GPIO_Pin_7
-  35:../main.c     **** 
-  36:../main.c     **** #define BAUDRATE 115200
-  37:../main.c     **** 
-  38:../main.c     **** volatile uint16_t counter = 0;
-  39:../main.c     **** 
-  40:../main.c     **** unsigned char error_handle (unsigned char err);
-  41:../main.c     **** 
-  42:../main.c     **** void SetupClock()
-  43:../main.c     **** {
-  34              		.loc 1 43 0
+  30:../main.c     **** 
+  31:../main.c     **** #define LED_PORT GPIOC
+  32:../main.c     **** #define LED_GREEN GPIO_Pin_9
+  33:../main.c     **** #define LED_BLUE GPIO_Pin_8
+  34:../main.c     **** 
+  35:../main.c     **** #define One_Wire_Pin 		GPIOC, GPIO_Pin_7
+  36:../main.c     **** 
+  37:../main.c     **** #define BAUDRATE 115200
+  38:../main.c     **** 
+  39:../main.c     **** volatile uint16_t counter = 0;
+  40:../main.c     **** 
+  41:../main.c     **** unsigned char error_handle (unsigned char err);
+  42:../main.c     **** 
+  43:../main.c     **** void SetupClock()
+  44:../main.c     **** {
+  34              		.loc 1 44 0
   35              		.cfi_startproc
   36              		@ args = 0, pretend = 0, frame = 0
   37              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -83,83 +84,83 @@
   43 0002 00AF     		add	r7, sp, #0
   44              	.LCFI1:
   45              		.cfi_def_cfa_register 7
-  44:../main.c     **** 	RCC_DeInit ();                    /* RCC system reset(for debug purpose)*/
-  46              		.loc 1 44 0
+  45:../main.c     **** 	RCC_DeInit ();                    /* RCC system reset(for debug purpose)*/
+  46              		.loc 1 45 0
   47 0004 FFF7FEFF 		bl	RCC_DeInit
-  45:../main.c     **** 	      RCC_HSEConfig (RCC_HSE_ON);       /* Enable HSE                         */
-  48              		.loc 1 45 0
+  46:../main.c     **** 	      RCC_HSEConfig (RCC_HSE_ON);       /* Enable HSE                         */
+  48              		.loc 1 46 0
   49 0008 4FF48030 		mov	r0, #65536
   50 000c FFF7FEFF 		bl	RCC_HSEConfig
-  46:../main.c     **** 
-  47:../main.c     **** 	      /* Wait till HSE is ready                                               */
-  48:../main.c     **** 	      while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET);
-  51              		.loc 1 48 0
+  47:../main.c     **** 
+  48:../main.c     **** 	      /* Wait till HSE is ready                                               */
+  49:../main.c     **** 	      while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET);
+  51              		.loc 1 49 0
   52 0010 00BF     		nop
   53              	.L2:
-  54              		.loc 1 48 0 is_stmt 0 discriminator 1
+  54              		.loc 1 49 0 is_stmt 0 discriminator 1
   55 0012 4FF03100 		mov	r0, #49
   56 0016 FFF7FEFF 		bl	RCC_GetFlagStatus
   57 001a 0346     		mov	r3, r0
   58 001c 002B     		cmp	r3, #0
   59 001e F8D0     		beq	.L2
-  49:../main.c     **** 
-  50:../main.c     **** 	      RCC_HCLKConfig   (RCC_SYSCLK_Div1);   /* HCLK   = SYSCLK                */
-  60              		.loc 1 50 0 is_stmt 1
+  50:../main.c     **** 
+  51:../main.c     **** 	      RCC_HCLKConfig   (RCC_SYSCLK_Div1);   /* HCLK   = SYSCLK                */
+  60              		.loc 1 51 0 is_stmt 1
   61 0020 4FF00000 		mov	r0, #0
   62 0024 FFF7FEFF 		bl	RCC_HCLKConfig
-  51:../main.c     **** 	      RCC_PCLK2Config  (RCC_HCLK_Div1);     /* PCLK2  = HCLK                  */
-  63              		.loc 1 51 0
+  52:../main.c     **** 	      RCC_PCLK2Config  (RCC_HCLK_Div1);     /* PCLK2  = HCLK                  */
+  63              		.loc 1 52 0
   64 0028 4FF00000 		mov	r0, #0
   65 002c FFF7FEFF 		bl	RCC_PCLK2Config
-  52:../main.c     **** 	      RCC_PCLK1Config  (RCC_HCLK_Div1);     /* PCLK1  = HCLK1                */
-  66              		.loc 1 52 0
+  53:../main.c     **** 	      RCC_PCLK1Config  (RCC_HCLK_Div1);     /* PCLK1  = HCLK1                */
+  66              		.loc 1 53 0
   67 0030 4FF00000 		mov	r0, #0
   68 0034 FFF7FEFF 		bl	RCC_PCLK1Config
-  53:../main.c     **** 	      //RCC_ADCCLKConfig (RCC_PCLK2_Div4);    /* ADCCLK = PCLK2/4               */
-  54:../main.c     **** 
-  55:../main.c     **** 	      /* PLLCLK = 8MHz * 6 = 48 MHz                                           */
-  56:../main.c     **** 	      RCC_PLLConfig (RCC_PLLSource_PREDIV1, RCC_PLLMul_6);
-  69              		.loc 1 56 0
+  54:../main.c     **** 	      //RCC_ADCCLKConfig (RCC_PCLK2_Div4);    /* ADCCLK = PCLK2/4               */
+  55:../main.c     **** 
+  56:../main.c     **** 	      /* PLLCLK = 8MHz * 6 = 48 MHz                                           */
+  57:../main.c     **** 	      RCC_PLLConfig (RCC_PLLSource_PREDIV1, RCC_PLLMul_6);
+  69              		.loc 1 57 0
   70 0038 4FF48030 		mov	r0, #65536
   71 003c 4FF48011 		mov	r1, #1048576
   72 0040 FFF7FEFF 		bl	RCC_PLLConfig
-  57:../main.c     **** 
-  58:../main.c     **** 	      RCC_PLLCmd (ENABLE);                  /* Enable PLL                     */
-  73              		.loc 1 58 0
+  58:../main.c     **** 
+  59:../main.c     **** 	      RCC_PLLCmd (ENABLE);                  /* Enable PLL                     */
+  73              		.loc 1 59 0
   74 0044 4FF00100 		mov	r0, #1
   75 0048 FFF7FEFF 		bl	RCC_PLLCmd
-  59:../main.c     **** 
-  60:../main.c     **** 	      /* Wait till PLL is ready                                               */
-  61:../main.c     **** 	      while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
-  76              		.loc 1 61 0
+  60:../main.c     **** 
+  61:../main.c     **** 	      /* Wait till PLL is ready                                               */
+  62:../main.c     **** 	      while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
+  76              		.loc 1 62 0
   77 004c 00BF     		nop
   78              	.L3:
-  79              		.loc 1 61 0 is_stmt 0 discriminator 1
+  79              		.loc 1 62 0 is_stmt 0 discriminator 1
   80 004e 4FF03900 		mov	r0, #57
   81 0052 FFF7FEFF 		bl	RCC_GetFlagStatus
   82 0056 0346     		mov	r3, r0
   83 0058 002B     		cmp	r3, #0
   84 005a F8D0     		beq	.L3
-  62:../main.c     **** 
-  63:../main.c     **** 	      /* Select PLL as system clock source                                    */
-  64:../main.c     **** 	      RCC_SYSCLKConfig (RCC_SYSCLKSource_PLLCLK);
-  85              		.loc 1 64 0 is_stmt 1
+  63:../main.c     **** 
+  64:../main.c     **** 	      /* Select PLL as system clock source                                    */
+  65:../main.c     **** 	      RCC_SYSCLKConfig (RCC_SYSCLKSource_PLLCLK);
+  85              		.loc 1 65 0 is_stmt 1
   86 005c 4FF00200 		mov	r0, #2
   87 0060 FFF7FEFF 		bl	RCC_SYSCLKConfig
-  65:../main.c     **** 
-  66:../main.c     **** 	      /* Wait till PLL is used as system clock source                         */
-  67:../main.c     **** 	      while (RCC_GetSYSCLKSource() != 0x08);
-  88              		.loc 1 67 0
+  66:../main.c     **** 
+  67:../main.c     **** 	      /* Wait till PLL is used as system clock source                         */
+  68:../main.c     **** 	      while (RCC_GetSYSCLKSource() != 0x08);
+  88              		.loc 1 68 0
   89 0064 00BF     		nop
   90              	.L4:
-  91              		.loc 1 67 0 is_stmt 0 discriminator 1
+  91              		.loc 1 68 0 is_stmt 0 discriminator 1
   92 0066 FFF7FEFF 		bl	RCC_GetSYSCLKSource
   93 006a 0346     		mov	r3, r0
   94 006c 082B     		cmp	r3, #8
   95 006e FAD1     		bne	.L4
-  68:../main.c     **** 
-  69:../main.c     **** }
-  96              		.loc 1 69 0 is_stmt 1
+  69:../main.c     **** 
+  70:../main.c     **** }
+  96              		.loc 1 70 0 is_stmt 1
   97 0070 80BD     		pop	{r7, pc}
   98              		.cfi_endproc
   99              	.LFE29:
@@ -170,10 +171,10 @@
  105              		.thumb_func
  107              	LEDsInit:
  108              	.LFB30:
-  70:../main.c     **** 
-  71:../main.c     **** void LEDsInit()
-  72:../main.c     **** {
- 109              		.loc 1 72 0
+  71:../main.c     **** 
+  72:../main.c     **** void LEDsInit()
+  73:../main.c     **** {
+ 109              		.loc 1 73 0
  110              		.cfi_startproc
  111              		@ args = 0, pretend = 0, frame = 8
  112              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -188,34 +189,34 @@
  121 0004 00AF     		add	r7, sp, #0
  122              	.LCFI4:
  123              		.cfi_def_cfa_register 7
-  73:../main.c     ****    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
- 124              		.loc 1 73 0
+  74:../main.c     ****    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+ 124              		.loc 1 74 0
  125 0006 4FF01000 		mov	r0, #16
  126 000a 4FF00101 		mov	r1, #1
  127 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  74:../main.c     ****    GPIO_InitTypeDef GPIO_InitStructure;
-  75:../main.c     ****    /* Ñâåòîäèîäû íà PC8, PC9          */
-  76:../main.c     ****    GPIO_InitStructure.GPIO_Pin   = LED_GREEN | LED_BLUE;
- 128              		.loc 1 76 0
+  75:../main.c     ****    GPIO_InitTypeDef GPIO_InitStructure;
+  76:../main.c     ****    /* Ñâåòîäèîäû íà PC8, PC9          */
+  77:../main.c     ****    GPIO_InitStructure.GPIO_Pin   = LED_GREEN | LED_BLUE;
+ 128              		.loc 1 77 0
  129 0012 4FF44073 		mov	r3, #768
  130 0016 BB80     		strh	r3, [r7, #4]	@ movhi
-  77:../main.c     ****    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- 131              		.loc 1 77 0
+  78:../main.c     ****    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 131              		.loc 1 78 0
  132 0018 4FF00303 		mov	r3, #3
  133 001c BB71     		strb	r3, [r7, #6]
-  78:../main.c     ****    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
- 134              		.loc 1 78 0
+  79:../main.c     ****    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
+ 134              		.loc 1 79 0
  135 001e 4FF01003 		mov	r3, #16
  136 0022 FB71     		strb	r3, [r7, #7]
-  79:../main.c     ****    GPIO_Init(LED_PORT, &GPIO_InitStructure);
- 137              		.loc 1 79 0
+  80:../main.c     ****    GPIO_Init(LED_PORT, &GPIO_InitStructure);
+ 137              		.loc 1 80 0
  138 0024 07F10403 		add	r3, r7, #4
  139 0028 4FF48050 		mov	r0, #4096
  140 002c C4F20100 		movt	r0, 16385
  141 0030 1946     		mov	r1, r3
  142 0032 FFF7FEFF 		bl	GPIO_Init
-  80:../main.c     **** }
- 143              		.loc 1 80 0
+  81:../main.c     **** }
+ 143              		.loc 1 81 0
  144 0036 07F10807 		add	r7, r7, #8
  145 003a BD46     		mov	sp, r7
  146 003c 80BD     		pop	{r7, pc}
@@ -228,10 +229,10 @@
  154              		.thumb_func
  156              	BtnInit:
  157              	.LFB31:
-  81:../main.c     **** 
-  82:../main.c     **** void BtnInit()
-  83:../main.c     **** {
- 158              		.loc 1 83 0
+  82:../main.c     **** 
+  83:../main.c     **** void BtnInit()
+  84:../main.c     **** {
+ 158              		.loc 1 84 0
  159              		.cfi_startproc
  160              		@ args = 0, pretend = 0, frame = 8
  161              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -246,35 +247,35 @@
  170 0004 00AF     		add	r7, sp, #0
  171              	.LCFI7:
  172              		.cfi_def_cfa_register 7
-  84:../main.c     **** 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
- 173              		.loc 1 84 0
+  85:../main.c     **** 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+ 173              		.loc 1 85 0
  174 0006 4FF00400 		mov	r0, #4
  175 000a 4FF00101 		mov	r1, #1
  176 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  85:../main.c     ****     GPIO_InitTypeDef GPIO_InitStructure;
-  86:../main.c     **** 
-  87:../main.c     ****     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
- 177              		.loc 1 87 0
+  86:../main.c     ****     GPIO_InitTypeDef GPIO_InitStructure;
+  87:../main.c     **** 
+  88:../main.c     ****     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+ 177              		.loc 1 88 0
  178 0012 4FF00103 		mov	r3, #1
  179 0016 BB80     		strh	r3, [r7, #4]	@ movhi
-  88:../main.c     ****     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
- 180              		.loc 1 88 0
+  89:../main.c     ****     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 180              		.loc 1 89 0
  181 0018 4FF00403 		mov	r3, #4
  182 001c FB71     		strb	r3, [r7, #7]
-  89:../main.c     ****     GPIO_Init(GPIOA, &GPIO_InitStructure);
- 183              		.loc 1 89 0
+  90:../main.c     ****     GPIO_Init(GPIOA, &GPIO_InitStructure);
+ 183              		.loc 1 90 0
  184 001e 07F10403 		add	r3, r7, #4
  185 0022 4FF40060 		mov	r0, #2048
  186 0026 C4F20100 		movt	r0, 16385
  187 002a 1946     		mov	r1, r3
  188 002c FFF7FEFF 		bl	GPIO_Init
-  90:../main.c     ****     GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource0);
- 189              		.loc 1 90 0
+  91:../main.c     ****     GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource0);
+ 189              		.loc 1 91 0
  190 0030 4FF00000 		mov	r0, #0
  191 0034 4FF00001 		mov	r1, #0
  192 0038 FFF7FEFF 		bl	GPIO_EXTILineConfig
-  91:../main.c     **** }
- 193              		.loc 1 91 0
+  92:../main.c     **** }
+ 193              		.loc 1 92 0
  194 003c 07F10807 		add	r7, r7, #8
  195 0040 BD46     		mov	sp, r7
  196 0042 80BD     		pop	{r7, pc}
@@ -287,17 +288,17 @@
  204              		.thumb_func
  206              	USART_GPIO_Configuration:
  207              	.LFB32:
-  92:../main.c     **** 
-  93:../main.c     **** /*******************************************************************************
-  94:../main.c     **** * Function Name  : USART_GPIO_Configuration
-  95:../main.c     **** * Description    : Configures the different GPIO ports.
-  96:../main.c     **** * Input          : None
-  97:../main.c     **** * Output         : None
-  98:../main.c     **** * Return         : None
-  99:../main.c     **** *******************************************************************************/
- 100:../main.c     **** void USART_GPIO_Configuration(void)
- 101:../main.c     **** {
- 208              		.loc 1 101 0
+  93:../main.c     **** 
+  94:../main.c     **** /*******************************************************************************
+  95:../main.c     **** * Function Name  : USART_GPIO_Configuration
+  96:../main.c     **** * Description    : Configures the different GPIO ports.
+  97:../main.c     **** * Input          : None
+  98:../main.c     **** * Output         : None
+  99:../main.c     **** * Return         : None
+ 100:../main.c     **** *******************************************************************************/
+ 101:../main.c     **** void USART_GPIO_Configuration(void)
+ 102:../main.c     **** {
+ 208              		.loc 1 102 0
  209              		.cfi_startproc
  210              		@ args = 0, pretend = 0, frame = 8
  211              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -312,54 +313,54 @@
  220 0004 00AF     		add	r7, sp, #0
  221              	.LCFI10:
  222              		.cfi_def_cfa_register 7
- 102:../main.c     ****   /* Enable GPIOA clock */
- 103:../main.c     ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
- 223              		.loc 1 103 0
+ 103:../main.c     ****   /* Enable GPIOA clock */
+ 104:../main.c     ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+ 223              		.loc 1 104 0
  224 0006 4FF00400 		mov	r0, #4
  225 000a 4FF00101 		mov	r1, #1
  226 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 104:../main.c     **** 
- 105:../main.c     ****   GPIO_InitTypeDef GPIO_InitStructure;
- 106:../main.c     **** 
- 107:../main.c     ****   /* Configure USART1 Tx (PA.09) as alternate function push-pull */
- 108:../main.c     ****   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
- 227              		.loc 1 108 0
+ 105:../main.c     **** 
+ 106:../main.c     ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 107:../main.c     **** 
+ 108:../main.c     ****   /* Configure USART1 Tx (PA.09) as alternate function push-pull */
+ 109:../main.c     ****   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+ 227              		.loc 1 109 0
  228 0012 4FF40073 		mov	r3, #512
  229 0016 BB80     		strh	r3, [r7, #4]	@ movhi
- 109:../main.c     ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
- 230              		.loc 1 109 0
+ 110:../main.c     ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 230              		.loc 1 110 0
  231 0018 4FF01803 		mov	r3, #24
  232 001c FB71     		strb	r3, [r7, #7]
- 110:../main.c     ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- 233              		.loc 1 110 0
+ 111:../main.c     ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 233              		.loc 1 111 0
  234 001e 4FF00303 		mov	r3, #3
  235 0022 BB71     		strb	r3, [r7, #6]
- 111:../main.c     ****   GPIO_Init(GPIOA, &GPIO_InitStructure);
- 236              		.loc 1 111 0
+ 112:../main.c     ****   GPIO_Init(GPIOA, &GPIO_InitStructure);
+ 236              		.loc 1 112 0
  237 0024 07F10403 		add	r3, r7, #4
  238 0028 4FF40060 		mov	r0, #2048
  239 002c C4F20100 		movt	r0, 16385
  240 0030 1946     		mov	r1, r3
  241 0032 FFF7FEFF 		bl	GPIO_Init
- 112:../main.c     **** 
- 113:../main.c     ****   /* Configure USART1 Rx (PA.10) as input floating */
- 114:../main.c     ****   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
- 242              		.loc 1 114 0
+ 113:../main.c     **** 
+ 114:../main.c     ****   /* Configure USART1 Rx (PA.10) as input floating */
+ 115:../main.c     ****   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+ 242              		.loc 1 115 0
  243 0036 4FF48063 		mov	r3, #1024
  244 003a BB80     		strh	r3, [r7, #4]	@ movhi
- 115:../main.c     ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
- 245              		.loc 1 115 0
+ 116:../main.c     ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 245              		.loc 1 116 0
  246 003c 4FF00403 		mov	r3, #4
  247 0040 FB71     		strb	r3, [r7, #7]
- 116:../main.c     ****   GPIO_Init(GPIOA, &GPIO_InitStructure);
- 248              		.loc 1 116 0
+ 117:../main.c     ****   GPIO_Init(GPIOA, &GPIO_InitStructure);
+ 248              		.loc 1 117 0
  249 0042 07F10403 		add	r3, r7, #4
  250 0046 4FF40060 		mov	r0, #2048
  251 004a C4F20100 		movt	r0, 16385
  252 004e 1946     		mov	r1, r3
  253 0050 FFF7FEFF 		bl	GPIO_Init
- 117:../main.c     **** }
- 254              		.loc 1 117 0
+ 118:../main.c     **** }
+ 254              		.loc 1 118 0
  255 0054 07F10807 		add	r7, r7, #8
  256 0058 BD46     		mov	sp, r7
  257 005a 80BD     		pop	{r7, pc}
@@ -388,17 +389,17 @@
  271              		.thumb_func
  273              	USART_Configuration:
  274              	.LFB33:
- 118:../main.c     **** 
- 119:../main.c     **** /*******************************************************************************
- 120:../main.c     **** * Function Name  : USART_Configuration
- 121:../main.c     **** * Description    : Configures the USART1.
- 122:../main.c     **** * Input          : None
- 123:../main.c     **** * Output         : None
- 124:../main.c     **** * Return         : None
- 125:../main.c     **** *******************************************************************************/
- 126:../main.c     **** void USART_Configuration(void)
- 127:../main.c     **** {
- 275              		.loc 1 127 0
+ 119:../main.c     **** 
+ 120:../main.c     **** /*******************************************************************************
+ 121:../main.c     **** * Function Name  : USART_Configuration
+ 122:../main.c     **** * Description    : Configures the USART1.
+ 123:../main.c     **** * Input          : None
+ 124:../main.c     **** * Output         : None
+ 125:../main.c     **** * Return         : None
+ 126:../main.c     **** *******************************************************************************/
+ 127:../main.c     **** void USART_Configuration(void)
+ 128:../main.c     **** {
+ 275              		.loc 1 128 0
  276              		.cfi_startproc
  277              		@ args = 0, pretend = 0, frame = 16
  278              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -413,80 +414,80 @@
  287 0004 00AF     		add	r7, sp, #0
  288              	.LCFI13:
  289              		.cfi_def_cfa_register 7
- 128:../main.c     ****   /* Enable USART1 */
- 129:../main.c     ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
- 290              		.loc 1 129 0
+ 129:../main.c     ****   /* Enable USART1 */
+ 130:../main.c     ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+ 290              		.loc 1 130 0
  291 0006 4FF48040 		mov	r0, #16384
  292 000a 4FF00101 		mov	r1, #1
  293 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 130:../main.c     **** 
- 131:../main.c     ****   USART_InitTypeDef USART_InitStructure;
- 132:../main.c     **** 
- 133:../main.c     **** /* USART1 configuration ------------------------------------------------------*/
- 134:../main.c     ****   /* USART1 configured as follow:
- 135:../main.c     ****         - BaudRate = 115200 baud
- 136:../main.c     ****         - Word Length = 8 Bits
- 137:../main.c     ****         - One Stop Bit
- 138:../main.c     ****         - No parity
- 139:../main.c     ****         - Hardware flow control disabled (RTS and CTS signals)
- 140:../main.c     ****         - Receive and transmit enabled
- 141:../main.c     ****         - USART Clock disabled
- 142:../main.c     ****         - USART CPOL: Clock is active low
- 143:../main.c     ****         - USART CPHA: Data is captured on the middle
- 144:../main.c     ****         - USART LastBit: The clock pulse of the last data bit is not output to
- 145:../main.c     ****                          the SCLK pin
- 146:../main.c     ****   */
- 147:../main.c     ****   USART_InitStructure.USART_BaudRate = BAUDRATE;
- 294              		.loc 1 147 0
+ 131:../main.c     **** 
+ 132:../main.c     ****   USART_InitTypeDef USART_InitStructure;
+ 133:../main.c     **** 
+ 134:../main.c     **** /* USART1 configuration ------------------------------------------------------*/
+ 135:../main.c     ****   /* USART1 configured as follow:
+ 136:../main.c     ****         - BaudRate = 115200 baud
+ 137:../main.c     ****         - Word Length = 8 Bits
+ 138:../main.c     ****         - One Stop Bit
+ 139:../main.c     ****         - No parity
+ 140:../main.c     ****         - Hardware flow control disabled (RTS and CTS signals)
+ 141:../main.c     ****         - Receive and transmit enabled
+ 142:../main.c     ****         - USART Clock disabled
+ 143:../main.c     ****         - USART CPOL: Clock is active low
+ 144:../main.c     ****         - USART CPHA: Data is captured on the middle
+ 145:../main.c     ****         - USART LastBit: The clock pulse of the last data bit is not output to
+ 146:../main.c     ****                          the SCLK pin
+ 147:../main.c     ****   */
+ 148:../main.c     ****   USART_InitStructure.USART_BaudRate = BAUDRATE;
+ 294              		.loc 1 148 0
  295 0012 4FF4E133 		mov	r3, #115200
  296 0016 3B60     		str	r3, [r7, #0]
- 148:../main.c     ****   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
- 297              		.loc 1 148 0
+ 149:../main.c     ****   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+ 297              		.loc 1 149 0
  298 0018 4FF00003 		mov	r3, #0
  299 001c BB80     		strh	r3, [r7, #4]	@ movhi
- 149:../main.c     ****   USART_InitStructure.USART_StopBits = USART_StopBits_1;
- 300              		.loc 1 149 0
+ 150:../main.c     ****   USART_InitStructure.USART_StopBits = USART_StopBits_1;
+ 300              		.loc 1 150 0
  301 001e 4FF00003 		mov	r3, #0
  302 0022 FB80     		strh	r3, [r7, #6]	@ movhi
- 150:../main.c     ****   USART_InitStructure.USART_Parity = USART_Parity_No;
- 303              		.loc 1 150 0
+ 151:../main.c     ****   USART_InitStructure.USART_Parity = USART_Parity_No;
+ 303              		.loc 1 151 0
  304 0024 4FF00003 		mov	r3, #0
  305 0028 3B81     		strh	r3, [r7, #8]	@ movhi
- 151:../main.c     ****   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
- 306              		.loc 1 151 0
+ 152:../main.c     ****   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+ 306              		.loc 1 152 0
  307 002a 4FF00003 		mov	r3, #0
  308 002e BB81     		strh	r3, [r7, #12]	@ movhi
- 152:../main.c     ****   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
- 309              		.loc 1 152 0
+ 153:../main.c     ****   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+ 309              		.loc 1 153 0
  310 0030 4FF00C03 		mov	r3, #12
  311 0034 7B81     		strh	r3, [r7, #10]	@ movhi
- 153:../main.c     **** 
- 154:../main.c     ****   USART_Init(USART1, &USART_InitStructure);
- 312              		.loc 1 154 0
+ 154:../main.c     **** 
+ 155:../main.c     ****   USART_Init(USART1, &USART_InitStructure);
+ 312              		.loc 1 155 0
  313 0036 3B46     		mov	r3, r7
  314 0038 4FF46050 		mov	r0, #14336
  315 003c C4F20100 		movt	r0, 16385
  316 0040 1946     		mov	r1, r3
  317 0042 FFF7FEFF 		bl	USART_Init
- 155:../main.c     **** 
- 156:../main.c     ****   /* Enable USART1 */
- 157:../main.c     ****   USART_Cmd(USART1, ENABLE);
- 318              		.loc 1 157 0
+ 156:../main.c     **** 
+ 157:../main.c     ****   /* Enable USART1 */
+ 158:../main.c     ****   USART_Cmd(USART1, ENABLE);
+ 318              		.loc 1 158 0
  319 0046 4FF46050 		mov	r0, #14336
  320 004a C4F20100 		movt	r0, 16385
  321 004e 4FF00101 		mov	r1, #1
  322 0052 FFF7FEFF 		bl	USART_Cmd
- 158:../main.c     **** 
- 159:../main.c     ****   uart_print_string(USART1, "\n===== UART1 инициализирован =====",1);
- 323              		.loc 1 159 0
+ 159:../main.c     **** 
+ 160:../main.c     ****   uart_print_string(USART1, "\n===== UART1 инициализирован =====",1);
+ 323              		.loc 1 160 0
  324 0056 4FF46050 		mov	r0, #14336
  325 005a C4F20100 		movt	r0, 16385
  326 005e 40F20001 		movw	r1, #:lower16:.LC0
  327 0062 C0F20001 		movt	r1, #:upper16:.LC0
  328 0066 4FF00102 		mov	r2, #1
  329 006a FFF7FEFF 		bl	uart_print_string
- 160:../main.c     **** }
- 330              		.loc 1 160 0
+ 161:../main.c     **** }
+ 330              		.loc 1 161 0
  331 006e 07F11007 		add	r7, r7, #16
  332 0072 BD46     		mov	sp, r7
  333 0074 80BD     		pop	{r7, pc}
@@ -499,10 +500,10 @@
  341              		.thumb_func
  343              	EXTI_Configuration:
  344              	.LFB34:
- 161:../main.c     **** 
- 162:../main.c     **** void EXTI_Configuration(void)
- 163:../main.c     **** {
- 345              		.loc 1 163 0
+ 162:../main.c     **** 
+ 163:../main.c     **** void EXTI_Configuration(void)
+ 164:../main.c     **** {
+ 345              		.loc 1 164 0
  346              		.cfi_startproc
  347              		@ args = 0, pretend = 0, frame = 8
  348              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -517,30 +518,30 @@
  357 0004 00AF     		add	r7, sp, #0
  358              	.LCFI16:
  359              		.cfi_def_cfa_register 7
- 164:../main.c     ****   EXTI_InitTypeDef EXTI_InitStructure;
- 165:../main.c     ****   EXTI_InitStructure.EXTI_Line = EXTI_Line0;
- 360              		.loc 1 165 0
+ 165:../main.c     ****   EXTI_InitTypeDef EXTI_InitStructure;
+ 166:../main.c     ****   EXTI_InitStructure.EXTI_Line = EXTI_Line0;
+ 360              		.loc 1 166 0
  361 0006 4FF00103 		mov	r3, #1
  362 000a 3B60     		str	r3, [r7, #0]
- 166:../main.c     ****   EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
- 363              		.loc 1 166 0
+ 167:../main.c     ****   EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+ 363              		.loc 1 167 0
  364 000c 4FF00003 		mov	r3, #0
  365 0010 3B71     		strb	r3, [r7, #4]
- 167:../main.c     ****   EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
- 366              		.loc 1 167 0
+ 168:../main.c     ****   EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+ 366              		.loc 1 168 0
  367 0012 4FF00803 		mov	r3, #8
  368 0016 7B71     		strb	r3, [r7, #5]
- 168:../main.c     ****   EXTI_InitStructure.EXTI_LineCmd = ENABLE;
- 369              		.loc 1 168 0
+ 169:../main.c     ****   EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+ 369              		.loc 1 169 0
  370 0018 4FF00103 		mov	r3, #1
  371 001c BB71     		strb	r3, [r7, #6]
- 169:../main.c     ****   EXTI_Init(&EXTI_InitStructure);
- 372              		.loc 1 169 0
+ 170:../main.c     ****   EXTI_Init(&EXTI_InitStructure);
+ 372              		.loc 1 170 0
  373 001e 3B46     		mov	r3, r7
  374 0020 1846     		mov	r0, r3
  375 0022 FFF7FEFF 		bl	EXTI_Init
- 170:../main.c     **** }
- 376              		.loc 1 170 0
+ 171:../main.c     **** }
+ 376              		.loc 1 171 0
  377 0026 07F10807 		add	r7, r7, #8
  378 002a BD46     		mov	sp, r7
  379 002c 80BD     		pop	{r7, pc}
@@ -553,10 +554,10 @@
  387              		.thumb_func
  389              	NVIC_Configuration_USART1:
  390              	.LFB35:
- 171:../main.c     **** 
- 172:../main.c     **** void NVIC_Configuration_USART1(void)
- 173:../main.c     **** {
- 391              		.loc 1 173 0
+ 172:../main.c     **** 
+ 173:../main.c     **** void NVIC_Configuration_USART1(void)
+ 174:../main.c     **** {
+ 391              		.loc 1 174 0
  392              		.cfi_startproc
  393              		@ args = 0, pretend = 0, frame = 8
  394              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -571,64 +572,64 @@
  403 0004 00AF     		add	r7, sp, #0
  404              	.LCFI19:
  405              		.cfi_def_cfa_register 7
- 174:../main.c     **** 	//configure NVIC
- 175:../main.c     **** 	NVIC_InitTypeDef NVIC_InitStructure;
- 176:../main.c     **** 
- 177:../main.c     **** 	/* Place the vector table into FLASH */
- 178:../main.c     **** 	//NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x0);
- 179:../main.c     **** 
- 180:../main.c     **** 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
- 406              		.loc 1 180 0
+ 175:../main.c     **** 	//configure NVIC
+ 176:../main.c     **** 	NVIC_InitTypeDef NVIC_InitStructure;
+ 177:../main.c     **** 
+ 178:../main.c     **** 	/* Place the vector table into FLASH */
+ 179:../main.c     **** 	//NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x0);
+ 180:../main.c     **** 
+ 181:../main.c     **** 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+ 406              		.loc 1 181 0
  407 0006 4FF44070 		mov	r0, #768
  408 000a FFF7FEFF 		bl	NVIC_PriorityGroupConfig
- 181:../main.c     **** 
- 182:../main.c     **** 	//select NVIC channel to configure
- 183:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
- 409              		.loc 1 183 0
+ 182:../main.c     **** 
+ 183:../main.c     **** 	//select NVIC channel to configure
+ 184:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+ 409              		.loc 1 184 0
  410 000e 4FF02503 		mov	r3, #37
  411 0012 3B71     		strb	r3, [r7, #4]
- 184:../main.c     **** 	//set priority to lowest
- 185:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
- 412              		.loc 1 185 0
+ 185:../main.c     **** 	//set priority to lowest
+ 186:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
+ 412              		.loc 1 186 0
  413 0014 4FF00F03 		mov	r3, #15
  414 0018 7B71     		strb	r3, [r7, #5]
- 186:../main.c     **** 	//set subpriority to lowest
- 187:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
- 415              		.loc 1 187 0
+ 187:../main.c     **** 	//set subpriority to lowest
+ 188:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
+ 415              		.loc 1 188 0
  416 001a 4FF00F03 		mov	r3, #15
  417 001e BB71     		strb	r3, [r7, #6]
- 188:../main.c     **** 	//enable IRQ channel
- 189:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
- 418              		.loc 1 189 0
+ 189:../main.c     **** 	//enable IRQ channel
+ 190:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 418              		.loc 1 190 0
  419 0020 4FF00103 		mov	r3, #1
  420 0024 FB71     		strb	r3, [r7, #7]
- 190:../main.c     **** 	//update NVIC registers
- 191:../main.c     **** 	NVIC_Init(&NVIC_InitStructure);
- 421              		.loc 1 191 0
+ 191:../main.c     **** 	//update NVIC registers
+ 192:../main.c     **** 	NVIC_Init(&NVIC_InitStructure);
+ 421              		.loc 1 192 0
  422 0026 07F10403 		add	r3, r7, #4
  423 002a 1846     		mov	r0, r3
  424 002c FFF7FEFF 		bl	NVIC_Init
- 192:../main.c     **** 
- 193:../main.c     **** 	//disable Transmit Data Register empty interrupt
- 194:../main.c     **** 	USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
- 425              		.loc 1 194 0
+ 193:../main.c     **** 
+ 194:../main.c     **** 	//disable Transmit Data Register empty interrupt
+ 195:../main.c     **** 	USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
+ 425              		.loc 1 195 0
  426 0030 4FF46050 		mov	r0, #14336
  427 0034 C4F20100 		movt	r0, 16385
  428 0038 40F22771 		movw	r1, #1831
  429 003c 4FF00002 		mov	r2, #0
  430 0040 FFF7FEFF 		bl	USART_ITConfig
- 195:../main.c     **** 	//enable Receive Data register not empty interrupt
- 196:../main.c     **** 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
- 431              		.loc 1 196 0
+ 196:../main.c     **** 	//enable Receive Data register not empty interrupt
+ 197:../main.c     **** 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+ 431              		.loc 1 197 0
  432 0044 4FF46050 		mov	r0, #14336
  433 0048 C4F20100 		movt	r0, 16385
  434 004c 40F22551 		movw	r1, #1317
  435 0050 4FF00102 		mov	r2, #1
  436 0054 FFF7FEFF 		bl	USART_ITConfig
- 197:../main.c     **** 
  198:../main.c     **** 
- 199:../main.c     **** }
- 437              		.loc 1 199 0
+ 199:../main.c     **** 
+ 200:../main.c     **** }
+ 437              		.loc 1 200 0
  438 0058 07F10807 		add	r7, r7, #8
  439 005c BD46     		mov	sp, r7
  440 005e 80BD     		pop	{r7, pc}
@@ -641,10 +642,10 @@
  448              		.thumb_func
  450              	NVIC_Configuration_USER_BUTTON:
  451              	.LFB36:
- 200:../main.c     **** 
- 201:../main.c     **** void NVIC_Configuration_USER_BUTTON(void)
- 202:../main.c     **** {
- 452              		.loc 1 202 0
+ 201:../main.c     **** 
+ 202:../main.c     **** void NVIC_Configuration_USER_BUTTON(void)
+ 203:../main.c     **** {
+ 452              		.loc 1 203 0
  453              		.cfi_startproc
  454              		@ args = 0, pretend = 0, frame = 8
  455              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -659,35 +660,35 @@
  464 0004 00AF     		add	r7, sp, #0
  465              	.LCFI22:
  466              		.cfi_def_cfa_register 7
- 203:../main.c     **** 	NVIC_InitTypeDef NVIC_InitStructure;
- 204:../main.c     **** 
- 205:../main.c     **** 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
- 467              		.loc 1 205 0
+ 204:../main.c     **** 	NVIC_InitTypeDef NVIC_InitStructure;
+ 205:../main.c     **** 
+ 206:../main.c     **** 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+ 467              		.loc 1 206 0
  468 0006 4FF44070 		mov	r0, #768
  469 000a FFF7FEFF 		bl	NVIC_PriorityGroupConfig
- 206:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
- 470              		.loc 1 206 0
+ 207:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
+ 470              		.loc 1 207 0
  471 000e 4FF00603 		mov	r3, #6
  472 0012 3B71     		strb	r3, [r7, #4]
- 207:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
- 473              		.loc 1 207 0
+ 208:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
+ 473              		.loc 1 208 0
  474 0014 4FF00F03 		mov	r3, #15
  475 0018 7B71     		strb	r3, [r7, #5]
- 208:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
- 476              		.loc 1 208 0
+ 209:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = configLIBRARY_LOWEST_INTERRUPT_PRIORITY;
+ 476              		.loc 1 209 0
  477 001a 4FF00F03 		mov	r3, #15
  478 001e BB71     		strb	r3, [r7, #6]
- 209:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
- 479              		.loc 1 209 0
+ 210:../main.c     **** 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 479              		.loc 1 210 0
  480 0020 4FF00103 		mov	r3, #1
  481 0024 FB71     		strb	r3, [r7, #7]
- 210:../main.c     **** 	NVIC_Init(&NVIC_InitStructure);
- 482              		.loc 1 210 0
+ 211:../main.c     **** 	NVIC_Init(&NVIC_InitStructure);
+ 482              		.loc 1 211 0
  483 0026 07F10403 		add	r3, r7, #4
  484 002a 1846     		mov	r0, r3
  485 002c FFF7FEFF 		bl	NVIC_Init
- 211:../main.c     **** }
- 486              		.loc 1 211 0
+ 212:../main.c     **** }
+ 486              		.loc 1 212 0
  487 0030 07F10807 		add	r7, r7, #8
  488 0034 BD46     		mov	sp, r7
  489 0036 80BD     		pop	{r7, pc}
@@ -706,10 +707,10 @@
  501              		.thumb_func
  503              	EXTI0_IRQHandler:
  504              	.LFB37:
- 212:../main.c     **** 
- 213:../main.c     **** void EXTI0_IRQHandler(void)
- 214:../main.c     **** {
- 505              		.loc 1 214 0
+ 213:../main.c     **** 
+ 214:../main.c     **** void EXTI0_IRQHandler(void)
+ 215:../main.c     **** {
+ 505              		.loc 1 215 0
  506              		.cfi_startproc
  507              		@ args = 0, pretend = 0, frame = 0
  508              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -721,22 +722,22 @@
  514 0002 00AF     		add	r7, sp, #0
  515              	.LCFI24:
  516              		.cfi_def_cfa_register 7
- 215:../main.c     ****         EXTI_ClearITPendingBit(EXTI_Line0);
- 517              		.loc 1 215 0
+ 216:../main.c     ****         EXTI_ClearITPendingBit(EXTI_Line0);
+ 517              		.loc 1 216 0
  518 0004 4FF00100 		mov	r0, #1
  519 0008 FFF7FEFF 		bl	EXTI_ClearITPendingBit
- 216:../main.c     **** 
- 217:../main.c     ****         uart_print_string(USART1, "Тынц",1);
- 520              		.loc 1 217 0
+ 217:../main.c     **** 
+ 218:../main.c     ****         uart_print_string(USART1, "Тынц",1);
+ 520              		.loc 1 218 0
  521 000c 4FF46050 		mov	r0, #14336
  522 0010 C4F20100 		movt	r0, 16385
  523 0014 40F20001 		movw	r1, #:lower16:.LC1
  524 0018 C0F20001 		movt	r1, #:upper16:.LC1
  525 001c 4FF00102 		mov	r2, #1
  526 0020 FFF7FEFF 		bl	uart_print_string
- 218:../main.c     **** 		{
- 219:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
- 527              		.loc 1 219 0
+ 219:../main.c     **** 		{
+ 220:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
+ 527              		.loc 1 220 0
  528 0024 4FF48053 		mov	r3, #4096
  529 0028 C4F20103 		movt	r3, 16385
  530 002c 4FF48052 		mov	r2, #4096
@@ -744,13 +745,13 @@
  532 0034 D268     		ldr	r2, [r2, #12]
  533 0036 42F40072 		orr	r2, r2, #512
  534 003a DA60     		str	r2, [r3, #12]
- 220:../main.c     **** 			//vTaskDelay(10);
- 221:../main.c     **** 			delay_ms(10);
- 535              		.loc 1 221 0
+ 221:../main.c     **** 			//vTaskDelay(10);
+ 222:../main.c     **** 			delay_ms(10);
+ 535              		.loc 1 222 0
  536 003c 4FF00A00 		mov	r0, #10
  537 0040 FFF7FEFF 		bl	delay_ms
- 222:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
- 538              		.loc 1 222 0
+ 223:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
+ 538              		.loc 1 223 0
  539 0044 4FF48053 		mov	r3, #4096
  540 0048 C4F20103 		movt	r3, 16385
  541 004c 4FF48052 		mov	r2, #4096
@@ -758,9 +759,9 @@
  543 0054 D268     		ldr	r2, [r2, #12]
  544 0056 82F40072 		eor	r2, r2, #512
  545 005a DA60     		str	r2, [r3, #12]
- 223:../main.c     **** 		}
- 224:../main.c     **** }
- 546              		.loc 1 224 0
+ 224:../main.c     **** 		}
+ 225:../main.c     **** }
+ 546              		.loc 1 225 0
  547 005c 80BD     		pop	{r7, pc}
  548              		.cfi_endproc
  549              	.LFE37:
@@ -771,10 +772,10 @@
  555              		.thumb_func
  557              	vFreeRTOSInitAll:
  558              	.LFB38:
- 225:../main.c     **** 
- 226:../main.c     **** void vFreeRTOSInitAll()
- 227:../main.c     **** {
- 559              		.loc 1 227 0
+ 226:../main.c     **** 
+ 227:../main.c     **** void vFreeRTOSInitAll()
+ 228:../main.c     **** {
+ 559              		.loc 1 228 0
  560              		.cfi_startproc
  561              		@ args = 0, pretend = 0, frame = 0
  562              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -786,41 +787,41 @@
  568 0002 00AF     		add	r7, sp, #0
  569              	.LCFI26:
  570              		.cfi_def_cfa_register 7
- 228:../main.c     **** 	SetupClock();
- 571              		.loc 1 228 0
+ 229:../main.c     **** 	SetupClock();
+ 571              		.loc 1 229 0
  572 0004 FFF7FEFF 		bl	SetupClock
- 229:../main.c     **** 
- 230:../main.c     **** 	LEDsInit();
- 573              		.loc 1 230 0
+ 230:../main.c     **** 
+ 231:../main.c     **** 	LEDsInit();
+ 573              		.loc 1 231 0
  574 0008 FFF7FEFF 		bl	LEDsInit
- 231:../main.c     **** 	BtnInit();
- 575              		.loc 1 231 0
+ 232:../main.c     **** 	BtnInit();
+ 575              		.loc 1 232 0
  576 000c FFF7FEFF 		bl	BtnInit
- 232:../main.c     **** 
- 233:../main.c     **** 	EXTI_Configuration();
- 577              		.loc 1 233 0
+ 233:../main.c     **** 
+ 234:../main.c     **** 	EXTI_Configuration();
+ 577              		.loc 1 234 0
  578 0010 FFF7FEFF 		bl	EXTI_Configuration
- 234:../main.c     **** 
- 235:../main.c     **** 	USART_GPIO_Configuration();
- 579              		.loc 1 235 0
+ 235:../main.c     **** 
+ 236:../main.c     **** 	USART_GPIO_Configuration();
+ 579              		.loc 1 236 0
  580 0014 FFF7FEFF 		bl	USART_GPIO_Configuration
- 236:../main.c     **** 	USART_Configuration();
- 581              		.loc 1 236 0
+ 237:../main.c     **** 	USART_Configuration();
+ 581              		.loc 1 237 0
  582 0018 FFF7FEFF 		bl	USART_Configuration
- 237:../main.c     **** 
- 238:../main.c     **** 	NVIC_Configuration_USER_BUTTON();
- 583              		.loc 1 238 0
+ 238:../main.c     **** 
+ 239:../main.c     **** 	NVIC_Configuration_USER_BUTTON();
+ 583              		.loc 1 239 0
  584 001c FFF7FEFF 		bl	NVIC_Configuration_USER_BUTTON
- 239:../main.c     **** 	NVIC_Configuration_USART1();
- 585              		.loc 1 239 0
+ 240:../main.c     **** 	NVIC_Configuration_USART1();
+ 585              		.loc 1 240 0
  586 0020 FFF7FEFF 		bl	NVIC_Configuration_USART1
- 240:../main.c     **** 
- 241:../main.c     **** 	TIM6Init();
- 587              		.loc 1 241 0
+ 241:../main.c     **** 
+ 242:../main.c     **** 	TIM6Init();
+ 587              		.loc 1 242 0
  588 0024 FFF7FEFF 		bl	TIM6Init
- 242:../main.c     **** 
- 243:../main.c     **** }
- 589              		.loc 1 243 0
+ 243:../main.c     **** 
+ 244:../main.c     **** }
+ 589              		.loc 1 244 0
  590 0028 80BD     		pop	{r7, pc}
  591              		.cfi_endproc
  592              	.LFE38:
@@ -831,10 +832,10 @@
  598              		.thumb_func
  600              	vTaskLED:
  601              	.LFB39:
- 244:../main.c     **** 
- 245:../main.c     **** void vTaskLED(void *pvParameters)
- 246:../main.c     **** {
- 602              		.loc 1 246 0
+ 245:../main.c     **** 
+ 246:../main.c     **** void vTaskLED(void *pvParameters)
+ 247:../main.c     **** {
+ 602              		.loc 1 247 0
  603              		.cfi_startproc
  604              		@ args = 0, pretend = 0, frame = 8
  605              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -851,11 +852,11 @@
  616              		.cfi_def_cfa_register 7
  617 0006 7860     		str	r0, [r7, #4]
  618              	.L15:
- 247:../main.c     **** 
- 248:../main.c     ****         for (;;) {
- 249:../main.c     ****         	//delay_ms(500);
- 250:../main.c     ****         	LED_PORT->ODR ^= LED_BLUE;
- 619              		.loc 1 250 0 discriminator 1
+ 248:../main.c     **** 
+ 249:../main.c     ****         for (;;) {
+ 250:../main.c     ****         	//delay_ms(500);
+ 251:../main.c     ****         	LED_PORT->ODR ^= LED_BLUE;
+ 619              		.loc 1 251 0 discriminator 1
  620 0008 4FF48053 		mov	r3, #4096
  621 000c C4F20103 		movt	r3, 16385
  622 0010 4FF48052 		mov	r2, #4096
@@ -863,13 +864,13 @@
  624 0018 D268     		ldr	r2, [r2, #12]
  625 001a 82F48072 		eor	r2, r2, #256
  626 001e DA60     		str	r2, [r3, #12]
- 251:../main.c     ****             vTaskDelay(500);
- 627              		.loc 1 251 0 discriminator 1
+ 252:../main.c     ****             vTaskDelay(500);
+ 627              		.loc 1 252 0 discriminator 1
  628 0020 4FF4FA70 		mov	r0, #500
  629 0024 FFF7FEFF 		bl	vTaskDelay
- 252:../main.c     **** 
- 253:../main.c     ****         }
- 630              		.loc 1 253 0 discriminator 1
+ 253:../main.c     **** 
+ 254:../main.c     ****         }
+ 630              		.loc 1 254 0 discriminator 1
  631 0028 EEE7     		b	.L15
  632              		.cfi_endproc
  633              	.LFE39:
@@ -880,13 +881,13 @@
  639              		.thumb_func
  641              	USART1_IRQHandler:
  642              	.LFB40:
- 254:../main.c     ****         vTaskDelete(NULL);
- 255:../main.c     **** 
- 256:../main.c     **** }
- 257:../main.c     **** 
- 258:../main.c     **** void USART1_IRQHandler(void)
- 259:../main.c     **** {
- 643              		.loc 1 259 0
+ 255:../main.c     ****         vTaskDelete(NULL);
+ 256:../main.c     **** 
+ 257:../main.c     **** }
+ 258:../main.c     **** 
+ 259:../main.c     **** void USART1_IRQHandler(void)
+ 260:../main.c     **** {
+ 643              		.loc 1 260 0
  644              		.cfi_startproc
  645              		@ args = 0, pretend = 0, frame = 8
  646              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -901,9 +902,9 @@
  655 0004 00AF     		add	r7, sp, #0
  656              	.LCFI32:
  657              		.cfi_def_cfa_register 7
- 260:../main.c     **** 
- 261:../main.c     **** 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
- 658              		.loc 1 261 0
+ 261:../main.c     **** 
+ 262:../main.c     **** 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+ 658              		.loc 1 262 0
  659 0006 4FF46050 		mov	r0, #14336
  660 000a C4F20100 		movt	r0, 16385
  661 000e 40F22551 		movw	r1, #1317
@@ -912,31 +913,31 @@
  664 0018 002B     		cmp	r3, #0
  665 001a 0ED0     		beq	.L16
  666              	.LBB2:
- 262:../main.c     **** 	    {
- 263:../main.c     **** 		   // перемырг
- 264:../main.c     **** 		   //LED_PORT->ODR |= LED_BLUE;
- 265:../main.c     **** 		   //USART_ClearITPendingBit(USART1, USART_IT_RXNE);
- 266:../main.c     **** 		   uint16_t i = USART_ReceiveData(USART1);
- 667              		.loc 1 266 0
+ 263:../main.c     **** 	    {
+ 264:../main.c     **** 		   // перемырг
+ 265:../main.c     **** 		   //LED_PORT->ODR |= LED_BLUE;
+ 266:../main.c     **** 		   //USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+ 267:../main.c     **** 		   uint16_t i = USART_ReceiveData(USART1);
+ 667              		.loc 1 267 0
  668 001c 4FF46050 		mov	r0, #14336
  669 0020 C4F20100 		movt	r0, 16385
  670 0024 FFF7FEFF 		bl	USART_ReceiveData
  671 0028 0346     		mov	r3, r0
  672 002a FB80     		strh	r3, [r7, #6]	@ movhi
- 267:../main.c     **** 		   UARTSend(&i, 1);
- 673              		.loc 1 267 0
+ 268:../main.c     **** 		   UARTSend(&i, 1);
+ 673              		.loc 1 268 0
  674 002c 07F10603 		add	r3, r7, #6
  675 0030 1846     		mov	r0, r3
  676 0032 4FF00101 		mov	r1, #1
  677 0036 FFF7FEFF 		bl	UARTSend
  678              	.L16:
  679              	.LBE2:
- 268:../main.c     **** 		   //LED_PORT->ODR ^= LED_BLUE;
- 269:../main.c     **** 		   //UARTSend(&i, 1);
- 270:../main.c     ****           // UARTSend(" <-- data\r\n", 10);
- 271:../main.c     ****         }
- 272:../main.c     **** }
- 680              		.loc 1 272 0
+ 269:../main.c     **** 		   //LED_PORT->ODR ^= LED_BLUE;
+ 270:../main.c     **** 		   //UARTSend(&i, 1);
+ 271:../main.c     ****           // UARTSend(" <-- data\r\n", 10);
+ 272:../main.c     ****         }
+ 273:../main.c     **** }
+ 680              		.loc 1 273 0
  681 003a 07F10807 		add	r7, r7, #8
  682 003e BD46     		mov	sp, r7
  683 0040 80BD     		pop	{r7, pc}
@@ -962,10 +963,10 @@
  697              		.thumb_func
  699              	vTaskUSART_TX:
  700              	.LFB41:
- 273:../main.c     **** 
- 274:../main.c     **** void vTaskUSART_TX(void *pvParameters)
- 275:../main.c     **** {
- 701              		.loc 1 275 0
+ 274:../main.c     **** 
+ 275:../main.c     **** void vTaskUSART_TX(void *pvParameters)
+ 276:../main.c     **** {
+ 701              		.loc 1 276 0
  702              		.cfi_startproc
  703              		@ args = 0, pretend = 0, frame = 8
  704              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -983,20 +984,20 @@
  716 0006 7860     		str	r0, [r7, #4]
  717              	.L19:
  718              	.LBB3:
- 276:../main.c     **** 	for (;;) {
- 277:../main.c     **** 
- 278:../main.c     **** 		uart_print_string(USART1, "Сцуко, отладь меня..",1);
- 719              		.loc 1 278 0 discriminator 1
+ 277:../main.c     **** 	for (;;) {
+ 278:../main.c     **** 
+ 279:../main.c     **** 		uart_print_string(USART1, "Сцуко, отладь меня..",1);
+ 719              		.loc 1 279 0 discriminator 1
  720 0008 4FF46050 		mov	r0, #14336
  721 000c C4F20100 		movt	r0, 16385
  722 0010 40F20001 		movw	r1, #:lower16:.LC2
  723 0014 C0F20001 		movt	r1, #:upper16:.LC2
  724 0018 4FF00102 		mov	r2, #1
  725 001c FFF7FEFF 		bl	uart_print_string
- 279:../main.c     **** 		// перемырг
- 280:../main.c     **** 		{
- 281:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
- 726              		.loc 1 281 0 discriminator 1
+ 280:../main.c     **** 		// перемырг
+ 281:../main.c     **** 		{
+ 282:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
+ 726              		.loc 1 282 0 discriminator 1
  727 0020 4FF48053 		mov	r3, #4096
  728 0024 C4F20103 		movt	r3, 16385
  729 0028 4FF48052 		mov	r2, #4096
@@ -1004,12 +1005,12 @@
  731 0030 D268     		ldr	r2, [r2, #12]
  732 0032 42F40072 		orr	r2, r2, #512
  733 0036 DA60     		str	r2, [r3, #12]
- 282:../main.c     **** 			vTaskDelay(10);
- 734              		.loc 1 282 0 discriminator 1
+ 283:../main.c     **** 			vTaskDelay(10);
+ 734              		.loc 1 283 0 discriminator 1
  735 0038 4FF00A00 		mov	r0, #10
  736 003c FFF7FEFF 		bl	vTaskDelay
- 283:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
- 737              		.loc 1 283 0 discriminator 1
+ 284:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
+ 737              		.loc 1 284 0 discriminator 1
  738 0040 4FF48053 		mov	r3, #4096
  739 0044 C4F20103 		movt	r3, 16385
  740 0048 4FF48052 		mov	r2, #4096
@@ -1017,14 +1018,14 @@
  742 0050 D268     		ldr	r2, [r2, #12]
  743 0052 82F40072 		eor	r2, r2, #512
  744 0056 DA60     		str	r2, [r3, #12]
- 284:../main.c     **** 		}
- 285:../main.c     **** 		vTaskDelay(1000);
- 745              		.loc 1 285 0 discriminator 1
+ 285:../main.c     **** 		}
+ 286:../main.c     **** 		vTaskDelay(1000);
+ 745              		.loc 1 286 0 discriminator 1
  746 0058 4FF47A70 		mov	r0, #1000
  747 005c FFF7FEFF 		bl	vTaskDelay
  748              	.LBE3:
- 286:../main.c     **** 	}
- 749              		.loc 1 286 0 discriminator 1
+ 287:../main.c     **** 	}
+ 749              		.loc 1 287 0 discriminator 1
  750 0060 D2E7     		b	.L19
  751              		.cfi_endproc
  752              	.LFE41:
@@ -1039,643 +1040,734 @@
  758      83D180D0 
  758      B03A2020 
  758      2000
- 759              		.section	.text.vTaskDS1821,"ax",%progbits
- 760              		.align	2
- 761              		.global	vTaskDS1821
- 762              		.thumb
- 763              		.thumb_func
- 765              	vTaskDS1821:
- 766              	.LFB42:
- 287:../main.c     **** 
- 288:../main.c     ****     vTaskDelete(NULL);
- 289:../main.c     **** }
- 290:../main.c     **** 
- 291:../main.c     **** void vTaskDS1821(void *pvParameters)
- 292:../main.c     **** {
- 767              		.loc 1 292 0
- 768              		.cfi_startproc
- 769              		@ args = 0, pretend = 0, frame = 16
- 770              		@ frame_needed = 1, uses_anonymous_args = 0
- 771 0000 80B5     		push	{r7, lr}
- 772              	.LCFI36:
- 773              		.cfi_def_cfa_offset 8
- 774              		.cfi_offset 7, -8
- 775              		.cfi_offset 14, -4
- 776 0002 84B0     		sub	sp, sp, #16
- 777              	.LCFI37:
- 778              		.cfi_def_cfa_offset 24
- 779 0004 00AF     		add	r7, sp, #0
- 780              	.LCFI38:
- 781              		.cfi_def_cfa_register 7
- 782 0006 7860     		str	r0, [r7, #4]
- 293:../main.c     **** 	uart_print_string(USART1,"Температура:   ",0);
- 783              		.loc 1 293 0
- 784 0008 4FF46050 		mov	r0, #14336
- 785 000c C4F20100 		movt	r0, 16385
- 786 0010 40F20001 		movw	r1, #:lower16:.LC3
- 787 0014 C0F20001 		movt	r1, #:upper16:.LC3
- 788 0018 4FF00002 		mov	r2, #0
- 789 001c FFF7FEFF 		bl	uart_print_string
- 790              	.L21:
- 791              	.LBB4:
- 294:../main.c     **** 	for(;;)
- 295:../main.c     **** 	{
- 296:../main.c     **** 		///// 1-wire /////
- 297:../main.c     **** 			signed int t;
- 298:../main.c     **** 
- 299:../main.c     **** 			//uart_print_string(USART1, "Сбрасываем..",1);
- 300:../main.c     **** 
- 301:../main.c     **** 			//error_handle(One_Wire_Reset(One_Wire_Pin));
- 302:../main.c     **** 
- 303:../main.c     **** 			//error_handle(DS1821_Write_Status(One_Wire_Pin));
- 304:../main.c     **** 
- 305:../main.c     **** 			//error_handle(DS1821_Start_Conversion(One_Wire_Pin));
- 306:../main.c     **** 			DS1821_Start_Conversion(One_Wire_Pin);
- 792              		.loc 1 306 0 discriminator 1
- 793 0020 4FF48050 		mov	r0, #4096
- 794 0024 C4F20100 		movt	r0, 16385
- 795 0028 4FF08001 		mov	r1, #128
- 796 002c FFF7FEFF 		bl	DS1821_Start_Conversion
- 307:../main.c     **** 			//delay_ms(750);
- 308:../main.c     **** 
- 309:../main.c     **** 			//error_handle(DS1821_Stop_Conversion(One_Wire_Pin));
- 310:../main.c     **** 			//error_handle(DS1821_Read_Temp(&t, One_Wire_Pin));
- 311:../main.c     **** 			DS1821_Read_Temp(&t, One_Wire_Pin);
- 797              		.loc 1 311 0 discriminator 1
- 798 0030 07F10C03 		add	r3, r7, #12
- 799 0034 1846     		mov	r0, r3
- 800 0036 4FF48051 		mov	r1, #4096
- 801 003a C4F20101 		movt	r1, 16385
- 802 003e 4FF08002 		mov	r2, #128
- 803 0042 FFF7FEFF 		bl	DS1821_Read_Temp
- 312:../main.c     **** 			uart_send_char(USART1, 8);
- 804              		.loc 1 312 0 discriminator 1
- 805 0046 4FF46050 		mov	r0, #14336
- 806 004a C4F20100 		movt	r0, 16385
- 807 004e 4FF00801 		mov	r1, #8
- 808 0052 FFF7FEFF 		bl	uart_send_char
- 313:../main.c     **** 			uart_send_char(USART1, 8);
- 809              		.loc 1 313 0 discriminator 1
- 810 0056 4FF46050 		mov	r0, #14336
- 811 005a C4F20100 		movt	r0, 16385
- 812 005e 4FF00801 		mov	r1, #8
- 813 0062 FFF7FEFF 		bl	uart_send_char
- 314:../main.c     **** 			uart_print_value(USART1, t);
- 814              		.loc 1 314 0 discriminator 1
- 815 0066 FB68     		ldr	r3, [r7, #12]
- 816 0068 4FF46050 		mov	r0, #14336
- 817 006c C4F20100 		movt	r0, 16385
- 818 0070 1946     		mov	r1, r3
- 819 0072 FFF7FEFF 		bl	uart_print_value
- 315:../main.c     **** 			//uart_print_string(USART1,"",1);
- 316:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
- 820              		.loc 1 316 0 discriminator 1
- 821 0076 4FF48053 		mov	r3, #4096
- 822 007a C4F20103 		movt	r3, 16385
- 823 007e 4FF48052 		mov	r2, #4096
- 824 0082 C4F20102 		movt	r2, 16385
- 825 0086 D268     		ldr	r2, [r2, #12]
- 826 0088 42F40072 		orr	r2, r2, #512
- 827 008c DA60     		str	r2, [r3, #12]
- 317:../main.c     **** 						//vTaskDelay(10);
- 318:../main.c     **** 			delay_ms(10);
- 828              		.loc 1 318 0 discriminator 1
- 829 008e 4FF00A00 		mov	r0, #10
- 830 0092 FFF7FEFF 		bl	delay_ms
- 319:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
- 831              		.loc 1 319 0 discriminator 1
- 832 0096 4FF48053 		mov	r3, #4096
- 833 009a C4F20103 		movt	r3, 16385
- 834 009e 4FF48052 		mov	r2, #4096
- 835 00a2 C4F20102 		movt	r2, 16385
- 836 00a6 D268     		ldr	r2, [r2, #12]
- 837 00a8 82F40072 		eor	r2, r2, #512
- 838 00ac DA60     		str	r2, [r3, #12]
- 320:../main.c     **** 			//////////////////
- 321:../main.c     **** 			vTaskDelay(1000);
- 839              		.loc 1 321 0 discriminator 1
- 840 00ae 4FF47A70 		mov	r0, #1000
- 841 00b2 FFF7FEFF 		bl	vTaskDelay
- 842              	.LBE4:
- 322:../main.c     **** 	}
- 843              		.loc 1 322 0 discriminator 1
- 844 00b6 B3E7     		b	.L21
- 845              		.cfi_endproc
- 846              	.LFE42:
- 848              		.section	.rodata
- 849 007f 00       		.align	2
- 850              	.LC4:
- 851 0080 4C454400 		.ascii	"LED\000"
- 852              		.align	2
- 853              	.LC5:
- 854 0084 44533138 		.ascii	"DS1821\000"
- 854      323100
- 855              		.section	.text.main,"ax",%progbits
- 856              		.align	2
- 857              		.global	main
- 858              		.thumb
- 859              		.thumb_func
- 861              	main:
- 862              	.LFB43:
- 323:../main.c     **** 	vTaskDelete(NULL);
- 324:../main.c     **** }
- 325:../main.c     **** 
- 326:../main.c     **** 
- 327:../main.c     **** 
- 328:../main.c     **** int main()
- 329:../main.c     **** {
- 863              		.loc 1 329 0
- 864              		.cfi_startproc
- 865              		@ args = 0, pretend = 0, frame = 0
- 866              		@ frame_needed = 1, uses_anonymous_args = 0
- 867 0000 80B5     		push	{r7, lr}
- 868              	.LCFI39:
- 869              		.cfi_def_cfa_offset 8
- 870              		.cfi_offset 7, -8
- 871              		.cfi_offset 14, -4
- 872 0002 84B0     		sub	sp, sp, #16
- 873              	.LCFI40:
- 874              		.cfi_def_cfa_offset 24
- 875 0004 04AF     		add	r7, sp, #16
- 876              	.LCFI41:
- 877              		.cfi_def_cfa 7, 8
- 330:../main.c     **** 	vFreeRTOSInitAll();
- 878              		.loc 1 330 0
- 879 0006 FFF7FEFF 		bl	vFreeRTOSInitAll
- 331:../main.c     **** 
- 332:../main.c     **** 	xTaskCreate( vTaskLED, ( signed char * ) "LED", configMINIMAL_STACK_SIZE, NULL, 2,
- 880              		.loc 1 332 0
- 881 000a 4FF00203 		mov	r3, #2
- 882 000e 0093     		str	r3, [sp, #0]
- 883 0010 4FF00003 		mov	r3, #0
- 884 0014 0193     		str	r3, [sp, #4]
- 885 0016 4FF00003 		mov	r3, #0
- 886 001a 0293     		str	r3, [sp, #8]
- 887 001c 4FF00003 		mov	r3, #0
- 888 0020 0393     		str	r3, [sp, #12]
- 889 0022 40F20000 		movw	r0, #:lower16:vTaskLED
- 890 0026 C0F20000 		movt	r0, #:upper16:vTaskLED
- 891 002a 40F20001 		movw	r1, #:lower16:.LC4
- 892 002e C0F20001 		movt	r1, #:upper16:.LC4
- 893 0032 4FF04602 		mov	r2, #70
- 894 0036 4FF00003 		mov	r3, #0
- 895 003a FFF7FEFF 		bl	xTaskGenericCreate
- 333:../main.c     **** 	                        ( xTaskHandle * ) NULL);
- 334:../main.c     **** 	//xTaskCreate(vTaskUSART_TX, (signed char*)"USART_TX", configMINIMAL_STACK_SIZE, NULL, 2,
- 335:../main.c     ****       //      				( xTaskHandle * ) NULL);
- 336:../main.c     **** 	xTaskCreate( vTaskDS1821, ( signed char * ) "DS1821", configMINIMAL_STACK_SIZE, NULL, 2,
- 896              		.loc 1 336 0
- 897 003e 4FF00203 		mov	r3, #2
- 898 0042 0093     		str	r3, [sp, #0]
- 899 0044 4FF00003 		mov	r3, #0
- 900 0048 0193     		str	r3, [sp, #4]
- 901 004a 4FF00003 		mov	r3, #0
- 902 004e 0293     		str	r3, [sp, #8]
- 903 0050 4FF00003 		mov	r3, #0
- 904 0054 0393     		str	r3, [sp, #12]
- 905 0056 40F20000 		movw	r0, #:lower16:vTaskDS1821
- 906 005a C0F20000 		movt	r0, #:upper16:vTaskDS1821
- 907 005e 40F20001 		movw	r1, #:lower16:.LC5
- 908 0062 C0F20001 		movt	r1, #:upper16:.LC5
- 909 0066 4FF04602 		mov	r2, #70
- 910 006a 4FF00003 		mov	r3, #0
- 911 006e FFF7FEFF 		bl	xTaskGenericCreate
- 337:../main.c     **** 		                        ( xTaskHandle * ) NULL);
- 338:../main.c     **** 	vTaskStartScheduler();
- 912              		.loc 1 338 0
- 913 0072 FFF7FEFF 		bl	vTaskStartScheduler
- 914              	.L23:
- 339:../main.c     **** 
- 340:../main.c     **** 	for(;;)
- 341:../main.c     **** 	{
- 342:../main.c     **** //
- 343:../main.c     **** 	}
- 915              		.loc 1 343 0 discriminator 1
- 916 0076 FEE7     		b	.L23
- 917              		.cfi_endproc
- 918              	.LFE43:
- 920              		.section	.rodata
- 921 008b 00       		.align	2
- 922              	.LC6:
- 923 008c 53756363 		.ascii	"Success! GoodLuck!\000"
- 923      65737321 
- 923      20476F6F 
- 923      644C7563 
- 923      6B2100
- 924 009f 00       		.align	2
- 925              	.LC7:
- 926 00a0 4E6F2065 		.ascii	"No echo from device!\000"
- 926      63686F20 
- 926      66726F6D 
- 926      20646576 
- 926      69636521 
- 927 00b5 000000   		.align	2
- 928              	.LC8:
- 929 00b8 50696E20 		.ascii	"Pin LOW error!\000"
- 929      4C4F5720 
- 929      6572726F 
- 929      722100
- 930 00c7 00       		.align	2
- 931              	.LC9:
- 932 00c8 43524320 		.ascii	"CRC not match!\000"
- 932      6E6F7420 
- 932      6D617463 
- 932      682100
- 933 00d7 00       		.section	.text.error_handle,"ax",%progbits
- 934              		.align	2
- 935              		.global	error_handle
- 936              		.thumb
- 937              		.thumb_func
- 939              	error_handle:
- 940              	.LFB44:
- 344:../main.c     **** 	return 0;
- 345:../main.c     **** }
- 346:../main.c     **** 
- 347:../main.c     **** unsigned char error_handle (unsigned char err)
- 348:../main.c     **** {
- 941              		.loc 1 348 0
- 942              		.cfi_startproc
- 943              		@ args = 0, pretend = 0, frame = 8
- 944              		@ frame_needed = 1, uses_anonymous_args = 0
- 945 0000 80B5     		push	{r7, lr}
- 946              	.LCFI42:
- 947              		.cfi_def_cfa_offset 8
- 948              		.cfi_offset 7, -8
- 949              		.cfi_offset 14, -4
- 950 0002 82B0     		sub	sp, sp, #8
- 951              	.LCFI43:
- 952              		.cfi_def_cfa_offset 16
- 953 0004 00AF     		add	r7, sp, #0
- 954              	.LCFI44:
- 955              		.cfi_def_cfa_register 7
- 956 0006 0346     		mov	r3, r0
- 957 0008 FB71     		strb	r3, [r7, #7]
- 349:../main.c     **** 	switch (err)
- 958              		.loc 1 349 0
- 959 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 960 000c 042B     		cmp	r3, #4
- 961 000e 41D8     		bhi	.L25
- 962 0010 01A2     		adr	r2, .L30
- 963 0012 52F823F0 		ldr	pc, [r2, r3, lsl #2]
- 964 0016 00BF     		.align	2
- 965              	.L30:
- 966 0018 2D000000 		.word	.L26+1
- 967 001c 47000000 		.word	.L27+1
- 968 0020 61000000 		.word	.L28+1
- 969 0024 95000000 		.word	.L25+1
- 970 0028 7B000000 		.word	.L29+1
- 971              	.L26:
- 972              	.LBB5:
- 350:../main.c     **** 		{
- 351:../main.c     **** 		 	case One_Wire_Success: 					uart_print_string(USART1, "Success! GoodLuck!",1); break;
- 973              		.loc 1 351 0
- 974 002c 4FF46050 		mov	r0, #14336
- 975 0030 C4F20100 		movt	r0, 16385
- 976 0034 40F20001 		movw	r1, #:lower16:.LC6
- 977 0038 C0F20001 		movt	r1, #:upper16:.LC6
- 978 003c 4FF00102 		mov	r2, #1
- 979 0040 FFF7FEFF 		bl	uart_print_string
- 980 0044 26E0     		b	.L25
- 981              	.L27:
- 352:../main.c     **** 		 	case One_Wire_Error_No_Echo: 			uart_print_string(USART1, "No echo from device!",1); break;
- 982              		.loc 1 352 0
- 983 0046 4FF46050 		mov	r0, #14336
- 984 004a C4F20100 		movt	r0, 16385
- 985 004e 40F20001 		movw	r1, #:lower16:.LC7
- 986 0052 C0F20001 		movt	r1, #:upper16:.LC7
- 987 0056 4FF00102 		mov	r2, #1
- 988 005a FFF7FEFF 		bl	uart_print_string
- 989 005e 19E0     		b	.L25
- 990              	.L28:
- 353:../main.c     **** 		 	case One_Wire_Bus_Low_Error: 			uart_print_string(USART1, "Pin LOW error!",1); break;
- 991              		.loc 1 353 0
- 992 0060 4FF46050 		mov	r0, #14336
- 993 0064 C4F20100 		movt	r0, 16385
- 994 0068 40F20001 		movw	r1, #:lower16:.LC8
- 995 006c C0F20001 		movt	r1, #:upper16:.LC8
- 996 0070 4FF00102 		mov	r2, #1
- 997 0074 FFF7FEFF 		bl	uart_print_string
- 998 0078 0CE0     		b	.L25
- 999              	.L29:
- 354:../main.c     **** 		 	case One_Wire_CRC_Error: 				uart_print_string(USART1, "CRC not match!",1); break;
- 1000              		.loc 1 354 0
- 1001 007a 4FF46050 		mov	r0, #14336
- 1002 007e C4F20100 		movt	r0, 16385
- 1003 0082 40F20001 		movw	r1, #:lower16:.LC9
- 1004 0086 C0F20001 		movt	r1, #:upper16:.LC9
- 1005 008a 4FF00102 		mov	r2, #1
- 1006 008e FFF7FEFF 		bl	uart_print_string
- 1007 0092 00BF     		nop
- 1008              	.L25:
- 1009              	.LBE5:
- 355:../main.c     **** 		}
- 356:../main.c     **** 		if (err==One_Wire_Success) return 0; else return 1;//uart_print_string(USART1, "GoodLuck!",1);
- 1010              		.loc 1 356 0
- 1011 0094 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 1012 0096 002B     		cmp	r3, #0
- 1013 0098 02D1     		bne	.L31
- 1014              		.loc 1 356 0 is_stmt 0 discriminator 1
- 1015 009a 4FF00003 		mov	r3, #0
- 1016 009e 01E0     		b	.L32
- 1017              	.L31:
- 1018              		.loc 1 356 0 discriminator 2
- 1019 00a0 4FF00103 		mov	r3, #1
- 1020              	.L32:
- 357:../main.c     **** }
- 1021              		.loc 1 357 0 is_stmt 1
- 1022 00a4 1846     		mov	r0, r3
- 1023 00a6 07F10807 		add	r7, r7, #8
- 1024 00aa BD46     		mov	sp, r7
- 1025 00ac 80BD     		pop	{r7, pc}
- 1026              		.cfi_endproc
- 1027              	.LFE44:
- 1029 00ae 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
- 1030              		.align	2
- 1031              		.global	vApplicationMallocFailedHook
- 1032              		.thumb
- 1033              		.thumb_func
- 1035              	vApplicationMallocFailedHook:
- 1036              	.LFB45:
- 358:../main.c     **** 
- 359:../main.c     **** void vApplicationMallocFailedHook( void )
- 360:../main.c     **** {
- 1037              		.loc 1 360 0
- 1038              		.cfi_startproc
- 1039              		@ args = 0, pretend = 0, frame = 0
- 1040              		@ frame_needed = 1, uses_anonymous_args = 0
- 1041              		@ link register save eliminated.
- 1042 0000 80B4     		push	{r7}
- 1043              	.LCFI45:
- 1044              		.cfi_def_cfa_offset 4
- 1045              		.cfi_offset 7, -4
- 1046 0002 00AF     		add	r7, sp, #0
- 1047              	.LCFI46:
- 1048              		.cfi_def_cfa_register 7
- 1049              	.L34:
- 361:../main.c     **** 	/* Called if a call to pvPortMalloc() fails because there is insufficient
- 362:../main.c     **** 	free memory available in the FreeRTOS heap.  pvPortMalloc() is called
- 363:../main.c     **** 	internally by FreeRTOS API functions that create tasks, queues, software
- 364:../main.c     **** 	timers, and semaphores.  The size of the FreeRTOS heap is set by the
- 365:../main.c     **** 	configTOTAL_HEAP_SIZE configuration constant in FreeRTOSConfig.h. */
- 366:../main.c     **** 	for( ;; );
- 1050              		.loc 1 366 0 discriminator 1
- 1051 0004 FEE7     		b	.L34
- 1052              		.cfi_endproc
- 1053              	.LFE45:
- 1055 0006 00BF     		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
- 1056              		.align	2
- 1057              		.global	vApplicationStackOverflowHook
- 1058              		.thumb
- 1059              		.thumb_func
- 1061              	vApplicationStackOverflowHook:
- 1062              	.LFB46:
- 367:../main.c     **** }
- 368:../main.c     **** /*-----------------------------------------------------------*/
+ 759 007f 00       		.align	2
+ 760              	.LC4:
+ 761 0080 20557074 		.ascii	" Uptime: \000"
+ 761      696D653A 
+ 761      2000
+ 762 008a 0000     		.align	2
+ 763              	.LC5:
+ 764 008c 3A00     		.ascii	":\000"
+ 765 008e 0000     		.align	2
+ 766              	.LC6:
+ 767 0090 00       		.ascii	"\000"
+ 768              		.section	.text.vTaskDS1821,"ax",%progbits
+ 769              		.align	2
+ 770              		.global	vTaskDS1821
+ 771              		.thumb
+ 772              		.thumb_func
+ 774              	vTaskDS1821:
+ 775              	.LFB42:
+ 288:../main.c     **** 
+ 289:../main.c     ****     vTaskDelete(NULL);
+ 290:../main.c     **** }
+ 291:../main.c     **** 
+ 292:../main.c     **** void vTaskDS1821(void *pvParameters)
+ 293:../main.c     **** {
+ 776              		.loc 1 293 0
+ 777              		.cfi_startproc
+ 778              		@ args = 0, pretend = 0, frame = 16
+ 779              		@ frame_needed = 1, uses_anonymous_args = 0
+ 780 0000 80B5     		push	{r7, lr}
+ 781              	.LCFI36:
+ 782              		.cfi_def_cfa_offset 8
+ 783              		.cfi_offset 7, -8
+ 784              		.cfi_offset 14, -4
+ 785 0002 84B0     		sub	sp, sp, #16
+ 786              	.LCFI37:
+ 787              		.cfi_def_cfa_offset 24
+ 788 0004 00AF     		add	r7, sp, #0
+ 789              	.LCFI38:
+ 790              		.cfi_def_cfa_register 7
+ 791 0006 7860     		str	r0, [r7, #4]
+ 294:../main.c     **** 	uart_print_string(USART1,"Температура:   ",0);
+ 792              		.loc 1 294 0
+ 793 0008 4FF46050 		mov	r0, #14336
+ 794 000c C4F20100 		movt	r0, 16385
+ 795 0010 40F20001 		movw	r1, #:lower16:.LC3
+ 796 0014 C0F20001 		movt	r1, #:upper16:.LC3
+ 797 0018 4FF00002 		mov	r2, #0
+ 798 001c FFF7FEFF 		bl	uart_print_string
+ 799              	.L21:
+ 800              	.LBB4:
+ 295:../main.c     **** 	for(;;)
+ 296:../main.c     **** 	{
+ 297:../main.c     **** 		///// 1-wire /////
+ 298:../main.c     **** 			signed int t;
+ 299:../main.c     **** 
+ 300:../main.c     **** 			//uart_print_string(USART1, "Сбрасываем..",1);
+ 301:../main.c     **** 
+ 302:../main.c     **** 			//error_handle(One_Wire_Reset(One_Wire_Pin));
+ 303:../main.c     **** 
+ 304:../main.c     **** 			//error_handle(DS1821_Write_Status(One_Wire_Pin));
+ 305:../main.c     **** 
+ 306:../main.c     **** 			//error_handle(DS1821_Start_Conversion(One_Wire_Pin));
+ 307:../main.c     **** 			DS1821_Start_Conversion(One_Wire_Pin);
+ 801              		.loc 1 307 0 discriminator 1
+ 802 0020 4FF48050 		mov	r0, #4096
+ 803 0024 C4F20100 		movt	r0, 16385
+ 804 0028 4FF08001 		mov	r1, #128
+ 805 002c FFF7FEFF 		bl	DS1821_Start_Conversion
+ 308:../main.c     **** 			//delay_ms(750);
+ 309:../main.c     **** 
+ 310:../main.c     **** 			//error_handle(DS1821_Stop_Conversion(One_Wire_Pin));
+ 311:../main.c     **** 			//error_handle(DS1821_Read_Temp(&t, One_Wire_Pin));
+ 312:../main.c     **** 			uart_print_string(USART1, "Температура:   ", 0);
+ 806              		.loc 1 312 0 discriminator 1
+ 807 0030 4FF46050 		mov	r0, #14336
+ 808 0034 C4F20100 		movt	r0, 16385
+ 809 0038 40F20001 		movw	r1, #:lower16:.LC3
+ 810 003c C0F20001 		movt	r1, #:upper16:.LC3
+ 811 0040 4FF00002 		mov	r2, #0
+ 812 0044 FFF7FEFF 		bl	uart_print_string
+ 313:../main.c     **** 			DS1821_Read_Temp(&t, One_Wire_Pin);
+ 813              		.loc 1 313 0 discriminator 1
+ 814 0048 07F10C03 		add	r3, r7, #12
+ 815 004c 1846     		mov	r0, r3
+ 816 004e 4FF48051 		mov	r1, #4096
+ 817 0052 C4F20101 		movt	r1, 16385
+ 818 0056 4FF08002 		mov	r2, #128
+ 819 005a FFF7FEFF 		bl	DS1821_Read_Temp
+ 314:../main.c     **** 			uart_send_char(USART1, 8);
+ 820              		.loc 1 314 0 discriminator 1
+ 821 005e 4FF46050 		mov	r0, #14336
+ 822 0062 C4F20100 		movt	r0, 16385
+ 823 0066 4FF00801 		mov	r1, #8
+ 824 006a FFF7FEFF 		bl	uart_send_char
+ 315:../main.c     **** 			uart_send_char(USART1, 8);
+ 825              		.loc 1 315 0 discriminator 1
+ 826 006e 4FF46050 		mov	r0, #14336
+ 827 0072 C4F20100 		movt	r0, 16385
+ 828 0076 4FF00801 		mov	r1, #8
+ 829 007a FFF7FEFF 		bl	uart_send_char
+ 316:../main.c     **** 			uart_print_value(USART1, t);
+ 830              		.loc 1 316 0 discriminator 1
+ 831 007e FB68     		ldr	r3, [r7, #12]
+ 832 0080 4FF46050 		mov	r0, #14336
+ 833 0084 C4F20100 		movt	r0, 16385
+ 834 0088 1946     		mov	r1, r3
+ 835 008a FFF7FEFF 		bl	uart_print_value
+ 317:../main.c     **** 			//uart_print_string(USART1,"",1);
+ 318:../main.c     **** 			LED_PORT->ODR |= LED_GREEN;
+ 836              		.loc 1 318 0 discriminator 1
+ 837 008e 4FF48053 		mov	r3, #4096
+ 838 0092 C4F20103 		movt	r3, 16385
+ 839 0096 4FF48052 		mov	r2, #4096
+ 840 009a C4F20102 		movt	r2, 16385
+ 841 009e D268     		ldr	r2, [r2, #12]
+ 842 00a0 42F40072 		orr	r2, r2, #512
+ 843 00a4 DA60     		str	r2, [r3, #12]
+ 319:../main.c     **** 						//vTaskDelay(10);
+ 320:../main.c     **** 			delay_ms(10);
+ 844              		.loc 1 320 0 discriminator 1
+ 845 00a6 4FF00A00 		mov	r0, #10
+ 846 00aa FFF7FEFF 		bl	delay_ms
+ 321:../main.c     **** 			LED_PORT->ODR ^= LED_GREEN;
+ 847              		.loc 1 321 0 discriminator 1
+ 848 00ae 4FF48053 		mov	r3, #4096
+ 849 00b2 C4F20103 		movt	r3, 16385
+ 850 00b6 4FF48052 		mov	r2, #4096
+ 851 00ba C4F20102 		movt	r2, 16385
+ 852 00be D268     		ldr	r2, [r2, #12]
+ 853 00c0 82F40072 		eor	r2, r2, #512
+ 854 00c4 DA60     		str	r2, [r3, #12]
+ 322:../main.c     **** 			uart_print_string(USART1, " Uptime: ", 0);
+ 855              		.loc 1 322 0 discriminator 1
+ 856 00c6 4FF46050 		mov	r0, #14336
+ 857 00ca C4F20100 		movt	r0, 16385
+ 858 00ce 40F20001 		movw	r1, #:lower16:.LC4
+ 859 00d2 C0F20001 		movt	r1, #:upper16:.LC4
+ 860 00d6 4FF00002 		mov	r2, #0
+ 861 00da FFF7FEFF 		bl	uart_print_string
+ 323:../main.c     **** 			uart_print_value(USART1, Time_GetHours(GetTime()));
+ 862              		.loc 1 323 0 discriminator 1
+ 863 00de FFF7FEFF 		bl	GetTime
+ 864 00e2 0346     		mov	r3, r0
+ 865 00e4 1846     		mov	r0, r3
+ 866 00e6 FFF7FEFF 		bl	Time_GetHours
+ 867 00ea 0346     		mov	r3, r0
+ 868 00ec 4FF46050 		mov	r0, #14336
+ 869 00f0 C4F20100 		movt	r0, 16385
+ 870 00f4 1946     		mov	r1, r3
+ 871 00f6 FFF7FEFF 		bl	uart_print_value
+ 324:../main.c     **** 			uart_print_string(USART1, ":", 0);
+ 872              		.loc 1 324 0 discriminator 1
+ 873 00fa 4FF46050 		mov	r0, #14336
+ 874 00fe C4F20100 		movt	r0, 16385
+ 875 0102 40F20001 		movw	r1, #:lower16:.LC5
+ 876 0106 C0F20001 		movt	r1, #:upper16:.LC5
+ 877 010a 4FF00002 		mov	r2, #0
+ 878 010e FFF7FEFF 		bl	uart_print_string
+ 325:../main.c     **** 			uart_print_value(USART1, Time_GetMinutes(GetTime()));
+ 879              		.loc 1 325 0 discriminator 1
+ 880 0112 FFF7FEFF 		bl	GetTime
+ 881 0116 0346     		mov	r3, r0
+ 882 0118 1846     		mov	r0, r3
+ 883 011a FFF7FEFF 		bl	Time_GetMinutes
+ 884 011e 0346     		mov	r3, r0
+ 885 0120 4FF46050 		mov	r0, #14336
+ 886 0124 C4F20100 		movt	r0, 16385
+ 887 0128 1946     		mov	r1, r3
+ 888 012a FFF7FEFF 		bl	uart_print_value
+ 326:../main.c     **** 			uart_print_string(USART1, ":", 0);
+ 889              		.loc 1 326 0 discriminator 1
+ 890 012e 4FF46050 		mov	r0, #14336
+ 891 0132 C4F20100 		movt	r0, 16385
+ 892 0136 40F20001 		movw	r1, #:lower16:.LC5
+ 893 013a C0F20001 		movt	r1, #:upper16:.LC5
+ 894 013e 4FF00002 		mov	r2, #0
+ 895 0142 FFF7FEFF 		bl	uart_print_string
+ 327:../main.c     **** 			uart_print_value(USART1, Time_GetSeconds(GetTime()));
+ 896              		.loc 1 327 0 discriminator 1
+ 897 0146 FFF7FEFF 		bl	GetTime
+ 898 014a 0346     		mov	r3, r0
+ 899 014c 1846     		mov	r0, r3
+ 900 014e FFF7FEFF 		bl	Time_GetSeconds
+ 901 0152 0346     		mov	r3, r0
+ 902 0154 4FF46050 		mov	r0, #14336
+ 903 0158 C4F20100 		movt	r0, 16385
+ 904 015c 1946     		mov	r1, r3
+ 905 015e FFF7FEFF 		bl	uart_print_value
+ 328:../main.c     **** 			uart_print_string(USART1, "", 1);
+ 906              		.loc 1 328 0 discriminator 1
+ 907 0162 4FF46050 		mov	r0, #14336
+ 908 0166 C4F20100 		movt	r0, 16385
+ 909 016a 40F20001 		movw	r1, #:lower16:.LC6
+ 910 016e C0F20001 		movt	r1, #:upper16:.LC6
+ 911 0172 4FF00102 		mov	r2, #1
+ 912 0176 FFF7FEFF 		bl	uart_print_string
+ 329:../main.c     **** 			//////////////////
+ 330:../main.c     **** 			vTaskDelay(1000);
+ 913              		.loc 1 330 0 discriminator 1
+ 914 017a 4FF47A70 		mov	r0, #1000
+ 915 017e FFF7FEFF 		bl	vTaskDelay
+ 916              	.LBE4:
+ 331:../main.c     **** 	}
+ 917              		.loc 1 331 0 discriminator 1
+ 918 0182 4DE7     		b	.L21
+ 919              		.cfi_endproc
+ 920              	.LFE42:
+ 922              		.section	.rodata
+ 923 0091 000000   		.align	2
+ 924              	.LC7:
+ 925 0094 4C454400 		.ascii	"LED\000"
+ 926              		.align	2
+ 927              	.LC8:
+ 928 0098 44533138 		.ascii	"DS1821\000"
+ 928      323100
+ 929              		.section	.text.main,"ax",%progbits
+ 930              		.align	2
+ 931              		.global	main
+ 932              		.thumb
+ 933              		.thumb_func
+ 935              	main:
+ 936              	.LFB43:
+ 332:../main.c     **** 	vTaskDelete(NULL);
+ 333:../main.c     **** }
+ 334:../main.c     **** 
+ 335:../main.c     **** 
+ 336:../main.c     **** 
+ 337:../main.c     **** int main()
+ 338:../main.c     **** {
+ 937              		.loc 1 338 0
+ 938              		.cfi_startproc
+ 939              		@ args = 0, pretend = 0, frame = 0
+ 940              		@ frame_needed = 1, uses_anonymous_args = 0
+ 941 0000 80B5     		push	{r7, lr}
+ 942              	.LCFI39:
+ 943              		.cfi_def_cfa_offset 8
+ 944              		.cfi_offset 7, -8
+ 945              		.cfi_offset 14, -4
+ 946 0002 84B0     		sub	sp, sp, #16
+ 947              	.LCFI40:
+ 948              		.cfi_def_cfa_offset 24
+ 949 0004 04AF     		add	r7, sp, #16
+ 950              	.LCFI41:
+ 951              		.cfi_def_cfa 7, 8
+ 339:../main.c     **** 	vFreeRTOSInitAll();
+ 952              		.loc 1 339 0
+ 953 0006 FFF7FEFF 		bl	vFreeRTOSInitAll
+ 340:../main.c     **** 
+ 341:../main.c     **** 	RTC_Config();
+ 954              		.loc 1 341 0
+ 955 000a FFF7FEFF 		bl	RTC_Config
+ 342:../main.c     **** 
+ 343:../main.c     **** 	xTaskCreate( vTaskLED, ( signed char * ) "LED", configMINIMAL_STACK_SIZE, NULL, 2,
+ 956              		.loc 1 343 0
+ 957 000e 4FF00203 		mov	r3, #2
+ 958 0012 0093     		str	r3, [sp, #0]
+ 959 0014 4FF00003 		mov	r3, #0
+ 960 0018 0193     		str	r3, [sp, #4]
+ 961 001a 4FF00003 		mov	r3, #0
+ 962 001e 0293     		str	r3, [sp, #8]
+ 963 0020 4FF00003 		mov	r3, #0
+ 964 0024 0393     		str	r3, [sp, #12]
+ 965 0026 40F20000 		movw	r0, #:lower16:vTaskLED
+ 966 002a C0F20000 		movt	r0, #:upper16:vTaskLED
+ 967 002e 40F20001 		movw	r1, #:lower16:.LC7
+ 968 0032 C0F20001 		movt	r1, #:upper16:.LC7
+ 969 0036 4FF04602 		mov	r2, #70
+ 970 003a 4FF00003 		mov	r3, #0
+ 971 003e FFF7FEFF 		bl	xTaskGenericCreate
+ 344:../main.c     **** 	                        ( xTaskHandle * ) NULL);
+ 345:../main.c     **** 	//xTaskCreate(vTaskUSART_TX, (signed char*)"USART_TX", configMINIMAL_STACK_SIZE, NULL, 2,
+ 346:../main.c     ****       //      				( xTaskHandle * ) NULL);
+ 347:../main.c     **** 	xTaskCreate( vTaskDS1821, ( signed char * ) "DS1821", configMINIMAL_STACK_SIZE, NULL, 2,
+ 972              		.loc 1 347 0
+ 973 0042 4FF00203 		mov	r3, #2
+ 974 0046 0093     		str	r3, [sp, #0]
+ 975 0048 4FF00003 		mov	r3, #0
+ 976 004c 0193     		str	r3, [sp, #4]
+ 977 004e 4FF00003 		mov	r3, #0
+ 978 0052 0293     		str	r3, [sp, #8]
+ 979 0054 4FF00003 		mov	r3, #0
+ 980 0058 0393     		str	r3, [sp, #12]
+ 981 005a 40F20000 		movw	r0, #:lower16:vTaskDS1821
+ 982 005e C0F20000 		movt	r0, #:upper16:vTaskDS1821
+ 983 0062 40F20001 		movw	r1, #:lower16:.LC8
+ 984 0066 C0F20001 		movt	r1, #:upper16:.LC8
+ 985 006a 4FF04602 		mov	r2, #70
+ 986 006e 4FF00003 		mov	r3, #0
+ 987 0072 FFF7FEFF 		bl	xTaskGenericCreate
+ 348:../main.c     **** 		                        ( xTaskHandle * ) NULL);
+ 349:../main.c     **** 	vTaskStartScheduler();
+ 988              		.loc 1 349 0
+ 989 0076 FFF7FEFF 		bl	vTaskStartScheduler
+ 990              	.L23:
+ 350:../main.c     **** 
+ 351:../main.c     **** 	for(;;)
+ 352:../main.c     **** 	{
+ 353:../main.c     **** //
+ 354:../main.c     **** 	}
+ 991              		.loc 1 354 0 discriminator 1
+ 992 007a FEE7     		b	.L23
+ 993              		.cfi_endproc
+ 994              	.LFE43:
+ 996              		.section	.rodata
+ 997 009f 00       		.align	2
+ 998              	.LC9:
+ 999 00a0 53756363 		.ascii	"Success! GoodLuck!\000"
+ 999      65737321 
+ 999      20476F6F 
+ 999      644C7563 
+ 999      6B2100
+ 1000 00b3 00       		.align	2
+ 1001              	.LC10:
+ 1002 00b4 4E6F2065 		.ascii	"No echo from device!\000"
+ 1002      63686F20 
+ 1002      66726F6D 
+ 1002      20646576 
+ 1002      69636521 
+ 1003 00c9 000000   		.align	2
+ 1004              	.LC11:
+ 1005 00cc 50696E20 		.ascii	"Pin LOW error!\000"
+ 1005      4C4F5720 
+ 1005      6572726F 
+ 1005      722100
+ 1006 00db 00       		.align	2
+ 1007              	.LC12:
+ 1008 00dc 43524320 		.ascii	"CRC not match!\000"
+ 1008      6E6F7420 
+ 1008      6D617463 
+ 1008      682100
+ 1009 00eb 00       		.section	.text.error_handle,"ax",%progbits
+ 1010              		.align	2
+ 1011              		.global	error_handle
+ 1012              		.thumb
+ 1013              		.thumb_func
+ 1015              	error_handle:
+ 1016              	.LFB44:
+ 355:../main.c     **** 	return 0;
+ 356:../main.c     **** }
+ 357:../main.c     **** 
+ 358:../main.c     **** unsigned char error_handle (unsigned char err)
+ 359:../main.c     **** {
+ 1017              		.loc 1 359 0
+ 1018              		.cfi_startproc
+ 1019              		@ args = 0, pretend = 0, frame = 8
+ 1020              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1021 0000 80B5     		push	{r7, lr}
+ 1022              	.LCFI42:
+ 1023              		.cfi_def_cfa_offset 8
+ 1024              		.cfi_offset 7, -8
+ 1025              		.cfi_offset 14, -4
+ 1026 0002 82B0     		sub	sp, sp, #8
+ 1027              	.LCFI43:
+ 1028              		.cfi_def_cfa_offset 16
+ 1029 0004 00AF     		add	r7, sp, #0
+ 1030              	.LCFI44:
+ 1031              		.cfi_def_cfa_register 7
+ 1032 0006 0346     		mov	r3, r0
+ 1033 0008 FB71     		strb	r3, [r7, #7]
+ 360:../main.c     **** 	switch (err)
+ 1034              		.loc 1 360 0
+ 1035 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1036 000c 042B     		cmp	r3, #4
+ 1037 000e 41D8     		bhi	.L25
+ 1038 0010 01A2     		adr	r2, .L30
+ 1039 0012 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 1040 0016 00BF     		.align	2
+ 1041              	.L30:
+ 1042 0018 2D000000 		.word	.L26+1
+ 1043 001c 47000000 		.word	.L27+1
+ 1044 0020 61000000 		.word	.L28+1
+ 1045 0024 95000000 		.word	.L25+1
+ 1046 0028 7B000000 		.word	.L29+1
+ 1047              	.L26:
+ 1048              	.LBB5:
+ 361:../main.c     **** 		{
+ 362:../main.c     **** 		 	case One_Wire_Success: 					uart_print_string(USART1, "Success! GoodLuck!",1); break;
+ 1049              		.loc 1 362 0
+ 1050 002c 4FF46050 		mov	r0, #14336
+ 1051 0030 C4F20100 		movt	r0, 16385
+ 1052 0034 40F20001 		movw	r1, #:lower16:.LC9
+ 1053 0038 C0F20001 		movt	r1, #:upper16:.LC9
+ 1054 003c 4FF00102 		mov	r2, #1
+ 1055 0040 FFF7FEFF 		bl	uart_print_string
+ 1056 0044 26E0     		b	.L25
+ 1057              	.L27:
+ 363:../main.c     **** 		 	case One_Wire_Error_No_Echo: 			uart_print_string(USART1, "No echo from device!",1); break;
+ 1058              		.loc 1 363 0
+ 1059 0046 4FF46050 		mov	r0, #14336
+ 1060 004a C4F20100 		movt	r0, 16385
+ 1061 004e 40F20001 		movw	r1, #:lower16:.LC10
+ 1062 0052 C0F20001 		movt	r1, #:upper16:.LC10
+ 1063 0056 4FF00102 		mov	r2, #1
+ 1064 005a FFF7FEFF 		bl	uart_print_string
+ 1065 005e 19E0     		b	.L25
+ 1066              	.L28:
+ 364:../main.c     **** 		 	case One_Wire_Bus_Low_Error: 			uart_print_string(USART1, "Pin LOW error!",1); break;
+ 1067              		.loc 1 364 0
+ 1068 0060 4FF46050 		mov	r0, #14336
+ 1069 0064 C4F20100 		movt	r0, 16385
+ 1070 0068 40F20001 		movw	r1, #:lower16:.LC11
+ 1071 006c C0F20001 		movt	r1, #:upper16:.LC11
+ 1072 0070 4FF00102 		mov	r2, #1
+ 1073 0074 FFF7FEFF 		bl	uart_print_string
+ 1074 0078 0CE0     		b	.L25
+ 1075              	.L29:
+ 365:../main.c     **** 		 	case One_Wire_CRC_Error: 				uart_print_string(USART1, "CRC not match!",1); break;
+ 1076              		.loc 1 365 0
+ 1077 007a 4FF46050 		mov	r0, #14336
+ 1078 007e C4F20100 		movt	r0, 16385
+ 1079 0082 40F20001 		movw	r1, #:lower16:.LC12
+ 1080 0086 C0F20001 		movt	r1, #:upper16:.LC12
+ 1081 008a 4FF00102 		mov	r2, #1
+ 1082 008e FFF7FEFF 		bl	uart_print_string
+ 1083 0092 00BF     		nop
+ 1084              	.L25:
+ 1085              	.LBE5:
+ 366:../main.c     **** 		}
+ 367:../main.c     **** 		if (err==One_Wire_Success) return 0; else return 1;//uart_print_string(USART1, "GoodLuck!",1);
+ 1086              		.loc 1 367 0
+ 1087 0094 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1088 0096 002B     		cmp	r3, #0
+ 1089 0098 02D1     		bne	.L31
+ 1090              		.loc 1 367 0 is_stmt 0 discriminator 1
+ 1091 009a 4FF00003 		mov	r3, #0
+ 1092 009e 01E0     		b	.L32
+ 1093              	.L31:
+ 1094              		.loc 1 367 0 discriminator 2
+ 1095 00a0 4FF00103 		mov	r3, #1
+ 1096              	.L32:
+ 368:../main.c     **** }
+ 1097              		.loc 1 368 0 is_stmt 1
+ 1098 00a4 1846     		mov	r0, r3
+ 1099 00a6 07F10807 		add	r7, r7, #8
+ 1100 00aa BD46     		mov	sp, r7
+ 1101 00ac 80BD     		pop	{r7, pc}
+ 1102              		.cfi_endproc
+ 1103              	.LFE44:
+ 1105 00ae 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
+ 1106              		.align	2
+ 1107              		.global	vApplicationMallocFailedHook
+ 1108              		.thumb
+ 1109              		.thumb_func
+ 1111              	vApplicationMallocFailedHook:
+ 1112              	.LFB45:
  369:../main.c     **** 
- 370:../main.c     **** void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName )
+ 370:../main.c     **** void vApplicationMallocFailedHook( void )
  371:../main.c     **** {
- 1063              		.loc 1 371 0
- 1064              		.cfi_startproc
- 1065              		@ args = 0, pretend = 0, frame = 8
- 1066              		@ frame_needed = 1, uses_anonymous_args = 0
- 1067              		@ link register save eliminated.
- 1068 0000 80B4     		push	{r7}
- 1069              	.LCFI47:
- 1070              		.cfi_def_cfa_offset 4
- 1071              		.cfi_offset 7, -4
- 1072 0002 83B0     		sub	sp, sp, #12
- 1073              	.LCFI48:
- 1074              		.cfi_def_cfa_offset 16
- 1075 0004 00AF     		add	r7, sp, #0
- 1076              	.LCFI49:
- 1077              		.cfi_def_cfa_register 7
- 1078 0006 7860     		str	r0, [r7, #4]
- 1079 0008 3960     		str	r1, [r7, #0]
- 1080              	.L36:
- 372:../main.c     **** 	( void ) pcTaskName;
- 373:../main.c     **** 	( void ) pxTask;
- 374:../main.c     **** 
- 375:../main.c     **** 	/* Run time stack overflow checking is performed if
- 376:../main.c     **** 	configconfigCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
- 377:../main.c     **** 	function is called if a stack overflow is detected. */
- 378:../main.c     **** 	for( ;; );
- 1081              		.loc 1 378 0 discriminator 1
- 1082 000a FEE7     		b	.L36
- 1083              		.cfi_endproc
- 1084              	.LFE46:
- 1086              		.section	.text.vApplicationIdleHook,"ax",%progbits
- 1087              		.align	2
- 1088              		.global	vApplicationIdleHook
- 1089              		.thumb
- 1090              		.thumb_func
- 1092              	vApplicationIdleHook:
- 1093              	.LFB47:
- 379:../main.c     **** }
- 380:../main.c     **** /*-----------------------------------------------------------*/
- 381:../main.c     **** 
- 382:../main.c     **** void vApplicationIdleHook( void )
- 383:../main.c     **** {
- 1094              		.loc 1 383 0
- 1095              		.cfi_startproc
- 1096              		@ args = 0, pretend = 0, frame = 8
- 1097              		@ frame_needed = 1, uses_anonymous_args = 0
- 1098 0000 80B5     		push	{r7, lr}
- 1099              	.LCFI50:
- 1100              		.cfi_def_cfa_offset 8
- 1101              		.cfi_offset 7, -8
- 1102              		.cfi_offset 14, -4
- 1103 0002 82B0     		sub	sp, sp, #8
- 1104              	.LCFI51:
- 1105              		.cfi_def_cfa_offset 16
- 1106 0004 00AF     		add	r7, sp, #0
- 1107              	.LCFI52:
- 1108              		.cfi_def_cfa_register 7
- 384:../main.c     **** volatile size_t xFreeStackSpace;
+ 1113              		.loc 1 371 0
+ 1114              		.cfi_startproc
+ 1115              		@ args = 0, pretend = 0, frame = 0
+ 1116              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1117              		@ link register save eliminated.
+ 1118 0000 80B4     		push	{r7}
+ 1119              	.LCFI45:
+ 1120              		.cfi_def_cfa_offset 4
+ 1121              		.cfi_offset 7, -4
+ 1122 0002 00AF     		add	r7, sp, #0
+ 1123              	.LCFI46:
+ 1124              		.cfi_def_cfa_register 7
+ 1125              	.L34:
+ 372:../main.c     **** 	/* Called if a call to pvPortMalloc() fails because there is insufficient
+ 373:../main.c     **** 	free memory available in the FreeRTOS heap.  pvPortMalloc() is called
+ 374:../main.c     **** 	internally by FreeRTOS API functions that create tasks, queues, software
+ 375:../main.c     **** 	timers, and semaphores.  The size of the FreeRTOS heap is set by the
+ 376:../main.c     **** 	configTOTAL_HEAP_SIZE configuration constant in FreeRTOSConfig.h. */
+ 377:../main.c     **** 	for( ;; );
+ 1126              		.loc 1 377 0 discriminator 1
+ 1127 0004 FEE7     		b	.L34
+ 1128              		.cfi_endproc
+ 1129              	.LFE45:
+ 1131 0006 00BF     		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
+ 1132              		.align	2
+ 1133              		.global	vApplicationStackOverflowHook
+ 1134              		.thumb
+ 1135              		.thumb_func
+ 1137              	vApplicationStackOverflowHook:
+ 1138              	.LFB46:
+ 378:../main.c     **** }
+ 379:../main.c     **** /*-----------------------------------------------------------*/
+ 380:../main.c     **** 
+ 381:../main.c     **** void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName )
+ 382:../main.c     **** {
+ 1139              		.loc 1 382 0
+ 1140              		.cfi_startproc
+ 1141              		@ args = 0, pretend = 0, frame = 8
+ 1142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1143              		@ link register save eliminated.
+ 1144 0000 80B4     		push	{r7}
+ 1145              	.LCFI47:
+ 1146              		.cfi_def_cfa_offset 4
+ 1147              		.cfi_offset 7, -4
+ 1148 0002 83B0     		sub	sp, sp, #12
+ 1149              	.LCFI48:
+ 1150              		.cfi_def_cfa_offset 16
+ 1151 0004 00AF     		add	r7, sp, #0
+ 1152              	.LCFI49:
+ 1153              		.cfi_def_cfa_register 7
+ 1154 0006 7860     		str	r0, [r7, #4]
+ 1155 0008 3960     		str	r1, [r7, #0]
+ 1156              	.L36:
+ 383:../main.c     **** 	( void ) pcTaskName;
+ 384:../main.c     **** 	( void ) pxTask;
  385:../main.c     **** 
- 386:../main.c     **** 	/* This function is called on each cycle of the idle task.  In this case it
- 387:../main.c     **** 	does nothing useful, other than report the amout of FreeRTOS heap that
- 388:../main.c     **** 	remains unallocated. */
- 389:../main.c     **** 	xFreeStackSpace = xPortGetFreeHeapSize();
- 1109              		.loc 1 389 0
- 1110 0006 FFF7FEFF 		bl	xPortGetFreeHeapSize
- 1111 000a 0346     		mov	r3, r0
- 1112 000c 7B60     		str	r3, [r7, #4]
- 390:../main.c     **** 
- 391:../main.c     **** 	if( xFreeStackSpace > 100 )
- 1113              		.loc 1 391 0
- 1114 000e 7B68     		ldr	r3, [r7, #4]
- 392:../main.c     **** 	{
- 393:../main.c     **** 		/* By now, the kernel has allocated everything it is going to, so
- 394:../main.c     **** 		if there is a lot of heap remaining unallocated then
- 395:../main.c     **** 		the value of configTOTAL_HEAP_SIZE in FreeRTOSConfig.h can be
- 396:../main.c     **** 		reduced accordingly. */
- 397:../main.c     **** 	}
- 398:../main.c     **** }
- 1115              		.loc 1 398 0
- 1116 0010 07F10807 		add	r7, r7, #8
- 1117 0014 BD46     		mov	sp, r7
- 1118 0016 80BD     		pop	{r7, pc}
- 1119              		.cfi_endproc
- 1120              	.LFE47:
- 1122              		.section	.text.UARTSend,"ax",%progbits
- 1123              		.align	2
- 1124              		.global	UARTSend
- 1125              		.thumb
- 1126              		.thumb_func
- 1128              	UARTSend:
- 1129              	.LFB48:
- 399:../main.c     **** 
- 400:../main.c     **** /*******************************************************************************
- 401:../main.c     **** * Function Name  : UARTSend
- 402:../main.c     **** * Description    : Send a string to the UART.
- 403:../main.c     **** * Input          : - pucBuffer: buffers to be printed.
- 404:../main.c     **** *                : - ulCount  : buffer's length
- 405:../main.c     **** * Output         : None
- 406:../main.c     **** * Return         : None
- 407:../main.c     **** *******************************************************************************/
- 408:../main.c     **** void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
- 409:../main.c     **** {
- 1130              		.loc 1 409 0
- 1131              		.cfi_startproc
- 1132              		@ args = 0, pretend = 0, frame = 8
- 1133              		@ frame_needed = 1, uses_anonymous_args = 0
- 1134 0000 80B5     		push	{r7, lr}
- 1135              	.LCFI53:
- 1136              		.cfi_def_cfa_offset 8
- 1137              		.cfi_offset 7, -8
- 1138              		.cfi_offset 14, -4
- 1139 0002 82B0     		sub	sp, sp, #8
- 1140              	.LCFI54:
- 1141              		.cfi_def_cfa_offset 16
- 1142 0004 00AF     		add	r7, sp, #0
- 1143              	.LCFI55:
- 1144              		.cfi_def_cfa_register 7
- 1145 0006 7860     		str	r0, [r7, #4]
- 1146 0008 3960     		str	r1, [r7, #0]
- 410:../main.c     ****     //
- 411:../main.c     ****     // Loop while there are more characters to send.
- 412:../main.c     ****     //
- 413:../main.c     ****     while(ulCount--)
- 1147              		.loc 1 413 0
- 1148 000a 18E0     		b	.L39
- 1149              	.L41:
- 414:../main.c     ****     {
- 415:../main.c     ****         USART_SendData(USART1, (uint16_t) *pucBuffer++);
- 1150              		.loc 1 415 0
- 1151 000c 7B68     		ldr	r3, [r7, #4]
- 1152 000e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
- 1153 0010 7A68     		ldr	r2, [r7, #4]
- 1154 0012 02F10102 		add	r2, r2, #1
- 1155 0016 7A60     		str	r2, [r7, #4]
- 1156 0018 4FF46050 		mov	r0, #14336
- 1157 001c C4F20100 		movt	r0, 16385
- 1158 0020 1946     		mov	r1, r3
- 1159 0022 FFF7FEFF 		bl	USART_SendData
- 416:../main.c     ****         /* Loop until the end of transmission */
- 417:../main.c     ****         while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
- 1160              		.loc 1 417 0
- 1161 0026 00BF     		nop
- 1162              	.L40:
- 1163              		.loc 1 417 0 is_stmt 0 discriminator 1
- 1164 0028 4FF46050 		mov	r0, #14336
- 1165 002c C4F20100 		movt	r0, 16385
- 1166 0030 4FF04001 		mov	r1, #64
- 1167 0034 FFF7FEFF 		bl	USART_GetFlagStatus
- 1168 0038 0346     		mov	r3, r0
- 1169 003a 002B     		cmp	r3, #0
- 1170 003c F4D0     		beq	.L40
- 1171              	.L39:
- 413:../main.c     ****     while(ulCount--)
- 1172              		.loc 1 413 0 is_stmt 1 discriminator 1
- 1173 003e 3B68     		ldr	r3, [r7, #0]
- 1174 0040 002B     		cmp	r3, #0
- 1175 0042 0CBF     		ite	eq
- 1176 0044 0023     		moveq	r3, #0
- 1177 0046 0123     		movne	r3, #1
- 1178 0048 DBB2     		uxtb	r3, r3
- 1179 004a 3A68     		ldr	r2, [r7, #0]
- 1180 004c 02F1FF32 		add	r2, r2, #-1
- 1181 0050 3A60     		str	r2, [r7, #0]
- 1182 0052 002B     		cmp	r3, #0
- 1183 0054 DAD1     		bne	.L41
- 418:../main.c     ****         {
- 419:../main.c     ****         }
- 420:../main.c     ****     }
- 421:../main.c     **** }
- 1184              		.loc 1 421 0
- 1185 0056 07F10807 		add	r7, r7, #8
- 1186 005a BD46     		mov	sp, r7
- 1187 005c 80BD     		pop	{r7, pc}
- 1188              		.cfi_endproc
- 1189              	.LFE48:
- 1191 005e 00BF     		.text
- 1192              	.Letext0:
- 1193              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
- 1194              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/task.h"
- 1195              		.file 4 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
- 1196              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
- 1197              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/misc
- 1198              		.file 7 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
- 1199              		.file 8 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
- 1200              		.file 9 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
- 1201              		.file 10 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
+ 386:../main.c     **** 	/* Run time stack overflow checking is performed if
+ 387:../main.c     **** 	configconfigCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
+ 388:../main.c     **** 	function is called if a stack overflow is detected. */
+ 389:../main.c     **** 	for( ;; );
+ 1157              		.loc 1 389 0 discriminator 1
+ 1158 000a FEE7     		b	.L36
+ 1159              		.cfi_endproc
+ 1160              	.LFE46:
+ 1162              		.section	.text.vApplicationIdleHook,"ax",%progbits
+ 1163              		.align	2
+ 1164              		.global	vApplicationIdleHook
+ 1165              		.thumb
+ 1166              		.thumb_func
+ 1168              	vApplicationIdleHook:
+ 1169              	.LFB47:
+ 390:../main.c     **** }
+ 391:../main.c     **** /*-----------------------------------------------------------*/
+ 392:../main.c     **** 
+ 393:../main.c     **** void vApplicationIdleHook( void )
+ 394:../main.c     **** {
+ 1170              		.loc 1 394 0
+ 1171              		.cfi_startproc
+ 1172              		@ args = 0, pretend = 0, frame = 8
+ 1173              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1174 0000 80B5     		push	{r7, lr}
+ 1175              	.LCFI50:
+ 1176              		.cfi_def_cfa_offset 8
+ 1177              		.cfi_offset 7, -8
+ 1178              		.cfi_offset 14, -4
+ 1179 0002 82B0     		sub	sp, sp, #8
+ 1180              	.LCFI51:
+ 1181              		.cfi_def_cfa_offset 16
+ 1182 0004 00AF     		add	r7, sp, #0
+ 1183              	.LCFI52:
+ 1184              		.cfi_def_cfa_register 7
+ 395:../main.c     **** volatile size_t xFreeStackSpace;
+ 396:../main.c     **** 
+ 397:../main.c     **** 	/* This function is called on each cycle of the idle task.  In this case it
+ 398:../main.c     **** 	does nothing useful, other than report the amout of FreeRTOS heap that
+ 399:../main.c     **** 	remains unallocated. */
+ 400:../main.c     **** 	xFreeStackSpace = xPortGetFreeHeapSize();
+ 1185              		.loc 1 400 0
+ 1186 0006 FFF7FEFF 		bl	xPortGetFreeHeapSize
+ 1187 000a 0346     		mov	r3, r0
+ 1188 000c 7B60     		str	r3, [r7, #4]
+ 401:../main.c     **** 
+ 402:../main.c     **** 	if( xFreeStackSpace > 100 )
+ 1189              		.loc 1 402 0
+ 1190 000e 7B68     		ldr	r3, [r7, #4]
+ 403:../main.c     **** 	{
+ 404:../main.c     **** 		/* By now, the kernel has allocated everything it is going to, so
+ 405:../main.c     **** 		if there is a lot of heap remaining unallocated then
+ 406:../main.c     **** 		the value of configTOTAL_HEAP_SIZE in FreeRTOSConfig.h can be
+ 407:../main.c     **** 		reduced accordingly. */
+ 408:../main.c     **** 	}
+ 409:../main.c     **** }
+ 1191              		.loc 1 409 0
+ 1192 0010 07F10807 		add	r7, r7, #8
+ 1193 0014 BD46     		mov	sp, r7
+ 1194 0016 80BD     		pop	{r7, pc}
+ 1195              		.cfi_endproc
+ 1196              	.LFE47:
+ 1198              		.section	.text.UARTSend,"ax",%progbits
+ 1199              		.align	2
+ 1200              		.global	UARTSend
+ 1201              		.thumb
+ 1202              		.thumb_func
+ 1204              	UARTSend:
+ 1205              	.LFB48:
+ 410:../main.c     **** 
+ 411:../main.c     **** /*******************************************************************************
+ 412:../main.c     **** * Function Name  : UARTSend
+ 413:../main.c     **** * Description    : Send a string to the UART.
+ 414:../main.c     **** * Input          : - pucBuffer: buffers to be printed.
+ 415:../main.c     **** *                : - ulCount  : buffer's length
+ 416:../main.c     **** * Output         : None
+ 417:../main.c     **** * Return         : None
+ 418:../main.c     **** *******************************************************************************/
+ 419:../main.c     **** void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
+ 420:../main.c     **** {
+ 1206              		.loc 1 420 0
+ 1207              		.cfi_startproc
+ 1208              		@ args = 0, pretend = 0, frame = 8
+ 1209              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1210 0000 80B5     		push	{r7, lr}
+ 1211              	.LCFI53:
+ 1212              		.cfi_def_cfa_offset 8
+ 1213              		.cfi_offset 7, -8
+ 1214              		.cfi_offset 14, -4
+ 1215 0002 82B0     		sub	sp, sp, #8
+ 1216              	.LCFI54:
+ 1217              		.cfi_def_cfa_offset 16
+ 1218 0004 00AF     		add	r7, sp, #0
+ 1219              	.LCFI55:
+ 1220              		.cfi_def_cfa_register 7
+ 1221 0006 7860     		str	r0, [r7, #4]
+ 1222 0008 3960     		str	r1, [r7, #0]
+ 421:../main.c     ****     //
+ 422:../main.c     ****     // Loop while there are more characters to send.
+ 423:../main.c     ****     //
+ 424:../main.c     ****     while(ulCount--)
+ 1223              		.loc 1 424 0
+ 1224 000a 18E0     		b	.L39
+ 1225              	.L41:
+ 425:../main.c     ****     {
+ 426:../main.c     ****         USART_SendData(USART1, (uint16_t) *pucBuffer++);
+ 1226              		.loc 1 426 0
+ 1227 000c 7B68     		ldr	r3, [r7, #4]
+ 1228 000e 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 1229 0010 7A68     		ldr	r2, [r7, #4]
+ 1230 0012 02F10102 		add	r2, r2, #1
+ 1231 0016 7A60     		str	r2, [r7, #4]
+ 1232 0018 4FF46050 		mov	r0, #14336
+ 1233 001c C4F20100 		movt	r0, 16385
+ 1234 0020 1946     		mov	r1, r3
+ 1235 0022 FFF7FEFF 		bl	USART_SendData
+ 427:../main.c     ****         /* Loop until the end of transmission */
+ 428:../main.c     ****         while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+ 1236              		.loc 1 428 0
+ 1237 0026 00BF     		nop
+ 1238              	.L40:
+ 1239              		.loc 1 428 0 is_stmt 0 discriminator 1
+ 1240 0028 4FF46050 		mov	r0, #14336
+ 1241 002c C4F20100 		movt	r0, 16385
+ 1242 0030 4FF04001 		mov	r1, #64
+ 1243 0034 FFF7FEFF 		bl	USART_GetFlagStatus
+ 1244 0038 0346     		mov	r3, r0
+ 1245 003a 002B     		cmp	r3, #0
+ 1246 003c F4D0     		beq	.L40
+ 1247              	.L39:
+ 424:../main.c     ****     while(ulCount--)
+ 1248              		.loc 1 424 0 is_stmt 1 discriminator 1
+ 1249 003e 3B68     		ldr	r3, [r7, #0]
+ 1250 0040 002B     		cmp	r3, #0
+ 1251 0042 0CBF     		ite	eq
+ 1252 0044 0023     		moveq	r3, #0
+ 1253 0046 0123     		movne	r3, #1
+ 1254 0048 DBB2     		uxtb	r3, r3
+ 1255 004a 3A68     		ldr	r2, [r7, #0]
+ 1256 004c 02F1FF32 		add	r2, r2, #-1
+ 1257 0050 3A60     		str	r2, [r7, #0]
+ 1258 0052 002B     		cmp	r3, #0
+ 1259 0054 DAD1     		bne	.L41
+ 429:../main.c     ****         {
+ 430:../main.c     ****         }
+ 431:../main.c     ****     }
+ 432:../main.c     **** }
+ 1260              		.loc 1 432 0
+ 1261 0056 07F10807 		add	r7, r7, #8
+ 1262 005a BD46     		mov	sp, r7
+ 1263 005c 80BD     		pop	{r7, pc}
+ 1264              		.cfi_endproc
+ 1265              	.LFE48:
+ 1267 005e 00BF     		.text
+ 1268              	.Letext0:
+ 1269              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
+ 1270              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/task.h"
+ 1271              		.file 4 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 1272              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 1273              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/misc
+ 1274              		.file 7 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1275              		.file 8 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1276              		.file 9 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc/stm3
+ 1277              		.file 10 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-     /tmp/cchBR9Xw.s:23     .bss.counter:00000000 counter
-     /tmp/cchBR9Xw.s:20     .bss.counter:00000000 $d
-     /tmp/cchBR9Xw.s:26     .text.SetupClock:00000000 $t
-     /tmp/cchBR9Xw.s:31     .text.SetupClock:00000000 SetupClock
-     /tmp/cchBR9Xw.s:102    .text.LEDsInit:00000000 $t
-     /tmp/cchBR9Xw.s:107    .text.LEDsInit:00000000 LEDsInit
-     /tmp/cchBR9Xw.s:151    .text.BtnInit:00000000 $t
-     /tmp/cchBR9Xw.s:156    .text.BtnInit:00000000 BtnInit
-     /tmp/cchBR9Xw.s:201    .text.USART_GPIO_Configuration:00000000 $t
-     /tmp/cchBR9Xw.s:206    .text.USART_GPIO_Configuration:00000000 USART_GPIO_Configuration
-     /tmp/cchBR9Xw.s:262    .rodata:00000000 $d
-     /tmp/cchBR9Xw.s:263    .rodata:00000000 .LC0
-     /tmp/cchBR9Xw.s:268    .text.USART_Configuration:00000000 $t
-     /tmp/cchBR9Xw.s:273    .text.USART_Configuration:00000000 USART_Configuration
-     /tmp/cchBR9Xw.s:338    .text.EXTI_Configuration:00000000 $t
-     /tmp/cchBR9Xw.s:343    .text.EXTI_Configuration:00000000 EXTI_Configuration
-     /tmp/cchBR9Xw.s:384    .text.NVIC_Configuration_USART1:00000000 $t
-     /tmp/cchBR9Xw.s:389    .text.NVIC_Configuration_USART1:00000000 NVIC_Configuration_USART1
-     /tmp/cchBR9Xw.s:445    .text.NVIC_Configuration_USER_BUTTON:00000000 $t
-     /tmp/cchBR9Xw.s:450    .text.NVIC_Configuration_USER_BUTTON:00000000 NVIC_Configuration_USER_BUTTON
-     /tmp/cchBR9Xw.s:495    .rodata:00000034 .LC1
-     /tmp/cchBR9Xw.s:498    .text.EXTI0_IRQHandler:00000000 $t
-     /tmp/cchBR9Xw.s:503    .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
-     /tmp/cchBR9Xw.s:552    .text.vFreeRTOSInitAll:00000000 $t
-     /tmp/cchBR9Xw.s:557    .text.vFreeRTOSInitAll:00000000 vFreeRTOSInitAll
-     /tmp/cchBR9Xw.s:595    .text.vTaskLED:00000000 $t
-     /tmp/cchBR9Xw.s:600    .text.vTaskLED:00000000 vTaskLED
-     /tmp/cchBR9Xw.s:636    .text.USART1_IRQHandler:00000000 $t
-     /tmp/cchBR9Xw.s:641    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-     /tmp/cchBR9Xw.s:1128   .text.UARTSend:00000000 UARTSend
-     /tmp/cchBR9Xw.s:689    .rodata:00000040 .LC2
-     /tmp/cchBR9Xw.s:694    .text.vTaskUSART_TX:00000000 $t
-     /tmp/cchBR9Xw.s:699    .text.vTaskUSART_TX:00000000 vTaskUSART_TX
-     /tmp/cchBR9Xw.s:756    .rodata:00000064 .LC3
-     /tmp/cchBR9Xw.s:760    .text.vTaskDS1821:00000000 $t
-     /tmp/cchBR9Xw.s:765    .text.vTaskDS1821:00000000 vTaskDS1821
-     /tmp/cchBR9Xw.s:850    .rodata:00000080 .LC4
-     /tmp/cchBR9Xw.s:853    .rodata:00000084 .LC5
-     /tmp/cchBR9Xw.s:856    .text.main:00000000 $t
-     /tmp/cchBR9Xw.s:861    .text.main:00000000 main
-     /tmp/cchBR9Xw.s:922    .rodata:0000008c .LC6
-     /tmp/cchBR9Xw.s:925    .rodata:000000a0 .LC7
-     /tmp/cchBR9Xw.s:928    .rodata:000000b8 .LC8
-     /tmp/cchBR9Xw.s:931    .rodata:000000c8 .LC9
-     /tmp/cchBR9Xw.s:934    .text.error_handle:00000000 $t
-     /tmp/cchBR9Xw.s:939    .text.error_handle:00000000 error_handle
-     /tmp/cchBR9Xw.s:966    .text.error_handle:00000018 $d
-     /tmp/cchBR9Xw.s:974    .text.error_handle:0000002c $t
-     /tmp/cchBR9Xw.s:1030   .text.vApplicationMallocFailedHook:00000000 $t
-     /tmp/cchBR9Xw.s:1035   .text.vApplicationMallocFailedHook:00000000 vApplicationMallocFailedHook
-     /tmp/cchBR9Xw.s:1056   .text.vApplicationStackOverflowHook:00000000 $t
-     /tmp/cchBR9Xw.s:1061   .text.vApplicationStackOverflowHook:00000000 vApplicationStackOverflowHook
-     /tmp/cchBR9Xw.s:1087   .text.vApplicationIdleHook:00000000 $t
-     /tmp/cchBR9Xw.s:1092   .text.vApplicationIdleHook:00000000 vApplicationIdleHook
-     /tmp/cchBR9Xw.s:1123   .text.UARTSend:00000000 $t
+     /tmp/cccAeRth.s:23     .bss.counter:00000000 counter
+     /tmp/cccAeRth.s:20     .bss.counter:00000000 $d
+     /tmp/cccAeRth.s:26     .text.SetupClock:00000000 $t
+     /tmp/cccAeRth.s:31     .text.SetupClock:00000000 SetupClock
+     /tmp/cccAeRth.s:102    .text.LEDsInit:00000000 $t
+     /tmp/cccAeRth.s:107    .text.LEDsInit:00000000 LEDsInit
+     /tmp/cccAeRth.s:151    .text.BtnInit:00000000 $t
+     /tmp/cccAeRth.s:156    .text.BtnInit:00000000 BtnInit
+     /tmp/cccAeRth.s:201    .text.USART_GPIO_Configuration:00000000 $t
+     /tmp/cccAeRth.s:206    .text.USART_GPIO_Configuration:00000000 USART_GPIO_Configuration
+     /tmp/cccAeRth.s:262    .rodata:00000000 $d
+     /tmp/cccAeRth.s:263    .rodata:00000000 .LC0
+     /tmp/cccAeRth.s:268    .text.USART_Configuration:00000000 $t
+     /tmp/cccAeRth.s:273    .text.USART_Configuration:00000000 USART_Configuration
+     /tmp/cccAeRth.s:338    .text.EXTI_Configuration:00000000 $t
+     /tmp/cccAeRth.s:343    .text.EXTI_Configuration:00000000 EXTI_Configuration
+     /tmp/cccAeRth.s:384    .text.NVIC_Configuration_USART1:00000000 $t
+     /tmp/cccAeRth.s:389    .text.NVIC_Configuration_USART1:00000000 NVIC_Configuration_USART1
+     /tmp/cccAeRth.s:445    .text.NVIC_Configuration_USER_BUTTON:00000000 $t
+     /tmp/cccAeRth.s:450    .text.NVIC_Configuration_USER_BUTTON:00000000 NVIC_Configuration_USER_BUTTON
+     /tmp/cccAeRth.s:495    .rodata:00000034 .LC1
+     /tmp/cccAeRth.s:498    .text.EXTI0_IRQHandler:00000000 $t
+     /tmp/cccAeRth.s:503    .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+     /tmp/cccAeRth.s:552    .text.vFreeRTOSInitAll:00000000 $t
+     /tmp/cccAeRth.s:557    .text.vFreeRTOSInitAll:00000000 vFreeRTOSInitAll
+     /tmp/cccAeRth.s:595    .text.vTaskLED:00000000 $t
+     /tmp/cccAeRth.s:600    .text.vTaskLED:00000000 vTaskLED
+     /tmp/cccAeRth.s:636    .text.USART1_IRQHandler:00000000 $t
+     /tmp/cccAeRth.s:641    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+     /tmp/cccAeRth.s:1204   .text.UARTSend:00000000 UARTSend
+     /tmp/cccAeRth.s:689    .rodata:00000040 .LC2
+     /tmp/cccAeRth.s:694    .text.vTaskUSART_TX:00000000 $t
+     /tmp/cccAeRth.s:699    .text.vTaskUSART_TX:00000000 vTaskUSART_TX
+     /tmp/cccAeRth.s:756    .rodata:00000064 .LC3
+     /tmp/cccAeRth.s:760    .rodata:00000080 .LC4
+     /tmp/cccAeRth.s:763    .rodata:0000008c .LC5
+     /tmp/cccAeRth.s:766    .rodata:00000090 .LC6
+     /tmp/cccAeRth.s:769    .text.vTaskDS1821:00000000 $t
+     /tmp/cccAeRth.s:774    .text.vTaskDS1821:00000000 vTaskDS1821
+     /tmp/cccAeRth.s:924    .rodata:00000094 .LC7
+     /tmp/cccAeRth.s:927    .rodata:00000098 .LC8
+     /tmp/cccAeRth.s:930    .text.main:00000000 $t
+     /tmp/cccAeRth.s:935    .text.main:00000000 main
+     /tmp/cccAeRth.s:998    .rodata:000000a0 .LC9
+     /tmp/cccAeRth.s:1001   .rodata:000000b4 .LC10
+     /tmp/cccAeRth.s:1004   .rodata:000000cc .LC11
+     /tmp/cccAeRth.s:1007   .rodata:000000dc .LC12
+     /tmp/cccAeRth.s:1010   .text.error_handle:00000000 $t
+     /tmp/cccAeRth.s:1015   .text.error_handle:00000000 error_handle
+     /tmp/cccAeRth.s:1042   .text.error_handle:00000018 $d
+     /tmp/cccAeRth.s:1050   .text.error_handle:0000002c $t
+     /tmp/cccAeRth.s:1106   .text.vApplicationMallocFailedHook:00000000 $t
+     /tmp/cccAeRth.s:1111   .text.vApplicationMallocFailedHook:00000000 vApplicationMallocFailedHook
+     /tmp/cccAeRth.s:1132   .text.vApplicationStackOverflowHook:00000000 $t
+     /tmp/cccAeRth.s:1137   .text.vApplicationStackOverflowHook:00000000 vApplicationStackOverflowHook
+     /tmp/cccAeRth.s:1163   .text.vApplicationIdleHook:00000000 $t
+     /tmp/cccAeRth.s:1168   .text.vApplicationIdleHook:00000000 vApplicationIdleHook
+     /tmp/cccAeRth.s:1199   .text.UARTSend:00000000 $t
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
                            .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
@@ -1709,6 +1801,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.timer6.h.9.3db7dcb350563af9e32ef609858e4592
                            .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
                            .group:00000000 wm4.ds1821.h.14.68693e8168dc8fdc9849075b4c0da9f1
+                           .group:00000000 wm4.stm32f10x_rtc.h.25.361142606ba98ddcd10369f321f6e636
+                           .group:00000000 wm4.stm32f10x_pwr.h.25.37ef75009f751ef5fe27910e0bf00a62
 
 UNDEFINED SYMBOLS
 RCC_DeInit
@@ -1741,6 +1835,11 @@ DS1821_Start_Conversion
 DS1821_Read_Temp
 uart_send_char
 uart_print_value
+GetTime
+Time_GetHours
+Time_GetMinutes
+Time_GetSeconds
+RTC_Config
 xTaskGenericCreate
 vTaskStartScheduler
 xPortGetFreeHeapSize
