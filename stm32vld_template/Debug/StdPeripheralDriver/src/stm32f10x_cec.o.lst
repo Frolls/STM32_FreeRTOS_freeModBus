@@ -1083,45 +1083,35 @@
  692              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_cec.c
-     /tmp/ccXRrR9p.s:19     .text.CEC_DeInit:00000000 $t
-     /tmp/ccXRrR9p.s:24     .text.CEC_DeInit:00000000 CEC_DeInit
-     /tmp/ccXRrR9p.s:53     .text.CEC_Init:00000000 $t
-     /tmp/ccXRrR9p.s:58     .text.CEC_Init:00000000 CEC_Init
-     /tmp/ccXRrR9p.s:112    .text.CEC_Cmd:00000000 $t
-     /tmp/ccXRrR9p.s:117    .text.CEC_Cmd:00000000 CEC_Cmd
-     /tmp/ccXRrR9p.s:165    .text.CEC_ITConfig:00000000 $t
-     /tmp/ccXRrR9p.s:170    .text.CEC_ITConfig:00000000 CEC_ITConfig
-     /tmp/ccXRrR9p.s:203    .text.CEC_OwnAddressConfig:00000000 $t
-     /tmp/ccXRrR9p.s:208    .text.CEC_OwnAddressConfig:00000000 CEC_OwnAddressConfig
-     /tmp/ccXRrR9p.s:241    .text.CEC_SetPrescaler:00000000 $t
-     /tmp/ccXRrR9p.s:246    .text.CEC_SetPrescaler:00000000 CEC_SetPrescaler
-     /tmp/ccXRrR9p.s:279    .text.CEC_SendDataByte:00000000 $t
-     /tmp/ccXRrR9p.s:284    .text.CEC_SendDataByte:00000000 CEC_SendDataByte
-     /tmp/ccXRrR9p.s:317    .text.CEC_ReceiveDataByte:00000000 $t
-     /tmp/ccXRrR9p.s:322    .text.CEC_ReceiveDataByte:00000000 CEC_ReceiveDataByte
-     /tmp/ccXRrR9p.s:350    .text.CEC_StartOfMessage:00000000 $t
-     /tmp/ccXRrR9p.s:355    .text.CEC_StartOfMessage:00000000 CEC_StartOfMessage
-     /tmp/ccXRrR9p.s:382    .text.CEC_EndOfMessageCmd:00000000 $t
-     /tmp/ccXRrR9p.s:387    .text.CEC_EndOfMessageCmd:00000000 CEC_EndOfMessageCmd
-     /tmp/ccXRrR9p.s:420    .text.CEC_GetFlagStatus:00000000 $t
-     /tmp/ccXRrR9p.s:425    .text.CEC_GetFlagStatus:00000000 CEC_GetFlagStatus
-     /tmp/ccXRrR9p.s:510    .text.CEC_ClearFlag:00000000 $t
-     /tmp/ccXRrR9p.s:515    .text.CEC_ClearFlag:00000000 CEC_ClearFlag
-     /tmp/ccXRrR9p.s:564    .text.CEC_GetITStatus:00000000 $t
-     /tmp/ccXRrR9p.s:569    .text.CEC_GetITStatus:00000000 CEC_GetITStatus
-     /tmp/ccXRrR9p.s:633    .text.CEC_ClearITPendingBit:00000000 $t
-     /tmp/ccXRrR9p.s:638    .text.CEC_ClearITPendingBit:00000000 CEC_ClearITPendingBit
+     /tmp/cc2QhepX.s:19     .text.CEC_DeInit:00000000 $t
+     /tmp/cc2QhepX.s:24     .text.CEC_DeInit:00000000 CEC_DeInit
+     /tmp/cc2QhepX.s:53     .text.CEC_Init:00000000 $t
+     /tmp/cc2QhepX.s:58     .text.CEC_Init:00000000 CEC_Init
+     /tmp/cc2QhepX.s:112    .text.CEC_Cmd:00000000 $t
+     /tmp/cc2QhepX.s:117    .text.CEC_Cmd:00000000 CEC_Cmd
+     /tmp/cc2QhepX.s:165    .text.CEC_ITConfig:00000000 $t
+     /tmp/cc2QhepX.s:170    .text.CEC_ITConfig:00000000 CEC_ITConfig
+     /tmp/cc2QhepX.s:203    .text.CEC_OwnAddressConfig:00000000 $t
+     /tmp/cc2QhepX.s:208    .text.CEC_OwnAddressConfig:00000000 CEC_OwnAddressConfig
+     /tmp/cc2QhepX.s:241    .text.CEC_SetPrescaler:00000000 $t
+     /tmp/cc2QhepX.s:246    .text.CEC_SetPrescaler:00000000 CEC_SetPrescaler
+     /tmp/cc2QhepX.s:279    .text.CEC_SendDataByte:00000000 $t
+     /tmp/cc2QhepX.s:284    .text.CEC_SendDataByte:00000000 CEC_SendDataByte
+     /tmp/cc2QhepX.s:317    .text.CEC_ReceiveDataByte:00000000 $t
+     /tmp/cc2QhepX.s:322    .text.CEC_ReceiveDataByte:00000000 CEC_ReceiveDataByte
+     /tmp/cc2QhepX.s:350    .text.CEC_StartOfMessage:00000000 $t
+     /tmp/cc2QhepX.s:355    .text.CEC_StartOfMessage:00000000 CEC_StartOfMessage
+     /tmp/cc2QhepX.s:382    .text.CEC_EndOfMessageCmd:00000000 $t
+     /tmp/cc2QhepX.s:387    .text.CEC_EndOfMessageCmd:00000000 CEC_EndOfMessageCmd
+     /tmp/cc2QhepX.s:420    .text.CEC_GetFlagStatus:00000000 $t
+     /tmp/cc2QhepX.s:425    .text.CEC_GetFlagStatus:00000000 CEC_GetFlagStatus
+     /tmp/cc2QhepX.s:510    .text.CEC_ClearFlag:00000000 $t
+     /tmp/cc2QhepX.s:515    .text.CEC_ClearFlag:00000000 CEC_ClearFlag
+     /tmp/cc2QhepX.s:564    .text.CEC_GetITStatus:00000000 $t
+     /tmp/cc2QhepX.s:569    .text.CEC_GetITStatus:00000000 CEC_GetITStatus
+     /tmp/cc2QhepX.s:633    .text.CEC_ClearITPendingBit:00000000 $t
+     /tmp/cc2QhepX.s:638    .text.CEC_ClearITPendingBit:00000000 CEC_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_cec.h.67.3e3219d57bf6d0f04a114c60728a1c29
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphResetCmd

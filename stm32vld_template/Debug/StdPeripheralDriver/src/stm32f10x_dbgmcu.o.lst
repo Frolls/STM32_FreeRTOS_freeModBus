@@ -285,21 +285,12 @@
  150              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_dbgmcu.c
-     /tmp/ccUW93CS.s:19     .text.DBGMCU_GetREVID:00000000 $t
-     /tmp/ccUW93CS.s:24     .text.DBGMCU_GetREVID:00000000 DBGMCU_GetREVID
-     /tmp/ccUW93CS.s:53     .text.DBGMCU_GetDEVID:00000000 $t
-     /tmp/ccUW93CS.s:58     .text.DBGMCU_GetDEVID:00000000 DBGMCU_GetDEVID
-     /tmp/ccUW93CS.s:87     .text.DBGMCU_Config:00000000 $t
-     /tmp/ccUW93CS.s:92     .text.DBGMCU_Config:00000000 DBGMCU_Config
+     /tmp/ccrcWzNa.s:19     .text.DBGMCU_GetREVID:00000000 $t
+     /tmp/ccrcWzNa.s:24     .text.DBGMCU_GetREVID:00000000 DBGMCU_GetREVID
+     /tmp/ccrcWzNa.s:53     .text.DBGMCU_GetDEVID:00000000 $t
+     /tmp/ccrcWzNa.s:58     .text.DBGMCU_GetDEVID:00000000 DBGMCU_GetDEVID
+     /tmp/ccrcWzNa.s:87     .text.DBGMCU_Config:00000000 $t
+     /tmp/ccrcWzNa.s:92     .text.DBGMCU_Config:00000000 DBGMCU_Config
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_dbgmcu.h.54.c05c906cc4d790639345bc56e47258b9
 
 NO UNDEFINED SYMBOLS

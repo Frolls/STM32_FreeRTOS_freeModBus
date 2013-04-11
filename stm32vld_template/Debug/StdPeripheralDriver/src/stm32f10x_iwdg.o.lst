@@ -412,27 +412,18 @@
  257              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_iwdg.c
-     /tmp/cclr039T.s:19     .text.IWDG_WriteAccessCmd:00000000 $t
-     /tmp/cclr039T.s:24     .text.IWDG_WriteAccessCmd:00000000 IWDG_WriteAccessCmd
-     /tmp/cclr039T.s:58     .text.IWDG_SetPrescaler:00000000 $t
-     /tmp/cclr039T.s:63     .text.IWDG_SetPrescaler:00000000 IWDG_SetPrescaler
-     /tmp/cclr039T.s:96     .text.IWDG_SetReload:00000000 $t
-     /tmp/cclr039T.s:101    .text.IWDG_SetReload:00000000 IWDG_SetReload
-     /tmp/cclr039T.s:134    .text.IWDG_ReloadCounter:00000000 $t
-     /tmp/cclr039T.s:139    .text.IWDG_ReloadCounter:00000000 IWDG_ReloadCounter
-     /tmp/cclr039T.s:166    .text.IWDG_Enable:00000000 $t
-     /tmp/cclr039T.s:171    .text.IWDG_Enable:00000000 IWDG_Enable
-     /tmp/cclr039T.s:198    .text.IWDG_GetFlagStatus:00000000 $t
-     /tmp/cclr039T.s:203    .text.IWDG_GetFlagStatus:00000000 IWDG_GetFlagStatus
+     /tmp/ccB8d7Jv.s:19     .text.IWDG_WriteAccessCmd:00000000 $t
+     /tmp/ccB8d7Jv.s:24     .text.IWDG_WriteAccessCmd:00000000 IWDG_WriteAccessCmd
+     /tmp/ccB8d7Jv.s:58     .text.IWDG_SetPrescaler:00000000 $t
+     /tmp/ccB8d7Jv.s:63     .text.IWDG_SetPrescaler:00000000 IWDG_SetPrescaler
+     /tmp/ccB8d7Jv.s:96     .text.IWDG_SetReload:00000000 $t
+     /tmp/ccB8d7Jv.s:101    .text.IWDG_SetReload:00000000 IWDG_SetReload
+     /tmp/ccB8d7Jv.s:134    .text.IWDG_ReloadCounter:00000000 $t
+     /tmp/ccB8d7Jv.s:139    .text.IWDG_ReloadCounter:00000000 IWDG_ReloadCounter
+     /tmp/ccB8d7Jv.s:166    .text.IWDG_Enable:00000000 $t
+     /tmp/ccB8d7Jv.s:171    .text.IWDG_Enable:00000000 IWDG_Enable
+     /tmp/ccB8d7Jv.s:198    .text.IWDG_GetFlagStatus:00000000 $t
+     /tmp/ccB8d7Jv.s:203    .text.IWDG_GetFlagStatus:00000000 IWDG_GetFlagStatus
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_iwdg.h.58.8c33ccd1cbd71674b543d304c0fe08ec
 
 NO UNDEFINED SYMBOLS

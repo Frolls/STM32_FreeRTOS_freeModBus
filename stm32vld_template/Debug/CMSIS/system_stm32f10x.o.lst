@@ -1125,26 +1125,18 @@
  482              		.file 4 "../CMSIS/stm32f10x.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 system_stm32f10x.c
-     /tmp/ccBIdt7c.s:23     .data.SystemCoreClock:00000000 SystemCoreClock
-     /tmp/ccBIdt7c.s:20     .data.SystemCoreClock:00000000 $d
-     /tmp/ccBIdt7c.s:30     .data.AHBPrescTable:00000000 AHBPrescTable
-     /tmp/ccBIdt7c.s:27     .data.AHBPrescTable:00000000 $d
-     /tmp/ccBIdt7c.s:48     .text.SystemInit:00000000 $t
-     /tmp/ccBIdt7c.s:53     .text.SystemInit:00000000 SystemInit
-     /tmp/ccBIdt7c.s:293    .text.SetSysClock:00000000 SetSysClock
-     /tmp/ccBIdt7c.s:134    .text.SystemCoreClockUpdate:00000000 $t
-     /tmp/ccBIdt7c.s:139    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
-     /tmp/ccBIdt7c.s:289    .text.SetSysClock:00000000 $t
-     /tmp/ccBIdt7c.s:319    .text.SetSysClockTo24:00000000 SetSysClockTo24
-     /tmp/ccBIdt7c.s:315    .text.SetSysClockTo24:00000000 $t
+     /tmp/ccnGBU1o.s:23     .data.SystemCoreClock:00000000 SystemCoreClock
+     /tmp/ccnGBU1o.s:20     .data.SystemCoreClock:00000000 $d
+     /tmp/ccnGBU1o.s:30     .data.AHBPrescTable:00000000 AHBPrescTable
+     /tmp/ccnGBU1o.s:27     .data.AHBPrescTable:00000000 $d
+     /tmp/ccnGBU1o.s:48     .text.SystemInit:00000000 $t
+     /tmp/ccnGBU1o.s:53     .text.SystemInit:00000000 SystemInit
+     /tmp/ccnGBU1o.s:293    .text.SetSysClock:00000000 SetSysClock
+     /tmp/ccnGBU1o.s:134    .text.SystemCoreClockUpdate:00000000 $t
+     /tmp/ccnGBU1o.s:139    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+     /tmp/ccnGBU1o.s:289    .text.SetSysClock:00000000 $t
+     /tmp/ccnGBU1o.s:319    .text.SetSysClockTo24:00000000 SetSysClockTo24
+     /tmp/ccnGBU1o.s:315    .text.SetSysClockTo24:00000000 $t
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
 
 NO UNDEFINED SYMBOLS

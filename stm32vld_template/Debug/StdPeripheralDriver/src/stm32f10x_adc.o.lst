@@ -3412,89 +3412,79 @@
  2306              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_adc.c
-     /tmp/ccbs2LvU.s:19     .text.ADC_DeInit:00000000 $t
-     /tmp/ccbs2LvU.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
-     /tmp/ccbs2LvU.s:98     .text.ADC_Init:00000000 $t
-     /tmp/ccbs2LvU.s:103    .text.ADC_Init:00000000 ADC_Init
-     /tmp/ccbs2LvU.s:218    .text.ADC_StructInit:00000000 $t
-     /tmp/ccbs2LvU.s:223    .text.ADC_StructInit:00000000 ADC_StructInit
-     /tmp/ccbs2LvU.s:274    .text.ADC_Cmd:00000000 $t
-     /tmp/ccbs2LvU.s:279    .text.ADC_Cmd:00000000 ADC_Cmd
-     /tmp/ccbs2LvU.s:327    .text.ADC_DMACmd:00000000 $t
-     /tmp/ccbs2LvU.s:332    .text.ADC_DMACmd:00000000 ADC_DMACmd
-     /tmp/ccbs2LvU.s:380    .text.ADC_ITConfig:00000000 $t
-     /tmp/ccbs2LvU.s:385    .text.ADC_ITConfig:00000000 ADC_ITConfig
-     /tmp/ccbs2LvU.s:444    .text.ADC_ResetCalibration:00000000 $t
-     /tmp/ccbs2LvU.s:449    .text.ADC_ResetCalibration:00000000 ADC_ResetCalibration
-     /tmp/ccbs2LvU.s:482    .text.ADC_GetResetCalibrationStatus:00000000 $t
-     /tmp/ccbs2LvU.s:487    .text.ADC_GetResetCalibrationStatus:00000000 ADC_GetResetCalibrationStatus
-     /tmp/ccbs2LvU.s:535    .text.ADC_StartCalibration:00000000 $t
-     /tmp/ccbs2LvU.s:540    .text.ADC_StartCalibration:00000000 ADC_StartCalibration
-     /tmp/ccbs2LvU.s:573    .text.ADC_GetCalibrationStatus:00000000 $t
-     /tmp/ccbs2LvU.s:578    .text.ADC_GetCalibrationStatus:00000000 ADC_GetCalibrationStatus
-     /tmp/ccbs2LvU.s:626    .text.ADC_SoftwareStartConvCmd:00000000 $t
-     /tmp/ccbs2LvU.s:631    .text.ADC_SoftwareStartConvCmd:00000000 ADC_SoftwareStartConvCmd
-     /tmp/ccbs2LvU.s:679    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
-     /tmp/ccbs2LvU.s:684    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
-     /tmp/ccbs2LvU.s:732    .text.ADC_DiscModeChannelCountConfig:00000000 $t
-     /tmp/ccbs2LvU.s:737    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
-     /tmp/ccbs2LvU.s:794    .text.ADC_DiscModeCmd:00000000 $t
-     /tmp/ccbs2LvU.s:799    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
-     /tmp/ccbs2LvU.s:847    .text.ADC_RegularChannelConfig:00000000 $t
-     /tmp/ccbs2LvU.s:852    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
-     /tmp/ccbs2LvU.s:1090   .text.ADC_ExternalTrigConvCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1095   .text.ADC_ExternalTrigConvCmd:00000000 ADC_ExternalTrigConvCmd
-     /tmp/ccbs2LvU.s:1143   .text.ADC_GetConversionValue:00000000 $t
-     /tmp/ccbs2LvU.s:1148   .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
-     /tmp/ccbs2LvU.s:1180   .text.ADC_GetDualModeConversionValue:00000000 $t
-     /tmp/ccbs2LvU.s:1185   .text.ADC_GetDualModeConversionValue:00000000 ADC_GetDualModeConversionValue
-     /tmp/ccbs2LvU.s:1212   .text.ADC_AutoInjectedConvCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1217   .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
-     /tmp/ccbs2LvU.s:1265   .text.ADC_InjectedDiscModeCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1270   .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
-     /tmp/ccbs2LvU.s:1318   .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
-     /tmp/ccbs2LvU.s:1323   .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
-     /tmp/ccbs2LvU.s:1371   .text.ADC_ExternalTrigInjectedConvCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1376   .text.ADC_ExternalTrigInjectedConvCmd:00000000 ADC_ExternalTrigInjectedConvCmd
-     /tmp/ccbs2LvU.s:1424   .text.ADC_SoftwareStartInjectedConvCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1429   .text.ADC_SoftwareStartInjectedConvCmd:00000000 ADC_SoftwareStartInjectedConvCmd
-     /tmp/ccbs2LvU.s:1477   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
-     /tmp/ccbs2LvU.s:1482   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
-     /tmp/ccbs2LvU.s:1530   .text.ADC_InjectedChannelConfig:00000000 $t
-     /tmp/ccbs2LvU.s:1535   .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
-     /tmp/ccbs2LvU.s:1711   .text.ADC_InjectedSequencerLengthConfig:00000000 $t
-     /tmp/ccbs2LvU.s:1716   .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
-     /tmp/ccbs2LvU.s:1773   .text.ADC_SetInjectedOffset:00000000 $t
-     /tmp/ccbs2LvU.s:1778   .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
-     /tmp/ccbs2LvU.s:1824   .text.ADC_GetInjectedConversionValue:00000000 $t
-     /tmp/ccbs2LvU.s:1829   .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
-     /tmp/ccbs2LvU.s:1875   .text.ADC_AnalogWatchdogCmd:00000000 $t
-     /tmp/ccbs2LvU.s:1880   .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
-     /tmp/ccbs2LvU.s:1929   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
-     /tmp/ccbs2LvU.s:1934   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
-     /tmp/ccbs2LvU.s:1973   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
-     /tmp/ccbs2LvU.s:1978   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
-     /tmp/ccbs2LvU.s:2027   .text.ADC_TempSensorVrefintCmd:00000000 $t
-     /tmp/ccbs2LvU.s:2032   .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
-     /tmp/ccbs2LvU.s:2083   .text.ADC_GetFlagStatus:00000000 $t
-     /tmp/ccbs2LvU.s:2088   .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
-     /tmp/ccbs2LvU.s:2139   .text.ADC_ClearFlag:00000000 $t
-     /tmp/ccbs2LvU.s:2144   .text.ADC_ClearFlag:00000000 ADC_ClearFlag
-     /tmp/ccbs2LvU.s:2178   .text.ADC_GetITStatus:00000000 $t
-     /tmp/ccbs2LvU.s:2183   .text.ADC_GetITStatus:00000000 ADC_GetITStatus
-     /tmp/ccbs2LvU.s:2255   .text.ADC_ClearITPendingBit:00000000 $t
-     /tmp/ccbs2LvU.s:2260   .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
+     /tmp/ccrnjbnH.s:19     .text.ADC_DeInit:00000000 $t
+     /tmp/ccrnjbnH.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
+     /tmp/ccrnjbnH.s:98     .text.ADC_Init:00000000 $t
+     /tmp/ccrnjbnH.s:103    .text.ADC_Init:00000000 ADC_Init
+     /tmp/ccrnjbnH.s:218    .text.ADC_StructInit:00000000 $t
+     /tmp/ccrnjbnH.s:223    .text.ADC_StructInit:00000000 ADC_StructInit
+     /tmp/ccrnjbnH.s:274    .text.ADC_Cmd:00000000 $t
+     /tmp/ccrnjbnH.s:279    .text.ADC_Cmd:00000000 ADC_Cmd
+     /tmp/ccrnjbnH.s:327    .text.ADC_DMACmd:00000000 $t
+     /tmp/ccrnjbnH.s:332    .text.ADC_DMACmd:00000000 ADC_DMACmd
+     /tmp/ccrnjbnH.s:380    .text.ADC_ITConfig:00000000 $t
+     /tmp/ccrnjbnH.s:385    .text.ADC_ITConfig:00000000 ADC_ITConfig
+     /tmp/ccrnjbnH.s:444    .text.ADC_ResetCalibration:00000000 $t
+     /tmp/ccrnjbnH.s:449    .text.ADC_ResetCalibration:00000000 ADC_ResetCalibration
+     /tmp/ccrnjbnH.s:482    .text.ADC_GetResetCalibrationStatus:00000000 $t
+     /tmp/ccrnjbnH.s:487    .text.ADC_GetResetCalibrationStatus:00000000 ADC_GetResetCalibrationStatus
+     /tmp/ccrnjbnH.s:535    .text.ADC_StartCalibration:00000000 $t
+     /tmp/ccrnjbnH.s:540    .text.ADC_StartCalibration:00000000 ADC_StartCalibration
+     /tmp/ccrnjbnH.s:573    .text.ADC_GetCalibrationStatus:00000000 $t
+     /tmp/ccrnjbnH.s:578    .text.ADC_GetCalibrationStatus:00000000 ADC_GetCalibrationStatus
+     /tmp/ccrnjbnH.s:626    .text.ADC_SoftwareStartConvCmd:00000000 $t
+     /tmp/ccrnjbnH.s:631    .text.ADC_SoftwareStartConvCmd:00000000 ADC_SoftwareStartConvCmd
+     /tmp/ccrnjbnH.s:679    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
+     /tmp/ccrnjbnH.s:684    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
+     /tmp/ccrnjbnH.s:732    .text.ADC_DiscModeChannelCountConfig:00000000 $t
+     /tmp/ccrnjbnH.s:737    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
+     /tmp/ccrnjbnH.s:794    .text.ADC_DiscModeCmd:00000000 $t
+     /tmp/ccrnjbnH.s:799    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
+     /tmp/ccrnjbnH.s:847    .text.ADC_RegularChannelConfig:00000000 $t
+     /tmp/ccrnjbnH.s:852    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
+     /tmp/ccrnjbnH.s:1090   .text.ADC_ExternalTrigConvCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1095   .text.ADC_ExternalTrigConvCmd:00000000 ADC_ExternalTrigConvCmd
+     /tmp/ccrnjbnH.s:1143   .text.ADC_GetConversionValue:00000000 $t
+     /tmp/ccrnjbnH.s:1148   .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
+     /tmp/ccrnjbnH.s:1180   .text.ADC_GetDualModeConversionValue:00000000 $t
+     /tmp/ccrnjbnH.s:1185   .text.ADC_GetDualModeConversionValue:00000000 ADC_GetDualModeConversionValue
+     /tmp/ccrnjbnH.s:1212   .text.ADC_AutoInjectedConvCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1217   .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
+     /tmp/ccrnjbnH.s:1265   .text.ADC_InjectedDiscModeCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1270   .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
+     /tmp/ccrnjbnH.s:1318   .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
+     /tmp/ccrnjbnH.s:1323   .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
+     /tmp/ccrnjbnH.s:1371   .text.ADC_ExternalTrigInjectedConvCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1376   .text.ADC_ExternalTrigInjectedConvCmd:00000000 ADC_ExternalTrigInjectedConvCmd
+     /tmp/ccrnjbnH.s:1424   .text.ADC_SoftwareStartInjectedConvCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1429   .text.ADC_SoftwareStartInjectedConvCmd:00000000 ADC_SoftwareStartInjectedConvCmd
+     /tmp/ccrnjbnH.s:1477   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
+     /tmp/ccrnjbnH.s:1482   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+     /tmp/ccrnjbnH.s:1530   .text.ADC_InjectedChannelConfig:00000000 $t
+     /tmp/ccrnjbnH.s:1535   .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
+     /tmp/ccrnjbnH.s:1711   .text.ADC_InjectedSequencerLengthConfig:00000000 $t
+     /tmp/ccrnjbnH.s:1716   .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
+     /tmp/ccrnjbnH.s:1773   .text.ADC_SetInjectedOffset:00000000 $t
+     /tmp/ccrnjbnH.s:1778   .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
+     /tmp/ccrnjbnH.s:1824   .text.ADC_GetInjectedConversionValue:00000000 $t
+     /tmp/ccrnjbnH.s:1829   .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
+     /tmp/ccrnjbnH.s:1875   .text.ADC_AnalogWatchdogCmd:00000000 $t
+     /tmp/ccrnjbnH.s:1880   .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
+     /tmp/ccrnjbnH.s:1929   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
+     /tmp/ccrnjbnH.s:1934   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
+     /tmp/ccrnjbnH.s:1973   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
+     /tmp/ccrnjbnH.s:1978   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
+     /tmp/ccrnjbnH.s:2027   .text.ADC_TempSensorVrefintCmd:00000000 $t
+     /tmp/ccrnjbnH.s:2032   .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
+     /tmp/ccrnjbnH.s:2083   .text.ADC_GetFlagStatus:00000000 $t
+     /tmp/ccrnjbnH.s:2088   .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
+     /tmp/ccrnjbnH.s:2139   .text.ADC_ClearFlag:00000000 $t
+     /tmp/ccrnjbnH.s:2144   .text.ADC_ClearFlag:00000000 ADC_ClearFlag
+     /tmp/ccrnjbnH.s:2178   .text.ADC_GetITStatus:00000000 $t
+     /tmp/ccrnjbnH.s:2183   .text.ADC_GetITStatus:00000000 ADC_GetITStatus
+     /tmp/ccrnjbnH.s:2255   .text.ADC_ClearITPendingBit:00000000 $t
+     /tmp/ccrnjbnH.s:2260   .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_adc.h.82.2322c510b9246891e84306c0e59548fc
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd

@@ -790,41 +790,31 @@
  520              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_bkp.c
-     /tmp/cc4YMF76.s:19     .text.BKP_DeInit:00000000 $t
-     /tmp/cc4YMF76.s:24     .text.BKP_DeInit:00000000 BKP_DeInit
-     /tmp/cc4YMF76.s:51     .text.BKP_TamperPinLevelConfig:00000000 $t
-     /tmp/cc4YMF76.s:56     .text.BKP_TamperPinLevelConfig:00000000 BKP_TamperPinLevelConfig
-     /tmp/cc4YMF76.s:89     .text.BKP_TamperPinCmd:00000000 $t
-     /tmp/cc4YMF76.s:94     .text.BKP_TamperPinCmd:00000000 BKP_TamperPinCmd
-     /tmp/cc4YMF76.s:127    .text.BKP_ITConfig:00000000 $t
-     /tmp/cc4YMF76.s:132    .text.BKP_ITConfig:00000000 BKP_ITConfig
-     /tmp/cc4YMF76.s:165    .text.BKP_RTCOutputConfig:00000000 $t
-     /tmp/cc4YMF76.s:170    .text.BKP_RTCOutputConfig:00000000 BKP_RTCOutputConfig
-     /tmp/cc4YMF76.s:220    .text.BKP_SetRTCCalibrationValue:00000000 $t
-     /tmp/cc4YMF76.s:225    .text.BKP_SetRTCCalibrationValue:00000000 BKP_SetRTCCalibrationValue
-     /tmp/cc4YMF76.s:276    .text.BKP_WriteBackupRegister:00000000 $t
-     /tmp/cc4YMF76.s:281    .text.BKP_WriteBackupRegister:00000000 BKP_WriteBackupRegister
-     /tmp/cc4YMF76.s:327    .text.BKP_ReadBackupRegister:00000000 $t
-     /tmp/cc4YMF76.s:332    .text.BKP_ReadBackupRegister:00000000 BKP_ReadBackupRegister
-     /tmp/cc4YMF76.s:377    .text.BKP_GetFlagStatus:00000000 $t
-     /tmp/cc4YMF76.s:382    .text.BKP_GetFlagStatus:00000000 BKP_GetFlagStatus
-     /tmp/cc4YMF76.s:410    .text.BKP_ClearFlag:00000000 $t
-     /tmp/cc4YMF76.s:415    .text.BKP_ClearFlag:00000000 BKP_ClearFlag
-     /tmp/cc4YMF76.s:447    .text.BKP_GetITStatus:00000000 $t
-     /tmp/cc4YMF76.s:452    .text.BKP_GetITStatus:00000000 BKP_GetITStatus
-     /tmp/cc4YMF76.s:480    .text.BKP_ClearITPendingBit:00000000 $t
-     /tmp/cc4YMF76.s:485    .text.BKP_ClearITPendingBit:00000000 BKP_ClearITPendingBit
+     /tmp/ccia88cP.s:19     .text.BKP_DeInit:00000000 $t
+     /tmp/ccia88cP.s:24     .text.BKP_DeInit:00000000 BKP_DeInit
+     /tmp/ccia88cP.s:51     .text.BKP_TamperPinLevelConfig:00000000 $t
+     /tmp/ccia88cP.s:56     .text.BKP_TamperPinLevelConfig:00000000 BKP_TamperPinLevelConfig
+     /tmp/ccia88cP.s:89     .text.BKP_TamperPinCmd:00000000 $t
+     /tmp/ccia88cP.s:94     .text.BKP_TamperPinCmd:00000000 BKP_TamperPinCmd
+     /tmp/ccia88cP.s:127    .text.BKP_ITConfig:00000000 $t
+     /tmp/ccia88cP.s:132    .text.BKP_ITConfig:00000000 BKP_ITConfig
+     /tmp/ccia88cP.s:165    .text.BKP_RTCOutputConfig:00000000 $t
+     /tmp/ccia88cP.s:170    .text.BKP_RTCOutputConfig:00000000 BKP_RTCOutputConfig
+     /tmp/ccia88cP.s:220    .text.BKP_SetRTCCalibrationValue:00000000 $t
+     /tmp/ccia88cP.s:225    .text.BKP_SetRTCCalibrationValue:00000000 BKP_SetRTCCalibrationValue
+     /tmp/ccia88cP.s:276    .text.BKP_WriteBackupRegister:00000000 $t
+     /tmp/ccia88cP.s:281    .text.BKP_WriteBackupRegister:00000000 BKP_WriteBackupRegister
+     /tmp/ccia88cP.s:327    .text.BKP_ReadBackupRegister:00000000 $t
+     /tmp/ccia88cP.s:332    .text.BKP_ReadBackupRegister:00000000 BKP_ReadBackupRegister
+     /tmp/ccia88cP.s:377    .text.BKP_GetFlagStatus:00000000 $t
+     /tmp/ccia88cP.s:382    .text.BKP_GetFlagStatus:00000000 BKP_GetFlagStatus
+     /tmp/ccia88cP.s:410    .text.BKP_ClearFlag:00000000 $t
+     /tmp/ccia88cP.s:415    .text.BKP_ClearFlag:00000000 BKP_ClearFlag
+     /tmp/ccia88cP.s:447    .text.BKP_GetITStatus:00000000 $t
+     /tmp/ccia88cP.s:452    .text.BKP_GetITStatus:00000000 BKP_GetITStatus
+     /tmp/ccia88cP.s:480    .text.BKP_ClearITPendingBit:00000000 $t
+     /tmp/ccia88cP.s:485    .text.BKP_ClearITPendingBit:00000000 BKP_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_bkp.h.58.6453665ad39dc78c618a75ac337c70d3
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_BackupResetCmd

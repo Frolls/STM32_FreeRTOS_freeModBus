@@ -530,33 +530,23 @@
  336              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_wwdg.c
-     /tmp/cca8iKuh.s:19     .text.WWDG_DeInit:00000000 $t
-     /tmp/cca8iKuh.s:24     .text.WWDG_DeInit:00000000 WWDG_DeInit
-     /tmp/cca8iKuh.s:53     .text.WWDG_SetPrescaler:00000000 $t
-     /tmp/cca8iKuh.s:58     .text.WWDG_SetPrescaler:00000000 WWDG_SetPrescaler
-     /tmp/cca8iKuh.s:104    .text.WWDG_SetWindowValue:00000000 $t
-     /tmp/cca8iKuh.s:109    .text.WWDG_SetWindowValue:00000000 WWDG_SetWindowValue
-     /tmp/cca8iKuh.s:157    .text.WWDG_EnableIT:00000000 $t
-     /tmp/cca8iKuh.s:162    .text.WWDG_EnableIT:00000000 WWDG_EnableIT
-     /tmp/cca8iKuh.s:189    .text.WWDG_SetCounter:00000000 $t
-     /tmp/cca8iKuh.s:194    .text.WWDG_SetCounter:00000000 WWDG_SetCounter
-     /tmp/cca8iKuh.s:228    .text.WWDG_Enable:00000000 $t
-     /tmp/cca8iKuh.s:233    .text.WWDG_Enable:00000000 WWDG_Enable
-     /tmp/cca8iKuh.s:268    .text.WWDG_GetFlagStatus:00000000 $t
-     /tmp/cca8iKuh.s:273    .text.WWDG_GetFlagStatus:00000000 WWDG_GetFlagStatus
-     /tmp/cca8iKuh.s:301    .text.WWDG_ClearFlag:00000000 $t
-     /tmp/cca8iKuh.s:306    .text.WWDG_ClearFlag:00000000 WWDG_ClearFlag
+     /tmp/ccZajT0g.s:19     .text.WWDG_DeInit:00000000 $t
+     /tmp/ccZajT0g.s:24     .text.WWDG_DeInit:00000000 WWDG_DeInit
+     /tmp/ccZajT0g.s:53     .text.WWDG_SetPrescaler:00000000 $t
+     /tmp/ccZajT0g.s:58     .text.WWDG_SetPrescaler:00000000 WWDG_SetPrescaler
+     /tmp/ccZajT0g.s:104    .text.WWDG_SetWindowValue:00000000 $t
+     /tmp/ccZajT0g.s:109    .text.WWDG_SetWindowValue:00000000 WWDG_SetWindowValue
+     /tmp/ccZajT0g.s:157    .text.WWDG_EnableIT:00000000 $t
+     /tmp/ccZajT0g.s:162    .text.WWDG_EnableIT:00000000 WWDG_EnableIT
+     /tmp/ccZajT0g.s:189    .text.WWDG_SetCounter:00000000 $t
+     /tmp/ccZajT0g.s:194    .text.WWDG_SetCounter:00000000 WWDG_SetCounter
+     /tmp/ccZajT0g.s:228    .text.WWDG_Enable:00000000 $t
+     /tmp/ccZajT0g.s:233    .text.WWDG_Enable:00000000 WWDG_Enable
+     /tmp/ccZajT0g.s:268    .text.WWDG_GetFlagStatus:00000000 $t
+     /tmp/ccZajT0g.s:273    .text.WWDG_GetFlagStatus:00000000 WWDG_GetFlagStatus
+     /tmp/ccZajT0g.s:301    .text.WWDG_ClearFlag:00000000 $t
+     /tmp/ccZajT0g.s:306    .text.WWDG_ClearFlag:00000000 WWDG_ClearFlag
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_wwdg.h.58.4688eee61a2709866472b4b4c07d9275
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphResetCmd

@@ -9,6 +9,7 @@ C_SRCS += \
 ../Work/Sources/ds1822.c \
 ../Work/Sources/oneWire.c \
 ../Work/Sources/serial.c \
+../Work/Sources/smallLEDPanel.c \
 ../Work/Sources/stm32_GPIO.c \
 ../Work/Sources/timer6.c 
 
@@ -18,6 +19,7 @@ OBJS += \
 ./Work/Sources/ds1822.o \
 ./Work/Sources/oneWire.o \
 ./Work/Sources/serial.o \
+./Work/Sources/smallLEDPanel.o \
 ./Work/Sources/stm32_GPIO.o \
 ./Work/Sources/timer6.o 
 
@@ -27,6 +29,7 @@ C_DEPS += \
 ./Work/Sources/ds1822.d \
 ./Work/Sources/oneWire.d \
 ./Work/Sources/serial.d \
+./Work/Sources/smallLEDPanel.d \
 ./Work/Sources/stm32_GPIO.d \
 ./Work/Sources/timer6.d 
 
@@ -35,7 +38,7 @@ C_DEPS += \
 Work/Sources/%.o: ../Work/Sources/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM Linux GCC C Compiler'
-	arm-none-eabi-gcc -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/include" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/rtu" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/STM32/port" -O0 -ffunction-sections -fdata-sections -Wall -Wa,-adhlns="$@.lst" -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -mcpu=cortex-m3 -mthumb -g3 -gdwarf-2 -o "$@" "$<"
+	arm-none-eabi-gcc -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/Work/Headers" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/StdPeripheralDriver/inc" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/include" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/modbus/rtu" -I"/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeModbus/STM32/port" -O0 -ffunction-sections -fdata-sections -Wall -Wa,-adhlns="$@.lst" -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -mcpu=cortex-m3 -mthumb -g -ggdb -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

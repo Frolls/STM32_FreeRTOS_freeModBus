@@ -394,30 +394,21 @@
  344              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32_GPIO.c
-     /tmp/cczA0qfu.s:19     .text.PIN_ON:00000000 $t
-     /tmp/cczA0qfu.s:24     .text.PIN_ON:00000000 PIN_ON
-     /tmp/cczA0qfu.s:58     .text.PIN_OFF:00000000 $t
-     /tmp/cczA0qfu.s:63     .text.PIN_OFF:00000000 PIN_OFF
-     /tmp/cczA0qfu.s:96     .text.PIN_SYG:00000000 $t
-     /tmp/cczA0qfu.s:101    .text.PIN_SYG:00000000 PIN_SYG
-     /tmp/cczA0qfu.s:145    .text.PIN_IN:00000000 $t
-     /tmp/cczA0qfu.s:150    .text.PIN_IN:00000000 PIN_IN
-     /tmp/cczA0qfu.s:192    .text.PIN_OUT_PP:00000000 $t
-     /tmp/cczA0qfu.s:197    .text.PIN_OUT_PP:00000000 PIN_OUT_PP
-     /tmp/cczA0qfu.s:239    .text.PIN_OUT_OD:00000000 $t
-     /tmp/cczA0qfu.s:244    .text.PIN_OUT_OD:00000000 PIN_OUT_OD
-     /tmp/cczA0qfu.s:286    .text.PIN_INV:00000000 $t
-     /tmp/cczA0qfu.s:291    .text.PIN_INV:00000000 PIN_INV
+     /tmp/ccFu6sdu.s:19     .text.PIN_ON:00000000 $t
+     /tmp/ccFu6sdu.s:24     .text.PIN_ON:00000000 PIN_ON
+     /tmp/ccFu6sdu.s:58     .text.PIN_OFF:00000000 $t
+     /tmp/ccFu6sdu.s:63     .text.PIN_OFF:00000000 PIN_OFF
+     /tmp/ccFu6sdu.s:96     .text.PIN_SYG:00000000 $t
+     /tmp/ccFu6sdu.s:101    .text.PIN_SYG:00000000 PIN_SYG
+     /tmp/ccFu6sdu.s:145    .text.PIN_IN:00000000 $t
+     /tmp/ccFu6sdu.s:150    .text.PIN_IN:00000000 PIN_IN
+     /tmp/ccFu6sdu.s:192    .text.PIN_OUT_PP:00000000 $t
+     /tmp/ccFu6sdu.s:197    .text.PIN_OUT_PP:00000000 PIN_OUT_PP
+     /tmp/ccFu6sdu.s:239    .text.PIN_OUT_OD:00000000 $t
+     /tmp/ccFu6sdu.s:244    .text.PIN_OUT_OD:00000000 PIN_OUT_OD
+     /tmp/ccFu6sdu.s:286    .text.PIN_INV:00000000 $t
+     /tmp/ccFu6sdu.s:291    .text.PIN_INV:00000000 PIN_INV
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
 
 UNDEFINED SYMBOLS
 GPIO_Init

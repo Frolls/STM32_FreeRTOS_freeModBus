@@ -553,36 +553,16 @@
  351              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/portmacro.h
 DEFINED SYMBOLS
                             *ABS*:00000000 list.c
-     /tmp/ccoHSDnn.s:19     .text.vListInitialise:00000000 $t
-     /tmp/ccoHSDnn.s:24     .text.vListInitialise:00000000 vListInitialise
-     /tmp/ccoHSDnn.s:75     .text.vListInitialiseItem:00000000 $t
-     /tmp/ccoHSDnn.s:80     .text.vListInitialiseItem:00000000 vListInitialiseItem
-     /tmp/ccoHSDnn.s:111    .text.vListInsertEnd:00000000 $t
-     /tmp/ccoHSDnn.s:116    .text.vListInsertEnd:00000000 vListInsertEnd
-     /tmp/ccoHSDnn.s:181    .text.vListInsert:00000000 $t
-     /tmp/ccoHSDnn.s:186    .text.vListInsert:00000000 vListInsert
-     /tmp/ccoHSDnn.s:275    .text.uxListRemove:00000000 $t
-     /tmp/ccoHSDnn.s:280    .text.uxListRemove:00000000 uxListRemove
+     /tmp/ccTKbOoV.s:19     .text.vListInitialise:00000000 $t
+     /tmp/ccTKbOoV.s:24     .text.vListInitialise:00000000 vListInitialise
+     /tmp/ccTKbOoV.s:75     .text.vListInitialiseItem:00000000 $t
+     /tmp/ccTKbOoV.s:80     .text.vListInitialiseItem:00000000 vListInitialiseItem
+     /tmp/ccTKbOoV.s:111    .text.vListInsertEnd:00000000 $t
+     /tmp/ccTKbOoV.s:116    .text.vListInsertEnd:00000000 vListInsertEnd
+     /tmp/ccTKbOoV.s:181    .text.vListInsert:00000000 $t
+     /tmp/ccTKbOoV.s:186    .text.vListInsert:00000000 vListInsert
+     /tmp/ccTKbOoV.s:275    .text.uxListRemove:00000000 $t
+     /tmp/ccTKbOoV.s:280    .text.uxListRemove:00000000 uxListRemove
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
-                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
-                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
-                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
-                           .group:00000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
-                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
-                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
-                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
-                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
-                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
-                           .group:00000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
-                           .group:00000000 wm4.stddef.h.40.b60a1c1ee3f272eef5327a730cbabca6
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.73ce2c6afaf7535ca053cc9af81f6119
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.list.h.105.6a6307ce3396638a078c02ff83387dc6
 
 NO UNDEFINED SYMBOLS

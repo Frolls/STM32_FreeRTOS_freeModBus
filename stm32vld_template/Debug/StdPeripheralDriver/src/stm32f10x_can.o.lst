@@ -4339,67 +4339,57 @@
  2952              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_can.c
-     /tmp/cc3G8pUj.s:19     .text.CAN_DeInit:00000000 $t
-     /tmp/cc3G8pUj.s:24     .text.CAN_DeInit:00000000 CAN_DeInit
-     /tmp/cc3G8pUj.s:76     .text.CAN_Init:00000000 $t
-     /tmp/cc3G8pUj.s:81     .text.CAN_Init:00000000 CAN_Init
-     /tmp/cc3G8pUj.s:356    .text.CAN_FilterInit:00000000 $t
-     /tmp/cc3G8pUj.s:361    .text.CAN_FilterInit:00000000 CAN_FilterInit
-     /tmp/cc3G8pUj.s:599    .text.CAN_StructInit:00000000 $t
-     /tmp/cc3G8pUj.s:604    .text.CAN_StructInit:00000000 CAN_StructInit
-     /tmp/cc3G8pUj.s:675    .text.CAN_SlaveStartBank:00000000 $t
-     /tmp/cc3G8pUj.s:680    .text.CAN_SlaveStartBank:00000000 CAN_SlaveStartBank
-     /tmp/cc3G8pUj.s:743    .text.CAN_DBGFreeze:00000000 $t
-     /tmp/cc3G8pUj.s:748    .text.CAN_DBGFreeze:00000000 CAN_DBGFreeze
-     /tmp/cc3G8pUj.s:796    .text.CAN_TTComModeCmd:00000000 $t
-     /tmp/cc3G8pUj.s:801    .text.CAN_TTComModeCmd:00000000 CAN_TTComModeCmd
-     /tmp/cc3G8pUj.s:885    .text.CAN_Transmit:00000000 $t
-     /tmp/cc3G8pUj.s:890    .text.CAN_Transmit:00000000 CAN_Transmit
-     /tmp/cc3G8pUj.s:1145   .text.CAN_TransmitStatus:00000000 $t
-     /tmp/cc3G8pUj.s:1150   .text.CAN_TransmitStatus:00000000 CAN_TransmitStatus
-     /tmp/cc3G8pUj.s:1315   .text.CAN_CancelTransmit:00000000 $t
-     /tmp/cc3G8pUj.s:1320   .text.CAN_CancelTransmit:00000000 CAN_CancelTransmit
-     /tmp/cc3G8pUj.s:1388   .text.CAN_Receive:00000000 $t
-     /tmp/cc3G8pUj.s:1393   .text.CAN_Receive:00000000 CAN_Receive
-     /tmp/cc3G8pUj.s:1603   .text.CAN_FIFORelease:00000000 $t
-     /tmp/cc3G8pUj.s:1608   .text.CAN_FIFORelease:00000000 CAN_FIFORelease
-     /tmp/cc3G8pUj.s:1656   .text.CAN_MessagePending:00000000 $t
-     /tmp/cc3G8pUj.s:1661   .text.CAN_MessagePending:00000000 CAN_MessagePending
-     /tmp/cc3G8pUj.s:1724   .text.CAN_OperatingModeRequest:00000000 $t
-     /tmp/cc3G8pUj.s:1729   .text.CAN_OperatingModeRequest:00000000 CAN_OperatingModeRequest
-     /tmp/cc3G8pUj.s:1908   .text.CAN_Sleep:00000000 $t
-     /tmp/cc3G8pUj.s:1913   .text.CAN_Sleep:00000000 CAN_Sleep
-     /tmp/cc3G8pUj.s:1963   .text.CAN_WakeUp:00000000 $t
-     /tmp/cc3G8pUj.s:1968   .text.CAN_WakeUp:00000000 CAN_WakeUp
-     /tmp/cc3G8pUj.s:2039   .text.CAN_GetLastErrorCode:00000000 $t
-     /tmp/cc3G8pUj.s:2044   .text.CAN_GetLastErrorCode:00000000 CAN_GetLastErrorCode
-     /tmp/cc3G8pUj.s:2083   .text.CAN_GetReceiveErrorCounter:00000000 $t
-     /tmp/cc3G8pUj.s:2088   .text.CAN_GetReceiveErrorCounter:00000000 CAN_GetReceiveErrorCounter
-     /tmp/cc3G8pUj.s:2126   .text.CAN_GetLSBTransmitErrorCounter:00000000 $t
-     /tmp/cc3G8pUj.s:2131   .text.CAN_GetLSBTransmitErrorCounter:00000000 CAN_GetLSBTransmitErrorCounter
-     /tmp/cc3G8pUj.s:2170   .text.CAN_ITConfig:00000000 $t
-     /tmp/cc3G8pUj.s:2175   .text.CAN_ITConfig:00000000 CAN_ITConfig
-     /tmp/cc3G8pUj.s:2227   .text.CAN_GetFlagStatus:00000000 $t
-     /tmp/cc3G8pUj.s:2232   .text.CAN_GetFlagStatus:00000000 CAN_GetFlagStatus
-     /tmp/cc3G8pUj.s:2380   .text.CAN_ClearFlag:00000000 $t
-     /tmp/cc3G8pUj.s:2385   .text.CAN_ClearFlag:00000000 CAN_ClearFlag
-     /tmp/cc3G8pUj.s:2471   .text.CAN_GetITStatus:00000000 $t
-     /tmp/cc3G8pUj.s:2476   .text.CAN_GetITStatus:00000000 CAN_GetITStatus
-     /tmp/cc3G8pUj.s:2899   .text.CheckITStatus:00000000 CheckITStatus
-     /tmp/cc3G8pUj.s:2726   .text.CAN_ClearITPendingBit:00000000 $t
-     /tmp/cc3G8pUj.s:2731   .text.CAN_ClearITPendingBit:00000000 CAN_ClearITPendingBit
-     /tmp/cc3G8pUj.s:2895   .text.CheckITStatus:00000000 $t
+     /tmp/ccPu6hQQ.s:19     .text.CAN_DeInit:00000000 $t
+     /tmp/ccPu6hQQ.s:24     .text.CAN_DeInit:00000000 CAN_DeInit
+     /tmp/ccPu6hQQ.s:76     .text.CAN_Init:00000000 $t
+     /tmp/ccPu6hQQ.s:81     .text.CAN_Init:00000000 CAN_Init
+     /tmp/ccPu6hQQ.s:356    .text.CAN_FilterInit:00000000 $t
+     /tmp/ccPu6hQQ.s:361    .text.CAN_FilterInit:00000000 CAN_FilterInit
+     /tmp/ccPu6hQQ.s:599    .text.CAN_StructInit:00000000 $t
+     /tmp/ccPu6hQQ.s:604    .text.CAN_StructInit:00000000 CAN_StructInit
+     /tmp/ccPu6hQQ.s:675    .text.CAN_SlaveStartBank:00000000 $t
+     /tmp/ccPu6hQQ.s:680    .text.CAN_SlaveStartBank:00000000 CAN_SlaveStartBank
+     /tmp/ccPu6hQQ.s:743    .text.CAN_DBGFreeze:00000000 $t
+     /tmp/ccPu6hQQ.s:748    .text.CAN_DBGFreeze:00000000 CAN_DBGFreeze
+     /tmp/ccPu6hQQ.s:796    .text.CAN_TTComModeCmd:00000000 $t
+     /tmp/ccPu6hQQ.s:801    .text.CAN_TTComModeCmd:00000000 CAN_TTComModeCmd
+     /tmp/ccPu6hQQ.s:885    .text.CAN_Transmit:00000000 $t
+     /tmp/ccPu6hQQ.s:890    .text.CAN_Transmit:00000000 CAN_Transmit
+     /tmp/ccPu6hQQ.s:1145   .text.CAN_TransmitStatus:00000000 $t
+     /tmp/ccPu6hQQ.s:1150   .text.CAN_TransmitStatus:00000000 CAN_TransmitStatus
+     /tmp/ccPu6hQQ.s:1315   .text.CAN_CancelTransmit:00000000 $t
+     /tmp/ccPu6hQQ.s:1320   .text.CAN_CancelTransmit:00000000 CAN_CancelTransmit
+     /tmp/ccPu6hQQ.s:1388   .text.CAN_Receive:00000000 $t
+     /tmp/ccPu6hQQ.s:1393   .text.CAN_Receive:00000000 CAN_Receive
+     /tmp/ccPu6hQQ.s:1603   .text.CAN_FIFORelease:00000000 $t
+     /tmp/ccPu6hQQ.s:1608   .text.CAN_FIFORelease:00000000 CAN_FIFORelease
+     /tmp/ccPu6hQQ.s:1656   .text.CAN_MessagePending:00000000 $t
+     /tmp/ccPu6hQQ.s:1661   .text.CAN_MessagePending:00000000 CAN_MessagePending
+     /tmp/ccPu6hQQ.s:1724   .text.CAN_OperatingModeRequest:00000000 $t
+     /tmp/ccPu6hQQ.s:1729   .text.CAN_OperatingModeRequest:00000000 CAN_OperatingModeRequest
+     /tmp/ccPu6hQQ.s:1908   .text.CAN_Sleep:00000000 $t
+     /tmp/ccPu6hQQ.s:1913   .text.CAN_Sleep:00000000 CAN_Sleep
+     /tmp/ccPu6hQQ.s:1963   .text.CAN_WakeUp:00000000 $t
+     /tmp/ccPu6hQQ.s:1968   .text.CAN_WakeUp:00000000 CAN_WakeUp
+     /tmp/ccPu6hQQ.s:2039   .text.CAN_GetLastErrorCode:00000000 $t
+     /tmp/ccPu6hQQ.s:2044   .text.CAN_GetLastErrorCode:00000000 CAN_GetLastErrorCode
+     /tmp/ccPu6hQQ.s:2083   .text.CAN_GetReceiveErrorCounter:00000000 $t
+     /tmp/ccPu6hQQ.s:2088   .text.CAN_GetReceiveErrorCounter:00000000 CAN_GetReceiveErrorCounter
+     /tmp/ccPu6hQQ.s:2126   .text.CAN_GetLSBTransmitErrorCounter:00000000 $t
+     /tmp/ccPu6hQQ.s:2131   .text.CAN_GetLSBTransmitErrorCounter:00000000 CAN_GetLSBTransmitErrorCounter
+     /tmp/ccPu6hQQ.s:2170   .text.CAN_ITConfig:00000000 $t
+     /tmp/ccPu6hQQ.s:2175   .text.CAN_ITConfig:00000000 CAN_ITConfig
+     /tmp/ccPu6hQQ.s:2227   .text.CAN_GetFlagStatus:00000000 $t
+     /tmp/ccPu6hQQ.s:2232   .text.CAN_GetFlagStatus:00000000 CAN_GetFlagStatus
+     /tmp/ccPu6hQQ.s:2380   .text.CAN_ClearFlag:00000000 $t
+     /tmp/ccPu6hQQ.s:2385   .text.CAN_ClearFlag:00000000 CAN_ClearFlag
+     /tmp/ccPu6hQQ.s:2471   .text.CAN_GetITStatus:00000000 $t
+     /tmp/ccPu6hQQ.s:2476   .text.CAN_GetITStatus:00000000 CAN_GetITStatus
+     /tmp/ccPu6hQQ.s:2899   .text.CheckITStatus:00000000 CheckITStatus
+     /tmp/ccPu6hQQ.s:2726   .text.CAN_ClearITPendingBit:00000000 $t
+     /tmp/ccPu6hQQ.s:2731   .text.CAN_ClearITPendingBit:00000000 CAN_ClearITPendingBit
+     /tmp/ccPu6hQQ.s:2895   .text.CheckITStatus:00000000 $t
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_can.h.46.ed6405f0f90c291fd588e60dd81a6239
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphResetCmd

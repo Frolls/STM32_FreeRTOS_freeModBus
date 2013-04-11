@@ -2143,76 +2143,66 @@
  1413              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_sdio.c
-     /tmp/ccO2Odnk.s:19     .text.SDIO_DeInit:00000000 $t
-     /tmp/ccO2Odnk.s:24     .text.SDIO_DeInit:00000000 SDIO_DeInit
-     /tmp/ccO2Odnk.s:93     .text.SDIO_Init:00000000 $t
-     /tmp/ccO2Odnk.s:98     .text.SDIO_Init:00000000 SDIO_Init
-     /tmp/ccO2Odnk.s:172    .text.SDIO_StructInit:00000000 $t
-     /tmp/ccO2Odnk.s:177    .text.SDIO_StructInit:00000000 SDIO_StructInit
-     /tmp/ccO2Odnk.s:228    .text.SDIO_ClockCmd:00000000 $t
-     /tmp/ccO2Odnk.s:233    .text.SDIO_ClockCmd:00000000 SDIO_ClockCmd
-     /tmp/ccO2Odnk.s:266    .text.SDIO_SetPowerState:00000000 $t
-     /tmp/ccO2Odnk.s:271    .text.SDIO_SetPowerState:00000000 SDIO_SetPowerState
-     /tmp/ccO2Odnk.s:315    .text.SDIO_GetPowerState:00000000 $t
-     /tmp/ccO2Odnk.s:320    .text.SDIO_GetPowerState:00000000 SDIO_GetPowerState
-     /tmp/ccO2Odnk.s:348    .text.SDIO_ITConfig:00000000 $t
-     /tmp/ccO2Odnk.s:353    .text.SDIO_ITConfig:00000000 SDIO_ITConfig
-     /tmp/ccO2Odnk.s:408    .text.SDIO_DMACmd:00000000 $t
-     /tmp/ccO2Odnk.s:413    .text.SDIO_DMACmd:00000000 SDIO_DMACmd
-     /tmp/ccO2Odnk.s:446    .text.SDIO_SendCommand:00000000 $t
-     /tmp/ccO2Odnk.s:451    .text.SDIO_SendCommand:00000000 SDIO_SendCommand
-     /tmp/ccO2Odnk.s:519    .text.SDIO_CmdStructInit:00000000 $t
-     /tmp/ccO2Odnk.s:524    .text.SDIO_CmdStructInit:00000000 SDIO_CmdStructInit
-     /tmp/ccO2Odnk.s:571    .text.SDIO_GetCommandResponse:00000000 $t
-     /tmp/ccO2Odnk.s:576    .text.SDIO_GetCommandResponse:00000000 SDIO_GetCommandResponse
-     /tmp/ccO2Odnk.s:604    .text.SDIO_GetResponse:00000000 $t
-     /tmp/ccO2Odnk.s:609    .text.SDIO_GetResponse:00000000 SDIO_GetResponse
-     /tmp/ccO2Odnk.s:649    .text.SDIO_DataConfig:00000000 $t
-     /tmp/ccO2Odnk.s:654    .text.SDIO_DataConfig:00000000 SDIO_DataConfig
-     /tmp/ccO2Odnk.s:727    .text.SDIO_DataStructInit:00000000 $t
-     /tmp/ccO2Odnk.s:732    .text.SDIO_DataStructInit:00000000 SDIO_DataStructInit
-     /tmp/ccO2Odnk.s:783    .text.SDIO_GetDataCounter:00000000 $t
-     /tmp/ccO2Odnk.s:788    .text.SDIO_GetDataCounter:00000000 SDIO_GetDataCounter
-     /tmp/ccO2Odnk.s:815    .text.SDIO_ReadData:00000000 $t
-     /tmp/ccO2Odnk.s:820    .text.SDIO_ReadData:00000000 SDIO_ReadData
-     /tmp/ccO2Odnk.s:847    .text.SDIO_WriteData:00000000 $t
-     /tmp/ccO2Odnk.s:852    .text.SDIO_WriteData:00000000 SDIO_WriteData
-     /tmp/ccO2Odnk.s:884    .text.SDIO_GetFIFOCount:00000000 $t
-     /tmp/ccO2Odnk.s:889    .text.SDIO_GetFIFOCount:00000000 SDIO_GetFIFOCount
-     /tmp/ccO2Odnk.s:916    .text.SDIO_StartSDIOReadWait:00000000 $t
-     /tmp/ccO2Odnk.s:921    .text.SDIO_StartSDIOReadWait:00000000 SDIO_StartSDIOReadWait
-     /tmp/ccO2Odnk.s:954    .text.SDIO_StopSDIOReadWait:00000000 $t
-     /tmp/ccO2Odnk.s:959    .text.SDIO_StopSDIOReadWait:00000000 SDIO_StopSDIOReadWait
-     /tmp/ccO2Odnk.s:992    .text.SDIO_SetSDIOReadWaitMode:00000000 $t
-     /tmp/ccO2Odnk.s:997    .text.SDIO_SetSDIOReadWaitMode:00000000 SDIO_SetSDIOReadWaitMode
-     /tmp/ccO2Odnk.s:1029   .text.SDIO_SetSDIOOperation:00000000 $t
-     /tmp/ccO2Odnk.s:1034   .text.SDIO_SetSDIOOperation:00000000 SDIO_SetSDIOOperation
-     /tmp/ccO2Odnk.s:1067   .text.SDIO_SendSDIOSuspendCmd:00000000 $t
-     /tmp/ccO2Odnk.s:1072   .text.SDIO_SendSDIOSuspendCmd:00000000 SDIO_SendSDIOSuspendCmd
-     /tmp/ccO2Odnk.s:1105   .text.SDIO_CommandCompletionCmd:00000000 $t
-     /tmp/ccO2Odnk.s:1110   .text.SDIO_CommandCompletionCmd:00000000 SDIO_CommandCompletionCmd
-     /tmp/ccO2Odnk.s:1143   .text.SDIO_CEATAITCmd:00000000 $t
-     /tmp/ccO2Odnk.s:1148   .text.SDIO_CEATAITCmd:00000000 SDIO_CEATAITCmd
-     /tmp/ccO2Odnk.s:1187   .text.SDIO_SendCEATACmd:00000000 $t
-     /tmp/ccO2Odnk.s:1192   .text.SDIO_SendCEATACmd:00000000 SDIO_SendCEATACmd
-     /tmp/ccO2Odnk.s:1225   .text.SDIO_GetFlagStatus:00000000 $t
-     /tmp/ccO2Odnk.s:1230   .text.SDIO_GetFlagStatus:00000000 SDIO_GetFlagStatus
-     /tmp/ccO2Odnk.s:1280   .text.SDIO_ClearFlag:00000000 $t
-     /tmp/ccO2Odnk.s:1285   .text.SDIO_ClearFlag:00000000 SDIO_ClearFlag
-     /tmp/ccO2Odnk.s:1317   .text.SDIO_GetITStatus:00000000 $t
-     /tmp/ccO2Odnk.s:1322   .text.SDIO_GetITStatus:00000000 SDIO_GetITStatus
-     /tmp/ccO2Odnk.s:1372   .text.SDIO_ClearITPendingBit:00000000 $t
-     /tmp/ccO2Odnk.s:1377   .text.SDIO_ClearITPendingBit:00000000 SDIO_ClearITPendingBit
+     /tmp/ccNabKOO.s:19     .text.SDIO_DeInit:00000000 $t
+     /tmp/ccNabKOO.s:24     .text.SDIO_DeInit:00000000 SDIO_DeInit
+     /tmp/ccNabKOO.s:93     .text.SDIO_Init:00000000 $t
+     /tmp/ccNabKOO.s:98     .text.SDIO_Init:00000000 SDIO_Init
+     /tmp/ccNabKOO.s:172    .text.SDIO_StructInit:00000000 $t
+     /tmp/ccNabKOO.s:177    .text.SDIO_StructInit:00000000 SDIO_StructInit
+     /tmp/ccNabKOO.s:228    .text.SDIO_ClockCmd:00000000 $t
+     /tmp/ccNabKOO.s:233    .text.SDIO_ClockCmd:00000000 SDIO_ClockCmd
+     /tmp/ccNabKOO.s:266    .text.SDIO_SetPowerState:00000000 $t
+     /tmp/ccNabKOO.s:271    .text.SDIO_SetPowerState:00000000 SDIO_SetPowerState
+     /tmp/ccNabKOO.s:315    .text.SDIO_GetPowerState:00000000 $t
+     /tmp/ccNabKOO.s:320    .text.SDIO_GetPowerState:00000000 SDIO_GetPowerState
+     /tmp/ccNabKOO.s:348    .text.SDIO_ITConfig:00000000 $t
+     /tmp/ccNabKOO.s:353    .text.SDIO_ITConfig:00000000 SDIO_ITConfig
+     /tmp/ccNabKOO.s:408    .text.SDIO_DMACmd:00000000 $t
+     /tmp/ccNabKOO.s:413    .text.SDIO_DMACmd:00000000 SDIO_DMACmd
+     /tmp/ccNabKOO.s:446    .text.SDIO_SendCommand:00000000 $t
+     /tmp/ccNabKOO.s:451    .text.SDIO_SendCommand:00000000 SDIO_SendCommand
+     /tmp/ccNabKOO.s:519    .text.SDIO_CmdStructInit:00000000 $t
+     /tmp/ccNabKOO.s:524    .text.SDIO_CmdStructInit:00000000 SDIO_CmdStructInit
+     /tmp/ccNabKOO.s:571    .text.SDIO_GetCommandResponse:00000000 $t
+     /tmp/ccNabKOO.s:576    .text.SDIO_GetCommandResponse:00000000 SDIO_GetCommandResponse
+     /tmp/ccNabKOO.s:604    .text.SDIO_GetResponse:00000000 $t
+     /tmp/ccNabKOO.s:609    .text.SDIO_GetResponse:00000000 SDIO_GetResponse
+     /tmp/ccNabKOO.s:649    .text.SDIO_DataConfig:00000000 $t
+     /tmp/ccNabKOO.s:654    .text.SDIO_DataConfig:00000000 SDIO_DataConfig
+     /tmp/ccNabKOO.s:727    .text.SDIO_DataStructInit:00000000 $t
+     /tmp/ccNabKOO.s:732    .text.SDIO_DataStructInit:00000000 SDIO_DataStructInit
+     /tmp/ccNabKOO.s:783    .text.SDIO_GetDataCounter:00000000 $t
+     /tmp/ccNabKOO.s:788    .text.SDIO_GetDataCounter:00000000 SDIO_GetDataCounter
+     /tmp/ccNabKOO.s:815    .text.SDIO_ReadData:00000000 $t
+     /tmp/ccNabKOO.s:820    .text.SDIO_ReadData:00000000 SDIO_ReadData
+     /tmp/ccNabKOO.s:847    .text.SDIO_WriteData:00000000 $t
+     /tmp/ccNabKOO.s:852    .text.SDIO_WriteData:00000000 SDIO_WriteData
+     /tmp/ccNabKOO.s:884    .text.SDIO_GetFIFOCount:00000000 $t
+     /tmp/ccNabKOO.s:889    .text.SDIO_GetFIFOCount:00000000 SDIO_GetFIFOCount
+     /tmp/ccNabKOO.s:916    .text.SDIO_StartSDIOReadWait:00000000 $t
+     /tmp/ccNabKOO.s:921    .text.SDIO_StartSDIOReadWait:00000000 SDIO_StartSDIOReadWait
+     /tmp/ccNabKOO.s:954    .text.SDIO_StopSDIOReadWait:00000000 $t
+     /tmp/ccNabKOO.s:959    .text.SDIO_StopSDIOReadWait:00000000 SDIO_StopSDIOReadWait
+     /tmp/ccNabKOO.s:992    .text.SDIO_SetSDIOReadWaitMode:00000000 $t
+     /tmp/ccNabKOO.s:997    .text.SDIO_SetSDIOReadWaitMode:00000000 SDIO_SetSDIOReadWaitMode
+     /tmp/ccNabKOO.s:1029   .text.SDIO_SetSDIOOperation:00000000 $t
+     /tmp/ccNabKOO.s:1034   .text.SDIO_SetSDIOOperation:00000000 SDIO_SetSDIOOperation
+     /tmp/ccNabKOO.s:1067   .text.SDIO_SendSDIOSuspendCmd:00000000 $t
+     /tmp/ccNabKOO.s:1072   .text.SDIO_SendSDIOSuspendCmd:00000000 SDIO_SendSDIOSuspendCmd
+     /tmp/ccNabKOO.s:1105   .text.SDIO_CommandCompletionCmd:00000000 $t
+     /tmp/ccNabKOO.s:1110   .text.SDIO_CommandCompletionCmd:00000000 SDIO_CommandCompletionCmd
+     /tmp/ccNabKOO.s:1143   .text.SDIO_CEATAITCmd:00000000 $t
+     /tmp/ccNabKOO.s:1148   .text.SDIO_CEATAITCmd:00000000 SDIO_CEATAITCmd
+     /tmp/ccNabKOO.s:1187   .text.SDIO_SendCEATACmd:00000000 $t
+     /tmp/ccNabKOO.s:1192   .text.SDIO_SendCEATACmd:00000000 SDIO_SendCEATACmd
+     /tmp/ccNabKOO.s:1225   .text.SDIO_GetFlagStatus:00000000 $t
+     /tmp/ccNabKOO.s:1230   .text.SDIO_GetFlagStatus:00000000 SDIO_GetFlagStatus
+     /tmp/ccNabKOO.s:1280   .text.SDIO_ClearFlag:00000000 $t
+     /tmp/ccNabKOO.s:1285   .text.SDIO_ClearFlag:00000000 SDIO_ClearFlag
+     /tmp/ccNabKOO.s:1317   .text.SDIO_GetITStatus:00000000 $t
+     /tmp/ccNabKOO.s:1322   .text.SDIO_GetITStatus:00000000 SDIO_GetITStatus
+     /tmp/ccNabKOO.s:1372   .text.SDIO_ClearITPendingBit:00000000 $t
+     /tmp/ccNabKOO.s:1377   .text.SDIO_ClearITPendingBit:00000000 SDIO_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_sdio.h.120.f84fbd7eba1a9a6b549f0020d14b706b
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 NO UNDEFINED SYMBOLS

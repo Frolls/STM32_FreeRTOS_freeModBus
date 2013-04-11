@@ -481,38 +481,17 @@
  415              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 oneWire.c
-     /tmp/ccxMkZEa.s:19     .text.One_Wire_Reset:00000000 $t
-     /tmp/ccxMkZEa.s:24     .text.One_Wire_Reset:00000000 One_Wire_Reset
-     /tmp/ccxMkZEa.s:120    .text.One_Wire_Write_Byte:00000000 $t
-     /tmp/ccxMkZEa.s:125    .text.One_Wire_Write_Byte:00000000 One_Wire_Write_Byte
-     /tmp/ccxMkZEa.s:187    .text.One_Wire_Write_Bit:00000000 One_Wire_Write_Bit
-     /tmp/ccxMkZEa.s:182    .text.One_Wire_Write_Bit:00000000 $t
-     /tmp/ccxMkZEa.s:261    .text.One_Wire_Read_Byte:00000000 $t
-     /tmp/ccxMkZEa.s:266    .text.One_Wire_Read_Byte:00000000 One_Wire_Read_Byte
-     /tmp/ccxMkZEa.s:340    .text.One_Wire_Read_Bit:00000000 One_Wire_Read_Bit
-     /tmp/ccxMkZEa.s:335    .text.One_Wire_Read_Bit:00000000 $t
+     /tmp/ccX28xPE.s:19     .text.One_Wire_Reset:00000000 $t
+     /tmp/ccX28xPE.s:24     .text.One_Wire_Reset:00000000 One_Wire_Reset
+     /tmp/ccX28xPE.s:120    .text.One_Wire_Write_Byte:00000000 $t
+     /tmp/ccX28xPE.s:125    .text.One_Wire_Write_Byte:00000000 One_Wire_Write_Byte
+     /tmp/ccX28xPE.s:187    .text.One_Wire_Write_Bit:00000000 One_Wire_Write_Bit
+     /tmp/ccX28xPE.s:182    .text.One_Wire_Write_Bit:00000000 $t
+     /tmp/ccX28xPE.s:261    .text.One_Wire_Read_Byte:00000000 $t
+     /tmp/ccX28xPE.s:266    .text.One_Wire_Read_Byte:00000000 One_Wire_Read_Byte
+     /tmp/ccX28xPE.s:340    .text.One_Wire_Read_Bit:00000000 One_Wire_Read_Bit
+     /tmp/ccX28xPE.s:335    .text.One_Wire_Read_Bit:00000000 $t
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_rcc.h.66.7684c7e822659b814addf0d50b975514
-                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
-                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
-                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
-                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
-                           .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
 
 UNDEFINED SYMBOLS
 PIN_IN

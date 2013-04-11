@@ -1171,43 +1171,21 @@
 DEFINED SYMBOLS
                             *ABS*:00000000 ds1822.c
                             *COM*:00000050 Search_Rom_SN
-     /tmp/ccpQgaeb.s:20     .text.DS1822_Search_Rom_One_Device:00000000 $t
-     /tmp/ccpQgaeb.s:25     .text.DS1822_Search_Rom_One_Device:00000000 DS1822_Search_Rom_One_Device
-     /tmp/ccpQgaeb.s:179    .text.DS1822_Start_Conversion_by_ROM:00000000 $t
-     /tmp/ccpQgaeb.s:184    .text.DS1822_Start_Conversion_by_ROM:00000000 DS1822_Start_Conversion_by_ROM
-     /tmp/ccpQgaeb.s:269    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 $t
-     /tmp/ccpQgaeb.s:274    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 DS1822_Get_Conversion_Result_by_ROM_CRC
-     /tmp/ccpQgaeb.s:407    .text.DS1822_Search_Rom:00000000 $t
-     /tmp/ccpQgaeb.s:412    .text.DS1822_Search_Rom:00000000 DS1822_Search_Rom
-     /tmp/ccpQgaeb.s:621    .text.DS1822_Search_Rom2:00000000 $t
-     /tmp/ccpQgaeb.s:626    .text.DS1822_Search_Rom2:00000000 DS1822_Search_Rom2
-     /tmp/ccpQgaeb.s:833    .text.DS1822_Start_Conversion_Skip_Rom:00000000 $t
-     /tmp/ccpQgaeb.s:838    .text.DS1822_Start_Conversion_Skip_Rom:00000000 DS1822_Start_Conversion_Skip_Rom
-     /tmp/ccpQgaeb.s:912    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 $t
-     /tmp/ccpQgaeb.s:917    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 DS1822_Read_Temp_NoCRC_Skip_Rom
+     /tmp/ccHQ4bIy.s:20     .text.DS1822_Search_Rom_One_Device:00000000 $t
+     /tmp/ccHQ4bIy.s:25     .text.DS1822_Search_Rom_One_Device:00000000 DS1822_Search_Rom_One_Device
+     /tmp/ccHQ4bIy.s:179    .text.DS1822_Start_Conversion_by_ROM:00000000 $t
+     /tmp/ccHQ4bIy.s:184    .text.DS1822_Start_Conversion_by_ROM:00000000 DS1822_Start_Conversion_by_ROM
+     /tmp/ccHQ4bIy.s:269    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 $t
+     /tmp/ccHQ4bIy.s:274    .text.DS1822_Get_Conversion_Result_by_ROM_CRC:00000000 DS1822_Get_Conversion_Result_by_ROM_CRC
+     /tmp/ccHQ4bIy.s:407    .text.DS1822_Search_Rom:00000000 $t
+     /tmp/ccHQ4bIy.s:412    .text.DS1822_Search_Rom:00000000 DS1822_Search_Rom
+     /tmp/ccHQ4bIy.s:621    .text.DS1822_Search_Rom2:00000000 $t
+     /tmp/ccHQ4bIy.s:626    .text.DS1822_Search_Rom2:00000000 DS1822_Search_Rom2
+     /tmp/ccHQ4bIy.s:833    .text.DS1822_Start_Conversion_Skip_Rom:00000000 $t
+     /tmp/ccHQ4bIy.s:838    .text.DS1822_Start_Conversion_Skip_Rom:00000000 DS1822_Start_Conversion_Skip_Rom
+     /tmp/ccHQ4bIy.s:912    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 $t
+     /tmp/ccHQ4bIy.s:917    .text.DS1822_Read_Temp_NoCRC_Skip_Rom:00000000 DS1822_Read_Temp_NoCRC_Skip_Rom
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
-                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
-                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
-                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
-                           .group:00000000 wm4.oneWire.h.14.188ac6fc0985dc623b8f181759f0e155
-                           .group:00000000 wm4.ds1822.h.15.f0be87f195f963c7c1adc215a64c682a
 
 UNDEFINED SYMBOLS
 One_Wire_Reset

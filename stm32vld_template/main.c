@@ -12,8 +12,8 @@
 //#include "timers.h"
 
 // Modbus
-#include "mb.h"
-#include "mbport.h"
+//#include "mb.h"
+//#include "mbport.h"
 
 /* STM32 Library includes. */
 #include <stm32f10x.h>
@@ -27,12 +27,18 @@
 #include "ds1821.h"
 #include "rtc.h"
 
+#include "smallLEDPanel.h"
+
 
 #define LED_PORT GPIOC
 #define LED_GREEN GPIO_Pin_9
 #define LED_BLUE GPIO_Pin_8
 
-#define One_Wire_Pin 		GPIOC, GPIO_Pin_7
+#define One_Wire_Pin 			GPIOC, GPIO_Pin_7
+
+#define smallLEDPanel_CLK 		GPIO_Pin_10
+#define smallLEDPanel_SDI 		GPIO_Pin_11
+#define smallLEDPanel_LE 		GPIO_Pin_12
 
 #define BAUDRATE 115200
 
@@ -43,30 +49,29 @@ unsigned char error_handle (unsigned char err);
 void SetupClock()
 {
 	RCC_DeInit ();                    /* RCC system reset(for debug purpose)*/
-	      RCC_HSEConfig (RCC_HSE_ON);       /* Enable HSE                         */
+	RCC_HSEConfig (RCC_HSE_ON);       /* Enable HSE                         */
 
-	      /* Wait till HSE is ready                                               */
-	      while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET);
+	/* Wait till HSE is ready                                               */
+	while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET);
 
-	      RCC_HCLKConfig   (RCC_SYSCLK_Div1);   /* HCLK   = SYSCLK                */
-	      RCC_PCLK2Config  (RCC_HCLK_Div1);     /* PCLK2  = HCLK                  */
-	      RCC_PCLK1Config  (RCC_HCLK_Div1);     /* PCLK1  = HCLK1                */
-	      //RCC_ADCCLKConfig (RCC_PCLK2_Div4);    /* ADCCLK = PCLK2/4               */
+	RCC_HCLKConfig   (RCC_SYSCLK_Div1);   /* HCLK   = SYSCLK                */
+	RCC_PCLK2Config  (RCC_HCLK_Div1);     /* PCLK2  = HCLK                  */
+	RCC_PCLK1Config  (RCC_HCLK_Div1);     /* PCLK1  = HCLK1                */
+	//RCC_ADCCLKConfig (RCC_PCLK2_Div4);    /* ADCCLK = PCLK2/4               */
 
-	      /* PLLCLK = 8MHz * 6 = 48 MHz                                           */
-	      RCC_PLLConfig (RCC_PLLSource_PREDIV1, RCC_PLLMul_6);
+	/* PLLCLK = 8MHz * 6 = 48 MHz                                           */
+	RCC_PLLConfig (RCC_PLLSource_PREDIV1, RCC_PLLMul_6);
 
-	      RCC_PLLCmd (ENABLE);                  /* Enable PLL                     */
+	RCC_PLLCmd (ENABLE);                  /* Enable PLL                     */
 
-	      /* Wait till PLL is ready                                               */
-	      while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
+	/* Wait till PLL is ready                                               */
+	while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
 
-	      /* Select PLL as system clock source                                    */
-	      RCC_SYSCLKConfig (RCC_SYSCLKSource_PLLCLK);
+	/* Select PLL as system clock source                                    */
+	RCC_SYSCLKConfig (RCC_SYSCLKSource_PLLCLK);
 
-	      /* Wait till PLL is used as system clock source                         */
-	      while (RCC_GetSYSCLKSource() != 0x08);
-
+	/* Wait till PLL is used as system clock source                         */
+	while (RCC_GetSYSCLKSource() != 0x08);
 }
 
 void LEDsInit()
@@ -229,6 +234,8 @@ void vFreeRTOSInitAll()
 	SetupClock();
 
 	LEDsInit();
+	smallLEDPanel_Init();//LED_PORT, smallLEDPanel_CLK, smallLEDPanel_SDI, smallLEDPanel_LE);
+
 	BtnInit();
 
 	EXTI_Configuration();
@@ -240,6 +247,8 @@ void vFreeRTOSInitAll()
 	NVIC_Configuration_USART1();
 
 	TIM6Init();
+
+	RTC_Config();
 
 }
 
@@ -314,7 +323,7 @@ void vTaskDS1821(void *pvParameters)
 			uart_send_char(USART1, 8);
 			uart_send_char(USART1, 8);
 			uart_print_value(USART1, t);
-			//uart_print_string(USART1,"",1);
+			uart_print_string(USART1,";",0);
 			LED_PORT->ODR |= LED_GREEN;
 						//vTaskDelay(10);
 			delay_ms(10);
@@ -338,15 +347,15 @@ int main()
 {
 	vFreeRTOSInitAll();
 
-	RTC_Config();
-
 	xTaskCreate( vTaskLED, ( signed char * ) "LED", configMINIMAL_STACK_SIZE, NULL, 2,
 	                        ( xTaskHandle * ) NULL);
 	//xTaskCreate(vTaskUSART_TX, (signed char*)"USART_TX", configMINIMAL_STACK_SIZE, NULL, 2,
       //      				( xTaskHandle * ) NULL);
 	xTaskCreate( vTaskDS1821, ( signed char * ) "DS1821", configMINIMAL_STACK_SIZE, NULL, 2,
-		                        ( xTaskHandle * ) NULL);
+		                    ( xTaskHandle * ) NULL);
 	vTaskStartScheduler();
+
+
 
 	for(;;)
 	{

@@ -417,38 +417,19 @@
  336              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/system_stm32f10x.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 timer6.c
-     /tmp/ccSSoAzA.s:19     .text.TIM6Init:00000000 $t
-     /tmp/ccSSoAzA.s:24     .text.TIM6Init:00000000 TIM6Init
-     /tmp/ccSSoAzA.s:49     .text.NVIC_Configuration_TIM6:00000000 $t
-     /tmp/ccSSoAzA.s:54     .text.NVIC_Configuration_TIM6:00000000 NVIC_Configuration_TIM6
-     /tmp/ccSSoAzA.s:101    .bss.delay_end:00000000 delay_end
-     /tmp/ccSSoAzA.s:102    .bss.delay_end:00000000 $d
-     /tmp/ccSSoAzA.s:104    .text.TIM6_DAC_IRQHandler:00000000 $t
-     /tmp/ccSSoAzA.s:109    .text.TIM6_DAC_IRQHandler:00000000 TIM6_DAC_IRQHandler
-     /tmp/ccSSoAzA.s:158    .text.delay_ms:00000000 $t
-     /tmp/ccSSoAzA.s:163    .text.delay_ms:00000000 delay_ms
-     /tmp/ccSSoAzA.s:248    .text.delay_us:00000000 $t
-     /tmp/ccSSoAzA.s:253    .text.delay_us:00000000 delay_us
+     /tmp/ccYXvuVJ.s:19     .text.TIM6Init:00000000 $t
+     /tmp/ccYXvuVJ.s:24     .text.TIM6Init:00000000 TIM6Init
+     /tmp/ccYXvuVJ.s:49     .text.NVIC_Configuration_TIM6:00000000 $t
+     /tmp/ccYXvuVJ.s:54     .text.NVIC_Configuration_TIM6:00000000 NVIC_Configuration_TIM6
+     /tmp/ccYXvuVJ.s:101    .bss.delay_end:00000000 delay_end
+     /tmp/ccYXvuVJ.s:102    .bss.delay_end:00000000 $d
+     /tmp/ccYXvuVJ.s:104    .text.TIM6_DAC_IRQHandler:00000000 $t
+     /tmp/ccYXvuVJ.s:109    .text.TIM6_DAC_IRQHandler:00000000 TIM6_DAC_IRQHandler
+     /tmp/ccYXvuVJ.s:158    .text.delay_ms:00000000 $t
+     /tmp/ccYXvuVJ.s:163    .text.delay_ms:00000000 delay_ms
+     /tmp/ccYXvuVJ.s:248    .text.delay_us:00000000 $t
+     /tmp/ccYXvuVJ.s:253    .text.delay_us:00000000 delay_us
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_rcc.h.66.7684c7e822659b814addf0d50b975514
-                           .group:00000000 wm4.stm32f10x_tim.h.25.039a15552706aae650954590356e6d7a
-                           .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.3feb961df931efd80ac59ce9ab76d2aa
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.misc.h.25.424b617a460d2f3de12ba0450a07cec2
-                           .group:00000000 wm4.timer6.h.16.13b2c39d825931a32959e8d418342b55
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphClockCmd

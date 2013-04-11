@@ -1978,39 +1978,29 @@
  514              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_pwr.c
-     /tmp/cca2vA0Z.s:19     .text.__WFI:00000000 $t
-     /tmp/cca2vA0Z.s:23     .text.__WFI:00000000 __WFI
-     /tmp/cca2vA0Z.s:50     .text.__WFE:00000000 $t
-     /tmp/cca2vA0Z.s:54     .text.__WFE:00000000 __WFE
-     /tmp/cca2vA0Z.s:80     .text.PWR_DeInit:00000000 $t
-     /tmp/cca2vA0Z.s:85     .text.PWR_DeInit:00000000 PWR_DeInit
-     /tmp/cca2vA0Z.s:114    .text.PWR_BackupAccessCmd:00000000 $t
-     /tmp/cca2vA0Z.s:119    .text.PWR_BackupAccessCmd:00000000 PWR_BackupAccessCmd
-     /tmp/cca2vA0Z.s:152    .text.PWR_PVDCmd:00000000 $t
-     /tmp/cca2vA0Z.s:157    .text.PWR_PVDCmd:00000000 PWR_PVDCmd
-     /tmp/cca2vA0Z.s:190    .text.PWR_PVDLevelConfig:00000000 $t
-     /tmp/cca2vA0Z.s:195    .text.PWR_PVDLevelConfig:00000000 PWR_PVDLevelConfig
-     /tmp/cca2vA0Z.s:244    .text.PWR_WakeUpPinCmd:00000000 $t
-     /tmp/cca2vA0Z.s:249    .text.PWR_WakeUpPinCmd:00000000 PWR_WakeUpPinCmd
-     /tmp/cca2vA0Z.s:282    .text.PWR_EnterSTOPMode:00000000 $t
-     /tmp/cca2vA0Z.s:287    .text.PWR_EnterSTOPMode:00000000 PWR_EnterSTOPMode
-     /tmp/cca2vA0Z.s:364    .text.PWR_EnterSTANDBYMode:00000000 $t
-     /tmp/cca2vA0Z.s:369    .text.PWR_EnterSTANDBYMode:00000000 PWR_EnterSTANDBYMode
-     /tmp/cca2vA0Z.s:415    .text.PWR_GetFlagStatus:00000000 $t
-     /tmp/cca2vA0Z.s:420    .text.PWR_GetFlagStatus:00000000 PWR_GetFlagStatus
-     /tmp/cca2vA0Z.s:470    .text.PWR_ClearFlag:00000000 $t
-     /tmp/cca2vA0Z.s:475    .text.PWR_ClearFlag:00000000 PWR_ClearFlag
+     /tmp/ccqz2vJy.s:19     .text.__WFI:00000000 $t
+     /tmp/ccqz2vJy.s:23     .text.__WFI:00000000 __WFI
+     /tmp/ccqz2vJy.s:50     .text.__WFE:00000000 $t
+     /tmp/ccqz2vJy.s:54     .text.__WFE:00000000 __WFE
+     /tmp/ccqz2vJy.s:80     .text.PWR_DeInit:00000000 $t
+     /tmp/ccqz2vJy.s:85     .text.PWR_DeInit:00000000 PWR_DeInit
+     /tmp/ccqz2vJy.s:114    .text.PWR_BackupAccessCmd:00000000 $t
+     /tmp/ccqz2vJy.s:119    .text.PWR_BackupAccessCmd:00000000 PWR_BackupAccessCmd
+     /tmp/ccqz2vJy.s:152    .text.PWR_PVDCmd:00000000 $t
+     /tmp/ccqz2vJy.s:157    .text.PWR_PVDCmd:00000000 PWR_PVDCmd
+     /tmp/ccqz2vJy.s:190    .text.PWR_PVDLevelConfig:00000000 $t
+     /tmp/ccqz2vJy.s:195    .text.PWR_PVDLevelConfig:00000000 PWR_PVDLevelConfig
+     /tmp/ccqz2vJy.s:244    .text.PWR_WakeUpPinCmd:00000000 $t
+     /tmp/ccqz2vJy.s:249    .text.PWR_WakeUpPinCmd:00000000 PWR_WakeUpPinCmd
+     /tmp/ccqz2vJy.s:282    .text.PWR_EnterSTOPMode:00000000 $t
+     /tmp/ccqz2vJy.s:287    .text.PWR_EnterSTOPMode:00000000 PWR_EnterSTOPMode
+     /tmp/ccqz2vJy.s:364    .text.PWR_EnterSTANDBYMode:00000000 $t
+     /tmp/ccqz2vJy.s:369    .text.PWR_EnterSTANDBYMode:00000000 PWR_EnterSTANDBYMode
+     /tmp/ccqz2vJy.s:415    .text.PWR_GetFlagStatus:00000000 $t
+     /tmp/ccqz2vJy.s:420    .text.PWR_GetFlagStatus:00000000 PWR_GetFlagStatus
+     /tmp/ccqz2vJy.s:470    .text.PWR_ClearFlag:00000000 $t
+     /tmp/ccqz2vJy.s:475    .text.PWR_ClearFlag:00000000 PWR_ClearFlag
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_pwr.h.58.354f21f5b361fcd5696119ebefe92201
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphResetCmd

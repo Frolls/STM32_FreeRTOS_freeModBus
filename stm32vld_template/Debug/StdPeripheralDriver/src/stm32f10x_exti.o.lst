@@ -749,31 +749,22 @@
  531              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_exti.c
-     /tmp/ccIZ68za.s:19     .text.EXTI_DeInit:00000000 $t
-     /tmp/ccIZ68za.s:24     .text.EXTI_DeInit:00000000 EXTI_DeInit
-     /tmp/ccIZ68za.s:73     .text.EXTI_Init:00000000 $t
-     /tmp/ccIZ68za.s:78     .text.EXTI_Init:00000000 EXTI_Init
-     /tmp/ccIZ68za.s:240    .text.EXTI_StructInit:00000000 $t
-     /tmp/ccIZ68za.s:245    .text.EXTI_StructInit:00000000 EXTI_StructInit
-     /tmp/ccIZ68za.s:288    .text.EXTI_GenerateSWInterrupt:00000000 $t
-     /tmp/ccIZ68za.s:293    .text.EXTI_GenerateSWInterrupt:00000000 EXTI_GenerateSWInterrupt
-     /tmp/ccIZ68za.s:329    .text.EXTI_GetFlagStatus:00000000 $t
-     /tmp/ccIZ68za.s:334    .text.EXTI_GetFlagStatus:00000000 EXTI_GetFlagStatus
-     /tmp/ccIZ68za.s:384    .text.EXTI_ClearFlag:00000000 $t
-     /tmp/ccIZ68za.s:389    .text.EXTI_ClearFlag:00000000 EXTI_ClearFlag
-     /tmp/ccIZ68za.s:421    .text.EXTI_GetITStatus:00000000 $t
-     /tmp/ccIZ68za.s:426    .text.EXTI_GetITStatus:00000000 EXTI_GetITStatus
-     /tmp/ccIZ68za.s:490    .text.EXTI_ClearITPendingBit:00000000 $t
-     /tmp/ccIZ68za.s:495    .text.EXTI_ClearITPendingBit:00000000 EXTI_ClearITPendingBit
+     /tmp/ccXNsqWd.s:19     .text.EXTI_DeInit:00000000 $t
+     /tmp/ccXNsqWd.s:24     .text.EXTI_DeInit:00000000 EXTI_DeInit
+     /tmp/ccXNsqWd.s:73     .text.EXTI_Init:00000000 $t
+     /tmp/ccXNsqWd.s:78     .text.EXTI_Init:00000000 EXTI_Init
+     /tmp/ccXNsqWd.s:240    .text.EXTI_StructInit:00000000 $t
+     /tmp/ccXNsqWd.s:245    .text.EXTI_StructInit:00000000 EXTI_StructInit
+     /tmp/ccXNsqWd.s:288    .text.EXTI_GenerateSWInterrupt:00000000 $t
+     /tmp/ccXNsqWd.s:293    .text.EXTI_GenerateSWInterrupt:00000000 EXTI_GenerateSWInterrupt
+     /tmp/ccXNsqWd.s:329    .text.EXTI_GetFlagStatus:00000000 $t
+     /tmp/ccXNsqWd.s:334    .text.EXTI_GetFlagStatus:00000000 EXTI_GetFlagStatus
+     /tmp/ccXNsqWd.s:384    .text.EXTI_ClearFlag:00000000 $t
+     /tmp/ccXNsqWd.s:389    .text.EXTI_ClearFlag:00000000 EXTI_ClearFlag
+     /tmp/ccXNsqWd.s:421    .text.EXTI_GetITStatus:00000000 $t
+     /tmp/ccXNsqWd.s:426    .text.EXTI_GetITStatus:00000000 EXTI_GetITStatus
+     /tmp/ccXNsqWd.s:490    .text.EXTI_ClearITPendingBit:00000000 $t
+     /tmp/ccXNsqWd.s:495    .text.EXTI_ClearITPendingBit:00000000 EXTI_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_exti.h.54.191f91a542f1d132624ac79a8581854e
 
 NO UNDEFINED SYMBOLS

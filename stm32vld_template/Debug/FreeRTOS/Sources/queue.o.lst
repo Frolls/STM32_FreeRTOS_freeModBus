@@ -3759,68 +3759,43 @@
  1884              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/queue.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 queue.c
-     /tmp/ccGZZ03q.s:19     .text.xQueueGenericReset:00000000 $t
-     /tmp/ccGZZ03q.s:24     .text.xQueueGenericReset:00000000 xQueueGenericReset
-     /tmp/ccGZZ03q.s:144    .text.xQueueGenericCreate:00000000 $t
-     /tmp/ccGZZ03q.s:149    .text.xQueueGenericCreate:00000000 xQueueGenericCreate
-     /tmp/ccGZZ03q.s:244    .text.xQueueCreateMutex:00000000 $t
-     /tmp/ccGZZ03q.s:249    .text.xQueueCreateMutex:00000000 xQueueCreateMutex
-     /tmp/ccGZZ03q.s:355    .text.xQueueGenericSend:00000000 xQueueGenericSend
-     /tmp/ccGZZ03q.s:350    .text.xQueueGenericSend:00000000 $t
-     /tmp/ccGZZ03q.s:1274   .text.prvCopyDataToQueue:00000000 prvCopyDataToQueue
-     /tmp/ccGZZ03q.s:1697   .text.prvIsQueueFull:00000000 prvIsQueueFull
-     /tmp/ccGZZ03q.s:1470   .text.prvUnlockQueue:00000000 prvUnlockQueue
-     /tmp/ccGZZ03q.s:566    .text.xQueueGenericSendFromISR:00000000 $t
-     /tmp/ccGZZ03q.s:571    .text.xQueueGenericSendFromISR:00000000 xQueueGenericSendFromISR
-     /tmp/ccGZZ03q.s:704    .text.xQueueGenericReceive:00000000 $t
-     /tmp/ccGZZ03q.s:709    .text.xQueueGenericReceive:00000000 xQueueGenericReceive
-     /tmp/ccGZZ03q.s:1403   .text.prvCopyDataFromQueue:00000000 prvCopyDataFromQueue
-     /tmp/ccGZZ03q.s:1588   .text.prvIsQueueEmpty:00000000 prvIsQueueEmpty
-     /tmp/ccGZZ03q.s:978    .text.xQueueReceiveFromISR:00000000 $t
-     /tmp/ccGZZ03q.s:983    .text.xQueueReceiveFromISR:00000000 xQueueReceiveFromISR
-     /tmp/ccGZZ03q.s:1118   .text.uxQueueMessagesWaiting:00000000 $t
-     /tmp/ccGZZ03q.s:1123   .text.uxQueueMessagesWaiting:00000000 uxQueueMessagesWaiting
-     /tmp/ccGZZ03q.s:1170   .text.uxQueueMessagesWaitingFromISR:00000000 $t
-     /tmp/ccGZZ03q.s:1175   .text.uxQueueMessagesWaitingFromISR:00000000 uxQueueMessagesWaitingFromISR
-     /tmp/ccGZZ03q.s:1218   .text.vQueueDelete:00000000 $t
-     /tmp/ccGZZ03q.s:1223   .text.vQueueDelete:00000000 vQueueDelete
-     /tmp/ccGZZ03q.s:1270   .text.prvCopyDataToQueue:00000000 $t
-     /tmp/ccGZZ03q.s:1399   .text.prvCopyDataFromQueue:00000000 $t
-     /tmp/ccGZZ03q.s:1466   .text.prvUnlockQueue:00000000 $t
-     /tmp/ccGZZ03q.s:1584   .text.prvIsQueueEmpty:00000000 $t
-     /tmp/ccGZZ03q.s:1635   .text.xQueueIsQueueEmptyFromISR:00000000 $t
-     /tmp/ccGZZ03q.s:1640   .text.xQueueIsQueueEmptyFromISR:00000000 xQueueIsQueueEmptyFromISR
-     /tmp/ccGZZ03q.s:1693   .text.prvIsQueueFull:00000000 $t
-     /tmp/ccGZZ03q.s:1746   .text.xQueueIsQueueFullFromISR:00000000 $t
-     /tmp/ccGZZ03q.s:1751   .text.xQueueIsQueueFullFromISR:00000000 xQueueIsQueueFullFromISR
-     /tmp/ccGZZ03q.s:1806   .text.vQueueWaitForMessageRestricted:00000000 $t
-     /tmp/ccGZZ03q.s:1811   .text.vQueueWaitForMessageRestricted:00000000 vQueueWaitForMessageRestricted
+     /tmp/ccDhRQb0.s:19     .text.xQueueGenericReset:00000000 $t
+     /tmp/ccDhRQb0.s:24     .text.xQueueGenericReset:00000000 xQueueGenericReset
+     /tmp/ccDhRQb0.s:144    .text.xQueueGenericCreate:00000000 $t
+     /tmp/ccDhRQb0.s:149    .text.xQueueGenericCreate:00000000 xQueueGenericCreate
+     /tmp/ccDhRQb0.s:244    .text.xQueueCreateMutex:00000000 $t
+     /tmp/ccDhRQb0.s:249    .text.xQueueCreateMutex:00000000 xQueueCreateMutex
+     /tmp/ccDhRQb0.s:355    .text.xQueueGenericSend:00000000 xQueueGenericSend
+     /tmp/ccDhRQb0.s:350    .text.xQueueGenericSend:00000000 $t
+     /tmp/ccDhRQb0.s:1274   .text.prvCopyDataToQueue:00000000 prvCopyDataToQueue
+     /tmp/ccDhRQb0.s:1697   .text.prvIsQueueFull:00000000 prvIsQueueFull
+     /tmp/ccDhRQb0.s:1470   .text.prvUnlockQueue:00000000 prvUnlockQueue
+     /tmp/ccDhRQb0.s:566    .text.xQueueGenericSendFromISR:00000000 $t
+     /tmp/ccDhRQb0.s:571    .text.xQueueGenericSendFromISR:00000000 xQueueGenericSendFromISR
+     /tmp/ccDhRQb0.s:704    .text.xQueueGenericReceive:00000000 $t
+     /tmp/ccDhRQb0.s:709    .text.xQueueGenericReceive:00000000 xQueueGenericReceive
+     /tmp/ccDhRQb0.s:1403   .text.prvCopyDataFromQueue:00000000 prvCopyDataFromQueue
+     /tmp/ccDhRQb0.s:1588   .text.prvIsQueueEmpty:00000000 prvIsQueueEmpty
+     /tmp/ccDhRQb0.s:978    .text.xQueueReceiveFromISR:00000000 $t
+     /tmp/ccDhRQb0.s:983    .text.xQueueReceiveFromISR:00000000 xQueueReceiveFromISR
+     /tmp/ccDhRQb0.s:1118   .text.uxQueueMessagesWaiting:00000000 $t
+     /tmp/ccDhRQb0.s:1123   .text.uxQueueMessagesWaiting:00000000 uxQueueMessagesWaiting
+     /tmp/ccDhRQb0.s:1170   .text.uxQueueMessagesWaitingFromISR:00000000 $t
+     /tmp/ccDhRQb0.s:1175   .text.uxQueueMessagesWaitingFromISR:00000000 uxQueueMessagesWaitingFromISR
+     /tmp/ccDhRQb0.s:1218   .text.vQueueDelete:00000000 $t
+     /tmp/ccDhRQb0.s:1223   .text.vQueueDelete:00000000 vQueueDelete
+     /tmp/ccDhRQb0.s:1270   .text.prvCopyDataToQueue:00000000 $t
+     /tmp/ccDhRQb0.s:1399   .text.prvCopyDataFromQueue:00000000 $t
+     /tmp/ccDhRQb0.s:1466   .text.prvUnlockQueue:00000000 $t
+     /tmp/ccDhRQb0.s:1584   .text.prvIsQueueEmpty:00000000 $t
+     /tmp/ccDhRQb0.s:1635   .text.xQueueIsQueueEmptyFromISR:00000000 $t
+     /tmp/ccDhRQb0.s:1640   .text.xQueueIsQueueEmptyFromISR:00000000 xQueueIsQueueEmptyFromISR
+     /tmp/ccDhRQb0.s:1693   .text.prvIsQueueFull:00000000 $t
+     /tmp/ccDhRQb0.s:1746   .text.xQueueIsQueueFullFromISR:00000000 $t
+     /tmp/ccDhRQb0.s:1751   .text.xQueueIsQueueFullFromISR:00000000 xQueueIsQueueFullFromISR
+     /tmp/ccDhRQb0.s:1806   .text.vQueueWaitForMessageRestricted:00000000 $t
+     /tmp/ccDhRQb0.s:1811   .text.vQueueWaitForMessageRestricted:00000000 vQueueWaitForMessageRestricted
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
-                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
-                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
-                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
-                           .group:00000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
-                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
-                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
-                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
-                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
-                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
-                           .group:00000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
-                           .group:00000000 wm4.string.h.8.ef946ad0bc9ad5c970c365dcd1fc4b0a
-                           .group:00000000 wm4.stddef.h.235.d9f4f80b8c4429535175712282cda6a6
-                           .group:00000000 wm4.string.h.86.d5c872ff52e2712c985b588a0ef39f3c
-                           .group:00000000 wm4.stddef.h.40.b60a1c1ee3f272eef5327a730cbabca6
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.73ce2c6afaf7535ca053cc9af81f6119
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.list.h.105.6a6307ce3396638a078c02ff83387dc6
-                           .group:00000000 wm4.task.h.94.33ec4de8c3f825901c54e6cf58507761
-                           .group:00000000 wm4.queue.h.77.c405a8575cf45ee56672246904131fa4
 
 UNDEFINED SYMBOLS
 ulPortSetInterruptMask

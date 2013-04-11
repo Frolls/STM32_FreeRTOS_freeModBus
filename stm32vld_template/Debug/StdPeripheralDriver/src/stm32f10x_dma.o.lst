@@ -1495,38 +1495,28 @@
  876              		.file 5 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_dma.c
-     /tmp/ccxM0PAX.s:19     .text.DMA_DeInit:00000000 $t
-     /tmp/ccxM0PAX.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
-     /tmp/ccxM0PAX.s:266    .text.DMA_Init:00000000 $t
-     /tmp/ccxM0PAX.s:271    .text.DMA_Init:00000000 DMA_Init
-     /tmp/ccxM0PAX.s:362    .text.DMA_StructInit:00000000 $t
-     /tmp/ccxM0PAX.s:367    .text.DMA_StructInit:00000000 DMA_StructInit
-     /tmp/ccxM0PAX.s:438    .text.DMA_Cmd:00000000 $t
-     /tmp/ccxM0PAX.s:443    .text.DMA_Cmd:00000000 DMA_Cmd
-     /tmp/ccxM0PAX.s:492    .text.DMA_ITConfig:00000000 $t
-     /tmp/ccxM0PAX.s:497    .text.DMA_ITConfig:00000000 DMA_ITConfig
-     /tmp/ccxM0PAX.s:549    .text.DMA_SetCurrDataCounter:00000000 $t
-     /tmp/ccxM0PAX.s:554    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
-     /tmp/ccxM0PAX.s:587    .text.DMA_GetCurrDataCounter:00000000 $t
-     /tmp/ccxM0PAX.s:592    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
-     /tmp/ccxM0PAX.s:624    .text.DMA_GetFlagStatus:00000000 $t
-     /tmp/ccxM0PAX.s:629    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
-     /tmp/ccxM0PAX.s:698    .text.DMA_ClearFlag:00000000 $t
-     /tmp/ccxM0PAX.s:703    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
-     /tmp/ccxM0PAX.s:748    .text.DMA_GetITStatus:00000000 $t
-     /tmp/ccxM0PAX.s:753    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
-     /tmp/ccxM0PAX.s:822    .text.DMA_ClearITPendingBit:00000000 $t
-     /tmp/ccxM0PAX.s:827    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
+     /tmp/cceFBGKc.s:19     .text.DMA_DeInit:00000000 $t
+     /tmp/cceFBGKc.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
+     /tmp/cceFBGKc.s:266    .text.DMA_Init:00000000 $t
+     /tmp/cceFBGKc.s:271    .text.DMA_Init:00000000 DMA_Init
+     /tmp/cceFBGKc.s:362    .text.DMA_StructInit:00000000 $t
+     /tmp/cceFBGKc.s:367    .text.DMA_StructInit:00000000 DMA_StructInit
+     /tmp/cceFBGKc.s:438    .text.DMA_Cmd:00000000 $t
+     /tmp/cceFBGKc.s:443    .text.DMA_Cmd:00000000 DMA_Cmd
+     /tmp/cceFBGKc.s:492    .text.DMA_ITConfig:00000000 $t
+     /tmp/cceFBGKc.s:497    .text.DMA_ITConfig:00000000 DMA_ITConfig
+     /tmp/cceFBGKc.s:549    .text.DMA_SetCurrDataCounter:00000000 $t
+     /tmp/cceFBGKc.s:554    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
+     /tmp/cceFBGKc.s:587    .text.DMA_GetCurrDataCounter:00000000 $t
+     /tmp/cceFBGKc.s:592    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
+     /tmp/cceFBGKc.s:624    .text.DMA_GetFlagStatus:00000000 $t
+     /tmp/cceFBGKc.s:629    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
+     /tmp/cceFBGKc.s:698    .text.DMA_ClearFlag:00000000 $t
+     /tmp/cceFBGKc.s:703    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
+     /tmp/cceFBGKc.s:748    .text.DMA_GetITStatus:00000000 $t
+     /tmp/cceFBGKc.s:753    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
+     /tmp/cceFBGKc.s:822    .text.DMA_ClearITPendingBit:00000000 $t
+     /tmp/cceFBGKc.s:827    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
-                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
-                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
-                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
-                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
-                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
-                           .group:00000000 wm4.stm32f10x_dma.h.95.3ba03f0eac1ed728f3bbe553623f105a
-                           .group:00000000 wm4.stm32f10x_rcc.h.25.ce2a81c1048696f722ee0c144eb62674
 
 NO UNDEFINED SYMBOLS

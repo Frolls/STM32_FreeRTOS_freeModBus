@@ -6236,158 +6236,125 @@
  3605              		.file 6 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/FreeRTOS/Headers/task.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-     /tmp/ccl1YLbC.s:23     .bss.pxCurrentTCB:00000000 pxCurrentTCB
-     /tmp/ccl1YLbC.s:20     .bss.pxCurrentTCB:00000000 $d
-     /tmp/ccl1YLbC.s:26     .bss.pxReadyTasksLists:00000000 $d
-     /tmp/ccl1YLbC.s:29     .bss.pxReadyTasksLists:00000000 pxReadyTasksLists
-     /tmp/ccl1YLbC.s:32     .bss.xDelayedTaskList1:00000000 $d
-     /tmp/ccl1YLbC.s:35     .bss.xDelayedTaskList1:00000000 xDelayedTaskList1
-     /tmp/ccl1YLbC.s:38     .bss.xDelayedTaskList2:00000000 $d
-     /tmp/ccl1YLbC.s:41     .bss.xDelayedTaskList2:00000000 xDelayedTaskList2
-     /tmp/ccl1YLbC.s:44     .bss.pxDelayedTaskList:00000000 $d
-     /tmp/ccl1YLbC.s:47     .bss.pxDelayedTaskList:00000000 pxDelayedTaskList
-     /tmp/ccl1YLbC.s:50     .bss.pxOverflowDelayedTaskList:00000000 $d
-     /tmp/ccl1YLbC.s:53     .bss.pxOverflowDelayedTaskList:00000000 pxOverflowDelayedTaskList
-     /tmp/ccl1YLbC.s:56     .bss.xPendingReadyList:00000000 $d
-     /tmp/ccl1YLbC.s:59     .bss.xPendingReadyList:00000000 xPendingReadyList
-     /tmp/ccl1YLbC.s:62     .bss.xTasksWaitingTermination:00000000 $d
-     /tmp/ccl1YLbC.s:65     .bss.xTasksWaitingTermination:00000000 xTasksWaitingTermination
-     /tmp/ccl1YLbC.s:68     .bss.uxTasksDeleted:00000000 $d
-     /tmp/ccl1YLbC.s:71     .bss.uxTasksDeleted:00000000 uxTasksDeleted
-     /tmp/ccl1YLbC.s:74     .bss.xSuspendedTaskList:00000000 $d
-     /tmp/ccl1YLbC.s:77     .bss.xSuspendedTaskList:00000000 xSuspendedTaskList
-     /tmp/ccl1YLbC.s:80     .bss.uxCurrentNumberOfTasks:00000000 $d
-     /tmp/ccl1YLbC.s:83     .bss.uxCurrentNumberOfTasks:00000000 uxCurrentNumberOfTasks
-     /tmp/ccl1YLbC.s:86     .bss.xTickCount:00000000 $d
-     /tmp/ccl1YLbC.s:89     .bss.xTickCount:00000000 xTickCount
-     /tmp/ccl1YLbC.s:92     .bss.uxTopUsedPriority:00000000 $d
-     /tmp/ccl1YLbC.s:95     .bss.uxTopUsedPriority:00000000 uxTopUsedPriority
-     /tmp/ccl1YLbC.s:98     .bss.uxTopReadyPriority:00000000 $d
-     /tmp/ccl1YLbC.s:101    .bss.uxTopReadyPriority:00000000 uxTopReadyPriority
-     /tmp/ccl1YLbC.s:104    .bss.xSchedulerRunning:00000000 $d
-     /tmp/ccl1YLbC.s:107    .bss.xSchedulerRunning:00000000 xSchedulerRunning
-     /tmp/ccl1YLbC.s:110    .bss.uxSchedulerSuspended:00000000 $d
-     /tmp/ccl1YLbC.s:113    .bss.uxSchedulerSuspended:00000000 uxSchedulerSuspended
-     /tmp/ccl1YLbC.s:116    .bss.uxMissedTicks:00000000 $d
-     /tmp/ccl1YLbC.s:119    .bss.uxMissedTicks:00000000 uxMissedTicks
-     /tmp/ccl1YLbC.s:122    .bss.xMissedYield:00000000 $d
-     /tmp/ccl1YLbC.s:125    .bss.xMissedYield:00000000 xMissedYield
-     /tmp/ccl1YLbC.s:128    .bss.xNumOfOverflows:00000000 $d
-     /tmp/ccl1YLbC.s:131    .bss.xNumOfOverflows:00000000 xNumOfOverflows
-     /tmp/ccl1YLbC.s:134    .bss.uxTaskNumber:00000000 $d
-     /tmp/ccl1YLbC.s:137    .bss.uxTaskNumber:00000000 uxTaskNumber
-     /tmp/ccl1YLbC.s:140    .data.xNextTaskUnblockTime:00000000 $d
-     /tmp/ccl1YLbC.s:143    .data.xNextTaskUnblockTime:00000000 xNextTaskUnblockTime
-     /tmp/ccl1YLbC.s:146    .text.xTaskGenericCreate:00000000 $t
-     /tmp/ccl1YLbC.s:151    .text.xTaskGenericCreate:00000000 xTaskGenericCreate
-     /tmp/ccl1YLbC.s:3145   .text.prvAllocateTCBAndStack:00000000 prvAllocateTCBAndStack
-     /tmp/ccl1YLbC.s:2801   .text.prvInitialiseTCBVariables:00000000 prvInitialiseTCBVariables
-     /tmp/ccl1YLbC.s:2884   .text.prvInitialiseTaskLists:00000000 prvInitialiseTaskLists
-     /tmp/ccl1YLbC.s:413    .text.vTaskDelete:00000000 $t
-     /tmp/ccl1YLbC.s:418    .text.vTaskDelete:00000000 vTaskDelete
-     /tmp/ccl1YLbC.s:526    .text.vTaskDelayUntil:00000000 $t
-     /tmp/ccl1YLbC.s:531    .text.vTaskDelayUntil:00000000 vTaskDelayUntil
-     /tmp/ccl1YLbC.s:1539   .text.vTaskSuspendAll:00000000 vTaskSuspendAll
-     /tmp/ccl1YLbC.s:3065   .text.prvAddCurrentTaskToDelayedList:00000000 prvAddCurrentTaskToDelayedList
-     /tmp/ccl1YLbC.s:1574   .text.xTaskResumeAll:00000000 xTaskResumeAll
-     /tmp/ccl1YLbC.s:662    .text.vTaskDelay:00000000 $t
-     /tmp/ccl1YLbC.s:667    .text.vTaskDelay:00000000 vTaskDelay
-     /tmp/ccl1YLbC.s:730    .text.uxTaskPriorityGet:00000000 $t
-     /tmp/ccl1YLbC.s:735    .text.uxTaskPriorityGet:00000000 uxTaskPriorityGet
-     /tmp/ccl1YLbC.s:787    .text.vTaskPrioritySet:00000000 $t
-     /tmp/ccl1YLbC.s:792    .text.vTaskPrioritySet:00000000 vTaskPrioritySet
-     /tmp/ccl1YLbC.s:982    .text.vTaskSuspend:00000000 $t
-     /tmp/ccl1YLbC.s:987    .text.vTaskSuspend:00000000 vTaskSuspend
-     /tmp/ccl1YLbC.s:2105   .text.vTaskSwitchContext:00000000 vTaskSwitchContext
-     /tmp/ccl1YLbC.s:1099   .text.xTaskIsTaskSuspended:00000000 $t
-     /tmp/ccl1YLbC.s:1104   .text.xTaskIsTaskSuspended:00000000 xTaskIsTaskSuspended
-     /tmp/ccl1YLbC.s:1172   .text.vTaskResume:00000000 $t
-     /tmp/ccl1YLbC.s:1177   .text.vTaskResume:00000000 vTaskResume
-     /tmp/ccl1YLbC.s:1285   .text.xTaskResumeFromISR:00000000 $t
-     /tmp/ccl1YLbC.s:1290   .text.xTaskResumeFromISR:00000000 xTaskResumeFromISR
-     /tmp/ccl1YLbC.s:1411   .rodata:00000000 $d
-     /tmp/ccl1YLbC.s:1412   .rodata:00000000 .LC0
-     /tmp/ccl1YLbC.s:1415   .text.vTaskStartScheduler:00000000 $t
-     /tmp/ccl1YLbC.s:1420   .text.vTaskStartScheduler:00000000 vTaskStartScheduler
-     /tmp/ccl1YLbC.s:2757   .text.prvIdleTask:00000000 prvIdleTask
-     /tmp/ccl1YLbC.s:1500   .text.vTaskEndScheduler:00000000 $t
-     /tmp/ccl1YLbC.s:1505   .text.vTaskEndScheduler:00000000 vTaskEndScheduler
-     /tmp/ccl1YLbC.s:1534   .text.vTaskSuspendAll:00000000 $t
-     /tmp/ccl1YLbC.s:1569   .text.xTaskResumeAll:00000000 $t
-     /tmp/ccl1YLbC.s:1882   .text.vTaskIncrementTick:00000000 vTaskIncrementTick
-     /tmp/ccl1YLbC.s:1759   .text.xTaskGetTickCount:00000000 $t
-     /tmp/ccl1YLbC.s:1764   .text.xTaskGetTickCount:00000000 xTaskGetTickCount
-     /tmp/ccl1YLbC.s:1801   .text.xTaskGetTickCountFromISR:00000000 $t
-     /tmp/ccl1YLbC.s:1806   .text.xTaskGetTickCountFromISR:00000000 xTaskGetTickCountFromISR
-     /tmp/ccl1YLbC.s:1845   .text.uxTaskGetNumberOfTasks:00000000 $t
-     /tmp/ccl1YLbC.s:1850   .text.uxTaskGetNumberOfTasks:00000000 uxTaskGetNumberOfTasks
-     /tmp/ccl1YLbC.s:1877   .text.vTaskIncrementTick:00000000 $t
-     /tmp/ccl1YLbC.s:2100   .text.vTaskSwitchContext:00000000 $t
-     /tmp/ccl1YLbC.s:3578   .rodata.ucExpectedStackBytes.5898:00000000 ucExpectedStackBytes.5898
-     /tmp/ccl1YLbC.s:2270   .text.vTaskPlaceOnEventList:00000000 $t
-     /tmp/ccl1YLbC.s:2275   .text.vTaskPlaceOnEventList:00000000 vTaskPlaceOnEventList
-     /tmp/ccl1YLbC.s:2353   .text.vTaskPlaceOnEventListRestricted:00000000 $t
-     /tmp/ccl1YLbC.s:2358   .text.vTaskPlaceOnEventListRestricted:00000000 vTaskPlaceOnEventListRestricted
-     /tmp/ccl1YLbC.s:2420   .text.xTaskRemoveFromEventList:00000000 $t
-     /tmp/ccl1YLbC.s:2425   .text.xTaskRemoveFromEventList:00000000 xTaskRemoveFromEventList
-     /tmp/ccl1YLbC.s:2543   .text.vTaskSetTimeOutState:00000000 $t
-     /tmp/ccl1YLbC.s:2548   .text.vTaskSetTimeOutState:00000000 vTaskSetTimeOutState
-     /tmp/ccl1YLbC.s:2596   .text.xTaskCheckForTimeOut:00000000 $t
-     /tmp/ccl1YLbC.s:2601   .text.xTaskCheckForTimeOut:00000000 xTaskCheckForTimeOut
-     /tmp/ccl1YLbC.s:2721   .text.vTaskMissedYield:00000000 $t
-     /tmp/ccl1YLbC.s:2726   .text.vTaskMissedYield:00000000 vTaskMissedYield
-     /tmp/ccl1YLbC.s:2753   .text.prvIdleTask:00000000 $t
-     /tmp/ccl1YLbC.s:2970   .text.prvCheckTasksWaitingTermination:00000000 prvCheckTasksWaitingTermination
-     /tmp/ccl1YLbC.s:2797   .text.prvInitialiseTCBVariables:00000000 $t
-     /tmp/ccl1YLbC.s:2880   .text.prvInitialiseTaskLists:00000000 $t
-     /tmp/ccl1YLbC.s:2966   .text.prvCheckTasksWaitingTermination:00000000 $t
-     /tmp/ccl1YLbC.s:3229   .text.prvDeleteTCB:00000000 prvDeleteTCB
-     /tmp/ccl1YLbC.s:3061   .text.prvAddCurrentTaskToDelayedList:00000000 $t
-     /tmp/ccl1YLbC.s:3141   .text.prvAllocateTCBAndStack:00000000 $t
-     /tmp/ccl1YLbC.s:3225   .text.prvDeleteTCB:00000000 $t
-     /tmp/ccl1YLbC.s:3263   .text.xTaskGetCurrentTaskHandle:00000000 $t
-     /tmp/ccl1YLbC.s:3268   .text.xTaskGetCurrentTaskHandle:00000000 xTaskGetCurrentTaskHandle
-     /tmp/ccl1YLbC.s:3302   .text.xTaskGetSchedulerState:00000000 $t
-     /tmp/ccl1YLbC.s:3307   .text.xTaskGetSchedulerState:00000000 xTaskGetSchedulerState
-     /tmp/ccl1YLbC.s:3362   .text.vTaskPriorityInherit:00000000 $t
-     /tmp/ccl1YLbC.s:3367   .text.vTaskPriorityInherit:00000000 vTaskPriorityInherit
-     /tmp/ccl1YLbC.s:3483   .text.vTaskPriorityDisinherit:00000000 $t
-     /tmp/ccl1YLbC.s:3488   .text.vTaskPriorityDisinherit:00000000 vTaskPriorityDisinherit
-     /tmp/ccl1YLbC.s:3575   .rodata.ucExpectedStackBytes.5898:00000000 $d
+     /tmp/ccAwnema.s:23     .bss.pxCurrentTCB:00000000 pxCurrentTCB
+     /tmp/ccAwnema.s:20     .bss.pxCurrentTCB:00000000 $d
+     /tmp/ccAwnema.s:26     .bss.pxReadyTasksLists:00000000 $d
+     /tmp/ccAwnema.s:29     .bss.pxReadyTasksLists:00000000 pxReadyTasksLists
+     /tmp/ccAwnema.s:32     .bss.xDelayedTaskList1:00000000 $d
+     /tmp/ccAwnema.s:35     .bss.xDelayedTaskList1:00000000 xDelayedTaskList1
+     /tmp/ccAwnema.s:38     .bss.xDelayedTaskList2:00000000 $d
+     /tmp/ccAwnema.s:41     .bss.xDelayedTaskList2:00000000 xDelayedTaskList2
+     /tmp/ccAwnema.s:44     .bss.pxDelayedTaskList:00000000 $d
+     /tmp/ccAwnema.s:47     .bss.pxDelayedTaskList:00000000 pxDelayedTaskList
+     /tmp/ccAwnema.s:50     .bss.pxOverflowDelayedTaskList:00000000 $d
+     /tmp/ccAwnema.s:53     .bss.pxOverflowDelayedTaskList:00000000 pxOverflowDelayedTaskList
+     /tmp/ccAwnema.s:56     .bss.xPendingReadyList:00000000 $d
+     /tmp/ccAwnema.s:59     .bss.xPendingReadyList:00000000 xPendingReadyList
+     /tmp/ccAwnema.s:62     .bss.xTasksWaitingTermination:00000000 $d
+     /tmp/ccAwnema.s:65     .bss.xTasksWaitingTermination:00000000 xTasksWaitingTermination
+     /tmp/ccAwnema.s:68     .bss.uxTasksDeleted:00000000 $d
+     /tmp/ccAwnema.s:71     .bss.uxTasksDeleted:00000000 uxTasksDeleted
+     /tmp/ccAwnema.s:74     .bss.xSuspendedTaskList:00000000 $d
+     /tmp/ccAwnema.s:77     .bss.xSuspendedTaskList:00000000 xSuspendedTaskList
+     /tmp/ccAwnema.s:80     .bss.uxCurrentNumberOfTasks:00000000 $d
+     /tmp/ccAwnema.s:83     .bss.uxCurrentNumberOfTasks:00000000 uxCurrentNumberOfTasks
+     /tmp/ccAwnema.s:86     .bss.xTickCount:00000000 $d
+     /tmp/ccAwnema.s:89     .bss.xTickCount:00000000 xTickCount
+     /tmp/ccAwnema.s:92     .bss.uxTopUsedPriority:00000000 $d
+     /tmp/ccAwnema.s:95     .bss.uxTopUsedPriority:00000000 uxTopUsedPriority
+     /tmp/ccAwnema.s:98     .bss.uxTopReadyPriority:00000000 $d
+     /tmp/ccAwnema.s:101    .bss.uxTopReadyPriority:00000000 uxTopReadyPriority
+     /tmp/ccAwnema.s:104    .bss.xSchedulerRunning:00000000 $d
+     /tmp/ccAwnema.s:107    .bss.xSchedulerRunning:00000000 xSchedulerRunning
+     /tmp/ccAwnema.s:110    .bss.uxSchedulerSuspended:00000000 $d
+     /tmp/ccAwnema.s:113    .bss.uxSchedulerSuspended:00000000 uxSchedulerSuspended
+     /tmp/ccAwnema.s:116    .bss.uxMissedTicks:00000000 $d
+     /tmp/ccAwnema.s:119    .bss.uxMissedTicks:00000000 uxMissedTicks
+     /tmp/ccAwnema.s:122    .bss.xMissedYield:00000000 $d
+     /tmp/ccAwnema.s:125    .bss.xMissedYield:00000000 xMissedYield
+     /tmp/ccAwnema.s:128    .bss.xNumOfOverflows:00000000 $d
+     /tmp/ccAwnema.s:131    .bss.xNumOfOverflows:00000000 xNumOfOverflows
+     /tmp/ccAwnema.s:134    .bss.uxTaskNumber:00000000 $d
+     /tmp/ccAwnema.s:137    .bss.uxTaskNumber:00000000 uxTaskNumber
+     /tmp/ccAwnema.s:140    .data.xNextTaskUnblockTime:00000000 $d
+     /tmp/ccAwnema.s:143    .data.xNextTaskUnblockTime:00000000 xNextTaskUnblockTime
+     /tmp/ccAwnema.s:146    .text.xTaskGenericCreate:00000000 $t
+     /tmp/ccAwnema.s:151    .text.xTaskGenericCreate:00000000 xTaskGenericCreate
+     /tmp/ccAwnema.s:3145   .text.prvAllocateTCBAndStack:00000000 prvAllocateTCBAndStack
+     /tmp/ccAwnema.s:2801   .text.prvInitialiseTCBVariables:00000000 prvInitialiseTCBVariables
+     /tmp/ccAwnema.s:2884   .text.prvInitialiseTaskLists:00000000 prvInitialiseTaskLists
+     /tmp/ccAwnema.s:413    .text.vTaskDelete:00000000 $t
+     /tmp/ccAwnema.s:418    .text.vTaskDelete:00000000 vTaskDelete
+     /tmp/ccAwnema.s:526    .text.vTaskDelayUntil:00000000 $t
+     /tmp/ccAwnema.s:531    .text.vTaskDelayUntil:00000000 vTaskDelayUntil
+     /tmp/ccAwnema.s:1539   .text.vTaskSuspendAll:00000000 vTaskSuspendAll
+     /tmp/ccAwnema.s:3065   .text.prvAddCurrentTaskToDelayedList:00000000 prvAddCurrentTaskToDelayedList
+     /tmp/ccAwnema.s:1574   .text.xTaskResumeAll:00000000 xTaskResumeAll
+     /tmp/ccAwnema.s:662    .text.vTaskDelay:00000000 $t
+     /tmp/ccAwnema.s:667    .text.vTaskDelay:00000000 vTaskDelay
+     /tmp/ccAwnema.s:730    .text.uxTaskPriorityGet:00000000 $t
+     /tmp/ccAwnema.s:735    .text.uxTaskPriorityGet:00000000 uxTaskPriorityGet
+     /tmp/ccAwnema.s:787    .text.vTaskPrioritySet:00000000 $t
+     /tmp/ccAwnema.s:792    .text.vTaskPrioritySet:00000000 vTaskPrioritySet
+     /tmp/ccAwnema.s:982    .text.vTaskSuspend:00000000 $t
+     /tmp/ccAwnema.s:987    .text.vTaskSuspend:00000000 vTaskSuspend
+     /tmp/ccAwnema.s:2105   .text.vTaskSwitchContext:00000000 vTaskSwitchContext
+     /tmp/ccAwnema.s:1099   .text.xTaskIsTaskSuspended:00000000 $t
+     /tmp/ccAwnema.s:1104   .text.xTaskIsTaskSuspended:00000000 xTaskIsTaskSuspended
+     /tmp/ccAwnema.s:1172   .text.vTaskResume:00000000 $t
+     /tmp/ccAwnema.s:1177   .text.vTaskResume:00000000 vTaskResume
+     /tmp/ccAwnema.s:1285   .text.xTaskResumeFromISR:00000000 $t
+     /tmp/ccAwnema.s:1290   .text.xTaskResumeFromISR:00000000 xTaskResumeFromISR
+     /tmp/ccAwnema.s:1411   .rodata:00000000 $d
+     /tmp/ccAwnema.s:1412   .rodata:00000000 .LC0
+     /tmp/ccAwnema.s:1415   .text.vTaskStartScheduler:00000000 $t
+     /tmp/ccAwnema.s:1420   .text.vTaskStartScheduler:00000000 vTaskStartScheduler
+     /tmp/ccAwnema.s:2757   .text.prvIdleTask:00000000 prvIdleTask
+     /tmp/ccAwnema.s:1500   .text.vTaskEndScheduler:00000000 $t
+     /tmp/ccAwnema.s:1505   .text.vTaskEndScheduler:00000000 vTaskEndScheduler
+     /tmp/ccAwnema.s:1534   .text.vTaskSuspendAll:00000000 $t
+     /tmp/ccAwnema.s:1569   .text.xTaskResumeAll:00000000 $t
+     /tmp/ccAwnema.s:1882   .text.vTaskIncrementTick:00000000 vTaskIncrementTick
+     /tmp/ccAwnema.s:1759   .text.xTaskGetTickCount:00000000 $t
+     /tmp/ccAwnema.s:1764   .text.xTaskGetTickCount:00000000 xTaskGetTickCount
+     /tmp/ccAwnema.s:1801   .text.xTaskGetTickCountFromISR:00000000 $t
+     /tmp/ccAwnema.s:1806   .text.xTaskGetTickCountFromISR:00000000 xTaskGetTickCountFromISR
+     /tmp/ccAwnema.s:1845   .text.uxTaskGetNumberOfTasks:00000000 $t
+     /tmp/ccAwnema.s:1850   .text.uxTaskGetNumberOfTasks:00000000 uxTaskGetNumberOfTasks
+     /tmp/ccAwnema.s:1877   .text.vTaskIncrementTick:00000000 $t
+     /tmp/ccAwnema.s:2100   .text.vTaskSwitchContext:00000000 $t
+     /tmp/ccAwnema.s:3578   .rodata.ucExpectedStackBytes.5898:00000000 ucExpectedStackBytes.5898
+     /tmp/ccAwnema.s:2270   .text.vTaskPlaceOnEventList:00000000 $t
+     /tmp/ccAwnema.s:2275   .text.vTaskPlaceOnEventList:00000000 vTaskPlaceOnEventList
+     /tmp/ccAwnema.s:2353   .text.vTaskPlaceOnEventListRestricted:00000000 $t
+     /tmp/ccAwnema.s:2358   .text.vTaskPlaceOnEventListRestricted:00000000 vTaskPlaceOnEventListRestricted
+     /tmp/ccAwnema.s:2420   .text.xTaskRemoveFromEventList:00000000 $t
+     /tmp/ccAwnema.s:2425   .text.xTaskRemoveFromEventList:00000000 xTaskRemoveFromEventList
+     /tmp/ccAwnema.s:2543   .text.vTaskSetTimeOutState:00000000 $t
+     /tmp/ccAwnema.s:2548   .text.vTaskSetTimeOutState:00000000 vTaskSetTimeOutState
+     /tmp/ccAwnema.s:2596   .text.xTaskCheckForTimeOut:00000000 $t
+     /tmp/ccAwnema.s:2601   .text.xTaskCheckForTimeOut:00000000 xTaskCheckForTimeOut
+     /tmp/ccAwnema.s:2721   .text.vTaskMissedYield:00000000 $t
+     /tmp/ccAwnema.s:2726   .text.vTaskMissedYield:00000000 vTaskMissedYield
+     /tmp/ccAwnema.s:2753   .text.prvIdleTask:00000000 $t
+     /tmp/ccAwnema.s:2970   .text.prvCheckTasksWaitingTermination:00000000 prvCheckTasksWaitingTermination
+     /tmp/ccAwnema.s:2797   .text.prvInitialiseTCBVariables:00000000 $t
+     /tmp/ccAwnema.s:2880   .text.prvInitialiseTaskLists:00000000 $t
+     /tmp/ccAwnema.s:2966   .text.prvCheckTasksWaitingTermination:00000000 $t
+     /tmp/ccAwnema.s:3229   .text.prvDeleteTCB:00000000 prvDeleteTCB
+     /tmp/ccAwnema.s:3061   .text.prvAddCurrentTaskToDelayedList:00000000 $t
+     /tmp/ccAwnema.s:3141   .text.prvAllocateTCBAndStack:00000000 $t
+     /tmp/ccAwnema.s:3225   .text.prvDeleteTCB:00000000 $t
+     /tmp/ccAwnema.s:3263   .text.xTaskGetCurrentTaskHandle:00000000 $t
+     /tmp/ccAwnema.s:3268   .text.xTaskGetCurrentTaskHandle:00000000 xTaskGetCurrentTaskHandle
+     /tmp/ccAwnema.s:3302   .text.xTaskGetSchedulerState:00000000 $t
+     /tmp/ccAwnema.s:3307   .text.xTaskGetSchedulerState:00000000 xTaskGetSchedulerState
+     /tmp/ccAwnema.s:3362   .text.vTaskPriorityInherit:00000000 $t
+     /tmp/ccAwnema.s:3367   .text.vTaskPriorityInherit:00000000 vTaskPriorityInherit
+     /tmp/ccAwnema.s:3483   .text.vTaskPriorityDisinherit:00000000 $t
+     /tmp/ccAwnema.s:3488   .text.vTaskPriorityDisinherit:00000000 vTaskPriorityDisinherit
+     /tmp/ccAwnema.s:3575   .rodata.ucExpectedStackBytes.5898:00000000 $d
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
-                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
-                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
-                           .group:00000000 wm4.stdio.h.31.f48311dde756a2aec27351b58a280fb9
-                           .group:00000000 wm4.stddef.h.187.9e651b6b8b16e149c1353259404973ea
-                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
-                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
-                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
-                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
-                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
-                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
-                           .group:00000000 wm4.stddef.h.40.cf962ebbec441b3ac67502735f0765db
-                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
-                           .group:00000000 wm4.types.h.80.1f2c84c0d57dd52dd9936095d9ac218e
-                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
-                           .group:00000000 wm4.stdio.h.63.dfdea6580b080784d08faace69b6ed76
-                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
-                           .group:00000000 wm4.stddef.h.161.e50ff8a9d5d1abbc15641da28ac571bf
-                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
-                           .group:00000000 wm4.stdlib.h.53.c69c7609933ff56d59c757cec2d13230
-                           .group:00000000 wm4.string.h.8.ef946ad0bc9ad5c970c365dcd1fc4b0a
-                           .group:00000000 wm4.string.h.86.d5c872ff52e2712c985b588a0ef39f3c
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.73ce2c6afaf7535ca053cc9af81f6119
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.list.h.105.6a6307ce3396638a078c02ff83387dc6
-                           .group:00000000 wm4.task.h.94.33ec4de8c3f825901c54e6cf58507761
-                           .group:00000000 wm4.timers.h.94.1c877eceef25f06590ac289101b9a408
-                           .group:00000000 wm4.StackMacros.h.76.05bafce1d9e236e19f8a340bdef6124f
 
 UNDEFINED SYMBOLS
 ulPortSetInterruptMask

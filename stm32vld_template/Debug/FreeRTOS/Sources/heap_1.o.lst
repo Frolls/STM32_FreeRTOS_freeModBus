@@ -430,43 +430,22 @@
  265              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/include/
 DEFINED SYMBOLS
                             *ABS*:00000000 heap_1.c
-     /tmp/ccbAMLii.s:19     .bss.ucHeap:00000000 $d
-     /tmp/ccbAMLii.s:22     .bss.ucHeap:00000000 ucHeap
-     /tmp/ccbAMLii.s:25     .bss.xNextFreeByte:00000000 $d
-     /tmp/ccbAMLii.s:28     .bss.xNextFreeByte:00000000 xNextFreeByte
-     /tmp/ccbAMLii.s:31     .text.pvPortMalloc:00000000 $t
-     /tmp/ccbAMLii.s:36     .text.pvPortMalloc:00000000 pvPortMalloc
-     /tmp/ccbAMLii.s:261    .bss.pucAlignedHeap.4824:00000000 pucAlignedHeap.4824
-     /tmp/ccbAMLii.s:146    .text.pvPortMalloc:000000c4 $d
-     /tmp/ccbAMLii.s:151    .text.vPortFree:00000000 $t
-     /tmp/ccbAMLii.s:156    .text.vPortFree:00000000 vPortFree
-     /tmp/ccbAMLii.s:192    .text.vPortInitialiseBlocks:00000000 $t
-     /tmp/ccbAMLii.s:197    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
-     /tmp/ccbAMLii.s:224    .text.xPortGetFreeHeapSize:00000000 $t
-     /tmp/ccbAMLii.s:229    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
-     /tmp/ccbAMLii.s:258    .bss.pucAlignedHeap.4824:00000000 $d
+     /tmp/cc6SFhKU.s:19     .bss.ucHeap:00000000 $d
+     /tmp/cc6SFhKU.s:22     .bss.ucHeap:00000000 ucHeap
+     /tmp/cc6SFhKU.s:25     .bss.xNextFreeByte:00000000 $d
+     /tmp/cc6SFhKU.s:28     .bss.xNextFreeByte:00000000 xNextFreeByte
+     /tmp/cc6SFhKU.s:31     .text.pvPortMalloc:00000000 $t
+     /tmp/cc6SFhKU.s:36     .text.pvPortMalloc:00000000 pvPortMalloc
+     /tmp/cc6SFhKU.s:261    .bss.pucAlignedHeap.4824:00000000 pucAlignedHeap.4824
+     /tmp/cc6SFhKU.s:146    .text.pvPortMalloc:000000c4 $d
+     /tmp/cc6SFhKU.s:151    .text.vPortFree:00000000 $t
+     /tmp/cc6SFhKU.s:156    .text.vPortFree:00000000 vPortFree
+     /tmp/cc6SFhKU.s:192    .text.vPortInitialiseBlocks:00000000 $t
+     /tmp/cc6SFhKU.s:197    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
+     /tmp/cc6SFhKU.s:224    .text.xPortGetFreeHeapSize:00000000 $t
+     /tmp/cc6SFhKU.s:229    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
+     /tmp/cc6SFhKU.s:258    .bss.pucAlignedHeap.4824:00000000 $d
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
-                           .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
-                           .group:00000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
-                           .group:00000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
-                           .group:00000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
-                           .group:00000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
-                           .group:00000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
-                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
-                           .group:00000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
-                           .group:00000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
-                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
-                           .group:00000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
-                           .group:00000000 wm4.stddef.h.40.b60a1c1ee3f272eef5327a730cbabca6
-                           .group:00000000 wm4.projdefs.h.76.214f319a5937dae232f0ee2912b07e1d
-                           .group:00000000 wm4.FreeRTOSConfig.h.86.73ce2c6afaf7535ca053cc9af81f6119
-                           .group:00000000 wm4.portmacro.h.77.8d562aa278cb516c96f7646e8f3849cb
-                           .group:00000000 wm4.portable.h.332.e25bf3f97ebf50a0f90736144cb8c3f8
-                           .group:00000000 wm4.mpu_wrappers.h.76.3abcfc7ebb6d78909ee0b4ad2f20f282
-                           .group:00000000 wm4.FreeRTOS.h.159.741cbf33489b2c951994722716e9692e
-                           .group:00000000 wm4.list.h.105.6a6307ce3396638a078c02ff83387dc6
-                           .group:00000000 wm4.task.h.94.33ec4de8c3f825901c54e6cf58507761
 
 UNDEFINED SYMBOLS
 vTaskSuspendAll

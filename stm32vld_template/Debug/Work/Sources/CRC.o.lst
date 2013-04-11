@@ -256,11 +256,10 @@
  219              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 CRC.c
-     /tmp/ccsQf8XV.s:19     .text.Crc8Dallas:00000000 $t
-     /tmp/ccsQf8XV.s:24     .text.Crc8Dallas:00000000 Crc8Dallas
-     /tmp/ccsQf8XV.s:120    .text.Crc8:00000000 $t
-     /tmp/ccsQf8XV.s:125    .text.Crc8:00000000 Crc8
+     /tmp/cc6bPN2g.s:19     .text.Crc8Dallas:00000000 $t
+     /tmp/cc6bPN2g.s:24     .text.Crc8Dallas:00000000 Crc8Dallas
+     /tmp/cc6bPN2g.s:120    .text.Crc8:00000000 $t
+     /tmp/cc6bPN2g.s:125    .text.Crc8:00000000 Crc8
                      .debug_frame:00000010 $d
-                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
 
 NO UNDEFINED SYMBOLS
