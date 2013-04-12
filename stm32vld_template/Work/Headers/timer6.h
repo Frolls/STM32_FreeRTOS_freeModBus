@@ -18,9 +18,9 @@
 
 
 
-void TIM6Init();
+void TIM6Init(void);
 void NVIC_Configuration_TIM6(void);
-void TIM6_DAC_IRQHandler();
+void TIM6_DAC_IRQHandler(void);
 
 void delay_us(uint16_t uSecs);
 void delay_ms(uint16_t mSecs);

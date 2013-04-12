@@ -36,10 +36,6 @@
 
 #define One_Wire_Pin 			GPIOC, GPIO_Pin_7
 
-#define smallLEDPanel_CLK 		GPIO_Pin_10
-#define smallLEDPanel_SDI 		GPIO_Pin_11
-#define smallLEDPanel_LE 		GPIO_Pin_12
-
 #define BAUDRATE 115200
 
 volatile uint16_t counter = 0;
@@ -76,13 +72,8 @@ void SetupClock()
 
 void LEDsInit()
 {
-   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-   GPIO_InitTypeDef GPIO_InitStructure;
-   /* Ñâåòîäèîäû íà PC8, PC9          */
-   GPIO_InitStructure.GPIO_Pin   = LED_GREEN | LED_BLUE;
-   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-   GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
-   GPIO_Init(LED_PORT, &GPIO_InitStructure);
+   PIN_OUT_PP(LED_PORT, LED_BLUE);
+   PIN_OUT_PP(LED_PORT, LED_GREEN);
 }
 
 void BtnInit()
@@ -233,8 +224,10 @@ void vFreeRTOSInitAll()
 {
 	SetupClock();
 
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
 	LEDsInit();
-	smallLEDPanel_Init();//LED_PORT, smallLEDPanel_CLK, smallLEDPanel_SDI, smallLEDPanel_LE);
+
+	smallLEDPanel_Init();
 
 	BtnInit();
 
@@ -260,6 +253,12 @@ void vTaskLED(void *pvParameters)
         	LED_PORT->ODR ^= LED_BLUE;
             vTaskDelay(500);
 
+            smallLEDPanel_Set(counter);
+            //smallLEDPanel_Inc(1);
+            //smallLEDPanel_All_On();
+            //smallLEDPanel_Clear();
+            //smallLEDPanel_Inc();
+            //counter++;
         }
         vTaskDelete(NULL);
 
@@ -275,6 +274,7 @@ void USART1_IRQHandler(void)
 		   //USART_ClearITPendingBit(USART1, USART_IT_RXNE);
 		   uint16_t i = USART_ReceiveData(USART1);
 		   UARTSend(&i, 1);
+		   counter = i;
 		   //LED_PORT->ODR ^= LED_BLUE;
 		   //UARTSend(&i, 1);
           // UARTSend(" <-- data\r\n", 10);
@@ -334,6 +334,8 @@ void vTaskDS1821(void *pvParameters)
 			uart_print_value(USART1, Time_GetMinutes(GetTime()));
 			uart_print_string(USART1, ":", 0);
 			uart_print_value(USART1, Time_GetSeconds(GetTime()));
+			uart_print_string(USART1, " Counter: ", 0);
+			uart_print_value(USART1, counter);
 			uart_print_string(USART1, "", 1);
 			//////////////////
 			vTaskDelay(1000);

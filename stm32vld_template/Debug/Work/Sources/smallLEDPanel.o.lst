@@ -21,7 +21,7 @@
   21              		.thumb
   22              		.thumb_func
   24              	smallLEDPanel_Init:
-  25              	.LFB0:
+  25              	.LFB29:
   26              		.file 1 "../Work/Sources/smallLEDPanel.c"
    1:../Work/Sources/smallLEDPanel.c **** /*
    2:../Work/Sources/smallLEDPanel.c ****  * smallLEDPanel.c
@@ -37,70 +37,438 @@
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31              		@ link register save eliminated.
-  32 0000 80B4     		push	{r7}
-  33              	.LCFI0:
-  34              		.cfi_def_cfa_offset 4
-  35              		.cfi_offset 7, -4
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
   36 0002 00AF     		add	r7, sp, #0
   37              	.LCFI1:
   38              		.cfi_def_cfa_register 7
-  11:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitTypeDef GPIO_InitStructure;
-  12:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Pin   = PIN_CLK ;//| PIN_SDI;// | PIN_LE;
-  13:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  14:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
-  15:../Work/Sources/smallLEDPanel.c **** 	//GPIO_Init(GPIOx, &GPIO_InitStructure);
-  16:../Work/Sources/smallLEDPanel.c **** }
-  39              		.loc 1 16 0
-  40 0004 BD46     		mov	sp, r7
-  41 0006 80BC     		pop	{r7}
-  42 0008 7047     		bx	lr
-  43              		.cfi_endproc
-  44              	.LFE0:
-  46 000a 00BF     		.section	.text.smallLEDPanel_Inc,"ax",%progbits
-  47              		.align	2
-  48              		.global	smallLEDPanel_Inc
-  49              		.thumb
-  50              		.thumb_func
-  52              	smallLEDPanel_Inc:
-  53              	.LFB1:
-  17:../Work/Sources/smallLEDPanel.c **** 
-  18:../Work/Sources/smallLEDPanel.c **** void smallLEDPanel_Inc(void)
-  19:../Work/Sources/smallLEDPanel.c **** {
+  11:../Work/Sources/smallLEDPanel.c **** 	PIN_OUT_PP(smallLEDPanel_Port, smallLEDPanel_CLK);
+  39              		.loc 1 11 0
+  40 0004 4FF48050 		mov	r0, #4096
+  41 0008 C4F20100 		movt	r0, 16385
+  42 000c 4FF48061 		mov	r1, #1024
+  43 0010 FFF7FEFF 		bl	PIN_OUT_PP
+  12:../Work/Sources/smallLEDPanel.c **** 	PIN_OUT_PP(smallLEDPanel_Port, smallLEDPanel_SDI);
+  44              		.loc 1 12 0
+  45 0014 4FF48050 		mov	r0, #4096
+  46 0018 C4F20100 		movt	r0, 16385
+  47 001c 4FF40061 		mov	r1, #2048
+  48 0020 FFF7FEFF 		bl	PIN_OUT_PP
+  13:../Work/Sources/smallLEDPanel.c **** 	PIN_OUT_PP(smallLEDPanel_Port, smallLEDPanel_LE);
+  49              		.loc 1 13 0
+  50 0024 4FF48050 		mov	r0, #4096
+  51 0028 C4F20100 		movt	r0, 16385
+  52 002c 4FF48051 		mov	r1, #4096
+  53 0030 FFF7FEFF 		bl	PIN_OUT_PP
+  14:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitTypeDef GPIO_InitStructure;
+  15:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Pin   = PIN_CLK ;//| PIN_SDI;// | PIN_LE;
+  16:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  17:../Work/Sources/smallLEDPanel.c **** 	//GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
+  18:../Work/Sources/smallLEDPanel.c **** 	//GPIO_Init(GPIOx, &GPIO_InitStructure);
+  19:../Work/Sources/smallLEDPanel.c **** }
   54              		.loc 1 19 0
-  55              		.cfi_startproc
-  56              		@ args = 0, pretend = 0, frame = 0
-  57              		@ frame_needed = 1, uses_anonymous_args = 0
-  58              		@ link register save eliminated.
-  59 0000 80B4     		push	{r7}
-  60              	.LCFI2:
-  61              		.cfi_def_cfa_offset 4
-  62              		.cfi_offset 7, -4
-  63 0002 00AF     		add	r7, sp, #0
-  64              	.LCFI3:
-  65              		.cfi_def_cfa_register 7
-  20:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_LE);
-  21:../Work/Sources/smallLEDPanel.c **** 
-  22:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_SDI);
-  23:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_CLK);
-  24:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_CLK);
-  25:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_CLK);
-  26:../Work/Sources/smallLEDPanel.c **** 	//PIN_ON(smallLEDPanel_CLK);
-  27:../Work/Sources/smallLEDPanel.c **** }
-  66              		.loc 1 27 0
-  67 0004 BD46     		mov	sp, r7
-  68 0006 80BC     		pop	{r7}
-  69 0008 7047     		bx	lr
-  70              		.cfi_endproc
-  71              	.LFE1:
-  73 000a 00BF     		.text
-  74              	.Letext0:
+  55 0034 80BD     		pop	{r7, pc}
+  56              		.cfi_endproc
+  57              	.LFE29:
+  59 0036 00BF     		.section	.text.smallLEDPanel_All_On,"ax",%progbits
+  60              		.align	2
+  61              		.global	smallLEDPanel_All_On
+  62              		.thumb
+  63              		.thumb_func
+  65              	smallLEDPanel_All_On:
+  66              	.LFB30:
+  20:../Work/Sources/smallLEDPanel.c **** 
+  21:../Work/Sources/smallLEDPanel.c **** void smallLEDPanel_All_On(void)
+  22:../Work/Sources/smallLEDPanel.c **** {
+  67              		.loc 1 22 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 8
+  70              		@ frame_needed = 1, uses_anonymous_args = 0
+  71 0000 80B5     		push	{r7, lr}
+  72              	.LCFI2:
+  73              		.cfi_def_cfa_offset 8
+  74              		.cfi_offset 7, -8
+  75              		.cfi_offset 14, -4
+  76 0002 82B0     		sub	sp, sp, #8
+  77              	.LCFI3:
+  78              		.cfi_def_cfa_offset 16
+  79 0004 00AF     		add	r7, sp, #0
+  80              	.LCFI4:
+  81              		.cfi_def_cfa_register 7
+  23:../Work/Sources/smallLEDPanel.c **** 	volatile unsigned char i;
+  24:../Work/Sources/smallLEDPanel.c **** 		PIN_OFF(smallLEDPanel_Port, smallLEDPanel_LE);
+  82              		.loc 1 24 0
+  83 0006 4FF48050 		mov	r0, #4096
+  84 000a C4F20100 		movt	r0, 16385
+  85 000e 4FF48051 		mov	r1, #4096
+  86 0012 FFF7FEFF 		bl	PIN_OFF
+  25:../Work/Sources/smallLEDPanel.c **** 
+  26:../Work/Sources/smallLEDPanel.c **** 		PIN_ON(smallLEDPanel_Port, smallLEDPanel_SDI);
+  87              		.loc 1 26 0
+  88 0016 4FF48050 		mov	r0, #4096
+  89 001a C4F20100 		movt	r0, 16385
+  90 001e 4FF40061 		mov	r1, #2048
+  91 0022 FFF7FEFF 		bl	PIN_ON
+  27:../Work/Sources/smallLEDPanel.c **** 		for (i=0; i<16; i++)
+  92              		.loc 1 27 0
+  93 0026 4FF00003 		mov	r3, #0
+  94 002a FB71     		strb	r3, [r7, #7]
+  95 002c 15E0     		b	.L3
+  96              	.L4:
+  28:../Work/Sources/smallLEDPanel.c **** 		{
+  29:../Work/Sources/smallLEDPanel.c **** 			PIN_OFF(smallLEDPanel_Port, smallLEDPanel_CLK);
+  97              		.loc 1 29 0 discriminator 2
+  98 002e 4FF48050 		mov	r0, #4096
+  99 0032 C4F20100 		movt	r0, 16385
+ 100 0036 4FF48061 		mov	r1, #1024
+ 101 003a FFF7FEFF 		bl	PIN_OFF
+  30:../Work/Sources/smallLEDPanel.c **** 			PIN_ON(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 102              		.loc 1 30 0 discriminator 2
+ 103 003e 4FF48050 		mov	r0, #4096
+ 104 0042 C4F20100 		movt	r0, 16385
+ 105 0046 4FF48061 		mov	r1, #1024
+ 106 004a FFF7FEFF 		bl	PIN_ON
+  27:../Work/Sources/smallLEDPanel.c **** 		for (i=0; i<16; i++)
+ 107              		.loc 1 27 0 discriminator 2
+ 108 004e FB79     		ldrb	r3, [r7, #7]
+ 109 0050 DBB2     		uxtb	r3, r3
+ 110 0052 03F10103 		add	r3, r3, #1
+ 111 0056 DBB2     		uxtb	r3, r3
+ 112 0058 FB71     		strb	r3, [r7, #7]
+ 113              	.L3:
+  27:../Work/Sources/smallLEDPanel.c **** 		for (i=0; i<16; i++)
+ 114              		.loc 1 27 0 is_stmt 0 discriminator 1
+ 115 005a FB79     		ldrb	r3, [r7, #7]
+ 116 005c DBB2     		uxtb	r3, r3
+ 117 005e 0F2B     		cmp	r3, #15
+ 118 0060 E5D9     		bls	.L4
+  31:../Work/Sources/smallLEDPanel.c **** 		}
+  32:../Work/Sources/smallLEDPanel.c **** 		PIN_ON(smallLEDPanel_Port, smallLEDPanel_LE);
+ 119              		.loc 1 32 0 is_stmt 1
+ 120 0062 4FF48050 		mov	r0, #4096
+ 121 0066 C4F20100 		movt	r0, 16385
+ 122 006a 4FF48051 		mov	r1, #4096
+ 123 006e FFF7FEFF 		bl	PIN_ON
+  33:../Work/Sources/smallLEDPanel.c **** }
+ 124              		.loc 1 33 0
+ 125 0072 07F10807 		add	r7, r7, #8
+ 126 0076 BD46     		mov	sp, r7
+ 127 0078 80BD     		pop	{r7, pc}
+ 128              		.cfi_endproc
+ 129              	.LFE30:
+ 131 007a 00BF     		.section	.text.smallLEDPanel_Clear,"ax",%progbits
+ 132              		.align	2
+ 133              		.global	smallLEDPanel_Clear
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	smallLEDPanel_Clear:
+ 138              	.LFB31:
+  34:../Work/Sources/smallLEDPanel.c **** 
+  35:../Work/Sources/smallLEDPanel.c **** void smallLEDPanel_Clear(void)
+  36:../Work/Sources/smallLEDPanel.c **** {
+ 139              		.loc 1 36 0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 8
+ 142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 143 0000 80B5     		push	{r7, lr}
+ 144              	.LCFI5:
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ 147              		.cfi_offset 14, -4
+ 148 0002 82B0     		sub	sp, sp, #8
+ 149              	.LCFI6:
+ 150              		.cfi_def_cfa_offset 16
+ 151 0004 00AF     		add	r7, sp, #0
+ 152              	.LCFI7:
+ 153              		.cfi_def_cfa_register 7
+  37:../Work/Sources/smallLEDPanel.c **** 	volatile unsigned char i;
+  38:../Work/Sources/smallLEDPanel.c **** 	PIN_OFF(smallLEDPanel_Port, smallLEDPanel_LE);
+ 154              		.loc 1 38 0
+ 155 0006 4FF48050 		mov	r0, #4096
+ 156 000a C4F20100 		movt	r0, 16385
+ 157 000e 4FF48051 		mov	r1, #4096
+ 158 0012 FFF7FEFF 		bl	PIN_OFF
+  39:../Work/Sources/smallLEDPanel.c **** 
+  40:../Work/Sources/smallLEDPanel.c **** 	PIN_OFF(smallLEDPanel_Port, smallLEDPanel_SDI);
+ 159              		.loc 1 40 0
+ 160 0016 4FF48050 		mov	r0, #4096
+ 161 001a C4F20100 		movt	r0, 16385
+ 162 001e 4FF40061 		mov	r1, #2048
+ 163 0022 FFF7FEFF 		bl	PIN_OFF
+  41:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 164              		.loc 1 41 0
+ 165 0026 4FF00003 		mov	r3, #0
+ 166 002a FB71     		strb	r3, [r7, #7]
+ 167 002c 15E0     		b	.L6
+ 168              	.L7:
+  42:../Work/Sources/smallLEDPanel.c **** 	{
+  43:../Work/Sources/smallLEDPanel.c **** 		PIN_OFF(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 169              		.loc 1 43 0 discriminator 2
+ 170 002e 4FF48050 		mov	r0, #4096
+ 171 0032 C4F20100 		movt	r0, 16385
+ 172 0036 4FF48061 		mov	r1, #1024
+ 173 003a FFF7FEFF 		bl	PIN_OFF
+  44:../Work/Sources/smallLEDPanel.c **** 		PIN_ON(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 174              		.loc 1 44 0 discriminator 2
+ 175 003e 4FF48050 		mov	r0, #4096
+ 176 0042 C4F20100 		movt	r0, 16385
+ 177 0046 4FF48061 		mov	r1, #1024
+ 178 004a FFF7FEFF 		bl	PIN_ON
+  41:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 179              		.loc 1 41 0 discriminator 2
+ 180 004e FB79     		ldrb	r3, [r7, #7]
+ 181 0050 DBB2     		uxtb	r3, r3
+ 182 0052 03F10103 		add	r3, r3, #1
+ 183 0056 DBB2     		uxtb	r3, r3
+ 184 0058 FB71     		strb	r3, [r7, #7]
+ 185              	.L6:
+  41:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 186              		.loc 1 41 0 is_stmt 0 discriminator 1
+ 187 005a FB79     		ldrb	r3, [r7, #7]
+ 188 005c DBB2     		uxtb	r3, r3
+ 189 005e 0F2B     		cmp	r3, #15
+ 190 0060 E5D9     		bls	.L7
+  45:../Work/Sources/smallLEDPanel.c **** 	}
+  46:../Work/Sources/smallLEDPanel.c **** 	PIN_ON(smallLEDPanel_Port, smallLEDPanel_LE);
+ 191              		.loc 1 46 0 is_stmt 1
+ 192 0062 4FF48050 		mov	r0, #4096
+ 193 0066 C4F20100 		movt	r0, 16385
+ 194 006a 4FF48051 		mov	r1, #4096
+ 195 006e FFF7FEFF 		bl	PIN_ON
+  47:../Work/Sources/smallLEDPanel.c **** }
+ 196              		.loc 1 47 0
+ 197 0072 07F10807 		add	r7, r7, #8
+ 198 0076 BD46     		mov	sp, r7
+ 199 0078 80BD     		pop	{r7, pc}
+ 200              		.cfi_endproc
+ 201              	.LFE31:
+ 203 007a 00BF     		.section	.text.smallLEDPanel_Set,"ax",%progbits
+ 204              		.align	2
+ 205              		.global	smallLEDPanel_Set
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	smallLEDPanel_Set:
+ 210              	.LFB32:
+  48:../Work/Sources/smallLEDPanel.c **** 
+  49:../Work/Sources/smallLEDPanel.c **** void smallLEDPanel_Set(unsigned short val)
+  50:../Work/Sources/smallLEDPanel.c **** {
+ 211              		.loc 1 50 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 16
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215 0000 80B5     		push	{r7, lr}
+ 216              	.LCFI8:
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 7, -8
+ 219              		.cfi_offset 14, -4
+ 220 0002 84B0     		sub	sp, sp, #16
+ 221              	.LCFI9:
+ 222              		.cfi_def_cfa_offset 24
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              	.LCFI10:
+ 225              		.cfi_def_cfa_register 7
+ 226 0006 0346     		mov	r3, r0
+ 227 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  51:../Work/Sources/smallLEDPanel.c **** 	volatile unsigned char i;
+  52:../Work/Sources/smallLEDPanel.c **** 
+  53:../Work/Sources/smallLEDPanel.c **** 	PIN_OFF(smallLEDPanel_Port, smallLEDPanel_LE);
+ 228              		.loc 1 53 0
+ 229 000a 4FF48050 		mov	r0, #4096
+ 230 000e C4F20100 		movt	r0, 16385
+ 231 0012 4FF48051 		mov	r1, #4096
+ 232 0016 FFF7FEFF 		bl	PIN_OFF
+  54:../Work/Sources/smallLEDPanel.c **** 
+  55:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 233              		.loc 1 55 0
+ 234 001a 4FF00003 		mov	r3, #0
+ 235 001e FB73     		strb	r3, [r7, #15]
+ 236 0020 31E0     		b	.L9
+ 237              	.L12:
+  56:../Work/Sources/smallLEDPanel.c **** 	{
+  57:../Work/Sources/smallLEDPanel.c **** 		if ((val >> (15-i)) & 1)
+ 238              		.loc 1 57 0
+ 239 0022 FA88     		ldrh	r2, [r7, #6]
+ 240 0024 FB7B     		ldrb	r3, [r7, #15]
+ 241 0026 DBB2     		uxtb	r3, r3
+ 242 0028 C3F10F03 		rsb	r3, r3, #15
+ 243 002c 42FA03F3 		asr	r3, r2, r3
+ 244 0030 03F00103 		and	r3, r3, #1
+ 245 0034 002B     		cmp	r3, #0
+ 246 0036 08D0     		beq	.L10
+  58:../Work/Sources/smallLEDPanel.c **** 			PIN_ON(smallLEDPanel_Port, smallLEDPanel_SDI);
+ 247              		.loc 1 58 0
+ 248 0038 4FF48050 		mov	r0, #4096
+ 249 003c C4F20100 		movt	r0, 16385
+ 250 0040 4FF40061 		mov	r1, #2048
+ 251 0044 FFF7FEFF 		bl	PIN_ON
+ 252 0048 07E0     		b	.L11
+ 253              	.L10:
+  59:../Work/Sources/smallLEDPanel.c **** 		else
+  60:../Work/Sources/smallLEDPanel.c **** 			PIN_OFF(smallLEDPanel_Port, smallLEDPanel_SDI);
+ 254              		.loc 1 60 0
+ 255 004a 4FF48050 		mov	r0, #4096
+ 256 004e C4F20100 		movt	r0, 16385
+ 257 0052 4FF40061 		mov	r1, #2048
+ 258 0056 FFF7FEFF 		bl	PIN_OFF
+ 259              	.L11:
+  61:../Work/Sources/smallLEDPanel.c **** 
+  62:../Work/Sources/smallLEDPanel.c **** 		PIN_OFF(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 260              		.loc 1 62 0
+ 261 005a 4FF48050 		mov	r0, #4096
+ 262 005e C4F20100 		movt	r0, 16385
+ 263 0062 4FF48061 		mov	r1, #1024
+ 264 0066 FFF7FEFF 		bl	PIN_OFF
+  63:../Work/Sources/smallLEDPanel.c **** 		PIN_ON(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 265              		.loc 1 63 0
+ 266 006a 4FF48050 		mov	r0, #4096
+ 267 006e C4F20100 		movt	r0, 16385
+ 268 0072 4FF48061 		mov	r1, #1024
+ 269 0076 FFF7FEFF 		bl	PIN_ON
+  55:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 270              		.loc 1 55 0
+ 271 007a FB7B     		ldrb	r3, [r7, #15]
+ 272 007c DBB2     		uxtb	r3, r3
+ 273 007e 03F10103 		add	r3, r3, #1
+ 274 0082 DBB2     		uxtb	r3, r3
+ 275 0084 FB73     		strb	r3, [r7, #15]
+ 276              	.L9:
+  55:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i<16; i++)
+ 277              		.loc 1 55 0 is_stmt 0 discriminator 1
+ 278 0086 FB7B     		ldrb	r3, [r7, #15]
+ 279 0088 DBB2     		uxtb	r3, r3
+ 280 008a 0F2B     		cmp	r3, #15
+ 281 008c C9D9     		bls	.L12
+  64:../Work/Sources/smallLEDPanel.c **** 	}
+  65:../Work/Sources/smallLEDPanel.c **** 
+  66:../Work/Sources/smallLEDPanel.c **** 	PIN_ON(smallLEDPanel_Port, smallLEDPanel_LE);
+ 282              		.loc 1 66 0 is_stmt 1
+ 283 008e 4FF48050 		mov	r0, #4096
+ 284 0092 C4F20100 		movt	r0, 16385
+ 285 0096 4FF48051 		mov	r1, #4096
+ 286 009a FFF7FEFF 		bl	PIN_ON
+  67:../Work/Sources/smallLEDPanel.c **** }
+ 287              		.loc 1 67 0
+ 288 009e 07F11007 		add	r7, r7, #16
+ 289 00a2 BD46     		mov	sp, r7
+ 290 00a4 80BD     		pop	{r7, pc}
+ 291              		.cfi_endproc
+ 292              	.LFE32:
+ 294 00a6 00BF     		.section	.text.smallLEDPanel_Inc,"ax",%progbits
+ 295              		.align	2
+ 296              		.global	smallLEDPanel_Inc
+ 297              		.thumb
+ 298              		.thumb_func
+ 300              	smallLEDPanel_Inc:
+ 301              	.LFB33:
+  68:../Work/Sources/smallLEDPanel.c **** 
+  69:../Work/Sources/smallLEDPanel.c **** void smallLEDPanel_Inc(unsigned short incVal)
+  70:../Work/Sources/smallLEDPanel.c **** {
+ 302              		.loc 1 70 0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 16
+ 305              		@ frame_needed = 1, uses_anonymous_args = 0
+ 306 0000 80B5     		push	{r7, lr}
+ 307              	.LCFI11:
+ 308              		.cfi_def_cfa_offset 8
+ 309              		.cfi_offset 7, -8
+ 310              		.cfi_offset 14, -4
+ 311 0002 84B0     		sub	sp, sp, #16
+ 312              	.LCFI12:
+ 313              		.cfi_def_cfa_offset 24
+ 314 0004 00AF     		add	r7, sp, #0
+ 315              	.LCFI13:
+ 316              		.cfi_def_cfa_register 7
+ 317 0006 0346     		mov	r3, r0
+ 318 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  71:../Work/Sources/smallLEDPanel.c **** 	volatile unsigned char i;
+  72:../Work/Sources/smallLEDPanel.c **** 	PIN_OFF(smallLEDPanel_Port, smallLEDPanel_LE);
+ 319              		.loc 1 72 0
+ 320 000a 4FF48050 		mov	r0, #4096
+ 321 000e C4F20100 		movt	r0, 16385
+ 322 0012 4FF48051 		mov	r1, #4096
+ 323 0016 FFF7FEFF 		bl	PIN_OFF
+  73:../Work/Sources/smallLEDPanel.c **** 
+  74:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i < incVal; i++)
+ 324              		.loc 1 74 0
+ 325 001a 4FF00003 		mov	r3, #0
+ 326 001e FB73     		strb	r3, [r7, #15]
+ 327 0020 15E0     		b	.L14
+ 328              	.L15:
+  75:../Work/Sources/smallLEDPanel.c **** 	{
+  76:../Work/Sources/smallLEDPanel.c **** 		PIN_OFF(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 329              		.loc 1 76 0 discriminator 2
+ 330 0022 4FF48050 		mov	r0, #4096
+ 331 0026 C4F20100 		movt	r0, 16385
+ 332 002a 4FF48061 		mov	r1, #1024
+ 333 002e FFF7FEFF 		bl	PIN_OFF
+  77:../Work/Sources/smallLEDPanel.c **** 		PIN_ON(smallLEDPanel_Port, smallLEDPanel_CLK);
+ 334              		.loc 1 77 0 discriminator 2
+ 335 0032 4FF48050 		mov	r0, #4096
+ 336 0036 C4F20100 		movt	r0, 16385
+ 337 003a 4FF48061 		mov	r1, #1024
+ 338 003e FFF7FEFF 		bl	PIN_ON
+  74:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i < incVal; i++)
+ 339              		.loc 1 74 0 discriminator 2
+ 340 0042 FB7B     		ldrb	r3, [r7, #15]
+ 341 0044 DBB2     		uxtb	r3, r3
+ 342 0046 03F10103 		add	r3, r3, #1
+ 343 004a DBB2     		uxtb	r3, r3
+ 344 004c FB73     		strb	r3, [r7, #15]
+ 345              	.L14:
+  74:../Work/Sources/smallLEDPanel.c **** 	for (i=0; i < incVal; i++)
+ 346              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 347 004e FB7B     		ldrb	r3, [r7, #15]
+ 348 0050 DBB2     		uxtb	r3, r3
+ 349 0052 FA88     		ldrh	r2, [r7, #6]
+ 350 0054 9A42     		cmp	r2, r3
+ 351 0056 E4D8     		bhi	.L15
+  78:../Work/Sources/smallLEDPanel.c **** 	}
+  79:../Work/Sources/smallLEDPanel.c **** 	PIN_ON(smallLEDPanel_Port, smallLEDPanel_LE);
+ 352              		.loc 1 79 0 is_stmt 1
+ 353 0058 4FF48050 		mov	r0, #4096
+ 354 005c C4F20100 		movt	r0, 16385
+ 355 0060 4FF48051 		mov	r1, #4096
+ 356 0064 FFF7FEFF 		bl	PIN_ON
+  80:../Work/Sources/smallLEDPanel.c **** }
+ 357              		.loc 1 80 0
+ 358 0068 07F11007 		add	r7, r7, #16
+ 359 006c BD46     		mov	sp, r7
+ 360 006e 80BD     		pop	{r7, pc}
+ 361              		.cfi_endproc
+ 362              	.LFE33:
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "/home/frolls/ARM/gcc-arm-none-eabi-4_7-2012q4/bin/../lib/gcc/arm-none-eabi/4.7.3/../../..
+ 367              		.file 3 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/stm32f10x.h"
+ 368              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 smallLEDPanel.c
-     /tmp/ccSzbtkm.s:19     .text.smallLEDPanel_Init:00000000 $t
-     /tmp/ccSzbtkm.s:24     .text.smallLEDPanel_Init:00000000 smallLEDPanel_Init
-     /tmp/ccSzbtkm.s:47     .text.smallLEDPanel_Inc:00000000 $t
-     /tmp/ccSzbtkm.s:52     .text.smallLEDPanel_Inc:00000000 smallLEDPanel_Inc
+     /tmp/ccCUYSwg.s:19     .text.smallLEDPanel_Init:00000000 $t
+     /tmp/ccCUYSwg.s:24     .text.smallLEDPanel_Init:00000000 smallLEDPanel_Init
+     /tmp/ccCUYSwg.s:60     .text.smallLEDPanel_All_On:00000000 $t
+     /tmp/ccCUYSwg.s:65     .text.smallLEDPanel_All_On:00000000 smallLEDPanel_All_On
+     /tmp/ccCUYSwg.s:132    .text.smallLEDPanel_Clear:00000000 $t
+     /tmp/ccCUYSwg.s:137    .text.smallLEDPanel_Clear:00000000 smallLEDPanel_Clear
+     /tmp/ccCUYSwg.s:204    .text.smallLEDPanel_Set:00000000 $t
+     /tmp/ccCUYSwg.s:209    .text.smallLEDPanel_Set:00000000 smallLEDPanel_Set
+     /tmp/ccCUYSwg.s:295    .text.smallLEDPanel_Inc:00000000 $t
+     /tmp/ccCUYSwg.s:300    .text.smallLEDPanel_Inc:00000000 smallLEDPanel_Inc
                      .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.3f2d2167d278fc96c4a7439609634148
+                           .group:00000000 wm4.stm32f10x.h.51.643d5396a325ce00fe75ea490db6ba44
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.524.bbf52ca28bdf7ef267115429e0387679
+                           .group:00000000 wm4.stm32f10x_conf.h.9.3838e46d9de2be24c7ed73296c5ae8b5
+                           .group:00000000 wm4.stm32f10x.h.8267.abe69e40cf43ea9673cb5d472d4b6964
+                           .group:00000000 wm4.stm32f10x_gpio.h.25.80c981af0e637567395034c576cfb3ce
+                           .group:00000000 wm4.smallLEDPanel.h.13.0a0ffc156301a7d9517cba5ce12805f3
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+PIN_OUT_PP
+PIN_OFF
+PIN_ON

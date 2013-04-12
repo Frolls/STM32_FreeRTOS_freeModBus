@@ -528,20 +528,20 @@
  469              		.file 4 "/home/frolls/git/STM32_FreeRTOS_freeModBus/stm32vld_template/CMSIS/core_cm3.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 ds1821.c
-     /tmp/cc8tVeBx.s:19     .text.DS1821_Start_Conversion:00000000 $t
-     /tmp/cc8tVeBx.s:24     .text.DS1821_Start_Conversion:00000000 DS1821_Start_Conversion
-     /tmp/cc8tVeBx.s:79     .text.DS1821_Stop_Conversion:00000000 $t
-     /tmp/cc8tVeBx.s:84     .text.DS1821_Stop_Conversion:00000000 DS1821_Stop_Conversion
-     /tmp/cc8tVeBx.s:138    .text.DS1821_Read_Temp:00000000 $t
-     /tmp/cc8tVeBx.s:143    .text.DS1821_Read_Temp:00000000 DS1821_Read_Temp
-     /tmp/cc8tVeBx.s:208    .text.DS1821_Load_Counter:00000000 $t
-     /tmp/cc8tVeBx.s:213    .text.DS1821_Load_Counter:00000000 DS1821_Load_Counter
-     /tmp/cc8tVeBx.s:267    .text.DS1821_Read_Counter:00000000 $t
-     /tmp/cc8tVeBx.s:272    .text.DS1821_Read_Counter:00000000 DS1821_Read_Counter
-     /tmp/cc8tVeBx.s:337    .text.DS1821_Write_Status:00000000 $t
-     /tmp/cc8tVeBx.s:342    .text.DS1821_Write_Status:00000000 DS1821_Write_Status
-     /tmp/cc8tVeBx.s:396    .text.DS1821_Read_Status:00000000 $t
-     /tmp/cc8tVeBx.s:401    .text.DS1821_Read_Status:00000000 DS1821_Read_Status
+     /tmp/ccj6PjmJ.s:19     .text.DS1821_Start_Conversion:00000000 $t
+     /tmp/ccj6PjmJ.s:24     .text.DS1821_Start_Conversion:00000000 DS1821_Start_Conversion
+     /tmp/ccj6PjmJ.s:79     .text.DS1821_Stop_Conversion:00000000 $t
+     /tmp/ccj6PjmJ.s:84     .text.DS1821_Stop_Conversion:00000000 DS1821_Stop_Conversion
+     /tmp/ccj6PjmJ.s:138    .text.DS1821_Read_Temp:00000000 $t
+     /tmp/ccj6PjmJ.s:143    .text.DS1821_Read_Temp:00000000 DS1821_Read_Temp
+     /tmp/ccj6PjmJ.s:208    .text.DS1821_Load_Counter:00000000 $t
+     /tmp/ccj6PjmJ.s:213    .text.DS1821_Load_Counter:00000000 DS1821_Load_Counter
+     /tmp/ccj6PjmJ.s:267    .text.DS1821_Read_Counter:00000000 $t
+     /tmp/ccj6PjmJ.s:272    .text.DS1821_Read_Counter:00000000 DS1821_Read_Counter
+     /tmp/ccj6PjmJ.s:337    .text.DS1821_Write_Status:00000000 $t
+     /tmp/ccj6PjmJ.s:342    .text.DS1821_Write_Status:00000000 DS1821_Write_Status
+     /tmp/ccj6PjmJ.s:396    .text.DS1821_Read_Status:00000000 $t
+     /tmp/ccj6PjmJ.s:401    .text.DS1821_Read_Status:00000000 DS1821_Read_Status
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
